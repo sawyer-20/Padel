@@ -1,0 +1,20 @@
+{
+  "appName": "Padel Hub",
+  "nav": {
+    "home": "Start",
+    "rankings": "Ranglisten",
+    "tournaments": "Turniere",
+    "rules": "Regeln",
+    "training": "Training",
+    "news": "Neuigkeiten"
+  },
+  "languageSwitcher": {
+    "label": "Sprache"
+  },
+  "phase0": {
+    "title": "Phase 0 — Grundlage",
+    "description": "Diese Seite beweist, dass das Locale-Routing funktioniert und der clientseitige Zustand einen Sprachwechsel übersteht.",
+    "counterLabel": "Zähler (lokaler Zustand)",
+    "increment": "Erhöhen"
+  }
+}
