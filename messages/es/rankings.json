@@ -1,3 +1,16 @@
 {
-  "comingSoon": "Próximamente"
+  "title": "Rankings",
+  "categoryToggleLabel": "Categoría",
+  "men": "Masculino",
+  "women": "Femenino",
+  "columns": {
+    "position": "Pos.",
+    "player": "Jugador",
+    "country": "País",
+    "points": "Puntos"
+  },
+  "empty": "No hay datos de rankings disponibles.",
+  "error": "No se pudieron cargar los rankings ahora. Inténtalo de nuevo más tarde.",
+  "maskedValue": "Oculto",
+  "maskedNotice": "Algunos valores están ocultos porque la fuente de datos limita el histórico en el plan gratuito."
 }

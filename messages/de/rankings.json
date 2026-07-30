@@ -1,3 +1,16 @@
 {
-  "comingSoon": "Demnächst"
+  "title": "Ranglisten",
+  "categoryToggleLabel": "Kategorie",
+  "men": "Herren",
+  "women": "Damen",
+  "columns": {
+    "position": "Pos.",
+    "player": "Spieler",
+    "country": "Land",
+    "points": "Punkte"
+  },
+  "empty": "Keine Rangdaten verfügbar.",
+  "error": "Ranglisten konnten gerade nicht geladen werden. Bitte später erneut versuchen.",
+  "maskedValue": "Verborgen",
+  "maskedNotice": "Einige Werte sind verborgen, da die Datenquelle den Verlauf im kostenlosen Plan einschränkt."
 }

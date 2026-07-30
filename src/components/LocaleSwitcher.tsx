@@ -1,6 +1,6 @@
 "use client";
 
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { useCurrentLocale } from "./useCurrentLocale";
 import { shellMessages } from "./shell-messages";
@@ -13,11 +13,13 @@ export function LocaleSwitcher() {
   // em componentes persistentes fora do segmento [locale] (ver StateProbe/shell-messages).
   // Por isso usamos os hooks nativos do Next.js, que refletem sempre a URL atual.
   const pathname = usePathname();
+  const searchParams = useSearchParams();
 
   function onChange(nextLocale: string) {
     const currentPrefix = `/${locale}`;
     const rest = pathname === currentPrefix ? "" : pathname.slice(currentPrefix.length);
-    router.replace(`/${nextLocale}${rest}`);
+    const query = searchParams.toString();
+    router.replace(`/${nextLocale}${rest}${query ? `?${query}` : ""}`);
   }
 
   return (
