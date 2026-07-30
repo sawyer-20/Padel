@@ -12,5 +12,10 @@
   "empty": "Aucune donnée de classement disponible.",
   "error": "Impossible de charger les classements pour le moment. Réessayez plus tard.",
   "maskedValue": "Masqué",
-  "maskedNotice": "Certaines valeurs sont masquées car la source de données limite l'historique sur le plan gratuit."
+  "maskedNotice": "Certaines valeurs sont masquées car la source de données limite l'historique sur le plan gratuit.",
+  "player": {
+    "recentMatches": "Derniers résultats",
+    "noMatches": "Aucun résultat récent à afficher.",
+    "error": "Impossible de charger la fiche du joueur pour le moment. Réessayez plus tard."
+  }
 }

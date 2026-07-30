@@ -2,6 +2,7 @@ import { getTranslations } from "next-intl/server";
 import { padelApiSource } from "@/lib/data-sources/padel-api-source";
 import type { RankingsCategory } from "@/lib/data-sources/padel-data-source";
 import type { RankingEntry } from "@/lib/padel-api/schemas";
+import { Link } from "@/i18n/navigation";
 
 // Nunca gerado estaticamente com dados reais no build (regra §1.1 do PROJECT.md) — os
 // rankings mudam e a build não deve depender de um PADEL_API_TOKEN válido.
@@ -67,7 +68,11 @@ export default async function RankingsPage({
             {entries.map((entry) => (
               <tr key={entry.playerId} className="border-b border-neutral-100 dark:border-neutral-900">
                 <td className="py-2">{entry.ranking.masked ? t("maskedValue") : entry.ranking.value}</td>
-                <td className="py-2">{entry.name}</td>
+                <td className="py-2">
+                  <Link href={`/players/${entry.playerId}`} className="underline">
+                    {entry.name}
+                  </Link>
+                </td>
                 <td className="py-2">{entry.nationality ?? "—"}</td>
                 <td className="py-2">{entry.points.masked ? t("maskedValue") : entry.points.value}</td>
               </tr>

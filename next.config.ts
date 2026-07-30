@@ -5,6 +5,10 @@ const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
+  images: {
+    // Fotos de jogador servidas pela Padel API (via fantasypadeltour.com/GCS).
+    remotePatterns: [{ protocol: "https", hostname: "storage.googleapis.com" }],
+  },
 };
 
 export default withNextIntl(nextConfig);

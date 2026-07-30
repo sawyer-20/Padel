@@ -12,5 +12,10 @@
   "empty": "No ranking data available.",
   "error": "Couldn't load rankings right now. Please try again later.",
   "maskedValue": "Hidden",
-  "maskedNotice": "Some values are hidden because the data source limits history on the free plan."
+  "maskedNotice": "Some values are hidden because the data source limits history on the free plan.",
+  "player": {
+    "recentMatches": "Recent results",
+    "noMatches": "No recent results to show.",
+    "error": "Couldn't load the player profile right now. Please try again later."
+  }
 }

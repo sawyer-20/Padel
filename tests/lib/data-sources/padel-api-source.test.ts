@@ -222,3 +222,78 @@ describe("padelApiSource.getTournamentMatches", () => {
     await expect(padelApiSource.getTournamentMatches("822")).rejects.toThrow();
   });
 });
+
+describe("padelApiSource.getPlayer", () => {
+  it("devolve o perfil do jogador normalizado", async () => {
+    process.env.PADEL_API_TOKEN = "test-token";
+    global.fetch = vi.fn().mockResolvedValue(
+      new Response(
+        JSON.stringify({
+          id: 66,
+          name: "Agustin Tapia",
+          category: "men",
+          nationality: "AR",
+          ranking: 1,
+          points: 21266,
+        }),
+        { status: 200, headers: { "Content-Type": "application/json" } },
+      ),
+    );
+
+    const player = await padelApiSource.getPlayer("66");
+
+    expect(player.name).toBe("Agustin Tapia");
+    expect(global.fetch).toHaveBeenCalledWith(expect.stringContaining("/players/66"), expect.anything());
+  });
+
+  it("falha explicitamente quando a API responde com erro HTTP", async () => {
+    process.env.PADEL_API_TOKEN = "test-token";
+    global.fetch = vi.fn().mockResolvedValue(new Response("", { status: 500 }));
+
+    await expect(padelApiSource.getPlayer("66")).rejects.toThrow();
+  });
+});
+
+describe("padelApiSource.getPlayerMatches", () => {
+  it("devolve os jogos recentes normalizados", async () => {
+    process.env.PADEL_API_TOKEN = "test-token";
+    global.fetch = vi.fn().mockResolvedValue(
+      new Response(
+        JSON.stringify({
+          data: [
+            {
+              id: 1,
+              category: "men",
+              round: 1,
+              round_name: "Round of 16",
+              status: "live",
+              played_at: "2026-07-30",
+              score: null,
+              winner: null,
+              players: { team_1: [{ id: 65, name: "Arturo Coello" }], team_2: [{ id: 101, name: "Edu Alonso" }] },
+            },
+          ],
+          links: { first: null, last: null, prev: null, next: null },
+          meta: { current_page: 1, last_page: 1, per_page: 10, total: 1 },
+        }),
+        { status: 200, headers: { "Content-Type": "application/json" } },
+      ),
+    );
+
+    const matches = await padelApiSource.getPlayerMatches("66");
+
+    expect(matches).toHaveLength(1);
+    expect(matches[0]?.score).toEqual([]);
+    expect(global.fetch).toHaveBeenCalledWith(
+      expect.stringContaining("/players/66/matches?sort_by=played_at&order_by=desc"),
+      expect.anything(),
+    );
+  });
+
+  it("falha explicitamente quando a API responde com erro HTTP", async () => {
+    process.env.PADEL_API_TOKEN = "test-token";
+    global.fetch = vi.fn().mockResolvedValue(new Response("", { status: 500 }));
+
+    await expect(padelApiSource.getPlayerMatches("66")).rejects.toThrow();
+  });
+});

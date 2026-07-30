@@ -1,13 +1,15 @@
 import { padelApiFetch } from "@/lib/padel-api/client";
 import {
   parseMatchesResponse,
+  parsePlayer,
   parseRankingsResponse,
   parseTournamentDetail,
   parseTournamentsResponse,
 } from "@/lib/padel-api/schemas";
 import type { PadelDataSource, RankingsCategory } from "./padel-data-source";
 
-// 6h de cache, conforme §6.1 do PROJECT.md ("rankings 6h").
+// 6h de cache, conforme §6.1 do PROJECT.md ("rankings 6h"). Perfis e resultados recentes
+// de jogador são o mesmo tipo de dado "estado atual", por isso partilham a cadência.
 const RANKINGS_REVALIDATE_SECONDS = 60 * 60 * 6;
 // 24h de cache, conforme §6.1 do PROJECT.md ("calendário 24h").
 const TOURNAMENTS_REVALIDATE_SECONDS = 60 * 60 * 24;
@@ -55,6 +57,20 @@ export const padelApiSource: PadelDataSource = {
         : { revalidate: ONGOING_MATCHES_REVALIDATE_SECONDS, tags: [`padel:tournament-matches:${id}`] };
 
     const json = await padelApiFetch(`/tournaments/${id}/matches?per_page=100`, { next });
+    return parseMatchesResponse(json);
+  },
+
+  async getPlayer(id) {
+    const json = await padelApiFetch(`/players/${id}`, {
+      next: { revalidate: RANKINGS_REVALIDATE_SECONDS, tags: [`padel:player:${id}`] },
+    });
+    return parsePlayer(json);
+  },
+
+  async getPlayerMatches(id) {
+    const json = await padelApiFetch(`/players/${id}/matches?sort_by=played_at&order_by=desc&per_page=10`, {
+      next: { revalidate: RANKINGS_REVALIDATE_SECONDS, tags: [`padel:player-matches:${id}`] },
+    });
     return parseMatchesResponse(json);
   },
 };

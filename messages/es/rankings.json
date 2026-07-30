@@ -12,5 +12,10 @@
   "empty": "No hay datos de rankings disponibles.",
   "error": "No se pudieron cargar los rankings ahora. Inténtalo de nuevo más tarde.",
   "maskedValue": "Oculto",
-  "maskedNotice": "Algunos valores están ocultos porque la fuente de datos limita el histórico en el plan gratuito."
+  "maskedNotice": "Algunos valores están ocultos porque la fuente de datos limita el histórico en el plan gratuito.",
+  "player": {
+    "recentMatches": "Últimos resultados",
+    "noMatches": "No hay resultados recientes para mostrar.",
+    "error": "No se pudo cargar la ficha del jugador ahora. Inténtalo de nuevo más tarde."
+  }
 }

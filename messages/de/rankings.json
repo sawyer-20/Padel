@@ -12,5 +12,10 @@
   "empty": "Keine Rangdaten verfügbar.",
   "error": "Ranglisten konnten gerade nicht geladen werden. Bitte später erneut versuchen.",
   "maskedValue": "Verborgen",
-  "maskedNotice": "Einige Werte sind verborgen, da die Datenquelle den Verlauf im kostenlosen Plan einschränkt."
+  "maskedNotice": "Einige Werte sind verborgen, da die Datenquelle den Verlauf im kostenlosen Plan einschränkt.",
+  "player": {
+    "recentMatches": "Letzte Ergebnisse",
+    "noMatches": "Keine aktuellen Ergebnisse.",
+    "error": "Das Spielerprofil konnte gerade nicht geladen werden. Bitte später erneut versuchen."
+  }
 }

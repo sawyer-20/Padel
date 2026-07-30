@@ -1,6 +1,7 @@
 import { getTranslations } from "next-intl/server";
 import { padelApiSource } from "@/lib/data-sources/padel-api-source";
 import type { MatchSummary, TournamentDetail } from "@/lib/padel-api/schemas";
+import { MatchListItem } from "@/components/MatchListItem";
 
 // Nunca gerado estaticamente com dados reais no build (regra §1.1 do PROJECT.md).
 export const dynamic = "force-dynamic";
@@ -95,15 +96,7 @@ export default async function TournamentDetailPage({
           <h3 className="mb-2 text-sm font-semibold uppercase text-neutral-500">{roundName}</h3>
           <ul className="flex flex-col gap-2">
             {roundMatches.map((match) => (
-              <li key={match.id} className="rounded border border-neutral-200 p-3 text-sm dark:border-neutral-800">
-                <div className={match.winner === "team_1" ? "font-semibold" : ""}>{match.team1.join(" / ")}</div>
-                <div className={match.winner === "team_2" ? "font-semibold" : ""}>{match.team2.join(" / ")}</div>
-                {match.score.length > 0 && (
-                  <div className="mt-1 text-neutral-500">
-                    {match.score.map((set) => `${set.team1}-${set.team2}`).join(", ")}
-                  </div>
-                )}
-              </li>
+              <MatchListItem key={match.id} match={match} />
             ))}
           </ul>
         </section>
