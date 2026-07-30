@@ -1,4 +1,4 @@
-import type { RankingEntry, TournamentSummary } from "@/lib/padel-api/schemas";
+import type { MatchSummary, RankingEntry, TournamentDetail, TournamentSummary } from "@/lib/padel-api/schemas";
 
 export type RankingsCategory = "men" | "women";
 
@@ -7,4 +7,6 @@ export type RankingsCategory = "men" | "women";
 export interface PadelDataSource {
   getRankings(params: { category: RankingsCategory }): Promise<RankingEntry[]>;
   getTournaments(params: { fromDate: string }): Promise<TournamentSummary[]>;
+  getTournament(id: string): Promise<TournamentDetail>;
+  getTournamentMatches(id: string): Promise<MatchSummary[]>;
 }

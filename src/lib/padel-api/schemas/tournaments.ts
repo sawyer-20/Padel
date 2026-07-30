@@ -40,3 +40,67 @@ export function parseTournamentsResponse(json: unknown): TournamentSummary[] {
     endDate: item.end_date,
   }));
 }
+
+// GET /tournaments/{id} devolve o objeto diretamente, sem o envelope data/links/meta da lista.
+const WinnerPlayerSchema = z.object({
+  id: z.union([z.number(), z.string()]),
+  name: z.string(),
+});
+
+const WinnersSchema = z
+  .object({
+    men: z.array(WinnerPlayerSchema).optional(),
+    women: z.array(WinnerPlayerSchema).optional(),
+  })
+  .nullable()
+  .optional();
+
+const VenueSchema = z
+  .object({
+    name: z.string().nullable().optional(),
+    address: z.string().nullable().optional(),
+  })
+  .nullable()
+  .optional();
+
+const PrizeSchema = z
+  .object({
+    amount: z.number().nullable().optional(),
+    currency: z.string().nullable().optional(),
+  })
+  .nullable()
+  .optional();
+
+const TournamentDetailSchema = TournamentSchema.extend({
+  venue: VenueSchema,
+  prize: PrizeSchema,
+  winners: WinnersSchema,
+});
+
+export type TournamentDetail = TournamentSummary & {
+  venueName: string | null;
+  prizeAmount: number | null;
+  prizeCurrency: string | null;
+  winners: { men: string[]; women: string[] };
+};
+
+export function parseTournamentDetail(json: unknown): TournamentDetail {
+  const item = TournamentDetailSchema.parse(json);
+  return {
+    id: String(item.id),
+    name: item.name,
+    location: item.location ?? null,
+    country: item.country ?? null,
+    level: item.level,
+    status: item.status,
+    startDate: item.start_date,
+    endDate: item.end_date,
+    venueName: item.venue?.name ?? null,
+    prizeAmount: item.prize?.amount ?? null,
+    prizeCurrency: item.prize?.currency ?? null,
+    winners: {
+      men: item.winners?.men?.map((p) => p.name) ?? [],
+      women: item.winners?.women?.map((p) => p.name) ?? [],
+    },
+  };
+}

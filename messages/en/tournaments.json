@@ -13,5 +13,13 @@
     "upcoming": "Upcoming"
   },
   "empty": "No tournaments to show for this period.",
-  "error": "Couldn't load the calendar right now. Please try again later."
+  "error": "Couldn't load the calendar right now. Please try again later.",
+  "categoryToggleLabel": "Category",
+  "men": "Men",
+  "women": "Women",
+  "detail": {
+    "prize": "Prize",
+    "winners": "Champions",
+    "noMatches": "No matches to show for this category."
+  }
 }

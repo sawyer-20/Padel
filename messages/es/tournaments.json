@@ -13,5 +13,13 @@
     "upcoming": "Próximamente"
   },
   "empty": "No hay torneos para mostrar en este período.",
-  "error": "No se pudo cargar el calendario ahora. Inténtalo de nuevo más tarde."
+  "error": "No se pudo cargar el calendario ahora. Inténtalo de nuevo más tarde.",
+  "categoryToggleLabel": "Categoría",
+  "men": "Masculino",
+  "women": "Femenino",
+  "detail": {
+    "prize": "Premio",
+    "winners": "Campeones",
+    "noMatches": "No hay partidos para mostrar en esta categoría."
+  }
 }

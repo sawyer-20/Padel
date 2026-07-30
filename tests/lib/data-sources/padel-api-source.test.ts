@@ -96,3 +96,129 @@ describe("padelApiSource.getTournaments", () => {
     await expect(padelApiSource.getTournaments({ fromDate: "2026-05-01" })).rejects.toThrow();
   });
 });
+
+describe("padelApiSource.getTournament", () => {
+  it("devolve o detalhe do torneio normalizado", async () => {
+    process.env.PADEL_API_TOKEN = "test-token";
+    global.fetch = vi.fn().mockResolvedValue(
+      new Response(
+        JSON.stringify({
+          id: 822,
+          name: "FIP Silver Mimosa Open Porto",
+          location: "Oporto",
+          country: "PT",
+          level: "fip_silver",
+          status: "finished",
+          start_date: "2026-07-22",
+          end_date: "2026-07-26",
+          venue: { name: "Stadium", address: "..." },
+          prize: { amount: 30000, currency: "EUR" },
+          winners: { men: [], women: [] },
+        }),
+        { status: 200, headers: { "Content-Type": "application/json" } },
+      ),
+    );
+
+    const tournament = await padelApiSource.getTournament("822");
+
+    expect(tournament.name).toBe("FIP Silver Mimosa Open Porto");
+    expect(global.fetch).toHaveBeenCalledWith(expect.stringContaining("/tournaments/822"), expect.anything());
+  });
+});
+
+describe("padelApiSource.getTournamentMatches", () => {
+  function mockTournamentAndMatches(tournamentStatus: string) {
+    return vi.fn(async (url: RequestInfo | URL) => {
+      if (String(url).includes("/matches")) {
+        return new Response(
+          JSON.stringify({
+            data: [
+              {
+                id: 1,
+                category: "men",
+                round: 1,
+                round_name: "Final",
+                status: "finished",
+                played_at: "2026-07-26",
+                score: [{ team_1: "6", team_2: "4" }],
+                winner: "team_1",
+                players: { team_1: [{ id: 1, name: "A" }], team_2: [{ id: 2, name: "B" }] },
+              },
+            ],
+            links: { first: null, last: null, prev: null, next: null },
+            meta: { current_page: 1, last_page: 1, per_page: 100, total: 1 },
+          }),
+          { status: 200, headers: { "Content-Type": "application/json" } },
+        );
+      }
+      return new Response(
+        JSON.stringify({
+          id: 822,
+          name: "T",
+          location: "L",
+          country: "PT",
+          level: "fip_silver",
+          status: tournamentStatus,
+          start_date: "2026-07-22",
+          end_date: "2026-07-26",
+          venue: null,
+          prize: null,
+          winners: null,
+        }),
+        { status: 200, headers: { "Content-Type": "application/json" } },
+      );
+    });
+  }
+
+  it("usa cache indefinido quando o torneio já terminou (§6.1 do PROJECT.md)", async () => {
+    process.env.PADEL_API_TOKEN = "test-token";
+    global.fetch = mockTournamentAndMatches("finished");
+
+    const matches = await padelApiSource.getTournamentMatches("822");
+
+    expect(matches).toHaveLength(1);
+    const matchesCall = (global.fetch as ReturnType<typeof vi.fn>).mock.calls.find(([url]) =>
+      String(url).includes("/matches"),
+    );
+    expect(matchesCall?.[1]).toEqual(expect.objectContaining({ next: expect.objectContaining({ revalidate: false }) }));
+  });
+
+  it("usa cache de 1h quando o torneio ainda não terminou", async () => {
+    process.env.PADEL_API_TOKEN = "test-token";
+    global.fetch = mockTournamentAndMatches("pending");
+
+    await padelApiSource.getTournamentMatches("822");
+
+    const matchesCall = (global.fetch as ReturnType<typeof vi.fn>).mock.calls.find(([url]) =>
+      String(url).includes("/matches"),
+    );
+    expect(matchesCall?.[1]).toEqual(expect.objectContaining({ next: expect.objectContaining({ revalidate: 3600 }) }));
+  });
+
+  it("falha explicitamente quando os jogos respondem com erro HTTP", async () => {
+    process.env.PADEL_API_TOKEN = "test-token";
+    global.fetch = vi.fn(async (url: RequestInfo | URL) => {
+      if (String(url).includes("/matches")) {
+        return new Response("", { status: 500 });
+      }
+      return new Response(
+        JSON.stringify({
+          id: 822,
+          name: "T",
+          location: "L",
+          country: "PT",
+          level: "fip_silver",
+          status: "finished",
+          start_date: "2026-07-22",
+          end_date: "2026-07-26",
+          venue: null,
+          prize: null,
+          winners: null,
+        }),
+        { status: 200, headers: { "Content-Type": "application/json" } },
+      );
+    });
+
+    await expect(padelApiSource.getTournamentMatches("822")).rejects.toThrow();
+  });
+});

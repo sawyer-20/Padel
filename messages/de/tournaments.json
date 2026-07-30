@@ -13,5 +13,13 @@
     "upcoming": "Bevorstehend"
   },
   "empty": "Keine Turniere für diesen Zeitraum.",
-  "error": "Der Kalender konnte gerade nicht geladen werden. Bitte später erneut versuchen."
+  "error": "Der Kalender konnte gerade nicht geladen werden. Bitte später erneut versuchen.",
+  "categoryToggleLabel": "Kategorie",
+  "men": "Herren",
+  "women": "Damen",
+  "detail": {
+    "prize": "Preisgeld",
+    "winners": "Sieger",
+    "noMatches": "Keine Spiele für diese Kategorie."
+  }
 }

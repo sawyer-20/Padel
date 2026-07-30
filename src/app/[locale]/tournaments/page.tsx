@@ -1,6 +1,7 @@
 import { getTranslations } from "next-intl/server";
 import { padelApiSource } from "@/lib/data-sources/padel-api-source";
 import type { TournamentSummary } from "@/lib/padel-api/schemas";
+import { Link } from "@/i18n/navigation";
 
 // Nunca gerado estaticamente com dados reais no build (regra §1.1 do PROJECT.md) — o
 // calendário muda e a build não deve depender de um PADEL_API_TOKEN válido.
@@ -58,7 +59,11 @@ export default async function TournamentsPage() {
           <tbody>
             {tournaments.map((tournament) => (
               <tr key={tournament.id} className="border-b border-neutral-100 dark:border-neutral-900">
-                <td className="py-2">{tournament.name}</td>
+                <td className="py-2">
+                  <Link href={`/tournaments/${tournament.id}`} className="underline">
+                    {tournament.name}
+                  </Link>
+                </td>
                 <td className="py-2">
                   {[tournament.location, tournament.country].filter(Boolean).join(", ") || "—"}
                 </td>

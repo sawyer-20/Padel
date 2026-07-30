@@ -13,5 +13,13 @@
     "upcoming": "À venir"
   },
   "empty": "Aucun tournoi à afficher pour cette période.",
-  "error": "Impossible de charger le calendrier pour le moment. Réessayez plus tard."
+  "error": "Impossible de charger le calendrier pour le moment. Réessayez plus tard.",
+  "categoryToggleLabel": "Catégorie",
+  "men": "Hommes",
+  "women": "Femmes",
+  "detail": {
+    "prize": "Prix",
+    "winners": "Champions",
+    "noMatches": "Aucun match à afficher pour cette catégorie."
+  }
 }
