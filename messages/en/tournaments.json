@@ -1,3 +1,17 @@
 {
-  "comingSoon": "Coming soon"
+  "title": "Tournaments",
+  "columns": {
+    "name": "Tournament",
+    "location": "Location",
+    "level": "Category",
+    "dates": "Dates",
+    "status": "Status"
+  },
+  "status": {
+    "finished": "Finished",
+    "ongoing": "Ongoing",
+    "upcoming": "Upcoming"
+  },
+  "empty": "No tournaments to show for this period.",
+  "error": "Couldn't load the calendar right now. Please try again later."
 }

@@ -1,3 +1,17 @@
 {
-  "comingSoon": "Próximamente"
+  "title": "Torneos",
+  "columns": {
+    "name": "Torneo",
+    "location": "Lugar",
+    "level": "Categoría",
+    "dates": "Fechas",
+    "status": "Estado"
+  },
+  "status": {
+    "finished": "Finalizado",
+    "ongoing": "En curso",
+    "upcoming": "Próximamente"
+  },
+  "empty": "No hay torneos para mostrar en este período.",
+  "error": "No se pudo cargar el calendario ahora. Inténtalo de nuevo más tarde."
 }

@@ -1,3 +1,17 @@
 {
-  "comingSoon": "Demnächst"
+  "title": "Turniere",
+  "columns": {
+    "name": "Turnier",
+    "location": "Ort",
+    "level": "Kategorie",
+    "dates": "Termine",
+    "status": "Status"
+  },
+  "status": {
+    "finished": "Beendet",
+    "ongoing": "Laufend",
+    "upcoming": "Bevorstehend"
+  },
+  "empty": "Keine Turniere für diesen Zeitraum.",
+  "error": "Der Kalender konnte gerade nicht geladen werden. Bitte später erneut versuchen."
 }

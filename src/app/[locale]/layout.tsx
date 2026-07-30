@@ -32,6 +32,7 @@ export default async function LocaleLayout({
       <nav className="flex gap-4 border-b border-neutral-200 pb-4 text-sm dark:border-neutral-800">
         <Link href="/">{t("home")}</Link>
         <Link href="/rankings">{t("rankings")}</Link>
+        <Link href="/tournaments">{t("tournaments")}</Link>
       </nav>
       <div className="mt-4">{children}</div>
     </>

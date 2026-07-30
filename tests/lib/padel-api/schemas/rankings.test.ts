@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { parseRankingsResponse } from "../../../src/lib/padel-api/schemas";
+import { parseRankingsResponse } from "@/lib/padel-api/schemas/rankings";
 
 function buildResponse(dataOverride: unknown[]) {
   return {

@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { paginatedResponseSchema } from "./pagination";
 
 // Schema confirmado contra a resposta real de GET /rankings?category=men|women
 // (a documentação pública não expunha isto a scraping estático — validado à mão).
@@ -14,25 +15,7 @@ const RankingItemSchema = z.object({
   date: z.string().optional(),
 });
 
-const PaginationLinksSchema = z.object({
-  first: z.string().nullable(),
-  last: z.string().nullable(),
-  prev: z.string().nullable(),
-  next: z.string().nullable(),
-});
-
-const PaginationMetaSchema = z.object({
-  current_page: z.number(),
-  last_page: z.number(),
-  per_page: z.number(),
-  total: z.number(),
-});
-
-export const RankingsResponseSchema = z.object({
-  data: z.array(RankingItemSchema),
-  links: PaginationLinksSchema,
-  meta: PaginationMetaSchema,
-});
+export const RankingsResponseSchema = paginatedResponseSchema(RankingItemSchema);
 
 // Dado escondido pelo plano gratuito da fonte (ver §6.1 do PROJECT.md) — nunca inventamos
 // um valor plausível, marcamos explicitamente como mascarado para a UI avisar o utilizador.

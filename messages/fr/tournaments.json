@@ -1,3 +1,17 @@
 {
-  "comingSoon": "Bientôt disponible"
+  "title": "Tournois",
+  "columns": {
+    "name": "Tournoi",
+    "location": "Lieu",
+    "level": "Catégorie",
+    "dates": "Dates",
+    "status": "Statut"
+  },
+  "status": {
+    "finished": "Terminé",
+    "ongoing": "En cours",
+    "upcoming": "À venir"
+  },
+  "empty": "Aucun tournoi à afficher pour cette période.",
+  "error": "Impossible de charger le calendrier pour le moment. Réessayez plus tard."
 }
