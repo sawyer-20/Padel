@@ -30,7 +30,7 @@ export default async function RankingsPage({
     errored = true;
   }
 
-  const hasMaskedValues = entries?.some((entry) => entry.position.masked || entry.points.masked) ?? false;
+  const hasMaskedValues = entries?.some((entry) => entry.ranking.masked || entry.points.masked) ?? false;
 
   return (
     <div className="flex flex-col gap-4">
@@ -65,10 +65,10 @@ export default async function RankingsPage({
           </thead>
           <tbody>
             {entries.map((entry) => (
-              <tr key={entry.player.id} className="border-b border-neutral-100 dark:border-neutral-900">
-                <td className="py-2">{entry.position.masked ? t("maskedValue") : entry.position.value}</td>
-                <td className="py-2">{entry.player.name}</td>
-                <td className="py-2">{entry.player.country ?? "—"}</td>
+              <tr key={entry.playerId} className="border-b border-neutral-100 dark:border-neutral-900">
+                <td className="py-2">{entry.ranking.masked ? t("maskedValue") : entry.ranking.value}</td>
+                <td className="py-2">{entry.name}</td>
+                <td className="py-2">{entry.nationality ?? "—"}</td>
                 <td className="py-2">{entry.points.masked ? t("maskedValue") : entry.points.value}</td>
               </tr>
             ))}

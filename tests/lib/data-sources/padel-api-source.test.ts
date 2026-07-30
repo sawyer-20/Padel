@@ -16,7 +16,7 @@ describe("padelApiSource.getRankings", () => {
     global.fetch = vi.fn().mockResolvedValue(
       new Response(
         JSON.stringify({
-          data: [{ position: 1, points: 100, player: { id: 1, name: "A", country: "ES" }, category: "men" }],
+          data: [{ id: 1, name: "A", nationality: "ES", category: "men", ranking: 1, points: 100 }],
           links: { first: null, last: null, prev: null, next: null },
           meta: { current_page: 1, last_page: 1, per_page: 20, total: 1 },
         }),
@@ -27,7 +27,7 @@ describe("padelApiSource.getRankings", () => {
     const entries = await padelApiSource.getRankings({ category: "men" });
 
     expect(entries).toHaveLength(1);
-    expect(entries[0]?.player.name).toBe("A");
+    expect(entries[0]?.name).toBe("A");
     expect(global.fetch).toHaveBeenCalledWith(
       expect.stringContaining("/rankings?category=men"),
       expect.objectContaining({

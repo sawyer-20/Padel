@@ -10,13 +10,16 @@ function buildResponse(dataOverride: unknown[]) {
 }
 
 describe("parseRankingsResponse", () => {
-  it("normaliza uma resposta válida", () => {
+  it("normaliza uma resposta válida (formato confirmado contra a API real)", () => {
     const response = buildResponse([
       {
-        position: 1,
-        points: 5000,
-        player: { id: 42, name: "Ana Silva", country: "PT" },
+        id: 66,
+        name: "Agustin Tapia",
         category: "men",
+        nationality: "AR",
+        ranking: 1,
+        points: 21266,
+        date: "2026-07-27",
       },
     ]);
 
@@ -24,9 +27,11 @@ describe("parseRankingsResponse", () => {
 
     expect(result).toEqual([
       {
-        position: { value: 1, masked: false },
-        points: { value: 5000, masked: false },
-        player: { id: "42", name: "Ana Silva", country: "PT" },
+        playerId: "66",
+        name: "Agustin Tapia",
+        nationality: "AR",
+        ranking: { value: 1, masked: false },
+        points: { value: 21266, masked: false },
         category: "men",
       },
     ]);
@@ -35,15 +40,18 @@ describe("parseRankingsResponse", () => {
   it("marca valores 'hidden_free_plan' como mascarados em vez de os esconder ou inventar um valor", () => {
     const response = buildResponse([
       {
-        position: "hidden_free_plan",
+        id: 7,
+        name: "João Costa",
+        category: "men",
+        nationality: null,
+        ranking: "hidden_free_plan",
         points: "hidden_free_plan",
-        player: { id: 7, name: "João Costa", country: null },
       },
     ]);
 
     const result = parseRankingsResponse(response);
 
-    expect(result[0]?.position).toEqual({ value: null, masked: true });
+    expect(result[0]?.ranking).toEqual({ value: null, masked: true });
     expect(result[0]?.points).toEqual({ value: null, masked: true });
   });
 
