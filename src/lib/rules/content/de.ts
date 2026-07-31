@@ -82,4 +82,131 @@ Diese Maße sorgen für einen vorhersehbaren Ballabsprung von den Wänden — ge
 - Eine am Griff befestigte und ums Handgelenk getragene Sicherheitsschlaufe ist Pflicht — sie verhindert, dass der Schläger während des Spiels wegfliegt.
 - Er darf kein sichtbares oder hörbares elektronisches Gerät tragen, das dem Spieler während des Spiels Informationen übermittelt.`,
   },
+  times: {
+    title: "Zeiten und Pausen während des Matches",
+    status: "machine",
+    bodyMd: `Padel legt klare Zeitgrenzen fest, damit das Spiel im Fluss bleibt:
+
+- **Zwischen den Punkten**: maximal 20 Sekunden.
+- **Beim Seitenwechsel**: bis zu 90 Sekunden (außer nach dem ersten Spiel jedes Satzes und während des Tiebreaks, wo es keine Pause gibt).
+- **Am Ende jedes Satzes**: bis zu 120 Sekunden.
+- **Vor Spielbeginn**: ein 3-minütiges Aufwärm-Ballwechsel zwischen beiden Teams ist Pflicht.
+
+Ist ein Team 10 Minuten nach der offiziellen Startzeit nicht spielbereit, kann es das Match per "Walkover" (W.O.) verlieren, außer bei höherer Gewalt.
+
+Bei einer behandelbaren Verletzung hat jeder Spieler Anspruch auf eine 3-minütige medizinische Pause, die bei den beiden folgenden Seitenwechseln wiederholt werden kann, immer innerhalb der regulären Zeit.`,
+  },
+  "player-positions": {
+    title: "Position der Spieler auf dem Platz",
+    status: "machine",
+    bodyMd: `Bei jedem Punkt hat ein Team einen Aufschläger und einen begleitenden Partner; das gegnerische Team hat einen Rückschläger (diagonal zum Aufschläger positioniert) und einen begleitenden Partner.
+
+Der Rückschläger darf sich überall auf seiner Platzseite positionieren — er muss nicht im Aufschlagfeld bleiben. Dasselbe gilt für die beiden Partner, die nicht direkt am Aufschlag beteiligt sind: Sie dürfen sich frei auf ihrer Netzseite positionieren.`,
+  },
+  "choice-of-sides": {
+    title: "Der Münzwurf: Wer schlägt zuerst auf und von welcher Seite",
+    status: "machine",
+    bodyMd: `Vor Matchbeginn entscheidet meist ein Münzwurf, wer zuerst wählen darf. Das Team, das den Wurf gewinnt, kann aus drei Optionen wählen:
+
+- Zuerst aufschlagen oder returnieren (dann wählt das andere Team die Seite).
+- Die Seite für das erste Spiel wählen (dann wählt das andere Team Aufschlag oder Return).
+- Die Gegner zuerst wählen lassen.
+
+Nach der Entscheidung teilen beide Teams dem Schiedsrichter mit, wer zuerst aufschlägt und returniert.`,
+  },
+  "changes-of-sides": {
+    title: "Seitenwechsel",
+    status: "machine",
+    bodyMd: `Die Teams wechseln die Seite nach dem 1., dem 3. und jedem weiteren ungeraden Spiel innerhalb eines Satzes (also immer, wenn die Gesamtzahl der gespielten Spiele im Satz ungerade ist).
+
+Im Tiebreak wird alle 6 Punkte die Seite gewechselt.
+
+Vergessen die Teams den Seitenwechsel, wird das korrigiert, sobald der Fehler bemerkt wird — anschließend folgt man der richtigen Reihenfolge. Bereits gewonnene Punkte bleiben gültig.`,
+  },
+  "serve-fault": {
+    title: "Wann ein Aufschlag ein Fehler ist",
+    status: "machine",
+    bodyMd: `Ein Aufschlag gilt unter anderem in folgenden Fällen als Fehler:
+
+- Verstoß gegen die in "Der Aufschlag" beschriebenen Regeln zu Position, Trefferhöhe oder Flugbahn.
+- Der Aufschläger verfehlt den Ball beim Aufschlagversuch komplett.
+- Der Ball landet außerhalb des gegnerischen Aufschlagfelds (die Linien zählen als gültig).
+- Der Ball berührt den Aufschläger, seinen Partner oder etwas, das sie tragen oder bei sich haben.
+- Der Ball landet im richtigen Aufschlagfeld, berührt danach aber vor dem zweiten Aufspringen den Maschendraht.
+
+Wie bei jedem Aufschlag gibt es immer einen zweiten Versuch, bevor der Punkt verloren geht.`,
+  },
+  "return-of-serve": {
+    title: "Wie der Aufschlag returniert wird",
+    status: "machine",
+    bodyMd: `Der Rückschläger muss den Ball im eigenen Aufschlagfeld aufspringen lassen und ihn vor dem zweiten Aufspringen zurückspielen.
+
+Im ersten Spiel jedes Satzes entscheidet das returnierende Team, welcher Spieler zuerst returniert — diese Reihenfolge bleibt für den gesamten Satz fest (sie kann erst zu Beginn des nächsten Satzes geändert werden). Wird die Reihenfolge mitten in einem Spiel versehentlich vertauscht, spielt man so bis zum Ende dieses Spiels oder Tiebreaks weiter und kehrt danach zur ursprünglichen Reihenfolge zurück.
+
+Berührt der Ball einen der Rückschläger (oder dessen Schläger), bevor er aufspringt, geht der Punkt automatisch an das aufschlagende Team.`,
+  },
+  interference: {
+    title: "Behinderung zwischen Spielern",
+    status: "machine",
+    bodyMd: `Von Behinderung spricht man, wenn ein Spieler — absichtlich oder unabsichtlich — einen Gegner bei der Ausführung eines Schlags stört.
+
+- Ist sie **absichtlich**, geht der Punkt automatisch an das gegnerische Team.
+- Ist sie **unabsichtlich**, wird der Punkt wiederholt ("Let").
+- Verursacht dasselbe Team eine zweite unabsichtliche Behinderung, verliert es den umstrittenen Punkt.`,
+  },
+  "ball-in-play": {
+    title: 'Wann der Ball "im Spiel" ist',
+    status: "machine",
+    bodyMd: `Der Ball ist ab dem Moment eines gültigen Aufschlags im Spiel, bis der Punkt entschieden ist (durch ein "Let" oder ein eindeutiges Ergebnis).
+
+Ein wichtiges Detail: Sobald der Ball auf deiner Platzseite aufgesprungen ist, bleibt er im Spiel, auch wenn er danach eine Wand, den Maschendraht, das Netz oder die Pfosten berührt — all diese Elemente gehören genau wie der Boden zur Spielfläche. Du verlierst den Punkt nur, wenn der Ball ein zweites Mal aufspringt, bevor du ihn zurückspielst.`,
+  },
+  "point-lost": {
+    title: "Die häufigsten Arten, einen Punkt zu verlieren",
+    status: "machine",
+    bodyMd: `Das Regelwerk listet viele konkrete Fälle auf, die häufigsten im Alltag sind aber:
+
+- Der Ball springt auf deiner Seite zweimal auf, bevor du ihn zurückspielst.
+- Du, dein Schläger oder etwas, das du trägst, berührt das Netz, die Pfosten, das Spannkabel oder den gegnerischen Platz, während der Ball im Spiel ist.
+- Nach deinem Schlag berührt der Ball den Maschendraht oder den Boden auf deiner eigenen Seite, statt zum gegnerischen Platz zu fliegen.
+- Du triffst den Ball zweimal hintereinander (Doppelberührung).
+- Der Ball berührt dich, deinen Partner oder etwas, das ihr tragt, nachdem du versucht hast, ihn zurückzuspielen.
+- Du machst zwei Aufschlagfehler in Folge.
+- Dir fällt der Schläger herunter, oder deine Sicherheitsschlaufe reißt, während des Punkts.
+
+Diese Liste ist nicht vollständig — den kompletten Text findest du im offiziellen Regelwerk.`,
+  },
+  "correct-return": {
+    title: "Was als gültiger Return zählt",
+    status: "machine",
+    bodyMd: `Ein Return ist in Situationen gültig, die Padel-Einsteiger manchmal überraschen, etwa:
+
+- Der Ball trifft zuerst die Wand auf deiner eigenen Seite und fliegt erst danach zum gegnerischen Platz.
+- Der Ball berührt das Netz oder die Pfosten und landet trotzdem korrekt im gegnerischen Feld.
+- Nachdem der Ball korrekt im gegnerischen Feld aufgesprungen ist, fliegt er hinaus und trifft die Decke, die Beleuchtung oder ein anderes spielfremdes Element — der Punkt läuft weiter.
+- Der Ball landet genau in der Ecke, wo die Wand auf den Boden trifft.
+
+In all diesen Fällen läuft das Spiel weiter, und der Gegner muss den Ball vor dem zweiten Aufspringen zurückspielen.`,
+  },
+  "point-won": {
+    title: "Weniger offensichtliche Arten, einen Punkt zu gewinnen",
+    status: "machine",
+    bodyMd: `Neben einem verfehlten Return des Gegners gibt es zwei padel-typische Situationen, in denen ein Punkt direkt gewonnen wird:
+
+- Der Ball springt korrekt im gegnerischen Feld auf und fliegt danach durch ein Loch im Maschendraht hinaus oder bleibt darin stecken.
+- Der Ball bleibt auf der flachen Fläche oben auf der Wand stecken, nachdem er korrekt im gegnerischen Feld aufgesprungen ist.`,
+  },
+  "change-of-balls": {
+    title: "Ballwechsel während des Turniers",
+    status: "machine",
+    bodyMd: `Vor jedem Wettbewerb muss der Veranstalter im Voraus bekannt geben: Marke und Typ der Bälle, wie viele pro Match verwendet werden (meist 2 oder 3), und die Ballwechsel-Regelung, falls vorhanden.
+
+Ist ein Wechsel vorgesehen, geschieht er üblicherweise:
+
+- Nach einer vorher festgelegten ungeraden Anzahl von Spielen.
+- Zu Beginn eines Satzes.
+- Nie direkt zu Beginn eines Tiebreaks — in diesem Fall verschiebt sich der Wechsel auf den Beginn des zweiten Spiels im folgenden Satz.
+
+Geht ein Ball während des Matches verloren oder wird beschädigt, wird er sofort ersetzt — es wird nie mit weniger Bällen weitergespielt als vereinbart.`,
+  },
 };

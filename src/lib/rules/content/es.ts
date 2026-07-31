@@ -82,4 +82,131 @@ Estas medidas garantizan que el bote de la bola en las paredes sea previsible �
 - Es obligatorio el uso de un cordón de seguridad sujeto al mango y alrededor de la muñeca — sirve para evitar que la pala salga despedida durante el juego.
 - No puede llevar ningún dispositivo electrónico visible o sonoro que comunique información al jugador durante el juego.`,
   },
+  times: {
+    title: "Tiempos y pausas durante el partido",
+    status: "machine",
+    bodyMd: `El pádel tiene límites de tiempo definidos para mantener el ritmo del juego:
+
+- **Entre puntos**: máximo 20 segundos.
+- **Al cambiar de lado**: hasta 90 segundos (excepto después del primer juego de cada set y durante el tie-break, cuando no hay pausa).
+- **Al final de cada set**: hasta 120 segundos.
+- **Antes de empezar**: es obligatorio un peloteo de calentamiento de 3 minutos entre ambas parejas.
+
+Si una pareja no está lista para jugar 10 minutos después de la hora oficial de inicio, puede perder el partido por "walkover" (W.O.), salvo casos de fuerza mayor.
+
+En caso de lesión tratable, cada jugador tiene derecho a una pausa médica de 3 minutos, que puede repetirse en los dos cambios de lado siguientes, siempre dentro del tiempo reglamentario.`,
+  },
+  "player-positions": {
+    title: "Posición de los jugadores en la pista",
+    status: "machine",
+    bodyMd: `En cada punto, una pareja tiene un jugador que saca y otro que acompaña; la pareja rival tiene un jugador que recibe (colocado en la diagonal de quien saca) y otro que acompaña.
+
+El jugador que recibe puede colocarse en cualquier parte de su lado de la pista — no está obligado a quedarse dentro del cuadro de saque. Lo mismo vale para los dos compañeros que no están directamente implicados en el saque: pueden estar donde quieran, en su lado de la red.`,
+  },
+  "choice-of-sides": {
+    title: "Sorteo: quién saca primero y de qué lado",
+    status: "machine",
+    bodyMd: `Antes de empezar el partido, se decide al azar (normalmente por sorteo o cara o cruz) quién elige primero. La pareja que gana el sorteo puede elegir entre tres opciones:
+
+- Sacar o recibir primero (en ese caso, la otra pareja elige el lado de la pista).
+- Elegir el lado de la pista para el primer juego (la otra pareja elige entonces si saca o recibe).
+- Pedir a los rivales que elijan primero.
+
+Una vez decidido, ambas parejas informan al árbitro de quién saca y quién recibe primero.`,
+  },
+  "changes-of-sides": {
+    title: "Cambio de lado de la pista",
+    status: "machine",
+    bodyMd: `Las parejas cambian de lado de la pista después del 1º, del 3º, y de cada juego impar siguiente dentro de un set (es decir, siempre que la suma de juegos jugados en el set sea impar).
+
+En el tie-break, el cambio de lado ocurre cada 6 puntos.
+
+Si las parejas se olvidan de cambiar, se corrige en cuanto se detecta el error, siguiendo después el orden correcto — los puntos ya ganados hasta ese momento siguen siendo válidos.`,
+  },
+  "serve-fault": {
+    title: "Cuándo el saque es falta",
+    status: "machine",
+    bodyMd: `El saque se considera falta en situaciones como:
+
+- No cumplir las reglas de posición, altura de golpeo o trayectoria descritas en "El saque".
+- El jugador falla completamente la bola al intentar sacarla.
+- La bola cae fuera del cuadro de saque del rival (las líneas cuentan como buenas).
+- La bola toca a quien saca, a su compañero, o a algo que lleven puesto o consigo.
+- La bola bota en el cuadro de saque correcto pero después toca la malla metálica antes del segundo bote.
+
+Como en cualquier saque, siempre hay derecho a un segundo intento antes de perder el punto.`,
+  },
+  "return-of-serve": {
+    title: "Cómo se recibe el saque",
+    status: "machine",
+    bodyMd: `Quien recibe tiene que esperar a que la bola bote dentro de su cuadro de saque y devolverla antes del segundo bote en el suelo.
+
+En el primer juego de cada set, la pareja que recibe decide qué jugador recibe primero — ese orden se mantiene durante todo el set (solo puede cambiar al principio del set siguiente). Si el orden se cambia por error a mitad de un juego, se sigue así hasta el final de ese juego o tie-break, volviendo después al orden inicial.
+
+Si la bola toca a uno de los jugadores que recibe (o a su pala) antes de botar, el punto es automáticamente para la pareja que saca.`,
+  },
+  interference: {
+    title: "Interferencia entre jugadores",
+    status: "machine",
+    bodyMd: `La interferencia ocurre cuando un jugador — de forma deliberada o involuntaria — estorba al rival mientras ejecuta un golpe.
+
+- Si es **deliberada**, el punto va automáticamente para la pareja rival.
+- Si es **involuntaria**, se repite el punto ("let").
+- Si la misma pareja provoca una segunda interferencia involuntaria, pierde el punto en disputa.`,
+  },
+  "ball-in-play": {
+    title: 'Cuándo la bola está "en juego"',
+    status: "machine",
+    bodyMd: `La bola está en juego desde el momento en que se ejecuta un saque válido hasta que se decide el punto (por "let" o por un resultado claro).
+
+Un detalle importante: una vez que la bola ha botado en tu lado de la pista, sigue en juego aunque después toque una pared, la malla metálica, la red o los postes — todos estos elementos forman parte del área de juego, igual que el suelo. Solo se pierde el punto si la bola bota una segunda vez antes de devolverla.`,
+  },
+  "point-lost": {
+    title: "Formas más comunes de perder un punto",
+    status: "machine",
+    bodyMd: `El reglamento enumera muchas situaciones específicas, pero las más comunes en el día a día son:
+
+- La bola bota dos veces en tu lado antes de devolverla.
+- Tú, tu pala, o algo que lleves puesto toca la red, los postes, el cable de tensión o la pista del rival mientras la bola está en juego.
+- Después de golpear la bola, esta toca la malla metálica o el suelo de tu propio lado, en vez de ir hacia la pista rival.
+- Golpeas la bola dos veces seguidas (doble golpe).
+- La bola te toca a ti, a tu compañero, o a algo que llevéis puesto, después de haber intentado devolverla.
+- Sacas y fallas dos veces seguidas.
+- Se te cae la pala o se rompe el cordón de seguridad durante el punto.
+
+Esta lista no es exhaustiva — para el texto completo, consulta el reglamento oficial.`,
+  },
+  "correct-return": {
+    title: "Qué cuenta como devolución válida",
+    status: "machine",
+    bodyMd: `Una devolución es válida en situaciones que a veces sorprenden a quien empieza a jugar al pádel, como:
+
+- La bola golpea primero en la pared de tu propio lado y solo después va hacia la pista rival.
+- La bola toca la red o los postes y aun así cae correctamente en la pista rival.
+- Después de botar correctamente en la pista rival, la bola sale de la pista, golpea el techo, las luces u otro elemento ajeno al juego — el punto sigue en curso.
+- La bola bota exactamente en la esquina donde la pared se une al suelo.
+
+En todos estos casos, el punto continúa y el rival debe devolver la bola antes del segundo bote.`,
+  },
+  "point-won": {
+    title: "Formas menos obvias de ganar un punto",
+    status: "machine",
+    bodyMd: `Además de que el rival falle la devolución, hay dos situaciones específicas del pádel en las que se gana el punto de forma inmediata:
+
+- La bola, después de botar correctamente en la pista rival, sale por un agujero de la malla metálica o se queda atascada en él.
+- La bola se queda atascada en la superficie plana de la parte superior de la pared, después de botar correctamente en la pista rival.`,
+  },
+  "change-of-balls": {
+    title: "Cambio de bolas durante el torneo",
+    status: "machine",
+    bodyMd: `Antes de cada competición, la organización debe anunciar con antelación: la marca y el tipo de bolas, cuántas se usarán por partido (normalmente 2 o 3), y la política de cambio, si la hay.
+
+Cuando hay un cambio programado, suele ocurrir:
+
+- Después de un número impar de juegos acordado de antemano.
+- Al principio de cada set.
+- Nunca justo al principio de un tie-break — en ese caso, el cambio se retrasa hasta el principio del segundo juego del set siguiente.
+
+Si una bola se pierde o se daña a mitad de un partido, se sustituye de inmediato — el juego nunca continúa con menos bolas de las acordadas.`,
+  },
 };

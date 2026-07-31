@@ -82,4 +82,131 @@ These dimensions keep the ball's bounce off the walls predictable — that predi
 - A safety cord attached to the handle and worn around the wrist is mandatory — it stops the racket from flying off during play.
 - It may not carry any visible or audible electronic device that communicates information to the player during play.`,
   },
+  times: {
+    title: "Timing and breaks during a match",
+    status: "machine",
+    bodyMd: `Padel sets clear time limits to keep the game moving:
+
+- **Between points**: 20 seconds maximum.
+- **When changing sides**: up to 90 seconds (except after the first game of each set and during the tie-break, when there's no break).
+- **At the end of each set**: up to 120 seconds.
+- **Before starting**: a 3-minute warm-up rally between both teams is mandatory.
+
+If a team isn't ready to play 10 minutes after the official start time, they can lose the match by "walkover" (W.O.), barring force majeure.
+
+For a treatable injury, each player gets one 3-minute medical break, which can be repeated on the following two changes of side, always within the regular time.`,
+  },
+  "player-positions": {
+    title: "Where players position themselves",
+    status: "machine",
+    bodyMd: `On every point, one team has a server and a partner standing by; the other team has a receiver (positioned diagonally opposite the server) and a partner standing by.
+
+The receiver can stand anywhere on their side of the court — they don't have to stay inside the service box. The same goes for both partners not directly involved in the serve: they can position themselves wherever they like on their side of the net.`,
+  },
+  "choice-of-sides": {
+    title: "The toss: who serves first and from which side",
+    status: "machine",
+    bodyMd: `Before the match starts, a coin toss (or similar) decides who chooses first. The team that wins the toss can pick one of three options:
+
+- Serve or receive first (in which case the other team chooses the side).
+- Choose which side to start on (the other team then chooses to serve or receive).
+- Ask the opponents to choose first.
+
+Once decided, both teams tell the umpire who will serve and receive first.`,
+  },
+  "changes-of-sides": {
+    title: "Changing sides",
+    status: "machine",
+    bodyMd: `Teams change sides after the 1st, 3rd, and every subsequent odd game within a set (that is, whenever the total games played in the set is odd).
+
+During a tie-break, sides change every 6 points.
+
+If a team forgets to change sides, it's corrected as soon as the mistake is noticed, following the correct order from then on — points already won still count.`,
+  },
+  "serve-fault": {
+    title: "When a serve is a fault",
+    status: "machine",
+    bodyMd: `A serve counts as a fault in situations such as:
+
+- Breaking the position, contact-height, or trajectory rules described in "The serve".
+- The server missing the ball entirely while trying to serve it.
+- The ball landing outside the opponent's service box (the lines count as good).
+- The ball touching the server, their partner, or anything they're wearing or carrying.
+- The ball landing in the correct service box but then touching the metal fencing before the second bounce.
+
+As with any serve, there's always a second attempt before the point is lost.`,
+  },
+  "return-of-serve": {
+    title: "How the serve is received",
+    status: "machine",
+    bodyMd: `The receiver has to let the ball bounce inside their service box and return it before it bounces a second time.
+
+In the first game of each set, the receiving team decides which player receives first — that order stays fixed for the whole set (it can only change at the start of the next set). If the order gets swapped by mistake mid-game, play continues that way until the end of that game or tie-break, then reverts to the original order.
+
+If the ball touches one of the receiving players (or their racket) before it bounces, the point automatically goes to the serving team.`,
+  },
+  interference: {
+    title: "Interference between players",
+    status: "machine",
+    bodyMd: `Interference happens when a player — deliberately or not — gets in the way of an opponent making a shot.
+
+- If it's **deliberate**, the point automatically goes to the opposing team.
+- If it's **unintentional**, the point is replayed ("let").
+- If the same team causes a second unintentional interference, they lose the point in dispute.`,
+  },
+  "ball-in-play": {
+    title: 'When the ball is "in play"',
+    status: "machine",
+    bodyMd: `The ball is in play from the moment a valid serve is struck until the point is decided (either by a "let" or a clear outcome).
+
+One important detail: once the ball has bounced on your side of the court, it stays in play even if it then touches a wall, the metal fencing, the net, or the posts — all of these are part of the playing area, just like the floor. You only lose the point if the ball bounces a second time before you return it.`,
+  },
+  "point-lost": {
+    title: "The most common ways to lose a point",
+    status: "machine",
+    bodyMd: `The regulation lists many specific scenarios, but the most common ones in everyday play are:
+
+- The ball bounces twice on your side before you return it.
+- You, your racket, or something you're wearing touches the net, the posts, the tension cable, or the opponent's court while the ball is in play.
+- After you hit the ball, it touches the metal fencing or the ground on your own side, instead of going to the opponent's court.
+- You hit the ball twice in a row (a double hit).
+- The ball touches you, your partner, or something you're wearing after you've tried to return it.
+- You serve two consecutive faults.
+- You drop your racket, or your safety cord breaks, during the point.
+
+This list isn't exhaustive — see the official regulation for the complete text.`,
+  },
+  "correct-return": {
+    title: "What counts as a valid return",
+    status: "machine",
+    bodyMd: `A return is valid in situations that sometimes surprise padel beginners, such as:
+
+- The ball hits the wall on your own side first and only then heads to the opponent's court.
+- The ball touches the net or the posts and still lands correctly in the opponent's court.
+- After correctly bouncing in the opponent's court, the ball goes out, hits the ceiling, the lights, or another element unrelated to the game — the point is still live.
+- The ball lands exactly in the corner where the wall meets the floor.
+
+In all of these cases, play continues and the opponent must return the ball before its second bounce.`,
+  },
+  "point-won": {
+    title: "Less obvious ways to win a point",
+    status: "machine",
+    bodyMd: `Besides the opponent failing to return the ball, there are two padel-specific situations where a point is won outright:
+
+- After correctly bouncing in the opponent's court, the ball goes out through a hole in the metal fencing or gets stuck in it.
+- The ball gets stuck on the flat surface on top of the wall, after correctly bouncing in the opponent's court.`,
+  },
+  "change-of-balls": {
+    title: "Changing balls during a tournament",
+    status: "machine",
+    bodyMd: `Before each competition, organizers must announce in advance: the brand and type of balls, how many will be used per match (usually 2 or 3), and the ball-change policy, if any.
+
+When a change is scheduled, it typically happens:
+
+- After a pre-agreed odd number of games.
+- At the start of a set.
+- Never right at the start of a tie-break — in that case, the change is pushed to the start of the second game of the following set.
+
+If a ball is lost or damaged mid-match, it's replaced immediately — play never continues with fewer balls than agreed.`,
+  },
 };

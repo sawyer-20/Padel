@@ -30,6 +30,18 @@ export const rules: RuleMeta[] = [
     fipVersion: FIP_VERSION,
     order: 7,
   },
+  { slug: "times", category: "play", fipArticleRef: "Rule 2", fipVersion: FIP_VERSION, order: 8 },
+  { slug: "player-positions", category: "play", fipArticleRef: "Rule 3", fipVersion: FIP_VERSION, order: 9 },
+  { slug: "choice-of-sides", category: "play", fipArticleRef: "Rule 4", fipVersion: FIP_VERSION, order: 10 },
+  { slug: "changes-of-sides", category: "play", fipArticleRef: "Rule 5", fipVersion: FIP_VERSION, order: 11 },
+  { slug: "serve-fault", category: "play", fipArticleRef: "Rule 7", fipVersion: FIP_VERSION, order: 12 },
+  { slug: "return-of-serve", category: "play", fipArticleRef: "Rule 8", fipVersion: FIP_VERSION, order: 13 },
+  { slug: "interference", category: "play", fipArticleRef: "Rule 11", fipVersion: FIP_VERSION, order: 14 },
+  { slug: "ball-in-play", category: "play", fipArticleRef: "Rule 12", fipVersion: FIP_VERSION, order: 15 },
+  { slug: "point-lost", category: "play", fipArticleRef: "Rule 13", fipVersion: FIP_VERSION, order: 16 },
+  { slug: "correct-return", category: "play", fipArticleRef: "Rule 14", fipVersion: FIP_VERSION, order: 17 },
+  { slug: "point-won", category: "play", fipArticleRef: "Rule 15", fipVersion: FIP_VERSION, order: 18 },
+  { slug: "change-of-balls", category: "equipment", fipArticleRef: "Rule 17", fipVersion: FIP_VERSION, order: 19 },
 ];
 
 export function getRuleMeta(slug: string): RuleMeta | null {
