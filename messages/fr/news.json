@@ -1,3 +1,10 @@
 {
-  "comingSoon": "Bientôt disponible"
+  "title": "Actualités",
+  "intro": "Titres de sources de padel indépendantes. Cliquez pour lire l'article complet sur le site d'origine.",
+  "empty": "Aucune actualité à afficher avec ce filtre.",
+  "error": "Impossible de charger les actualités pour le moment. Réessayez plus tard.",
+  "partialError": "Certaines sources n'ont pas répondu — cette liste peut être incomplète.",
+  "filterLabel": "Langue de la source",
+  "filterAll": "Toutes les langues",
+  "originalInOtherLanguage": "original dans une autre langue"
 }

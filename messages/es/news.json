@@ -1,3 +1,10 @@
 {
-  "comingSoon": "Próximamente"
+  "title": "Noticias",
+  "intro": "Titulares de fuentes de pádel independientes. Haz clic para leer el artículo completo en el sitio original.",
+  "empty": "No hay noticias para mostrar con este filtro.",
+  "error": "No se pudieron cargar las noticias ahora. Inténtalo de nuevo más tarde.",
+  "partialError": "Algunas fuentes no respondieron — esta lista puede estar incompleta.",
+  "filterLabel": "Idioma de la fuente",
+  "filterAll": "Todos los idiomas",
+  "originalInOtherLanguage": "original en otro idioma"
 }

@@ -1,3 +1,10 @@
 {
-  "comingSoon": "Coming soon"
+  "title": "News",
+  "intro": "Headlines from independent padel sources. Click through to read the full article at the original site.",
+  "empty": "No news to show with this filter.",
+  "error": "Couldn't load the news right now. Please try again later.",
+  "partialError": "Some sources didn't respond — this list may be incomplete.",
+  "filterLabel": "Source language",
+  "filterAll": "All languages",
+  "originalInOtherLanguage": "original in another language"
 }

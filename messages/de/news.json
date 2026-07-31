@@ -1,3 +1,10 @@
 {
-  "comingSoon": "Demnächst"
+  "title": "Neuigkeiten",
+  "intro": "Schlagzeilen von unabhängigen Padel-Quellen. Zum Lesen des vollständigen Artikels auf die Originalseite klicken.",
+  "empty": "Keine Neuigkeiten mit diesem Filter.",
+  "error": "Die Neuigkeiten konnten gerade nicht geladen werden. Bitte später erneut versuchen.",
+  "partialError": "Einige Quellen haben nicht geantwortet — diese Liste ist möglicherweise unvollständig.",
+  "filterLabel": "Sprache der Quelle",
+  "filterAll": "Alle Sprachen",
+  "originalInOtherLanguage": "Original in anderer Sprache"
 }
