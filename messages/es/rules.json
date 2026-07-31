@@ -10,5 +10,11 @@
   "backToIndex": "← Volver a las reglas",
   "pendingReviewNotice": "Este contenido se ha escrito automáticamente y todavía no ha sido revisado por un experto en pádel.",
   "officialSource": "Fuente oficial",
-  "viewOfficialPdf": "ver el reglamento oficial de la FIP (PDF)"
+  "viewOfficialPdf": "ver el reglamento oficial de la FIP (PDF)",
+  "situations": {
+    "title": "Resolvedor de situaciones",
+    "searchPlaceholder": "Buscar situaciones...",
+    "empty": "Ninguna situación coincide con la búsqueda.",
+    "relatedRule": "ver la regla completa"
+  }
 }

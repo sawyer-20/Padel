@@ -10,5 +10,11 @@
   "backToIndex": "← Back to rules",
   "pendingReviewNotice": "This content was written automatically and hasn't been reviewed by a padel expert yet.",
   "officialSource": "Official source",
-  "viewOfficialPdf": "view the official FIP regulation (PDF)"
+  "viewOfficialPdf": "view the official FIP regulation (PDF)",
+  "situations": {
+    "title": "Situation resolver",
+    "searchPlaceholder": "Search situations...",
+    "empty": "No situations match your search.",
+    "relatedRule": "view the full rule"
+  }
 }
