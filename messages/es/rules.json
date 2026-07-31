@@ -1,3 +1,14 @@
 {
-  "comingSoon": "Próximamente"
+  "title": "Reglas",
+  "searchPlaceholder": "Buscar reglas...",
+  "empty": "Ninguna regla coincide con la búsqueda.",
+  "categories": {
+    "scoring": "Puntuación",
+    "play": "Durante el juego",
+    "equipment": "Pista y equipamiento"
+  },
+  "backToIndex": "← Volver a las reglas",
+  "pendingReviewNotice": "Este contenido se ha escrito automáticamente y todavía no ha sido revisado por un experto en pádel.",
+  "officialSource": "Fuente oficial",
+  "viewOfficialPdf": "ver el reglamento oficial de la FIP (PDF)"
 }

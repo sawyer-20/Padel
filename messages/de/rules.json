@@ -1,3 +1,14 @@
 {
-  "comingSoon": "Demnächst"
+  "title": "Regeln",
+  "searchPlaceholder": "Regeln durchsuchen...",
+  "empty": "Keine Regel passt zur Suche.",
+  "categories": {
+    "scoring": "Zählweise",
+    "play": "Während des Spiels",
+    "equipment": "Platz und Ausrüstung"
+  },
+  "backToIndex": "← Zurück zu den Regeln",
+  "pendingReviewNotice": "Dieser Inhalt wurde automatisch erstellt und noch nicht von einem Padel-Experten geprüft.",
+  "officialSource": "Offizielle Quelle",
+  "viewOfficialPdf": "offizielles FIP-Regelwerk ansehen (PDF)"
 }

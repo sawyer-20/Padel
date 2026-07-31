@@ -1,3 +1,14 @@
 {
-  "comingSoon": "Coming soon"
+  "title": "Rules",
+  "searchPlaceholder": "Search rules...",
+  "empty": "No rules match your search.",
+  "categories": {
+    "scoring": "Scoring",
+    "play": "During play",
+    "equipment": "Court and equipment"
+  },
+  "backToIndex": "← Back to rules",
+  "pendingReviewNotice": "This content was written automatically and hasn't been reviewed by a padel expert yet.",
+  "officialSource": "Official source",
+  "viewOfficialPdf": "view the official FIP regulation (PDF)"
 }

@@ -33,6 +33,7 @@ export default async function LocaleLayout({
         <Link href="/">{t("home")}</Link>
         <Link href="/rankings">{t("rankings")}</Link>
         <Link href="/tournaments">{t("tournaments")}</Link>
+        <Link href="/rules">{t("rules")}</Link>
       </nav>
       <div className="mt-4">{children}</div>
     </>
