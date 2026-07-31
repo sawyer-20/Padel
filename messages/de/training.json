@@ -1,3 +1,15 @@
 {
-  "comingSoon": "Demnächst"
+  "title": "Training",
+  "intro": "Padel-Begriffe, Konzepte und Technik einfach erklärt.",
+  "backToIndex": "← Zurück zu Training",
+  "pendingReviewNotice": "Dieser Inhalt wurde automatisch erstellt und noch nicht von einem Padel-Experten geprüft.",
+  "glossary": {
+    "title": "Glossar",
+    "searchPlaceholder": "Begriffe durchsuchen...",
+    "empty": "Kein Begriff passt zur Suche.",
+    "categories": {
+      "shots": "Schläge",
+      "tactics": "Taktik und Positionierung"
+    }
+  }
 }

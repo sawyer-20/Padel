@@ -1,3 +1,15 @@
 {
-  "comingSoon": "Em breve"
+  "title": "Treino",
+  "intro": "Termos, conceitos e técnica de padel explicados em linguagem clara.",
+  "backToIndex": "← Voltar a Treino",
+  "pendingReviewNotice": "Este conteúdo foi escrito automaticamente e ainda não foi revisto por um especialista em padel.",
+  "glossary": {
+    "title": "Glossário",
+    "searchPlaceholder": "Pesquisar termos...",
+    "empty": "Nenhum termo corresponde à pesquisa.",
+    "categories": {
+      "shots": "Golpes",
+      "tactics": "Tática e posicionamento"
+    }
+  }
 }
