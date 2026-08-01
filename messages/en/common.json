@@ -6,7 +6,26 @@
     "tournaments": "Tournaments",
     "rules": "Rules",
     "training": "Training",
-    "news": "News"
+    "news": "News",
+    "settings": "Settings"
+  },
+  "settings": {
+    "title": "Settings",
+    "language": {
+      "title": "Language",
+      "description": "Choose the app's language. All content is available in all five languages."
+    },
+    "theme": {
+      "title": "Theme",
+      "description": "Light, dark, or follow your device setting.",
+      "system": "System",
+      "light": "Light",
+      "dark": "Dark"
+    },
+    "units": {
+      "title": "Units",
+      "notAvailable": "Measurements are always shown in metric (metres, centimetres, grams), matching the official FIP regulation."
+    }
   },
   "languageSwitcher": {
     "label": "Language"

@@ -1,1 +1,7 @@
 @import "tailwindcss";
+
+/* Modo escuro controlado por classe em <html>, não só pela preferência do sistema.
+   É isto que permite ao utilizador escolher claro/escuro nas Definições; quando a
+   preferência é "sistema", o script em ThemeScript aplica/retira a classe conforme
+   o que o SO indica. */
+@custom-variant dark (&:where(.dark, .dark *));

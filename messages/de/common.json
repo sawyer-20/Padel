@@ -6,7 +6,26 @@
     "tournaments": "Turniere",
     "rules": "Regeln",
     "training": "Training",
-    "news": "Neuigkeiten"
+    "news": "Neuigkeiten",
+    "settings": "Einstellungen"
+  },
+  "settings": {
+    "title": "Einstellungen",
+    "language": {
+      "title": "Sprache",
+      "description": "Wähle die Sprache der App. Alle Inhalte gibt es in allen fünf Sprachen."
+    },
+    "theme": {
+      "title": "Design",
+      "description": "Hell, dunkel oder der Einstellung deines Geräts folgen.",
+      "system": "System",
+      "light": "Hell",
+      "dark": "Dunkel"
+    },
+    "units": {
+      "title": "Einheiten",
+      "notAvailable": "Maße werden immer metrisch angezeigt (Meter, Zentimeter, Gramm), genau wie im offiziellen FIP-Regelwerk."
+    }
   },
   "languageSwitcher": {
     "label": "Sprache"

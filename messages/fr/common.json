@@ -6,7 +6,26 @@
     "tournaments": "Tournois",
     "rules": "Règles",
     "training": "Entraînement",
-    "news": "Actualités"
+    "news": "Actualités",
+    "settings": "Réglages"
+  },
+  "settings": {
+    "title": "Réglages",
+    "language": {
+      "title": "Langue",
+      "description": "Choisis la langue de l'application. Tout le contenu est disponible dans les cinq langues."
+    },
+    "theme": {
+      "title": "Thème",
+      "description": "Clair, sombre, ou suivre le réglage de ton appareil.",
+      "system": "Système",
+      "light": "Clair",
+      "dark": "Sombre"
+    },
+    "units": {
+      "title": "Unités",
+      "notAvailable": "Les mesures sont toujours affichées en système métrique (mètres, centimètres, grammes), comme dans le règlement officiel de la FIP."
+    }
   },
   "languageSwitcher": {
     "label": "Langue"

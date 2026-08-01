@@ -6,7 +6,26 @@
     "tournaments": "Torneios",
     "rules": "Regras",
     "training": "Treino",
-    "news": "Notícias"
+    "news": "Notícias",
+    "settings": "Definições"
+  },
+  "settings": {
+    "title": "Definições",
+    "language": {
+      "title": "Idioma",
+      "description": "Escolhe o idioma da aplicação. Todo o conteúdo está disponível nos cinco idiomas."
+    },
+    "theme": {
+      "title": "Tema",
+      "description": "Claro, escuro, ou a seguir a definição do teu dispositivo.",
+      "system": "Sistema",
+      "light": "Claro",
+      "dark": "Escuro"
+    },
+    "units": {
+      "title": "Unidades",
+      "notAvailable": "As medidas aparecem sempre no sistema métrico (metros, centímetros, gramas), tal como no regulamento oficial da FIP."
+    }
   },
   "languageSwitcher": {
     "label": "Idioma"
