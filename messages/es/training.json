@@ -3,6 +3,18 @@
   "intro": "Términos, conceptos y técnica de pádel explicados en lenguaje claro.",
   "backToIndex": "← Volver a Entrenamiento",
   "pendingReviewNotice": "Este contenido se ha escrito automáticamente y todavía no ha sido revisado por un experto en pádel.",
+  "tips": {
+    "title": "Consejos",
+    "searchPlaceholder": "Buscar consejos...",
+    "empty": "Ningún consejo coincide con la búsqueda.",
+    "relatedTerm": "ver el término en el glosario",
+    "categories": {
+      "positioning": "Posicionamiento",
+      "shotChoice": "Elección de golpe",
+      "teamwork": "Jugar en pareja",
+      "mindset": "Cabeza y estrategia"
+    }
+  },
   "glossary": {
     "title": "Glosario",
     "searchPlaceholder": "Buscar términos...",

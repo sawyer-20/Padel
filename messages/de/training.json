@@ -3,6 +3,18 @@
   "intro": "Padel-Begriffe, Konzepte und Technik einfach erklärt.",
   "backToIndex": "← Zurück zu Training",
   "pendingReviewNotice": "Dieser Inhalt wurde automatisch erstellt und noch nicht von einem Padel-Experten geprüft.",
+  "tips": {
+    "title": "Tipps",
+    "searchPlaceholder": "Tipps durchsuchen...",
+    "empty": "Kein Tipp passt zur Suche.",
+    "relatedTerm": "Begriff im Glossar ansehen",
+    "categories": {
+      "positioning": "Positionierung",
+      "shotChoice": "Schlagwahl",
+      "teamwork": "Im Doppel spielen",
+      "mindset": "Kopf und Strategie"
+    }
+  },
   "glossary": {
     "title": "Glossar",
     "searchPlaceholder": "Begriffe durchsuchen...",
