@@ -11,10 +11,15 @@
   "languageSwitcher": {
     "label": "Language"
   },
-  "phase0": {
-    "title": "Phase 0 — Foundation",
-    "description": "This page proves that locale routing works and that client-side state survives a language switch.",
-    "counterLabel": "Counter (local state)",
-    "increment": "Increment"
+  "home": {
+    "intro": "Padel in your language, without waiting for the translation.",
+    "nextTournament": "Next tournament",
+    "topRankings": "Top 5 rankings",
+    "latestNews": "Latest news",
+    "men": "Men",
+    "women": "Women",
+    "seeAll": "see all",
+    "sectionUnavailable": "Couldn't load this section right now.",
+    "noTournament": "No upcoming tournaments to show."
   }
 }

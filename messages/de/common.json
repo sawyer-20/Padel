@@ -11,10 +11,15 @@
   "languageSwitcher": {
     "label": "Sprache"
   },
-  "phase0": {
-    "title": "Phase 0 — Grundlage",
-    "description": "Diese Seite beweist, dass das Locale-Routing funktioniert und der clientseitige Zustand einen Sprachwechsel übersteht.",
-    "counterLabel": "Zähler (lokaler Zustand)",
-    "increment": "Erhöhen"
+  "home": {
+    "intro": "Padel in deiner Sprache, ohne auf die Übersetzung zu warten.",
+    "nextTournament": "Nächstes Turnier",
+    "topRankings": "Top 5 der Rangliste",
+    "latestNews": "Neueste Meldungen",
+    "men": "Herren",
+    "women": "Damen",
+    "seeAll": "alle ansehen",
+    "sectionUnavailable": "Dieser Abschnitt konnte gerade nicht geladen werden.",
+    "noTournament": "Keine bevorstehenden Turniere."
   }
 }

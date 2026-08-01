@@ -11,10 +11,15 @@
   "languageSwitcher": {
     "label": "Langue"
   },
-  "phase0": {
-    "title": "Phase 0 — Fondation",
-    "description": "Cette page prouve que le routage par langue fonctionne et que l'état côté client survit au changement de langue.",
-    "counterLabel": "Compteur (état local)",
-    "increment": "Incrémenter"
+  "home": {
+    "intro": "Le padel dans ta langue, sans attendre la traduction.",
+    "nextTournament": "Prochain tournoi",
+    "topRankings": "Top 5 du classement",
+    "latestNews": "Dernières actualités",
+    "men": "Hommes",
+    "women": "Femmes",
+    "seeAll": "tout voir",
+    "sectionUnavailable": "Impossible de charger cette section pour le moment.",
+    "noTournament": "Aucun tournoi à venir à afficher."
   }
 }

@@ -3,7 +3,6 @@ import type { ReactNode } from "react";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getTranslations } from "next-intl/server";
 import { LocaleSwitcher } from "@/components/LocaleSwitcher";
-import { StateProbe } from "@/components/StateProbe";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -25,7 +24,6 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
             </header>
             <section className="rounded-lg border border-neutral-200 p-6 dark:border-neutral-800">
               {children}
-              <StateProbe />
             </section>
           </main>
         </NextIntlClientProvider>
