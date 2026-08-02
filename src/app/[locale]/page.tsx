@@ -1,11 +1,19 @@
+import type { Metadata } from "next";
 import { getLocale, getTranslations } from "next-intl/server";
 import type { Locale } from "@/i18n/routing";
 import { Link } from "@/i18n/navigation";
 import { getHomeData } from "@/lib/home/get-home-data";
 import type { RankingEntry } from "@/lib/padel-api/schemas";
+import { staticPageMetadata, type LocaleParams } from "@/lib/seo/page-metadata";
 
 // Dados vivos — nunca pré-gerados no build (mesmo padrão de Rankings/Torneios/Notícias).
 export const dynamic = "force-dynamic";
+
+export async function generateMetadata({ params }: LocaleParams): Promise<Metadata> {
+  const { locale } = await params;
+  // absoluteTitle: o título da entrada já contém a marca, não deve levar sufixo.
+  return staticPageMetadata(locale, "home", "/", { absoluteTitle: true });
+}
 
 function RankingColumn({
   heading,

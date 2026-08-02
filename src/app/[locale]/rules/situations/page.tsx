@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { getLocale, getTranslations } from "next-intl/server";
 import { marked } from "marked";
 import type { Locale } from "@/i18n/routing";
@@ -5,6 +6,12 @@ import { Link } from "@/i18n/navigation";
 import { situations, getSituationContent } from "@/lib/situations/get-situation";
 import { needsReviewNotice } from "@/lib/rules/get-rule";
 import { SituationsList } from "@/components/SituationsList";
+import { staticPageMetadata, type LocaleParams } from "@/lib/seo/page-metadata";
+
+export async function generateMetadata({ params }: LocaleParams): Promise<Metadata> {
+  const { locale } = await params;
+  return staticPageMetadata(locale, "situations", "/rules/situations");
+}
 
 export default async function SituationsPage() {
   const locale = (await getLocale()) as Locale;

@@ -1,0 +1,54 @@
+{
+  "home": {
+    "title": "Padel Hub — Ranglisten, Turniere, Regeln und News",
+    "description": "Ranglisten der Profitour, Turnierkalender, die offiziellen Regeln verständlich erklärt und Padel-Nachrichten aus aller Welt."
+  },
+  "rankings": {
+    "title": "Padel-Ranglisten",
+    "description": "Herren- und Damenranglisten der Padel-Profitour, mit Position, Punkten und Link zum Profil jeder Spielerin und jedes Spielers."
+  },
+  "tournaments": {
+    "title": "Padel-Turnierkalender",
+    "description": "Turniere der Padel-Profitour: Termine, Austragungsort, Kategorie und Status, mit Tableaus und Ergebnissen jedes Turniers."
+  },
+  "tournamentDetail": {
+    "title": "{name}",
+    "description": "Tableaus, Ergebnisse und Siegerinnen und Sieger des Turniers {name}."
+  },
+  "playerDetail": {
+    "title": "{name}",
+    "description": "{name}: Ranglistenposition, Punkte und letzte Spiele auf der Padel-Profitour."
+  },
+  "rules": {
+    "title": "Die Padel-Regeln erklärt",
+    "description": "Die offiziellen Padel-Regeln verständlich erklärt: Zählweise, Aufschlag, Wände, Netz und Material — jeweils mit dem offiziellen FIP-Artikel."
+  },
+  "ruleDetail": {
+    "title": "{title}",
+    "description": "{title}: was die offizielle Padel-Regel besagt, verständlich erklärt und mit dem FIP-Artikel belegt."
+  },
+  "situations": {
+    "title": "Spielsituationen: Wer gewinnt den Punkt?",
+    "description": "Schiedsrichterfragen Fall für Fall beantwortet: Ball ins Gitter, Doppelaufsprung, Spiel außerhalb des Courts und weitere reale Situationen."
+  },
+  "training": {
+    "title": "Padel-Training, Tipps und Konzepte",
+    "description": "Praktische Tipps, Konzepte und Vokabular, um im Padel besser zu werden — von der Position auf dem Court bis zur Schlagwahl."
+  },
+  "tips": {
+    "title": "Padel-Tipps für besseres Spiel",
+    "description": "Praktische Padel-Tipps: Position auf dem Court, Absprache mit dem Partner, Nutzung der Wände und wann angreifen oder verteidigen."
+  },
+  "glossary": {
+    "title": "Padel-Glossar",
+    "description": "Die Padel-Begriffe auf Deutsch erklärt: Bandeja, Víbora, Chiquita, Contrapared und das übrige Vokabular vom Court."
+  },
+  "news": {
+    "title": "Padel-News",
+    "description": "Die neuesten Padel-Nachrichten aus internationalen Quellen, mit der Originalsprache an jeder Schlagzeile gekennzeichnet."
+  },
+  "settings": {
+    "title": "Einstellungen",
+    "description": "Sprache, Design und Einheiten."
+  }
+}

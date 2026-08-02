@@ -1,11 +1,18 @@
+import type { Metadata } from "next";
 import { getLocale, getTranslations } from "next-intl/server";
 import type { Locale } from "@/i18n/routing";
 import { fetchNews } from "@/lib/news/fetch-news";
 import { availableNewsLanguages } from "@/lib/news/sources";
 import { NewsList } from "@/components/NewsList";
+import { staticPageMetadata, type LocaleParams } from "@/lib/seo/page-metadata";
 
 // Dados vivos — nunca pré-gerados no build (mesmo padrão de Rankings/Torneios).
 export const dynamic = "force-dynamic";
+
+export async function generateMetadata({ params }: LocaleParams): Promise<Metadata> {
+  const { locale } = await params;
+  return staticPageMetadata(locale, "news", "/news");
+}
 
 export default async function NewsPage() {
   const locale = (await getLocale()) as Locale;

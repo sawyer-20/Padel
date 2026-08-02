@@ -1,0 +1,54 @@
+{
+  "home": {
+    "title": "Padel Hub — classements, tournois, règles et actualités",
+    "description": "Classements du circuit professionnel, calendrier des tournois, les règles officielles expliquées simplement et l'actualité du padel mondial."
+  },
+  "rankings": {
+    "title": "Classements de padel",
+    "description": "Classements masculin et féminin du circuit professionnel de padel, avec position, points et lien vers la fiche de chaque joueur."
+  },
+  "tournaments": {
+    "title": "Calendrier des tournois de padel",
+    "description": "Tournois du circuit professionnel de padel : dates, lieu, catégorie et statut, avec les tableaux et les résultats de chaque épreuve."
+  },
+  "tournamentDetail": {
+    "title": "{name}",
+    "description": "Tableaux, résultats et vainqueurs du tournoi {name}."
+  },
+  "playerDetail": {
+    "title": "{name}",
+    "description": "Fiche de {name} : position au classement, points et derniers matchs sur le circuit professionnel de padel."
+  },
+  "rules": {
+    "title": "Les règles du padel expliquées",
+    "description": "Les règles officielles du padel en langage simple : score, service, murs, filet et matériel, chacune avec son article officiel de la FIP."
+  },
+  "ruleDetail": {
+    "title": "{title}",
+    "description": "{title} : ce que dit la règle officielle du padel, expliquée simplement, avec l'article de la FIP indiqué."
+  },
+  "situations": {
+    "title": "Situations de jeu : qui gagne le point ?",
+    "description": "Questions d'arbitrage résolues cas par cas : balle dans la grille, double rebond, sortie du terrain et autres situations réelles."
+  },
+  "training": {
+    "title": "Entraînement, conseils et notions de padel",
+    "description": "Conseils pratiques, notions et vocabulaire du padel pour progresser sur le terrain — du placement au choix du coup."
+  },
+  "tips": {
+    "title": "Conseils de padel pour mieux jouer",
+    "description": "Conseils pratiques de padel : placement sur le terrain, communication avec le partenaire, usage des murs et quand attaquer ou défendre."
+  },
+  "glossary": {
+    "title": "Glossaire du padel",
+    "description": "Les termes du padel expliqués en français : bandeja, víbora, chiquita, contrapared et tout le vocabulaire entendu sur le terrain."
+  },
+  "news": {
+    "title": "Actualités du padel",
+    "description": "Les dernières actualités du padel réunies de sources internationales, avec la langue d'origine signalée sur chaque titre."
+  },
+  "settings": {
+    "title": "Paramètres",
+    "description": "Langue, thème et unités."
+  }
+}

@@ -1,5 +1,12 @@
+import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
+import { staticPageMetadata, type LocaleParams } from "@/lib/seo/page-metadata";
+
+export async function generateMetadata({ params }: LocaleParams): Promise<Metadata> {
+  const { locale } = await params;
+  return staticPageMetadata(locale, "training", "/training");
+}
 
 export default async function TrainingPage() {
   const t = await getTranslations("training");

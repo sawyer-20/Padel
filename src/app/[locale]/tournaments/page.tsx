@@ -1,7 +1,14 @@
+import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { padelApiSource } from "@/lib/data-sources/padel-api-source";
 import type { TournamentSummary } from "@/lib/padel-api/schemas";
 import { Link } from "@/i18n/navigation";
+import { staticPageMetadata, type LocaleParams } from "@/lib/seo/page-metadata";
+
+export async function generateMetadata({ params }: LocaleParams): Promise<Metadata> {
+  const { locale } = await params;
+  return staticPageMetadata(locale, "tournaments", "/tournaments");
+}
 
 // Nunca gerado estaticamente com dados reais no build (regra §1.1 do PROJECT.md) — o
 // calendário muda e a build não deve depender de um PADEL_API_TOKEN válido.

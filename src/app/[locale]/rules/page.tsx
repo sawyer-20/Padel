@@ -1,9 +1,16 @@
+import type { Metadata } from "next";
 import { getLocale, getTranslations } from "next-intl/server";
 import type { Locale } from "@/i18n/routing";
 import { Link } from "@/i18n/navigation";
 import { rules } from "@/lib/rules/rules";
 import { getRuleContent } from "@/lib/rules/get-rule";
 import { RulesList } from "@/components/RulesList";
+import { staticPageMetadata, type LocaleParams } from "@/lib/seo/page-metadata";
+
+export async function generateMetadata({ params }: LocaleParams): Promise<Metadata> {
+  const { locale } = await params;
+  return staticPageMetadata(locale, "rules", "/rules");
+}
 
 export default async function RulesPage() {
   const locale = (await getLocale()) as Locale;

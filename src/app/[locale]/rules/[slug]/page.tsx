@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getLocale, getTranslations } from "next-intl/server";
 import { marked } from "marked";
@@ -5,10 +6,35 @@ import type { Locale } from "@/i18n/routing";
 import { Link } from "@/i18n/navigation";
 import { getRule, needsReviewNotice, rules } from "@/lib/rules/get-rule";
 import { FIP_OFFICIAL_PDF_URL } from "@/lib/rules/rules";
+import { buildPageMetadata } from "@/lib/seo/metadata";
+import { excerptFromMarkdown } from "@/lib/seo/excerpt";
 
 // Conteúdo estático (não depende da Padel API) — pode ser pré-gerado no build.
 export function generateStaticParams() {
   return rules.map((rule) => ({ slug: rule.slug }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string; slug: string }>;
+}): Promise<Metadata> {
+  const { locale, slug } = await params;
+  const rule = getRule(slug, locale as Locale);
+  if (!rule) return {};
+
+  const t = await getTranslations({ locale, namespace: "seo" });
+
+  // A descrição sai do próprio texto da regra: é único por regra e por idioma,
+  // ao contrário de uma frase de modelo repetida em 19 páginas.
+  const excerpt = excerptFromMarkdown(rule.content.bodyMd);
+
+  return buildPageMetadata({
+    locale: locale as Locale,
+    path: `/rules/${slug}`,
+    title: rule.content.title,
+    description: excerpt || t("ruleDetail.description", { title: rule.content.title }),
+  });
 }
 
 export default async function RuleDetailPage({ params }: { params: Promise<{ slug: string }> }) {

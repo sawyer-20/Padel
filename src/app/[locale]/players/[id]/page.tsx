@@ -1,11 +1,46 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 import { padelApiSource } from "@/lib/data-sources/padel-api-source";
 import type { MatchSummary, PlayerProfile } from "@/lib/padel-api/schemas";
 import { MatchListItem } from "@/components/MatchListItem";
+import type { Locale } from "@/i18n/routing";
+import { buildPageMetadata } from "@/lib/seo/metadata";
 
 // Nunca gerado estaticamente com dados reais no build (regra §1.1 do PROJECT.md).
 export const dynamic = "force-dynamic";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string; id: string }>;
+}): Promise<Metadata> {
+  const { locale, id } = await params;
+  const t = await getTranslations({ locale, namespace: "seo" });
+
+  let name: string | null = null;
+  try {
+    name = (await padelApiSource.getPlayer(id)).name;
+  } catch {
+    // Ver nota igual na ficha de torneio: metadados degradam, página não rebenta.
+  }
+
+  if (!name) {
+    return buildPageMetadata({
+      locale: locale as Locale,
+      path: `/players/${id}`,
+      title: t("rankings.title"),
+      description: t("rankings.description"),
+    });
+  }
+
+  return buildPageMetadata({
+    locale: locale as Locale,
+    path: `/players/${id}`,
+    title: name,
+    description: t("playerDetail.description", { name }),
+  });
+}
 
 export default async function PlayerProfilePage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;

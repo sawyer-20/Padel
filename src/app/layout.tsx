@@ -4,10 +4,17 @@ import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getTranslations } from "next-intl/server";
 import { LocaleSwitcher } from "@/components/LocaleSwitcher";
 import { ThemeScript } from "@/components/ThemeScript";
+import { siteName, siteUrl } from "@/lib/seo/site";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Padel Hub",
+  // Base absoluta: sem isto, os canonical e og:url relativos de cada página
+  // não resolvem e o Next avisa no build.
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: siteName,
+    template: `%s · ${siteName}`,
+  },
 };
 
 export default async function RootLayout({ children }: { children: ReactNode }) {

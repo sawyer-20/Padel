@@ -1,10 +1,46 @@
+import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { padelApiSource } from "@/lib/data-sources/padel-api-source";
 import type { MatchSummary, TournamentDetail } from "@/lib/padel-api/schemas";
 import { MatchListItem } from "@/components/MatchListItem";
+import type { Locale } from "@/i18n/routing";
+import { buildPageMetadata } from "@/lib/seo/metadata";
 
 // Nunca gerado estaticamente com dados reais no build (regra §1.1 do PROJECT.md).
 export const dynamic = "force-dynamic";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string; id: string }>;
+}): Promise<Metadata> {
+  const { locale, id } = await params;
+  const t = await getTranslations({ locale, namespace: "seo" });
+
+  let name: string | null = null;
+  try {
+    name = (await padelApiSource.getTournament(id)).name;
+  } catch {
+    // A API pode falhar; nesse caso a página mostra o erro e os metadados
+    // caem no título genérico em vez de rebentarem o pedido inteiro.
+  }
+
+  if (!name) {
+    return buildPageMetadata({
+      locale: locale as Locale,
+      path: `/tournaments/${id}`,
+      title: t("tournaments.title"),
+      description: t("tournaments.description"),
+    });
+  }
+
+  return buildPageMetadata({
+    locale: locale as Locale,
+    path: `/tournaments/${id}`,
+    title: name,
+    description: t("tournamentDetail.description", { name }),
+  });
+}
 
 type Category = "men" | "women";
 

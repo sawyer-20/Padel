@@ -1,7 +1,15 @@
+import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { LocaleSwitcher } from "@/components/LocaleSwitcher";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import type { ThemePreference } from "@/lib/theme/theme";
+import { staticPageMetadata, type LocaleParams } from "@/lib/seo/page-metadata";
+
+export async function generateMetadata({ params }: LocaleParams): Promise<Metadata> {
+  const { locale } = await params;
+  // Painel de preferências: útil para quem cá está, sem valor nos resultados de pesquisa.
+  return staticPageMetadata(locale, "settings", "/settings", { noIndex: true });
+}
 
 export default async function SettingsPage() {
   // Fica em "common" (e não num namespace novo) porque são preferências da própria app,

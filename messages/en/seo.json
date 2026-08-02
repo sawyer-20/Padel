@@ -1,0 +1,54 @@
+{
+  "home": {
+    "title": "Padel Hub — rankings, tournaments, rules and news",
+    "description": "Professional tour rankings, the tournament calendar, the official rules explained in plain language, and padel news from around the world."
+  },
+  "rankings": {
+    "title": "Padel rankings",
+    "description": "Men's and women's rankings from the professional padel tour, with position, points and a link to every player's profile."
+  },
+  "tournaments": {
+    "title": "Padel tournament calendar",
+    "description": "Professional padel tournaments: dates, venue, category and status, with draws and results for every event."
+  },
+  "tournamentDetail": {
+    "title": "{name}",
+    "description": "Draws, results and winners of the {name} tournament."
+  },
+  "playerDetail": {
+    "title": "{name}",
+    "description": "{name}: ranking position, points and recent matches on the professional padel tour."
+  },
+  "rules": {
+    "title": "The rules of padel explained",
+    "description": "The official rules of padel in plain language: scoring, the serve, the walls, the net and equipment, each with its official FIP article."
+  },
+  "ruleDetail": {
+    "title": "{title}",
+    "description": "{title}: what the official padel rule says, explained in plain language with the FIP article referenced."
+  },
+  "situations": {
+    "title": "Match situations: who wins the point?",
+    "description": "Refereeing questions answered case by case: ball into the fence, double bounce, playing outside the court and other real situations."
+  },
+  "training": {
+    "title": "Padel training, tips and concepts",
+    "description": "Practical tips, concepts and vocabulary to improve your padel — from court positioning to choosing the right shot."
+  },
+  "tips": {
+    "title": "Padel tips to play better",
+    "description": "Practical padel tips: court positioning, talking to your partner, using the walls and knowing when to attack or defend."
+  },
+  "glossary": {
+    "title": "Padel glossary",
+    "description": "Padel terms explained in English: bandeja, víbora, chiquita, contrapared and the rest of the vocabulary you hear on court."
+  },
+  "news": {
+    "title": "Padel news",
+    "description": "The latest padel news gathered from international sources, with the original language flagged on every headline."
+  },
+  "settings": {
+    "title": "Settings",
+    "description": "Language, theme and units."
+  }
+}
