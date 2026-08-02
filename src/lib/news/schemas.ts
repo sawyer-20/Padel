@@ -1,5 +1,6 @@
 import { XMLParser } from "fast-xml-parser";
 import type { NewsSource } from "./sources";
+import { decodeHtmlEntities } from "./decode-entities";
 
 export type NewsItem = {
   id: string;
@@ -67,7 +68,10 @@ export function parseFeed(xml: string, source: NewsSource): NewsItem[] {
     if (!raw || typeof raw !== "object") continue;
     const entry = raw as Record<string, unknown>;
 
-    const title = asText(entry.title);
+    // Segunda passagem de descodificação: vários feeds escapam duas vezes e o
+    // parser de XML só desfaz a primeira. Ver decode-entities.ts.
+    const rawTitle = asText(entry.title);
+    const title = rawTitle === null ? null : decodeHtmlEntities(rawTitle);
 
     // Atom usa <link href="...">; RSS usa <link>texto</link>.
     let url = asText(entry.link);
