@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import { padelApiSource } from "@/lib/data-sources/padel-api-source";
 import type { RankingsCategory } from "@/lib/data-sources/padel-data-source";
 import type { RankingEntry } from "@/lib/padel-api/schemas";
 import { Link } from "@/i18n/navigation";
+import { PageHeader } from "@/components/PageHeader";
+import { formatCountry } from "@/lib/format/labels";
 import { staticPageMetadata, type LocaleParams } from "@/lib/seo/page-metadata";
 
 export async function generateMetadata({ params }: LocaleParams): Promise<Metadata> {
@@ -24,6 +26,7 @@ export default async function RankingsPage({
 }: {
   searchParams: Promise<{ category?: string }>;
 }) {
+  const locale = await getLocale();
   const t = await getTranslations("rankings");
   const { category: rawCategory } = await searchParams;
   const category: RankingsCategory = isCategory(rawCategory) ? rawCategory : "men";
@@ -41,54 +44,82 @@ export default async function RankingsPage({
   const hasMaskedValues = entries?.some((entry) => entry.ranking.masked || entry.points.masked) ?? false;
 
   return (
-    <div className="flex flex-col gap-4">
-      <div className="flex items-center justify-between">
-        <h2 className="text-lg font-medium">{t("title")}</h2>
-        <nav className="flex gap-3 text-sm" aria-label={t("categoryToggleLabel")}>
-          <a href="?category=men" className={category === "men" ? "font-semibold underline" : "text-neutral-500"}>
-            {t("men")}
-          </a>
-          <a
-            href="?category=women"
-            className={category === "women" ? "font-semibold underline" : "text-neutral-500"}
-          >
-            {t("women")}
-          </a>
-        </nav>
-      </div>
+    <div>
+      <PageHeader
+        title={t("title")}
+        actions={
+          <nav className="flex rounded-md border border-line p-0.5" aria-label={t("categoryToggleLabel")}>
+            {(["men", "women"] as const).map((option) => (
+              <a
+                key={option}
+                href={`?category=${option}`}
+                aria-current={category === option ? "page" : undefined}
+                className={`rounded px-3 py-1.5 text-sm no-underline ${
+                  category === option
+                    ? "bg-accent font-medium text-accent-ink"
+                    : "text-ink-muted hover:text-ink"
+                }`}
+              >
+                {t(option)}
+              </a>
+            ))}
+          </nav>
+        }
+      />
 
       {errored && <p role="alert">{t("error")}</p>}
 
       {!errored && entries !== null && entries.length === 0 && <p>{t("empty")}</p>}
 
       {!errored && entries !== null && entries.length > 0 && (
-        <table className="w-full text-left text-sm">
-          <thead>
-            <tr className="border-b border-neutral-200 dark:border-neutral-800">
-              <th className="py-2 font-medium">{t("columns.position")}</th>
-              <th className="py-2 font-medium">{t("columns.player")}</th>
-              <th className="py-2 font-medium">{t("columns.country")}</th>
-              <th className="py-2 font-medium">{t("columns.points")}</th>
-            </tr>
-          </thead>
-          <tbody>
-            {entries.map((entry) => (
-              <tr key={entry.playerId} className="border-b border-neutral-100 dark:border-neutral-900">
-                <td className="py-2">{entry.ranking.masked ? t("maskedValue") : entry.ranking.value}</td>
-                <td className="py-2">
-                  <Link href={`/players/${entry.playerId}`} className="underline">
-                    {entry.name}
-                  </Link>
-                </td>
-                <td className="py-2">{entry.nationality ?? "—"}</td>
-                <td className="py-2">{entry.points.masked ? t("maskedValue") : entry.points.value}</td>
+        <div className="overflow-x-auto rounded-lg border border-line bg-surface">
+          <table className="w-full text-left text-sm">
+            <thead>
+              <tr className="border-b border-line">
+                <th scope="col" className="px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-ink-faint">
+                  {t("columns.position")}
+                </th>
+                <th scope="col" className="px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-ink-faint">
+                  {t("columns.player")}
+                </th>
+                <th scope="col" className="px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-ink-faint">
+                  {t("columns.country")}
+                </th>
+                <th scope="col" className="px-4 py-2.5 text-right text-xs font-semibold uppercase tracking-wider text-ink-faint">
+                  {t("columns.points")}
+                </th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody className="divide-y divide-line">
+              {entries.map((entry) => (
+                <tr key={entry.playerId} className="hover:bg-raised">
+                  <td className="px-4 py-2.5 font-medium text-ink-muted">
+                    {entry.ranking.masked ? t("maskedValue") : entry.ranking.value}
+                  </td>
+                  <td className="px-4 py-2.5">
+                    <Link
+                      href={`/players/${entry.playerId}`}
+                      className="font-medium text-ink no-underline hover:text-accent"
+                    >
+                      {entry.name}
+                    </Link>
+                  </td>
+                  <td className="px-4 py-2.5 text-ink-muted">
+                    {formatCountry(locale, entry.nationality) ?? "—"}
+                  </td>
+                  <td className="px-4 py-2.5 text-right font-medium">
+                    {entry.points.masked ? t("maskedValue") : entry.points.value}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       )}
 
-      {!errored && hasMaskedValues && <p className="text-xs text-neutral-500">{t("maskedNotice")}</p>}
+      {!errored && hasMaskedValues && (
+        <p className="mt-3 text-xs text-ink-faint">{t("maskedNotice")}</p>
+      )}
     </div>
   );
 }

@@ -28,7 +28,7 @@ export function LocaleSwitcher() {
       <select
         value={locale}
         onChange={(event) => onChange(event.target.value)}
-        className="rounded border border-neutral-300 bg-transparent px-2 py-1 dark:border-neutral-700"
+        className="rounded-md border border-line bg-surface px-2 py-1.5 text-ink"
       >
         {routing.locales.map((loc) => (
           <option key={loc} value={loc}>

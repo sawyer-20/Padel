@@ -5,6 +5,7 @@
   "pendingReviewNotice": "Dieser Inhalt wurde automatisch erstellt und noch nicht von einem Padel-Experten geprüft.",
   "tips": {
     "title": "Tipps",
+    "intro": "Praktische Konzepte für den Court, nach Themen gruppiert.",
     "searchPlaceholder": "Tipps durchsuchen...",
     "empty": "Kein Tipp passt zur Suche.",
     "relatedTerm": "Begriff im Glossar ansehen",
@@ -17,6 +18,7 @@
   },
   "glossary": {
     "title": "Glossar",
+    "intro": "Das Vokabular vom Court, Begriff für Begriff erklärt.",
     "searchPlaceholder": "Begriffe durchsuchen...",
     "empty": "Kein Begriff passt zur Suche.",
     "categories": {

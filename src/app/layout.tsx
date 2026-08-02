@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { NextIntlClientProvider } from "next-intl";
-import { getLocale, getTranslations } from "next-intl/server";
-import { LocaleSwitcher } from "@/components/LocaleSwitcher";
+import { getLocale } from "next-intl/server";
 import { ThemeScript } from "@/components/ThemeScript";
 import { siteName, siteUrl } from "@/lib/seo/site";
 import "./globals.css";
@@ -17,9 +16,15 @@ export const metadata: Metadata = {
   },
 };
 
+/**
+ * Só o documento e o provider de traduções.
+ *
+ * O cabeçalho, a navegação e o rodapé vivem em [locale]/layout.tsx, que
+ * re-renderiza a cada troca de idioma — aqui em cima o texto ficaria preso ao
+ * idioma da primeira visita (é o mesmo motivo documentado em shell-messages.ts).
+ */
 export default async function RootLayout({ children }: { children: ReactNode }) {
   const locale = await getLocale();
-  const t = await getTranslations("common");
 
   return (
     // suppressHydrationWarning: o ThemeScript altera a classe de <html> antes da
@@ -28,18 +33,8 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
       <head>
         <ThemeScript />
       </head>
-      <body className="bg-white text-neutral-900 dark:bg-neutral-950 dark:text-neutral-100">
-        <NextIntlClientProvider>
-          <main className="mx-auto flex min-h-screen max-w-2xl flex-col gap-6 p-8">
-            <header className="flex items-center justify-between">
-              <h1 className="text-xl font-semibold">{t("appName")}</h1>
-              <LocaleSwitcher />
-            </header>
-            <section className="rounded-lg border border-neutral-200 p-6 dark:border-neutral-800">
-              {children}
-            </section>
-          </main>
-        </NextIntlClientProvider>
+      <body className="font-sans antialiased">
+        <NextIntlClientProvider>{children}</NextIntlClientProvider>
       </body>
     </html>
   );

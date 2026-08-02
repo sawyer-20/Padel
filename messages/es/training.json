@@ -5,6 +5,7 @@
   "pendingReviewNotice": "Este contenido se ha escrito automáticamente y todavía no ha sido revisado por un experto en pádel.",
   "tips": {
     "title": "Consejos",
+    "intro": "Conceptos prácticos para llevar a la pista, agrupados por tema.",
     "searchPlaceholder": "Buscar consejos...",
     "empty": "Ningún consejo coincide con la búsqueda.",
     "relatedTerm": "ver el término en el glosario",
@@ -17,6 +18,7 @@
   },
   "glossary": {
     "title": "Glosario",
+    "intro": "El vocabulario que se oye en pista, explicado término a término.",
     "searchPlaceholder": "Buscar términos...",
     "empty": "Ningún término coincide con la búsqueda.",
     "categories": {

@@ -3,6 +3,7 @@ import { getTranslations } from "next-intl/server";
 import { LocaleSwitcher } from "@/components/LocaleSwitcher";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import type { ThemePreference } from "@/lib/theme/theme";
+import { PageHeader } from "@/components/PageHeader";
 import { staticPageMetadata, type LocaleParams } from "@/lib/seo/page-metadata";
 
 export async function generateMetadata({ params }: LocaleParams): Promise<Metadata> {
@@ -23,25 +24,27 @@ export default async function SettingsPage() {
   };
 
   return (
-    <div className="flex flex-col gap-8">
-      <h2 className="text-lg font-medium">{t("title")}</h2>
+    <div className="mx-auto max-w-2xl">
+      <PageHeader title={t("title")} />
 
-      <section className="flex flex-col gap-2">
-        <h3 className="font-medium">{t("language.title")}</h3>
-        <p className="text-sm text-neutral-600 dark:text-neutral-400">{t("language.description")}</p>
-        <LocaleSwitcher />
-      </section>
+      <div className="flex flex-col gap-4">
+        <section className="rounded-lg border border-line bg-surface p-5">
+          <h2 className="font-semibold tracking-tight">{t("language.title")}</h2>
+          <p className="mt-1 mb-3 text-sm text-ink-muted">{t("language.description")}</p>
+          <LocaleSwitcher />
+        </section>
 
-      <section className="flex flex-col gap-2">
-        <h3 className="font-medium">{t("theme.title")}</h3>
-        <p className="text-sm text-neutral-600 dark:text-neutral-400">{t("theme.description")}</p>
-        <ThemeToggle labels={themeLabels} />
-      </section>
+        <section className="rounded-lg border border-line bg-surface p-5">
+          <h2 className="font-semibold tracking-tight">{t("theme.title")}</h2>
+          <p className="mt-1 mb-3 text-sm text-ink-muted">{t("theme.description")}</p>
+          <ThemeToggle labels={themeLabels} />
+        </section>
 
-      <section className="flex flex-col gap-2">
-        <h3 className="font-medium">{t("units.title")}</h3>
-        <p className="text-sm text-neutral-600 dark:text-neutral-400">{t("units.notAvailable")}</p>
-      </section>
+        <section className="rounded-lg border border-line bg-surface p-5">
+          <h2 className="font-semibold tracking-tight">{t("units.title")}</h2>
+          <p className="mt-1 text-sm text-ink-muted">{t("units.notAvailable")}</p>
+        </section>
+      </div>
     </div>
   );
 }

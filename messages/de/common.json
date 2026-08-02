@@ -1,6 +1,8 @@
 {
   "appName": "Padel Hub",
+  "skipToContent": "Zum Inhalt springen",
   "nav": {
+    "label": "Hauptnavigation",
     "home": "Start",
     "rankings": "Ranglisten",
     "tournaments": "Turniere",
@@ -40,5 +42,15 @@
     "seeAll": "alle ansehen",
     "sectionUnavailable": "Dieser Abschnitt konnte gerade nicht geladen werden.",
     "noTournament": "Keine bevorstehenden Turniere."
+  },
+  "footer": {
+    "tagline": "Ranglisten, Turniere und die Padel-Regeln — in fünf Sprachen, ohne auf die Übersetzung zu warten.",
+    "explore": "Entdecken",
+    "learn": "Lernen",
+    "language": "Sprache",
+    "situations": "Spielsituationen",
+    "tips": "Tipps",
+    "glossary": "Glossar",
+    "dataSource": "Ranglisten, Turniere und Ergebnisse von der Padel API. Nachrichten verlinken immer auf die Originalquelle — wir geben keine fremden Texte wieder. Redaktionelle Inhalte, die noch auf Prüfung warten, sind auf der Seite selbst gekennzeichnet."
   }
 }

@@ -5,6 +5,7 @@
   "pendingReviewNotice": "This content was written automatically and hasn't been reviewed by a padel expert yet.",
   "tips": {
     "title": "Tips",
+    "intro": "Practical ideas to take onto the court, grouped by theme.",
     "searchPlaceholder": "Search tips...",
     "empty": "No tips match your search.",
     "relatedTerm": "see the term in the glossary",
@@ -17,6 +18,7 @@
   },
   "glossary": {
     "title": "Glossary",
+    "intro": "The vocabulary you hear on court, explained term by term.",
     "searchPlaceholder": "Search terms...",
     "empty": "No terms match your search.",
     "categories": {

@@ -1,6 +1,8 @@
 {
   "appName": "Padel Hub",
+  "skipToContent": "Aller au contenu",
   "nav": {
+    "label": "Navigation principale",
     "home": "Accueil",
     "rankings": "Classements",
     "tournaments": "Tournois",
@@ -40,5 +42,15 @@
     "seeAll": "tout voir",
     "sectionUnavailable": "Impossible de charger cette section pour le moment.",
     "noTournament": "Aucun tournoi à venir à afficher."
+  },
+  "footer": {
+    "tagline": "Classements, tournois et règles du padel — en cinq langues, sans attendre la traduction.",
+    "explore": "Explorer",
+    "learn": "Apprendre",
+    "language": "Langue",
+    "situations": "Situations de jeu",
+    "tips": "Conseils",
+    "glossary": "Glossaire",
+    "dataSource": "Classements, tournois et résultats fournis par la Padel API. Les actualités renvoient toujours à la source d'origine — nous ne reproduisons aucun texte de tiers. Le contenu éditorial en attente de relecture est signalé sur la page elle-même."
   }
 }

@@ -2,8 +2,9 @@ import type { ReactNode } from "react";
 import { hasLocale } from "next-intl";
 import { getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
-import { routing } from "@/i18n/routing";
-import { Link } from "@/i18n/navigation";
+import { routing, type Locale } from "@/i18n/routing";
+import { SiteHeader, type NavItem } from "@/components/SiteHeader";
+import { SiteFooter } from "@/components/SiteFooter";
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -22,23 +23,36 @@ export default async function LocaleLayout({
     notFound();
   }
 
-  // Este layout re-renderiza a cada troca de idioma (ao contrário do root layout,
-  // ver StateProbe/shell-messages), por isso pode usar useTranslations/Link do next-intl
-  // diretamente sem ficar com texto desatualizado.
-  const t = await getTranslations("common.nav");
+  const t = await getTranslations("common");
+
+  const navItems: NavItem[] = [
+    { href: "/", label: t("nav.home") },
+    { href: "/rankings", label: t("nav.rankings") },
+    { href: "/tournaments", label: t("nav.tournaments") },
+    { href: "/rules", label: t("nav.rules") },
+    { href: "/training", label: t("nav.training") },
+    { href: "/news", label: t("nav.news") },
+    { href: "/settings", label: t("nav.settings") },
+  ];
 
   return (
-    <>
-      <nav className="flex gap-4 border-b border-neutral-200 pb-4 text-sm dark:border-neutral-800">
-        <Link href="/">{t("home")}</Link>
-        <Link href="/rankings">{t("rankings")}</Link>
-        <Link href="/tournaments">{t("tournaments")}</Link>
-        <Link href="/rules">{t("rules")}</Link>
-        <Link href="/training">{t("training")}</Link>
-        <Link href="/news">{t("news")}</Link>
-        <Link href="/settings">{t("settings")}</Link>
-      </nav>
-      <div className="mt-4">{children}</div>
-    </>
+    <div className="flex min-h-screen flex-col">
+      {/* Primeiro elemento focável da página: quem navega por teclado salta as
+          sete ligações da navegação em vez de as percorrer em cada página. */}
+      <a
+        href="#content"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded focus:bg-accent focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-accent-ink"
+      >
+        {t("skipToContent")}
+      </a>
+
+      <SiteHeader locale={locale} brand={t("appName")} items={navItems} navLabel={t("nav.label")} />
+
+      <main id="content" className="mx-auto w-full max-w-6xl flex-1 px-4 py-8 pb-16 sm:px-6">
+        {children}
+      </main>
+
+      <SiteFooter locale={locale as Locale} />
+    </div>
   );
 }

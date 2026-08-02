@@ -50,33 +50,43 @@ export default async function RuleDetailPage({ params }: { params: Promise<{ slu
   const bodyHtml = marked.parse(rule.content.bodyMd) as string;
 
   return (
-    <div className="flex flex-col gap-4">
-      <Link href="/rules" className="text-sm underline">
-        {t("backToIndex")}
+    <article className="mx-auto max-w-2xl">
+      <Link
+        href="/rules"
+        className="mb-4 inline-block text-sm text-ink-muted no-underline hover:text-accent"
+      >
+        ← {t("backToIndex")}
       </Link>
 
-      <h2 className="text-lg font-medium">{rule.content.title}</h2>
+      <h1 className="text-2xl font-semibold tracking-tight text-balance sm:text-3xl">
+        {rule.content.title}
+      </h1>
 
       {needsReviewNotice(rule.content.status) && (
         <p
           role="status"
-          className="rounded border border-amber-300 bg-amber-50 p-3 text-sm text-amber-900 dark:border-amber-800 dark:bg-amber-950 dark:text-amber-200"
+          className="mt-4 rounded-lg border border-line-strong bg-raised p-3 text-sm text-ink-muted"
         >
           {t("pendingReviewNotice")}
         </p>
       )}
 
       <div
-        className="[&_p]:my-2 [&_strong]:font-semibold [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:my-2"
+        className="mt-5 leading-relaxed [&_li]:my-1 [&_p]:my-3 [&_strong]:font-semibold [&_ul]:my-3 [&_ul]:list-disc [&_ul]:pl-5"
         dangerouslySetInnerHTML={{ __html: bodyHtml }}
       />
 
-      <p className="text-sm text-neutral-500">
+      <p className="mt-8 border-t border-line pt-4 text-sm text-ink-faint">
         {t("officialSource")}: {rule.meta.fipArticleRef} —{" "}
-        <a href={FIP_OFFICIAL_PDF_URL} target="_blank" rel="noreferrer" className="underline">
+        <a
+          href={FIP_OFFICIAL_PDF_URL}
+          target="_blank"
+          rel="noreferrer"
+          className="text-accent no-underline hover:underline"
+        >
           {t("viewOfficialPdf")}
         </a>
       </p>
-    </div>
+    </article>
   );
 }

@@ -1,18 +1,22 @@
 import type { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import { padelApiSource } from "@/lib/data-sources/padel-api-source";
 import type { TournamentSummary } from "@/lib/padel-api/schemas";
 import { Link } from "@/i18n/navigation";
+import { PageHeader } from "@/components/PageHeader";
+import { Badge, type BadgeTone } from "@/components/ui";
+import { formatDateRange } from "@/lib/format/dates";
+import { formatCountry, formatTournamentLevel } from "@/lib/format/labels";
 import { staticPageMetadata, type LocaleParams } from "@/lib/seo/page-metadata";
+
+// Nunca gerado estaticamente com dados reais no build (regra §1.1 do PROJECT.md) — o
+// calendário muda e a build não deve depender de um PADEL_API_TOKEN válido.
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata({ params }: LocaleParams): Promise<Metadata> {
   const { locale } = await params;
   return staticPageMetadata(locale, "tournaments", "/tournaments");
 }
-
-// Nunca gerado estaticamente com dados reais no build (regra §1.1 do PROJECT.md) — o
-// calendário muda e a build não deve depender de um PADEL_API_TOKEN válido.
-export const dynamic = "force-dynamic";
 
 const WINDOW_DAYS_BACK = 60;
 
@@ -28,7 +32,48 @@ function resolveStatus(tournament: TournamentSummary, today: string): Tournament
   return "upcoming";
 }
 
+const STATUS_TONE: Record<TournamentStatus, BadgeTone> = {
+  ongoing: "live",
+  upcoming: "accent",
+  finished: "neutral",
+};
+
+/**
+ * Ordem por estado, não por data: quem chega a esta página quer saber o que está
+ * a acontecer agora e o que vem a seguir. O que já terminou fica no fim, do mais
+ * recente para o mais antigo.
+ */
+const GROUP_ORDER: TournamentStatus[] = ["ongoing", "upcoming", "finished"];
+
+function groupByStatus(
+  tournaments: TournamentSummary[],
+  today: string,
+): [TournamentStatus, TournamentSummary[]][] {
+  const groups = new Map<TournamentStatus, TournamentSummary[]>();
+
+  for (const tournament of tournaments) {
+    const status = resolveStatus(tournament, today);
+    const list = groups.get(status) ?? [];
+    list.push(tournament);
+    groups.set(status, list);
+  }
+
+  for (const [status, list] of groups) {
+    list.sort((a, b) =>
+      status === "finished"
+        ? b.startDate.localeCompare(a.startDate)
+        : a.startDate.localeCompare(b.startDate),
+    );
+  }
+
+  return GROUP_ORDER.filter((status) => (groups.get(status)?.length ?? 0) > 0).map((status) => [
+    status,
+    groups.get(status) as TournamentSummary[],
+  ]);
+}
+
 export default async function TournamentsPage() {
+  const locale = await getLocale();
   const t = await getTranslations("tournaments");
   const now = new Date();
   const fromDate = formatDateParam(new Date(now.getTime() - WINDOW_DAYS_BACK * 24 * 60 * 60 * 1000));
@@ -44,46 +89,89 @@ export default async function TournamentsPage() {
     errored = true;
   }
 
+  const groups = tournaments ? groupByStatus(tournaments, today) : [];
+
   return (
-    <div className="flex flex-col gap-4">
-      <h2 className="text-lg font-medium">{t("title")}</h2>
+    <div>
+      <PageHeader title={t("title")} />
 
       {errored && <p role="alert">{t("error")}</p>}
 
       {!errored && tournaments !== null && tournaments.length === 0 && <p>{t("empty")}</p>}
 
-      {!errored && tournaments !== null && tournaments.length > 0 && (
-        <table className="w-full text-left text-sm">
-          <thead>
-            <tr className="border-b border-neutral-200 dark:border-neutral-800">
-              <th className="py-2 font-medium">{t("columns.name")}</th>
-              <th className="py-2 font-medium">{t("columns.location")}</th>
-              <th className="py-2 font-medium">{t("columns.level")}</th>
-              <th className="py-2 font-medium">{t("columns.dates")}</th>
-              <th className="py-2 font-medium">{t("columns.status")}</th>
-            </tr>
-          </thead>
-          <tbody>
-            {tournaments.map((tournament) => (
-              <tr key={tournament.id} className="border-b border-neutral-100 dark:border-neutral-900">
-                <td className="py-2">
-                  <Link href={`/tournaments/${tournament.id}`} className="underline">
-                    {tournament.name}
-                  </Link>
-                </td>
-                <td className="py-2">
-                  {[tournament.location, tournament.country].filter(Boolean).join(", ") || "—"}
-                </td>
-                <td className="py-2">{tournament.level}</td>
-                <td className="py-2">
-                  {tournament.startDate} – {tournament.endDate}
-                </td>
-                <td className="py-2">{t(`status.${resolveStatus(tournament, today)}`)}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      )}
+      <div className="flex flex-col gap-8">
+        {groups.map(([status, list]) => (
+          <section key={status}>
+            <h2 className="mb-3 flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-ink-faint">
+              {t(`status.${status}`)}
+              <span className="font-normal normal-case tracking-normal">({list.length})</span>
+            </h2>
+
+            <div className="overflow-x-auto rounded-lg border border-line bg-surface">
+              <table className="w-full text-left text-sm">
+                <thead>
+                  <tr className="border-b border-line">
+                    <th
+                      scope="col"
+                      className="px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-ink-faint"
+                    >
+                      {t("columns.name")}
+                    </th>
+                    <th
+                      scope="col"
+                      className="px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-ink-faint"
+                    >
+                      {t("columns.location")}
+                    </th>
+                    <th
+                      scope="col"
+                      className="px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-ink-faint"
+                    >
+                      {t("columns.level")}
+                    </th>
+                    <th
+                      scope="col"
+                      className="whitespace-nowrap px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-ink-faint"
+                    >
+                      {t("columns.dates")}
+                    </th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-line">
+                  {list.map((tournament) => (
+                    <tr key={tournament.id} className="hover:bg-raised">
+                      <td className="px-4 py-2.5">
+                        <Link
+                          href={`/tournaments/${tournament.id}`}
+                          className="font-medium text-ink no-underline hover:text-accent"
+                        >
+                          {tournament.name}
+                        </Link>
+                        {status === "ongoing" && (
+                          <span className="ml-2 align-middle">
+                            <Badge tone={STATUS_TONE.ongoing}>{t("status.ongoing")}</Badge>
+                          </span>
+                        )}
+                      </td>
+                      <td className="px-4 py-2.5 text-ink-muted">
+                        {[tournament.location, formatCountry(locale, tournament.country)]
+                          .filter(Boolean)
+                          .join(", ") || "—"}
+                      </td>
+                      <td className="px-4 py-2.5 text-ink-muted">
+                        {formatTournamentLevel(tournament.level)}
+                      </td>
+                      <td className="whitespace-nowrap px-4 py-2.5 text-ink-muted">
+                        {formatDateRange(locale, tournament.startDate, tournament.endDate)}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </section>
+        ))}
+      </div>
     </div>
   );
 }

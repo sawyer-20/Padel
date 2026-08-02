@@ -47,15 +47,15 @@ export function SearchableList<T extends { slug: string }>({
         value={query}
         onChange={(event) => setQuery(event.target.value)}
         placeholder={searchPlaceholder}
-        className="rounded border border-neutral-300 bg-transparent px-3 py-2 text-sm dark:border-neutral-700"
+        className="w-full rounded-md border border-line bg-surface px-3 py-2 text-sm text-ink placeholder:text-ink-faint"
       />
 
-      {filtered.length === 0 && <p className="text-sm text-neutral-500">{emptyLabel}</p>}
+      {filtered.length === 0 && <p className="text-sm text-ink-faint">{emptyLabel}</p>}
 
       {groups.map(([groupKey, groupItems]) => (
         <section key={groupKey}>
           {getGroupKey && groupLabels && (
-            <h3 className="mb-2 text-sm font-semibold uppercase text-neutral-500">
+            <h3 className="mb-2 text-sm font-semibold uppercase text-ink-faint">
               {groupLabels[groupKey] ?? groupKey}
             </h3>
           )}

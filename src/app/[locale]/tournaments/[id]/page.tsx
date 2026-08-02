@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import { padelApiSource } from "@/lib/data-sources/padel-api-source";
 import type { MatchSummary, TournamentDetail } from "@/lib/padel-api/schemas";
 import { MatchListItem } from "@/components/MatchListItem";
 import type { Locale } from "@/i18n/routing";
 import { buildPageMetadata } from "@/lib/seo/metadata";
+import { formatDateRange } from "@/lib/format/dates";
 
 // Nunca gerado estaticamente com dados reais no build (regra §1.1 do PROJECT.md).
 export const dynamic = "force-dynamic";
@@ -69,6 +70,7 @@ export default async function TournamentDetailPage({
   const { id } = await params;
   const { category: rawCategory } = await searchParams;
   const category: Category = isCategory(rawCategory) ? rawCategory : "men";
+  const locale = await getLocale();
   const t = await getTranslations("tournaments");
 
   let tournament: TournamentDetail | null = null;
@@ -94,49 +96,62 @@ export default async function TournamentDetailPage({
   const winners = tournament.winners[category];
 
   return (
-    <div className="flex flex-col gap-6">
-      <div>
-        <h2 className="text-lg font-medium">{tournament.name}</h2>
-        <p className="text-sm text-neutral-500">
+    <div className="mx-auto max-w-3xl">
+      <div className="mb-6 rounded-lg border border-line bg-surface p-5">
+        <h1 className="text-2xl font-semibold tracking-tight text-balance">{tournament.name}</h1>
+        <p className="mt-1 text-sm text-ink-muted">
           {[tournament.location, tournament.country].filter(Boolean).join(", ") || "—"} ·{" "}
-          {tournament.startDate} – {tournament.endDate}
+          {formatDateRange(locale, tournament.startDate, tournament.endDate)}
         </p>
         {tournament.prizeAmount !== null && (
-          <p className="text-sm text-neutral-500">
+          <p className="mt-1 text-sm text-ink-muted">
             {t("detail.prize")}: {tournament.prizeAmount} {tournament.prizeCurrency}
           </p>
         )}
         {tournament.status === "finished" && winners.length > 0 && (
-          <p className="text-sm font-medium">
-            {t("detail.winners")}: {winners.join(" / ")}
+          <p className="mt-3 text-sm">
+            <span className="text-ink-faint">{t("detail.winners")}:</span>{" "}
+            <span className="font-semibold">{winners.join(" / ")}</span>
           </p>
         )}
       </div>
 
-      <nav className="flex gap-3 text-sm" aria-label={t("categoryToggleLabel")}>
-        <a href="?category=men" className={category === "men" ? "font-semibold underline" : "text-neutral-500"}>
-          {t("men")}
-        </a>
-        <a
-          href="?category=women"
-          className={category === "women" ? "font-semibold underline" : "text-neutral-500"}
-        >
-          {t("women")}
-        </a>
+      <nav
+        className="mb-5 flex w-fit rounded-md border border-line p-0.5"
+        aria-label={t("categoryToggleLabel")}
+      >
+        {(["men", "women"] as const).map((option) => (
+          <a
+            key={option}
+            href={`?category=${option}`}
+            aria-current={category === option ? "page" : undefined}
+            className={`rounded px-3 py-1.5 text-sm no-underline ${
+              category === option
+                ? "bg-accent font-medium text-accent-ink"
+                : "text-ink-muted hover:text-ink"
+            }`}
+          >
+            {t(option)}
+          </a>
+        ))}
       </nav>
 
-      {rounds.length === 0 && <p>{t("detail.noMatches")}</p>}
+      {rounds.length === 0 && <p className="text-ink-muted">{t("detail.noMatches")}</p>}
 
-      {rounds.map(([roundName, roundMatches]) => (
-        <section key={roundName}>
-          <h3 className="mb-2 text-sm font-semibold uppercase text-neutral-500">{roundName}</h3>
-          <ul className="flex flex-col gap-2">
-            {roundMatches.map((match) => (
-              <MatchListItem key={match.id} match={match} />
-            ))}
-          </ul>
-        </section>
-      ))}
+      <div className="flex flex-col gap-6">
+        {rounds.map(([roundName, roundMatches]) => (
+          <section key={roundName}>
+            <h2 className="mb-2 text-sm font-semibold uppercase tracking-wider text-ink-faint">
+              {roundName}
+            </h2>
+            <ul className="flex flex-col gap-2">
+              {roundMatches.map((match) => (
+                <MatchListItem key={match.id} match={match} />
+              ))}
+            </ul>
+          </section>
+        ))}
+      </div>
     </div>
   );
 }

@@ -5,6 +5,7 @@
   "pendingReviewNotice": "Este conteúdo foi escrito automaticamente e ainda não foi revisto por um especialista em padel.",
   "tips": {
     "title": "Dicas",
+    "intro": "Conceitos práticos para levar para o campo, agrupados por tema.",
     "searchPlaceholder": "Pesquisar dicas...",
     "empty": "Nenhuma dica corresponde à pesquisa.",
     "relatedTerm": "ver o termo no glossário",
@@ -17,6 +18,7 @@
   },
   "glossary": {
     "title": "Glossário",
+    "intro": "O vocabulário que se ouve em campo, explicado termo a termo.",
     "searchPlaceholder": "Pesquisar termos...",
     "empty": "Nenhum termo corresponde à pesquisa.",
     "categories": {

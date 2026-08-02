@@ -5,3 +5,95 @@
    preferência é "sistema", o script em ThemeScript aplica/retira a classe conforme
    o que o SO indica. */
 @custom-variant dark (&:where(.dark, .dark *));
+
+/* Os utilitários (bg-surface, text-ink, border-line, ...) apontam para as variáveis
+   em vez de copiarem os valores — é o `inline` que permite ao tema escuro trocar a
+   paleta inteira redefinindo as variáveis em `.dark`, sem duplicar uma só classe. */
+@theme inline {
+  --color-ground: var(--ground);
+  --color-surface: var(--surface);
+  --color-raised: var(--raised);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-ink-faint: var(--ink-faint);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --color-accent-soft: var(--accent-soft);
+  --color-live: var(--live);
+  --color-live-soft: var(--live-soft);
+
+  --font-sans:
+    system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+}
+
+@layer base {
+  /* Paleta ancorada no verde profundo do relvado de padel. Os neutros levam uma
+     ponta de verde para que o acento pareça nativo da página e não colado por cima. */
+  :root {
+    color-scheme: light;
+
+    --ground: #f5f7f6;
+    --surface: #ffffff;
+    --raised: #eef2f0;
+    --line: #e0e6e3;
+    --line-strong: #c8d1cd;
+    --ink: #111716;
+    --ink-muted: #56615d;
+    --ink-faint: #79837f;
+    --accent: #0e6e5e;
+    --accent-ink: #ffffff;
+    --accent-soft: #dcefea;
+    --live: #a8460f;
+    --live-soft: #fbe8dd;
+  }
+
+  .dark {
+    color-scheme: dark;
+
+    --ground: #0b100e;
+    --surface: #141a18;
+    --raised: #1c2321;
+    --line: #262e2b;
+    --line-strong: #3a443f;
+    --ink: #e9eeeb;
+    --ink-muted: #a3aeaa;
+    --ink-faint: #838e89;
+    --accent: #3fcbae;
+    --accent-ink: #06120f;
+    --accent-soft: #12302a;
+    --live: #f0a077;
+    --live-soft: #2c1a10;
+  }
+
+  body {
+    background-color: var(--ground);
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Um único anel de foco em toda a aplicação. Sem isto, o contorno por defeito do
+     browser desaparece contra o fundo escuro em metade dos elementos. */
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  /* Colunas de números só alinham se todos os dígitos tiverem a mesma largura. */
+  table {
+    font-variant-numeric: tabular-nums;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}

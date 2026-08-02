@@ -51,8 +51,8 @@ export function ThemeToggle({ labels }: { labels: Record<ThemePreference, string
             onClick={() => onSelect(option)}
             className={
               selected
-                ? "rounded border border-neutral-900 bg-neutral-900 px-3 py-1 text-sm text-white dark:border-neutral-100 dark:bg-neutral-100 dark:text-neutral-900"
-                : "rounded border border-neutral-300 px-3 py-1 text-sm dark:border-neutral-700"
+                ? "rounded-md border border-accent bg-accent px-3 py-1.5 text-sm font-medium text-accent-ink"
+                : "rounded-md border border-line px-3 py-1.5 text-sm text-ink-muted hover:border-line-strong hover:text-ink"
             }
           >
             {labels[option]}

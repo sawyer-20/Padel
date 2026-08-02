@@ -32,13 +32,13 @@ export function GlossaryList({
       searchPlaceholder={searchPlaceholder}
       emptyLabel={emptyLabel}
       renderItem={(item) => (
-        <div className="rounded border border-neutral-200 p-4 dark:border-neutral-800">
+        <div className="rounded-lg border border-line bg-surface p-4">
           <p className="font-medium">{item.term}</p>
 
           {item.needsReview && (
             <p
               role="status"
-              className="mt-2 rounded border border-amber-300 bg-amber-50 p-2 text-xs text-amber-900 dark:border-amber-800 dark:bg-amber-950 dark:text-amber-200"
+              className="mt-2 rounded border border-line-strong bg-raised p-2 text-xs text-ink-muted"
             >
               {pendingReviewNotice}
             </p>

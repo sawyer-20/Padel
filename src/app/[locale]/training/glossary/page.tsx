@@ -6,6 +6,7 @@ import { Link } from "@/i18n/navigation";
 import { glossary, getGlossaryContent } from "@/lib/glossary/get-glossary";
 import { needsReviewNotice } from "@/lib/rules/get-rule";
 import { GlossaryList } from "@/components/GlossaryList";
+import { PageHeader } from "@/components/PageHeader";
 import { staticPageMetadata, type LocaleParams } from "@/lib/seo/page-metadata";
 
 export async function generateMetadata({ params }: LocaleParams): Promise<Metadata> {
@@ -44,12 +45,15 @@ export default async function GlossaryPage() {
   };
 
   return (
-    <div className="flex flex-col gap-4">
-      <Link href="/training" className="text-sm underline">
-        {t("backToIndex")}
+    <div className="mx-auto max-w-3xl">
+      <Link
+        href="/training"
+        className="mb-4 inline-block text-sm text-ink-muted no-underline hover:text-accent"
+      >
+        ← {t("backToIndex")}
       </Link>
 
-      <h2 className="text-lg font-medium">{t("glossary.title")}</h2>
+      <PageHeader title={t("glossary.title")} />
 
       <GlossaryList
         items={items}

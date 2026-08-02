@@ -5,6 +5,7 @@ import { Link } from "@/i18n/navigation";
 import { rules } from "@/lib/rules/rules";
 import { getRuleContent } from "@/lib/rules/get-rule";
 import { RulesList } from "@/components/RulesList";
+import { PageHeader } from "@/components/PageHeader";
 import { staticPageMetadata, type LocaleParams } from "@/lib/seo/page-metadata";
 
 export async function generateMetadata({ params }: LocaleParams): Promise<Metadata> {
@@ -31,11 +32,18 @@ export default async function RulesPage() {
   };
 
   return (
-    <div className="flex flex-col gap-4">
-      <h2 className="text-lg font-medium">{t("title")}</h2>
-      <Link href="/rules/situations" className="text-sm underline">
-        {t("situations.title")}
-      </Link>
+    <div className="mx-auto max-w-3xl">
+      <PageHeader
+        title={t("title")}
+        actions={
+          <Link
+            href="/rules/situations"
+            className="rounded-md border border-line bg-surface px-3 py-1.5 text-sm font-medium text-ink no-underline hover:border-line-strong"
+          >
+            {t("situations.title")}
+          </Link>
+        }
+      />
       <RulesList
         items={items}
         categoryLabels={categoryLabels}

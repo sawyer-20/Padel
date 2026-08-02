@@ -6,6 +6,7 @@ import { Link } from "@/i18n/navigation";
 import { situations, getSituationContent } from "@/lib/situations/get-situation";
 import { needsReviewNotice } from "@/lib/rules/get-rule";
 import { SituationsList } from "@/components/SituationsList";
+import { PageHeader } from "@/components/PageHeader";
 import { staticPageMetadata, type LocaleParams } from "@/lib/seo/page-metadata";
 
 export async function generateMetadata({ params }: LocaleParams): Promise<Metadata> {
@@ -41,12 +42,15 @@ export default async function SituationsPage() {
   }
 
   return (
-    <div className="flex flex-col gap-4">
-      <Link href="/rules" className="text-sm underline">
-        {t("backToIndex")}
+    <div className="mx-auto max-w-3xl">
+      <Link
+        href="/rules"
+        className="mb-4 inline-block text-sm text-ink-muted no-underline hover:text-accent"
+      >
+        ← {t("backToIndex")}
       </Link>
 
-      <h2 className="text-lg font-medium">{t("situations.title")}</h2>
+      <PageHeader title={t("situations.title")} />
 
       <SituationsList
         items={items}

@@ -4,6 +4,7 @@ import type { Locale } from "@/i18n/routing";
 import { fetchNews } from "@/lib/news/fetch-news";
 import { availableNewsLanguages } from "@/lib/news/sources";
 import { NewsList } from "@/components/NewsList";
+import { PageHeader } from "@/components/PageHeader";
 import { staticPageMetadata, type LocaleParams } from "@/lib/seo/page-metadata";
 
 // Dados vivos — nunca pré-gerados no build (mesmo padrão de Rankings/Torneios).
@@ -43,12 +44,11 @@ export default async function NewsPage() {
   );
 
   return (
-    <div className="flex flex-col gap-4">
-      <h2 className="text-lg font-medium">{t("title")}</h2>
-      <p className="text-sm text-neutral-600 dark:text-neutral-400">{t("intro")}</p>
+    <div className="mx-auto max-w-3xl">
+      <PageHeader title={t("title")} lead={t("intro")} />
 
       {failedSourceIds.length > 0 && (
-        <p role="status" className="text-xs text-neutral-500">
+        <p role="status" className="mb-4 text-xs text-ink-faint">
           {t("partialError")}
         </p>
       )}

@@ -43,7 +43,7 @@ export function NewsList({
         <select
           value={language}
           onChange={(event) => setLanguage(event.target.value)}
-          className="rounded border border-neutral-300 bg-transparent px-2 py-1 dark:border-neutral-700"
+          className="rounded-md border border-line bg-surface px-2 py-1.5 text-ink"
         >
           <option value="all">{filterAllLabel}</option>
           {languages.map((lang) => (
@@ -54,13 +54,13 @@ export function NewsList({
         </select>
       </label>
 
-      {filtered.length === 0 && <p className="text-sm text-neutral-500">{emptyLabel}</p>}
+      {filtered.length === 0 && <p className="text-sm text-ink-faint">{emptyLabel}</p>}
 
       <ul className="flex flex-col gap-3">
         {filtered.map((item) => (
           <li
             key={item.id}
-            className="rounded border border-neutral-200 p-4 text-sm dark:border-neutral-800"
+            className="rounded-lg border border-line bg-surface p-4 text-sm"
           >
             <a
               href={item.url}
@@ -70,7 +70,7 @@ export function NewsList({
             >
               {item.title}
             </a>
-            <p className="mt-2 text-xs text-neutral-500">
+            <p className="mt-2 text-xs text-ink-faint">
               {item.sourceName}
               {item.formattedDate && <> · {item.formattedDate}</>}
               {" · "}

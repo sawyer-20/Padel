@@ -1,6 +1,8 @@
 {
   "appName": "Padel Hub",
+  "skipToContent": "Skip to content",
   "nav": {
+    "label": "Main navigation",
     "home": "Home",
     "rankings": "Rankings",
     "tournaments": "Tournaments",
@@ -40,5 +42,15 @@
     "seeAll": "see all",
     "sectionUnavailable": "Couldn't load this section right now.",
     "noTournament": "No upcoming tournaments to show."
+  },
+  "footer": {
+    "tagline": "Rankings, tournaments and the rules of padel — in five languages, without waiting for the translation.",
+    "explore": "Explore",
+    "learn": "Learn",
+    "language": "Language",
+    "situations": "Match situations",
+    "tips": "Tips",
+    "glossary": "Glossary",
+    "dataSource": "Rankings, tournaments and results provided by the Padel API. News headlines always link to the original source — we never reproduce third-party text. Editorial content still awaiting review is flagged on the page itself."
   }
 }
