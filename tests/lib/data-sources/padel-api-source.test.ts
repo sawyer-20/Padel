@@ -13,27 +13,69 @@ afterEach(() => {
 describe("padelApiSource.getRankings", () => {
   it("devolve entradas normalizadas quando a API responde com sucesso", async () => {
     process.env.PADEL_API_TOKEN = "test-token";
-    global.fetch = vi.fn().mockResolvedValue(
+    // mockImplementation e não mockResolvedValue: o corpo de um Response só pode ser
+    // lido uma vez, e getRankings faz dois pedidos.
+    global.fetch = vi.fn().mockImplementation(
+      async () =>
+        new Response(
+          JSON.stringify({
+            data: [{ id: 1, name: "A", nationality: "ES", category: "men", ranking: 1, points: 100 }],
+            links: { first: null, last: null, prev: null, next: null },
+            meta: { current_page: 1, last_page: 2, per_page: 50, total: 2 },
+          }),
+          { status: 200, headers: { "Content-Type": "application/json" } },
+        ),
+    );
+
+    const entries = await padelApiSource.getRankings({ category: "men" });
+
+    // Duas páginas pedidas, e a mesma resposta devolvida a ambas neste mock.
+    expect(entries).toHaveLength(2);
+    expect(entries[0]?.name).toBe("A");
+    expect(global.fetch).toHaveBeenCalledWith(
+      expect.stringContaining("/rankings?category=men&per_page=50&page=1"),
+      expect.objectContaining({
+        headers: expect.objectContaining({ Authorization: "Bearer test-token" }),
+      }),
+    );
+    expect(global.fetch).toHaveBeenCalledWith(
+      expect.stringContaining("page=2"),
+      expect.anything(),
+    );
+  });
+
+  it("mostra o que chegou quando só a segunda página falha", async () => {
+    process.env.PADEL_API_TOKEN = "test-token";
+    const page = (name: string) =>
       new Response(
         JSON.stringify({
-          data: [{ id: 1, name: "A", nationality: "ES", category: "men", ranking: 1, points: 100 }],
+          data: [{ id: 1, name, nationality: "ES", category: "men", ranking: 1, points: 100 }],
           links: { first: null, last: null, prev: null, next: null },
-          meta: { current_page: 1, last_page: 1, per_page: 20, total: 1 },
+          meta: { current_page: 1, last_page: 2, per_page: 50, total: 2 },
         }),
         { status: 200, headers: { "Content-Type": "application/json" } },
-      ),
-    );
+      );
+
+    global.fetch = vi
+      .fn()
+      .mockResolvedValueOnce(page("A"))
+      .mockResolvedValueOnce(new Response("nope", { status: 500 }));
+    vi.spyOn(console, "error").mockImplementation(() => {});
 
     const entries = await padelApiSource.getRankings({ category: "men" });
 
     expect(entries).toHaveLength(1);
     expect(entries[0]?.name).toBe("A");
-    expect(global.fetch).toHaveBeenCalledWith(
-      expect.stringContaining("/rankings?category=men"),
-      expect.objectContaining({
-        headers: expect.objectContaining({ Authorization: "Bearer test-token" }),
-      }),
-    );
+  });
+
+  it("falha quando é a primeira página que não responde", async () => {
+    process.env.PADEL_API_TOKEN = "test-token";
+    global.fetch = vi.fn().mockResolvedValue(new Response("nope", { status: 500 }));
+    vi.spyOn(console, "error").mockImplementation(() => {});
+
+    // Sem a primeira página não há ranking — a página tem de mostrar erro, não uma
+    // tabela vazia que parece um ranking sem ninguém.
+    await expect(padelApiSource.getRankings({ category: "men" })).rejects.toThrow();
   });
 
   it("falha explicitamente (nunca com dados inventados) quando o token está em falta", async () => {

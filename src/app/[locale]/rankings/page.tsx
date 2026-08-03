@@ -5,17 +5,18 @@ import type { RankingsCategory } from "@/lib/data-sources/padel-data-source";
 import type { RankingEntry } from "@/lib/padel-api/schemas";
 import { Link } from "@/i18n/navigation";
 import { PageHeader } from "@/components/PageHeader";
+import { RankingsTable, type RankingRow } from "@/components/RankingsTable";
 import { formatCountry } from "@/lib/format/labels";
 import { staticPageMetadata, type LocaleParams } from "@/lib/seo/page-metadata";
+
+// Nunca gerado estaticamente com dados reais no build (regra §1.1 do PROJECT.md) — os
+// rankings mudam e a build não deve depender de um PADEL_API_TOKEN válido.
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata({ params }: LocaleParams): Promise<Metadata> {
   const { locale } = await params;
   return staticPageMetadata(locale, "rankings", "/rankings");
 }
-
-// Nunca gerado estaticamente com dados reais no build (regra §1.1 do PROJECT.md) — os
-// rankings mudam e a build não deve depender de um PADEL_API_TOKEN válido.
-export const dynamic = "force-dynamic";
 
 function isCategory(value: string | undefined): value is RankingsCategory {
   return value === "men" || value === "women";
@@ -41,18 +42,36 @@ export default async function RankingsPage({
     errored = true;
   }
 
-  const hasMaskedValues = entries?.some((entry) => entry.ranking.masked || entry.points.masked) ?? false;
+  const hasMaskedValues =
+    entries?.some((entry) => entry.ranking.masked || entry.points.masked) ?? false;
+
+  // A formatação (máscara, país) acontece aqui e não no componente de cliente,
+  // para que a pesquisa filtre exatamente o texto que está visível.
+  const rows: RankingRow[] = (entries ?? []).map((entry) => ({
+    playerId: entry.playerId,
+    name: entry.name,
+    country: formatCountry(locale, entry.nationality),
+    position: entry.ranking.masked ? t("maskedValue") : String(entry.ranking.value),
+    points: entry.points.masked ? t("maskedValue") : String(entry.points.value),
+    positionNumber: entry.ranking.masked ? null : entry.ranking.value,
+  }));
 
   return (
     <div>
       <PageHeader
         title={t("title")}
         actions={
-          <nav className="flex rounded-md border border-line p-0.5" aria-label={t("categoryToggleLabel")}>
+          <nav
+            className="flex rounded-md border border-line p-0.5"
+            aria-label={t("categoryToggleLabel")}
+          >
             {(["men", "women"] as const).map((option) => (
-              <a
+              // Link (e não <a>) para que trocar de categoria seja uma navegação
+              // suave: sem recarregar a página nem perder a posição no scroll.
+              <Link
                 key={option}
-                href={`?category=${option}`}
+                href={`/rankings?category=${option}`}
+                scroll={false}
                 aria-current={category === option ? "page" : undefined}
                 className={`rounded px-3 py-1.5 text-sm no-underline ${
                   category === option
@@ -61,7 +80,7 @@ export default async function RankingsPage({
                 }`}
               >
                 {t(option)}
-              </a>
+              </Link>
             ))}
           </nav>
         }
@@ -69,52 +88,27 @@ export default async function RankingsPage({
 
       {errored && <p role="alert">{t("error")}</p>}
 
-      {!errored && entries !== null && entries.length === 0 && <p>{t("empty")}</p>}
+      {!errored && rows.length === 0 && <p>{t("empty")}</p>}
 
-      {!errored && entries !== null && entries.length > 0 && (
-        <div className="overflow-x-auto rounded-lg border border-line bg-surface">
-          <table className="w-full text-left text-sm">
-            <thead>
-              <tr className="border-b border-line">
-                <th scope="col" className="px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-ink-faint">
-                  {t("columns.position")}
-                </th>
-                <th scope="col" className="px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-ink-faint">
-                  {t("columns.player")}
-                </th>
-                <th scope="col" className="px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-ink-faint">
-                  {t("columns.country")}
-                </th>
-                <th scope="col" className="px-4 py-2.5 text-right text-xs font-semibold uppercase tracking-wider text-ink-faint">
-                  {t("columns.points")}
-                </th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-line">
-              {entries.map((entry) => (
-                <tr key={entry.playerId} className="hover:bg-raised">
-                  <td className="px-4 py-2.5 font-medium text-ink-muted">
-                    {entry.ranking.masked ? t("maskedValue") : entry.ranking.value}
-                  </td>
-                  <td className="px-4 py-2.5">
-                    <Link
-                      href={`/players/${entry.playerId}`}
-                      className="font-medium text-ink no-underline hover:text-accent"
-                    >
-                      {entry.name}
-                    </Link>
-                  </td>
-                  <td className="px-4 py-2.5 text-ink-muted">
-                    {formatCountry(locale, entry.nationality) ?? "—"}
-                  </td>
-                  <td className="px-4 py-2.5 text-right font-medium">
-                    {entry.points.masked ? t("maskedValue") : entry.points.value}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+      {!errored && rows.length > 0 && (
+        <RankingsTable
+          // key por categoria: sem isto, a navegação suave entre masculino e
+          // feminino mantém a mesma instância do componente e o texto que estava
+          // na caixa de pesquisa continua a filtrar a lista nova — o ranking
+          // aparece vazio e parece avariado.
+          key={category}
+          rows={rows}
+          labels={{
+            position: t("columns.position"),
+            player: t("columns.player"),
+            country: t("columns.country"),
+            points: t("columns.points"),
+            searchLabel: t("search.label"),
+            searchPlaceholder: t("search.placeholder"),
+            noResults: t.raw("search.noResults"),
+            count: t.raw("search.count"),
+          }}
+        />
       )}
 
       {!errored && hasMaskedValues && (

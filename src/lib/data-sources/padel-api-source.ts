@@ -22,12 +22,44 @@ const CATEGORY_PARAM: Record<RankingsCategory, string> = {
   women: "women",
 };
 
+// Sem `per_page` a API devolve 15 entradas — de um ranking com mais de 1300. Pedir
+// 100 não serve: verificado contra a API real, 50 é o máximo que ela aceita por
+// página. Duas páginas dão o top 100, que é o que se espera de um ranking, ao
+// custo de dois pedidos de 6 em 6 horas.
+const RANKINGS_PAGE_SIZE = 50;
+const RANKINGS_PAGES = 2;
+
 export const padelApiSource: PadelDataSource = {
   async getRankings({ category }) {
-    const json = await padelApiFetch(`/rankings?category=${CATEGORY_PARAM[category]}`, {
-      next: { revalidate: RANKINGS_REVALIDATE_SECONDS, tags: ["padel:rankings"] },
-    });
-    return parseRankingsResponse(json);
+    const requests = Array.from({ length: RANKINGS_PAGES }, (_, index) =>
+      padelApiFetch(
+        `/rankings?category=${CATEGORY_PARAM[category]}&per_page=${RANKINGS_PAGE_SIZE}&page=${index + 1}`,
+        { next: { revalidate: RANKINGS_REVALIDATE_SECONDS, tags: ["padel:rankings"] } },
+      ).then(parseRankingsResponse),
+    );
+
+    const results = await Promise.allSettled(requests);
+    const [first, ...rest] = results;
+
+    // Sem a primeira página não há ranking nenhum para mostrar — a página tem de
+    // apresentar o erro em vez de uma tabela vazia.
+    if (!first || first.status === "rejected") {
+      throw first?.reason ?? new Error("Nenhuma página de rankings foi pedida.");
+    }
+
+    const entries = [...first.value];
+
+    // As páginas seguintes são um extra: se falharem, mostra-se o que há em vez de
+    // deitar fora um top 50 que chegou bem.
+    for (const [index, result] of rest.entries()) {
+      if (result.status === "fulfilled") {
+        entries.push(...result.value);
+      } else {
+        console.error(`Falha ao carregar a página ${index + 2} dos rankings:`, result.reason);
+      }
+    }
+
+    return entries;
   },
 
   async getTournaments({ fromDate }) {

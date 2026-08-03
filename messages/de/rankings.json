@@ -17,5 +17,11 @@
     "recentMatches": "Letzte Ergebnisse",
     "noMatches": "Keine aktuellen Ergebnisse.",
     "error": "Das Spielerprofil konnte gerade nicht geladen werden. Bitte später erneut versuchen."
+  },
+  "search": {
+    "label": "Spieler suchen",
+    "placeholder": "Name oder Land",
+    "noResults": "Niemand passt zu „{query}“.",
+    "count": "{shown} von {total}"
   }
 }

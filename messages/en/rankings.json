@@ -17,5 +17,11 @@
     "recentMatches": "Recent results",
     "noMatches": "No recent results to show.",
     "error": "Couldn't load the player profile right now. Please try again later."
+  },
+  "search": {
+    "label": "Search for a player",
+    "placeholder": "Name or country",
+    "noResults": "No player matches “{query}”.",
+    "count": "{shown} of {total} players"
   }
 }

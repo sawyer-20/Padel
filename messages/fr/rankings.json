@@ -17,5 +17,11 @@
     "recentMatches": "Derniers résultats",
     "noMatches": "Aucun résultat récent à afficher.",
     "error": "Impossible de charger la fiche du joueur pour le moment. Réessayez plus tard."
+  },
+  "search": {
+    "label": "Rechercher un joueur",
+    "placeholder": "Nom ou pays",
+    "noResults": "Aucun athlète ne correspond à « {query} ».",
+    "count": "{shown} sur {total} athlètes"
   }
 }
