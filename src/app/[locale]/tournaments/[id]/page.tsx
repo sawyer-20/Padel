@@ -6,6 +6,9 @@ import { MatchListItem } from "@/components/MatchListItem";
 import type { Locale } from "@/i18n/routing";
 import { buildPageMetadata } from "@/lib/seo/metadata";
 import { formatDateRange } from "@/lib/format/dates";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { JsonLd } from "@/components/JsonLd";
+import { sportsEventSchema } from "@/lib/seo/schema";
 
 // Nunca gerado estaticamente com dados reais no build (regra §1.1 do PROJECT.md).
 export const dynamic = "force-dynamic";
@@ -72,6 +75,7 @@ export default async function TournamentDetailPage({
   const category: Category = isCategory(rawCategory) ? rawCategory : "men";
   const locale = await getLocale();
   const t = await getTranslations("tournaments");
+  const tCommon = await getTranslations("common");
 
   let tournament: TournamentDetail | null = null;
   let matches: MatchSummary[] = [];
@@ -97,6 +101,27 @@ export default async function TournamentDetailPage({
 
   return (
     <div className="mx-auto max-w-3xl">
+      <Breadcrumbs
+        locale={locale as Locale}
+        items={[
+          { label: tCommon("nav.home"), path: "/" },
+          { label: tCommon("nav.tournaments"), path: "/tournaments" },
+          { label: tournament.name },
+        ]}
+      />
+
+      <JsonLd
+        data={sportsEventSchema({
+          locale: locale as Locale,
+          path: `/tournaments/${id}`,
+          name: tournament.name,
+          startDate: tournament.startDate,
+          endDate: tournament.endDate,
+          location: tournament.location,
+          country: tournament.country,
+        })}
+      />
+
       <div className="mb-6 rounded-lg border border-line bg-surface p-5">
         <h1 className="text-2xl font-semibold tracking-tight text-balance">{tournament.name}</h1>
         <p className="mt-1 text-sm text-ink-muted">

@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 import { getLocale, getTranslations } from "next-intl/server";
 import { marked } from "marked";
 import type { Locale } from "@/i18n/routing";
-import { Link } from "@/i18n/navigation";
 import { tips, getTipContent } from "@/lib/tips/get-tip";
 import { needsReviewNotice } from "@/lib/rules/get-rule";
 import { TipsList } from "@/components/TipsList";
 import { PageHeader } from "@/components/PageHeader";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { staticPageMetadata, type LocaleParams } from "@/lib/seo/page-metadata";
 
 export async function generateMetadata({ params }: LocaleParams): Promise<Metadata> {
@@ -17,6 +17,7 @@ export async function generateMetadata({ params }: LocaleParams): Promise<Metada
 export default async function TipsPage() {
   const locale = (await getLocale()) as Locale;
   const t = await getTranslations("training");
+  const tCommon = await getTranslations("common");
 
   const items: {
     slug: string;
@@ -50,14 +51,16 @@ export default async function TipsPage() {
 
   return (
     <div className="mx-auto max-w-3xl">
-      <Link
-        href="/training"
-        className="mb-4 inline-block text-sm text-ink-muted no-underline hover:text-accent"
-      >
-        ← {t("backToIndex")}
-      </Link>
+      <Breadcrumbs
+        locale={locale}
+        items={[
+          { label: tCommon("nav.home"), path: "/" },
+          { label: tCommon("nav.training"), path: "/training" },
+          { label: t("tips.title") },
+        ]}
+      />
 
-      <PageHeader title={t("tips.title")} />
+      <PageHeader title={t("tips.title")} lead={t("tips.intro")} />
 
       <TipsList
         items={items}

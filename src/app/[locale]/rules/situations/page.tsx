@@ -2,11 +2,14 @@ import type { Metadata } from "next";
 import { getLocale, getTranslations } from "next-intl/server";
 import { marked } from "marked";
 import type { Locale } from "@/i18n/routing";
-import { Link } from "@/i18n/navigation";
 import { situations, getSituationContent } from "@/lib/situations/get-situation";
 import { needsReviewNotice } from "@/lib/rules/get-rule";
 import { SituationsList } from "@/components/SituationsList";
 import { PageHeader } from "@/components/PageHeader";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { JsonLd } from "@/components/JsonLd";
+import { faqSchema, type FaqEntry } from "@/lib/seo/schema";
+import { stripMarkdown } from "@/lib/seo/excerpt";
 import { staticPageMetadata, type LocaleParams } from "@/lib/seo/page-metadata";
 
 export async function generateMetadata({ params }: LocaleParams): Promise<Metadata> {
@@ -17,6 +20,9 @@ export async function generateMetadata({ params }: LocaleParams): Promise<Metada
 export default async function SituationsPage() {
   const locale = (await getLocale()) as Locale;
   const t = await getTranslations("rules");
+  const tCommon = await getTranslations("common");
+
+  const faqEntries: FaqEntry[] = [];
 
   const items: {
     slug: string;
@@ -38,17 +44,28 @@ export default async function SituationsPage() {
         fipArticleRef: situation.fipArticleRef,
         relatedRuleSlug: situation.relatedRuleSlug,
       });
+
+      faqEntries.push({
+        question: content.question,
+        answer: stripMarkdown(content.answerMd),
+      });
     }
   }
 
   return (
     <div className="mx-auto max-w-3xl">
-      <Link
-        href="/rules"
-        className="mb-4 inline-block text-sm text-ink-muted no-underline hover:text-accent"
-      >
-        ← {t("backToIndex")}
-      </Link>
+      <Breadcrumbs
+        locale={locale}
+        items={[
+          { label: tCommon("nav.home"), path: "/" },
+          { label: tCommon("nav.rules"), path: "/rules" },
+          { label: t("situations.title") },
+        ]}
+      />
+
+      {/* Um FAQPage a sério: cada situação é literalmente uma pergunta com
+          resposta, visível na página. */}
+      <JsonLd data={faqSchema(faqEntries)} />
 
       <PageHeader title={t("situations.title")} />
 

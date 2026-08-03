@@ -3,11 +3,13 @@ import { notFound } from "next/navigation";
 import { getLocale, getTranslations } from "next-intl/server";
 import { marked } from "marked";
 import type { Locale } from "@/i18n/routing";
-import { Link } from "@/i18n/navigation";
 import { getRule, needsReviewNotice, rules } from "@/lib/rules/get-rule";
 import { FIP_OFFICIAL_PDF_URL } from "@/lib/rules/rules";
 import { buildPageMetadata } from "@/lib/seo/metadata";
 import { excerptFromMarkdown } from "@/lib/seo/excerpt";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { JsonLd } from "@/components/JsonLd";
+import { articleSchema } from "@/lib/seo/schema";
 
 // Conteúdo estático (não depende da Padel API) — pode ser pré-gerado no build.
 export function generateStaticParams() {
@@ -41,6 +43,7 @@ export default async function RuleDetailPage({ params }: { params: Promise<{ slu
   const { slug } = await params;
   const locale = (await getLocale()) as Locale;
   const t = await getTranslations("rules");
+  const tCommon = await getTranslations("common");
 
   const rule = getRule(slug, locale);
   if (!rule) {
@@ -51,12 +54,23 @@ export default async function RuleDetailPage({ params }: { params: Promise<{ slu
 
   return (
     <article className="mx-auto max-w-2xl">
-      <Link
-        href="/rules"
-        className="mb-4 inline-block text-sm text-ink-muted no-underline hover:text-accent"
-      >
-        ← {t("backToIndex")}
-      </Link>
+      <Breadcrumbs
+        locale={locale}
+        items={[
+          { label: tCommon("nav.home"), path: "/" },
+          { label: tCommon("nav.rules"), path: "/rules" },
+          { label: rule.content.title },
+        ]}
+      />
+
+      <JsonLd
+        data={articleSchema({
+          locale,
+          path: `/rules/${slug}`,
+          headline: rule.content.title,
+          description: excerptFromMarkdown(rule.content.bodyMd),
+        })}
+      />
 
       <h1 className="text-2xl font-semibold tracking-tight text-balance sm:text-3xl">
         {rule.content.title}

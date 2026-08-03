@@ -7,6 +7,7 @@ import { MatchListItem } from "@/components/MatchListItem";
 import type { Locale } from "@/i18n/routing";
 import { buildPageMetadata } from "@/lib/seo/metadata";
 import { formatCountry } from "@/lib/format/labels";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 
 // Nunca gerado estaticamente com dados reais no build (regra §1.1 do PROJECT.md).
 export const dynamic = "force-dynamic";
@@ -47,6 +48,7 @@ export default async function PlayerProfilePage({ params }: { params: Promise<{ 
   const { id } = await params;
   const locale = await getLocale();
   const t = await getTranslations("rankings");
+  const tCommon = await getTranslations("common");
 
   let player: PlayerProfile | null = null;
   let matches: MatchSummary[] = [];
@@ -65,6 +67,15 @@ export default async function PlayerProfilePage({ params }: { params: Promise<{ 
 
   return (
     <div className="mx-auto max-w-3xl">
+      <Breadcrumbs
+        locale={locale as Locale}
+        items={[
+          { label: tCommon("nav.home"), path: "/" },
+          { label: tCommon("nav.rankings"), path: "/rankings" },
+          { label: player.name },
+        ]}
+      />
+
       <div className="mb-8 flex flex-wrap items-center gap-5 rounded-lg border border-line bg-surface p-5">
         {player.photoUrl ? (
           <Image

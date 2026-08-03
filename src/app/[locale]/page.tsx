@@ -7,6 +7,8 @@ import type { RankingEntry } from "@/lib/padel-api/schemas";
 import { staticPageMetadata, type LocaleParams } from "@/lib/seo/page-metadata";
 import { PageHeader } from "@/components/PageHeader";
 import { Badge, Panel, SectionHeading, SectionNotice } from "@/components/ui";
+import { JsonLd } from "@/components/JsonLd";
+import { websiteSchema } from "@/lib/seo/schema";
 
 // Dados vivos — nunca pré-gerados no build (mesmo padrão de Rankings/Torneios/Notícias).
 export const dynamic = "force-dynamic";
@@ -71,6 +73,7 @@ export default async function HomePage() {
   const t = await getTranslations("common.home");
   const tRankings = await getTranslations("rankings");
   const tTournaments = await getTranslations("tournaments");
+  const tSeo = await getTranslations("seo");
 
   const data = await getHomeData();
   const dateFormatter = new Intl.DateTimeFormat(locale, { day: "numeric", month: "short" });
@@ -83,6 +86,8 @@ export default async function HomePage() {
 
   return (
     <div className="flex flex-col gap-10">
+      <JsonLd data={websiteSchema(locale, tSeo("home.description"))} />
+
       <PageHeader title={tCommon("appName")} lead={t("intro")} />
 
       <section>
