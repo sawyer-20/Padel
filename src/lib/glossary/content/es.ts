@@ -28,17 +28,17 @@ export const es: Record<string, GlossaryContent> = {
     definitionMd:
       "El globo es un golpe alto y profundo, jugado por encima de los rivales que están junto a la red, para obligarlos a retroceder o para que tú (o tu pareja) ganéis tiempo para llegar a la red. Es probablemente el golpe táctico más usado en pádel: mal ejecutado, regala una bandeja fácil al rival; bien ejecutado, cambia la dinámica del punto.",
   },
+  remate: {
+    term: "Remate",
+    status: "machine",
+    definitionMd:
+      "El remate es el golpe de ataque por encima de la cabeza, golpeado con fuerza para intentar cerrar el punto. A diferencia del tenis, en pádel rara vez acaba el punto a la primera: la bola rebota en las paredes y vuelve a estar en juego. La decisión que importa no es cómo rematar, sino cuándo — muchas veces la bandeja o la víbora valen más, porque te dejan en la red en lugar de empujarte atrás.",
+  },
   bajada: {
     term: "Bajada",
     status: "machine",
     definitionMd:
-      'Es el golpe de ataque más directo del pádel: golpear la bola por encima de la cabeza con fuerza, normalmente después de un globo mal ejecutado del rival, buscando terminar el punto o forzar un error. También se le llama simplemente "remate".',
-  },
-  contrapared: {
-    term: "Contrapared",
-    status: "machine",
-    definitionMd:
-      "Es la devolución de una bola después de que bote en la pared del fondo de tu pista. La clave está en dejar que la bola bote primero en el suelo y después en la pared (o al revés, según la trayectoria) antes de devolverla, aprovechando el bote en vez de huir de él.",
+      "La bajada es el golpe que juegas a la bola después de que rebote en la pared del fondo de tu pista, golpeándola de arriba abajo, rasa y con ritmo. Es la respuesta agresiva a un remate o a un globo que te ha pasado por encima: en lugar de devolver otro globo defensivo, aprovechas el rebote de la pared para quitarle la iniciativa al rival. No confundir con el remate — la bajada se define por la pared, no por la fuerza.",
   },
   "salida-de-pared": {
     term: "Salida de pared",
@@ -52,16 +52,16 @@ export const es: Record<string, GlossaryContent> = {
     definitionMd:
       "En pádel, la red es la posición dominante: quien está allí tiene más opciones de ataque y reduce los ángulos del rival. Un buen posicionamiento significa mantenerse cerca de la red sin dejar huecos detrás ni desalinearte de tu pareja, para cubrir la pista juntos.",
   },
-  x3: {
-    term: "X3",
+  contrapared: {
+    term: "Contrapared",
     status: "machine",
     definitionMd:
-      "X3 es un patrón de posicionamiento táctico en el que los cuatro jugadores (las dos parejas) tienden a subir a la red casi al mismo tiempo, creando un intercambio directo entre ambas parejas en esa zona. Es un concepto que se trabaja a menudo en los entrenamientos para mejorar reflejos y posicionamiento en la red.",
+      "En la contrapared golpeas la bola a propósito contra una pared de tu propia pista, para que pase por encima de la red y caiga en el campo contrario. Es un recurso de emergencia: se usa cuando la bola ya te ha pasado y no hay forma de jugarla directamente por encima de la red. Rara vez gana el punto — te mantiene en él.",
   },
   manos: {
-    term: "Manos",
+    term: "Manos (toque)",
     status: "machine",
     definitionMd:
-      "Se refiere a los intercambios rápidos de voleas junto a la red, cuando ambas parejas están una frente a la otra muy cerca. Exige reflejos rápidos y la pala bien colocada delante del cuerpo, más que fuerza.",
+      "Manos es el toque: la capacidad de controlar la bola con sensibilidad en lugar de fuerza — amortiguar una bola rápida, dejar una chiquita a los pies del rival, cambiar el ritmo del punto. Se dice que un jugador tiene buenas manos cuando resuelve estas bolas con suavidad y precisión. En pádel cuenta más que la potencia.",
   },
 };

@@ -28,17 +28,17 @@ export const de: Record<string, GlossaryContent> = {
     definitionMd:
       "Der Lob ist ein hoher, tiefer Schlag über Gegner am Netz hinweg, der sie zum Zurückweichen zwingt oder dir (und deinem Partner) Zeit verschafft, selbst ans Netz zu gelangen. Es ist wahrscheinlich der meistgenutzte taktische Schlag im Padel — schlecht ausgeführt, schenkt er dem Gegner eine leichte Bandeja; gut ausgeführt, dreht er die Dynamik des Punkts.",
   },
-  bajada: {
-    term: "Smash",
+  remate: {
+    term: "Schmetterball (Remate)",
     status: "machine",
     definitionMd:
-      'Der direkteste Angriffsschlag im Padel: den Ball mit Kraft über Kopfhöhe schlagen, meist nach einem schwachen gegnerischen Lob, um den Punkt zu beenden oder einen Fehler zu erzwingen. Auf Spanisch oft "bajada" genannt.',
+      "Der Schmetterball ist der Angriffsschlag über Kopf, hart geschlagen, um den Punkt zu beenden. Anders als im Tennis beendet er den Ballwechsel im Padel selten sofort: Der Ball springt von den Wänden zurück ins Spiel. Entscheidend ist nicht das Wie, sondern das Wann — oft sind Bandeja oder Víbora mehr wert, weil sie dich am Netz halten, statt dich nach hinten zu drängen.",
   },
-  contrapared: {
-    term: "Contrapared",
+  bajada: {
+    term: "Bajada",
     status: "machine",
     definitionMd:
-      "Die Rückgabe eines Balls, nachdem er auf deiner Seite von der hinteren Wand abgeprallt ist. Entscheidend ist, den Ball zuerst auf dem Boden und dann an der Wand aufkommen zu lassen (oder umgekehrt, je nach Flugbahn), bevor du ihn zurückspielst — den Absprung nutzen, statt ihm auszuweichen.",
+      "Die Bajada ist der Schlag, den du auf einen Ball spielst, nachdem er auf deiner Seite von der Rückwand abgeprallt ist — von oben nach unten, flach und mit Tempo geschlagen. Sie ist die offensive Antwort auf einen Schmetterball oder einen Lob, der über dich hinweggegangen ist: Statt erneut defensiv zu lobben, nutzt du den Wandabpraller, um dem Gegner die Initiative zu nehmen. Nicht mit dem Schmetterball verwechseln — die Bajada definiert sich über die Wand, nicht über die Kraft.",
   },
   "salida-de-pared": {
     term: "Salida de pared",
@@ -52,16 +52,16 @@ export const de: Record<string, GlossaryContent> = {
     definitionMd:
       "Im Padel ist das Netz die dominante Position — wer dort steht, hat mehr Angriffsoptionen und verkleinert die Winkel des Gegners. Gute Netzposition bedeutet, nah am Netz zu bleiben, ohne Lücken hinter sich zu lassen oder sich vom Partner zu entkoppeln, damit ihr den Platz gemeinsam abdeckt.",
   },
-  x3: {
-    term: "X3",
+  contrapared: {
+    term: "Contrapared",
     status: "machine",
     definitionMd:
-      "X3 ist ein taktisches Positionierungsmuster, bei dem alle vier Spieler (beide Paare) fast gleichzeitig ans Netz vorrücken und so einen direkten Schlagabtausch zwischen den beiden Teams in dieser Zone erzeugen. Dieses Konzept wird im Training häufig geübt, um Reflexe und Netzposition zu verbessern.",
+      "Bei der Contrapared spielst du den Ball bewusst gegen eine Wand auf deiner eigenen Seite, damit er über das Netz auf die gegnerische Seite fliegt. Ein Notschlag: Du nutzt ihn, wenn der Ball bereits an dir vorbei ist und sich nicht mehr direkt über das Netz spielen lässt. Er gewinnt den Punkt selten — er hält dich darin.",
   },
   manos: {
-    term: "Manos",
+    term: "Manos (Gefühl)",
     status: "machine",
     definitionMd:
-      "Bezeichnet die schnellen Volley-Wechsel am Netz, wenn sich beide Paare aus kurzer Distanz gegenüberstehen. Gefragt sind dabei schnelle Reflexe und ein vor dem Körper gut positionierter Schläger — mehr als reine Kraft.",
+      "Manos steht für Gefühl: die Fähigkeit, den Ball mit Feinheit statt mit Kraft zu kontrollieren — einen schnellen Ball abfangen, eine Chiquita vor die Füße des Gegners legen, das Tempo eines Ballwechsels ändern. Von guten Händen spricht man, wenn jemand solche Bälle weich und präzise löst. Im Padel zählt das mehr als Kraft.",
   },
 };
