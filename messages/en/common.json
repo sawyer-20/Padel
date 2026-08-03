@@ -51,6 +51,7 @@
     "situations": "Match situations",
     "tips": "Tips",
     "glossary": "Glossary",
-    "dataSource": "Rankings, tournaments and results provided by the Padel API. News headlines always link to the original source — we never reproduce third-party text. Editorial content still awaiting review is flagged on the page itself."
+    "dataSource": "Rankings, tournaments and results provided by the Padel API. News headlines always link to the original source — we never reproduce third-party text. Editorial content still awaiting review is flagged on the page itself.",
+    "faq": "FAQ"
   }
 }

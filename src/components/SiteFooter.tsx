@@ -20,6 +20,7 @@ export async function SiteFooter({ locale }: { locale: Locale }) {
   ];
 
   const learn = [
+    { href: "/faq", label: t("footer.faq") },
     { href: "/rules", label: t("nav.rules") },
     { href: "/rules/situations", label: t("footer.situations") },
     { href: "/training/tips", label: t("footer.tips") },

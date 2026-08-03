@@ -35,7 +35,8 @@ export function SituationsList({
       emptyLabel={emptyLabel}
       renderItem={(item) => (
         <div className="rounded-lg border border-line bg-surface p-4">
-          <p className="font-medium">{item.question}</p>
+          {/* h2: esta lista não tem grupos, por isso os itens vêm logo abaixo do h1. */}
+          <h2 className="font-medium">{item.question}</h2>
 
           {item.needsReview && (
             <p

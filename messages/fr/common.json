@@ -51,6 +51,7 @@
     "situations": "Situations de jeu",
     "tips": "Conseils",
     "glossary": "Glossaire",
-    "dataSource": "Classements, tournois et résultats fournis par la Padel API. Les actualités renvoient toujours à la source d'origine — nous ne reproduisons aucun texte de tiers. Le contenu éditorial en attente de relecture est signalé sur la page elle-même."
+    "dataSource": "Classements, tournois et résultats fournis par la Padel API. Les actualités renvoient toujours à la source d'origine — nous ne reproduisons aucun texte de tiers. Le contenu éditorial en attente de relecture est signalé sur la page elle-même.",
+    "faq": "Questions fréquentes"
   }
 }

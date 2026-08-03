@@ -50,5 +50,9 @@
   "settings": {
     "title": "Paramètres",
     "description": "Langue, thème et unités."
+  },
+  "faq": {
+    "title": "Questions fréquentes sur le padel",
+    "description": "Combien de personnes jouent au padel, comment on compte les points, si la balle peut toucher le mur et quel matériel il faut pour débuter."
   }
 }

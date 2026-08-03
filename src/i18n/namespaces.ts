@@ -5,6 +5,7 @@ export const namespaces = [
   "rules",
   "news",
   "training",
+  "faq",
   "seo",
 ] as const;
 

@@ -1,0 +1,13 @@
+{
+  "title": "Häufige Fragen",
+  "intro": "Die Fragen, die fast alle stellen, bevor sie zum ersten Mal auf einen Padelcourt gehen — direkt beantwortet.",
+  "searchPlaceholder": "Frage suchen",
+  "empty": "Keine Frage passt zu deiner Suche.",
+  "categories": {
+    "basics": "Einstieg",
+    "rules": "Regeln",
+    "equipment": "Ausrüstung"
+  },
+  "relatedRule": "Offizielle Regel ansehen",
+  "relatedTerm": "Im Glossar ansehen"
+}

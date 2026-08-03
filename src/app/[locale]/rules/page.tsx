@@ -16,6 +16,7 @@ export async function generateMetadata({ params }: LocaleParams): Promise<Metada
 export default async function RulesPage() {
   const locale = (await getLocale()) as Locale;
   const t = await getTranslations("rules");
+  const tCommon = await getTranslations("common");
 
   const items: { slug: string; title: string; category: string }[] = [];
   for (const rule of rules) {
@@ -36,12 +37,22 @@ export default async function RulesPage() {
       <PageHeader
         title={t("title")}
         actions={
-          <Link
-            href="/rules/situations"
-            className="rounded-md border border-line bg-surface px-3 py-1.5 text-sm font-medium text-ink no-underline hover:border-line-strong"
-          >
-            {t("situations.title")}
-          </Link>
+          <div className="flex flex-wrap gap-2">
+            <Link
+              href="/rules/situations"
+              className="rounded-md border border-line bg-surface px-3 py-1.5 text-sm font-medium text-ink no-underline hover:border-line-strong"
+            >
+              {t("situations.title")}
+            </Link>
+            {/* Quem chega às Regras com uma dúvida de principiante encontra
+                resposta mais depressa na FAQ do que a percorrer 19 artigos. */}
+            <Link
+              href="/faq"
+              className="rounded-md border border-line bg-surface px-3 py-1.5 text-sm font-medium text-ink no-underline hover:border-line-strong"
+            >
+              {tCommon("footer.faq")}
+            </Link>
+          </div>
         }
       />
       <RulesList

@@ -1,0 +1,13 @@
+{
+  "title": "Frequently asked questions",
+  "intro": "The questions almost everyone asks before stepping onto a padel court for the first time — answered straight.",
+  "searchPlaceholder": "Search for a question",
+  "empty": "No question matches your search.",
+  "categories": {
+    "basics": "Getting started",
+    "rules": "Rules",
+    "equipment": "Kit"
+  },
+  "relatedRule": "See the official rule",
+  "relatedTerm": "See in the glossary"
+}

@@ -37,7 +37,7 @@ export function TipsList({
       emptyLabel={emptyLabel}
       renderItem={(item) => (
         <div className="rounded-lg border border-line bg-surface p-4">
-          <p className="font-medium">{item.title}</p>
+          <h3 className="font-medium">{item.title}</h3>
 
           {item.needsReview && (
             <p

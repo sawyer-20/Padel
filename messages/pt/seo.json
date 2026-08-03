@@ -50,5 +50,9 @@
   "settings": {
     "title": "Definições",
     "description": "Idioma, tema e unidades da aplicação."
+  },
+  "faq": {
+    "title": "Perguntas frequentes sobre padel",
+    "description": "Quantas pessoas jogam padel, como se conta o resultado, se a bola pode bater na parede e que material precisas para começar. Respostas diretas."
   }
 }

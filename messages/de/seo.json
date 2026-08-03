@@ -50,5 +50,9 @@
   "settings": {
     "title": "Einstellungen",
     "description": "Sprache, Design und Einheiten."
+  },
+  "faq": {
+    "title": "Häufige Fragen zu Padel",
+    "description": "Wie viele Personen Padel spielen, wie gezählt wird, ob der Ball die Wand berühren darf und welche Ausrüstung du zum Start brauchst."
   }
 }

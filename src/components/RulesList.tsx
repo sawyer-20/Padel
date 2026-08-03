@@ -29,7 +29,10 @@ export function RulesList({
       searchPlaceholder={searchPlaceholder}
       emptyLabel={emptyLabel}
       renderItem={(item) => (
-        <Link href={`/rules/${item.slug}`} className="underline">
+        <Link
+          href={`/rules/${item.slug}`}
+          className="block rounded-lg border border-line bg-surface px-4 py-3 text-ink no-underline transition-colors hover:border-accent hover:text-accent"
+        >
           {item.title}
         </Link>
       )}

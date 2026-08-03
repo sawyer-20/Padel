@@ -50,5 +50,9 @@
   "settings": {
     "title": "Ajustes",
     "description": "Idioma, tema y unidades."
+  },
+  "faq": {
+    "title": "Preguntas frecuentes sobre pádel",
+    "description": "Cuántas personas juegan al pádel, cómo se cuenta el resultado, si la bola puede tocar la pared y qué material necesitas para empezar."
   }
 }

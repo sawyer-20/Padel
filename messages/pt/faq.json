@@ -1,0 +1,13 @@
+{
+  "title": "Perguntas frequentes",
+  "intro": "As perguntas que quase toda a gente faz antes de entrar num campo de padel pela primeira vez — respondidas sem rodeios.",
+  "searchPlaceholder": "Procurar uma pergunta",
+  "empty": "Nenhuma pergunta corresponde à tua pesquisa.",
+  "categories": {
+    "basics": "Começar",
+    "rules": "Regras",
+    "equipment": "Material"
+  },
+  "relatedRule": "Ver a regra oficial",
+  "relatedTerm": "Ver no glossário"
+}

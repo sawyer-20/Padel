@@ -15,6 +15,7 @@ const STATIC_PATHS = [
   "/",
   "/rankings",
   "/tournaments",
+  "/faq",
   "/rules",
   "/rules/situations",
   "/training",

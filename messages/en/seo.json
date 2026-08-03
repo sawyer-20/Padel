@@ -50,5 +50,9 @@
   "settings": {
     "title": "Settings",
     "description": "Language, theme and units."
+  },
+  "faq": {
+    "title": "Padel FAQ",
+    "description": "How many people play padel, how scoring works, whether the ball can hit the wall, and what kit you need to start. Straight answers."
   }
 }

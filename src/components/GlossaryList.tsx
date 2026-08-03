@@ -32,8 +32,8 @@ export function GlossaryList({
       searchPlaceholder={searchPlaceholder}
       emptyLabel={emptyLabel}
       renderItem={(item) => (
-        <div className="rounded-lg border border-line bg-surface p-4">
-          <p className="font-medium">{item.term}</p>
+        <div id={item.slug} className="scroll-mt-28 rounded-lg border border-line bg-surface p-4">
+          <h3 className="font-medium">{item.term}</h3>
 
           {item.needsReview && (
             <p

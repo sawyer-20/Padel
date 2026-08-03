@@ -54,10 +54,13 @@ export function SearchableList<T extends { slug: string }>({
 
       {groups.map(([groupKey, groupItems]) => (
         <section key={groupKey}>
+          {/* h2 e não h3: o título da página é o h1, por isso um h3 aqui saltava
+              um nível — e deixava os títulos dos itens sem um nível livre por
+              baixo para se encaixarem. */}
           {getGroupKey && groupLabels && (
-            <h3 className="mb-2 text-sm font-semibold uppercase text-ink-faint">
+            <h2 className="mb-2 text-sm font-semibold uppercase tracking-wider text-ink-faint">
               {groupLabels[groupKey] ?? groupKey}
-            </h3>
+            </h2>
           )}
           <ul className="flex flex-col gap-2">
             {groupItems.map((item) => (
