@@ -64,4 +64,16 @@ export const fr: Record<string, FaqContent> = {
     answerMd:
       "Elles se ressemblent, mais non. La balle de padel a une pression interne plus faible, ce qui lui donne un rebond plus bas et un jeu plus contrôlé — indispensable sur un petit terrain où elle rebondit en plus sur les murs.\n\nJouer avec des balles de tennis sur un terrain de padel rend le jeu trop rapide et imprévisible. Les tolérances de poids, de diamètre et de rebond sont définies dans le règlement officiel.",
   },
+  "national-ranking": {
+    question: "Où voir le classement national portugais ?",
+    status: "machine",
+    answerMd:
+      "Le classement national appartient à la Fédération portugaise de padel et se trouve sur la plateforme qu'elle utilise pour gérer ses compétitions. On y accède depuis la [page des classements de la FPP](https://fppadel.pt/rankings/).\n\n**Nous ne le reproduisons pas ici**, pour une raison précise : cette plateforme réserve expressément les droits sur ses données au titre de l'article 4 de la directive européenne sur la fouille de textes et de données. C'est un refus écrit, et nous le respectons.\n\nCe que tu trouves sur ce site, c'est le classement du circuit professionnel international (FIP) — autre chose. Un joueur portugais y figure par sa position mondiale, qui n'est pas sa position au classement national.",
+  },
+  "amateur-tournaments": {
+    question: "Où trouver les tournois amateurs au Portugal ?",
+    status: "machine",
+    answerMd:
+      "Pas sur ce site, et il vaut la peine d'expliquer pourquoi.\n\nLe calendrier présenté ici est celui du circuit professionnel international, y compris les épreuves disputées au Portugal. Les tournois de club se jouent ailleurs :\n\n- **[PadelTeams](https://padelteams.pt)** — la plateforme utilisée par de nombreux clubs portugais pour gérer et publier leurs compétitions.\n- **[Tournois de la FPP](https://fppadel.pt/sobre-a-federacao/torneios/)** — les épreuves fédérales.\n- **Les réseaux sociaux des clubs**, où beaucoup de tournois sont annoncés et nulle part ailleurs.\n\nNous ne copions pas ces calendriers ici parce que ceux qui les hébergent ne l'autorisent pas. Nous t'y envoyons, ce qui nous paraît juste — et t'évite de chercher à l'aveugle.",
+  },
 };

@@ -64,4 +64,16 @@ export const en: Record<string, FaqContent> = {
     answerMd:
       "They look the same, but they aren't. A padel ball has lower internal pressure, which gives it a lower bounce and a more controlled game — essential on a small court where the ball also rebounds off the walls.\n\nPlaying with tennis balls on a padel court makes the game too fast and unpredictable. Weight, diameter and bounce tolerances are set out in the official rules.",
   },
+  "national-ranking": {
+    question: "Where can I see the Portuguese national ranking?",
+    status: "machine",
+    answerMd:
+      "The national ranking belongs to the Portuguese Padel Federation and lives on the platform the federation uses to run its competitions. You reach it from the [FPP rankings page](https://fppadel.pt/rankings/).\n\n**We don't reproduce it here**, for a concrete reason: that platform expressly reserves the rights to its data under Article 4 of the EU directive on text and data mining. It's a written refusal, and we respect it.\n\nWhat you'll find on this site is the international professional tour ranking (FIP) — a different thing. A Portuguese player appears there by world position, which is not the same as their national ranking position.",
+  },
+  "amateur-tournaments": {
+    question: "Where do I find amateur tournaments in Portugal?",
+    status: "machine",
+    answerMd:
+      "Not on this site, and it's worth explaining why.\n\nThe calendar here is the international professional tour, including the events held in Portugal. Club tournaments run elsewhere:\n\n- **[PadelTeams](https://padelteams.pt)** — the platform many Portuguese clubs use to run and publish their competitions.\n- **[FPP tournaments](https://fppadel.pt/sobre-a-federacao/torneios/)** — the federated events.\n- **Club social media**, where many tournaments are announced and nowhere else.\n\nWe don't copy those calendars here because the platforms hosting them don't allow it. We send you to them instead, which seems fair — and saves you searching blind.",
+  },
 };

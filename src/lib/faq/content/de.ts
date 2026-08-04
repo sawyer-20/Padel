@@ -64,4 +64,16 @@ export const de: Record<string, FaqContent> = {
     answerMd:
       "Sie sehen gleich aus, sind es aber nicht. Der Padelball hat einen geringeren Innendruck, was ihm einen niedrigeren Absprung und ein kontrollierteres Spiel gibt — auf einem kleinen Court, auf dem er zusätzlich von den Wänden abprallt, ist das entscheidend.\n\nMit Tennisbällen auf einem Padelcourt wird das Spiel zu schnell und unberechenbar. Toleranzen für Gewicht, Durchmesser und Absprung sind im offiziellen Regelwerk festgelegt.",
   },
+  "national-ranking": {
+    question: "Wo sehe ich die portugiesische nationale Rangliste?",
+    status: "machine",
+    answerMd:
+      "Die nationale Rangliste gehört dem portugiesischen Padelverband und liegt auf der Plattform, über die der Verband seine Wettbewerbe organisiert. Man erreicht sie über die [Ranglisten-Seite der FPP](https://fppadel.pt/rankings/).\n\n**Wir geben sie hier nicht wieder**, und zwar aus einem konkreten Grund: Diese Plattform behält sich die Rechte an ihren Daten ausdrücklich vor, nach Artikel 4 der EU-Richtlinie zum Text- und Data-Mining. Das ist eine schriftliche Absage, und wir respektieren sie.\n\nWas du auf dieser Seite findest, ist die Rangliste der internationalen Profitour (FIP) — etwas anderes. Eine portugiesische Spielerin steht dort mit ihrer Weltposition, und die ist nicht dieselbe wie ihr Platz in der nationalen Rangliste.",
+  },
+  "amateur-tournaments": {
+    question: "Wo finde ich Amateurturniere in Portugal?",
+    status: "machine",
+    answerMd:
+      "Nicht auf dieser Seite, und es lohnt sich zu erklären, warum.\n\nDer Kalender hier ist der der internationalen Profitour, einschließlich der Turniere in Portugal. Clubturniere laufen woanders:\n\n- **[PadelTeams](https://padelteams.pt)** — die Plattform, über die viele portugiesische Clubs ihre Wettbewerbe organisieren und veröffentlichen.\n- **[FPP-Turniere](https://fppadel.pt/sobre-a-federacao/torneios/)** — die Verbandsturniere.\n- **Die sozialen Netzwerke der Clubs**, wo viele Turniere angekündigt werden und sonst nirgends.\n\nWir kopieren diese Kalender nicht hierher, weil die Betreiber es nicht erlauben. Wir schicken dich stattdessen zu ihnen — das scheint uns fair und erspart dir die blinde Suche.",
+  },
 };

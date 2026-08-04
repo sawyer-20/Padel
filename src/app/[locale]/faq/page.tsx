@@ -61,6 +61,7 @@ export default async function FaqPage() {
     basics: t("categories.basics"),
     rules: t("categories.rules"),
     equipment: t("categories.equipment"),
+    portugal: t("categories.portugal"),
   };
 
   return (

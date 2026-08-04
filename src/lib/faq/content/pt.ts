@@ -64,4 +64,16 @@ export const pt: Record<string, FaqContent> = {
     answerMd:
       "Parecem iguais, mas não são. A bola de padel tem menos pressão interna, o que lhe dá um ressalto mais baixo e um jogo mais controlado — essencial num campo pequeno onde a bola ainda ressalta nas paredes.\n\nJogar com bolas de ténis num campo de padel torna o jogo demasiado rápido e imprevisível. As tolerâncias de peso, diâmetro e ressalto estão definidas no regulamento oficial.",
   },
+  "national-ranking": {
+    question: "Onde vejo o ranking nacional português?",
+    status: "machine",
+    answerMd:
+      "O ranking nacional é da Federação Portuguesa de Padel e vive na plataforma que a federação usa para gerir competições. Chegas lá pela [página de rankings da FPP](https://fppadel.pt/rankings/).\n\n**Aqui não o reproduzimos**, e a razão é concreta: essa plataforma reserva expressamente os direitos sobre os seus dados ao abrigo do artigo 4.º da diretiva europeia sobre prospeção de textos e dados. É uma recusa escrita, e respeitamo-la.\n\nO que encontras neste site é o ranking do circuito profissional internacional (FIP) — outra coisa. Um jogador português aparece nessa lista pela posição mundial, que não é a mesma que a posição no ranking nacional.",
+  },
+  "amateur-tournaments": {
+    question: "Onde encontro torneios amadores em Portugal?",
+    status: "machine",
+    answerMd:
+      "Não estão neste site, e vale a pena explicar porquê.\n\nO calendário que aqui vês é o do circuito profissional internacional, incluindo as provas que se realizam em Portugal. Os torneios de clube correm noutros sítios:\n\n- **[PadelTeams](https://padelteams.pt)** — a plataforma onde muitos clubes portugueses gerem e publicam as suas competições.\n- **[Torneios da FPP](https://fppadel.pt/sobre-a-federacao/torneios/)** — as provas federadas.\n- **As redes sociais dos clubes**, onde muitos torneios são anunciados e mais nada.\n\nNão copiamos esses calendários para aqui porque quem os aloja não o autoriza. Mandamos-te para eles, que é o que nos parece justo — e poupa-te a procurar às cegas.",
+  },
 };

@@ -64,4 +64,16 @@ export const es: Record<string, FaqContent> = {
     answerMd:
       "Lo parecen, pero no lo son. La bola de pádel tiene menos presión interna, lo que le da un bote más bajo y un juego más controlado — esencial en una pista pequeña donde además rebota en las paredes.\n\nJugar con bolas de tenis en una pista de pádel hace el juego demasiado rápido e impredecible. Las tolerancias de peso, diámetro y bote están definidas en el reglamento oficial.",
   },
+  "national-ranking": {
+    question: "¿Dónde veo el ranking nacional portugués?",
+    status: "machine",
+    answerMd:
+      "El ranking nacional es de la Federación Portuguesa de Pádel y vive en la plataforma que la federación usa para gestionar sus competiciones. Se llega desde la [página de rankings de la FPP](https://fppadel.pt/rankings/).\n\n**Aquí no lo reproducimos**, y la razón es concreta: esa plataforma reserva expresamente los derechos sobre sus datos al amparo del artículo 4 de la directiva europea sobre minería de textos y datos. Es una negativa por escrito, y la respetamos.\n\nLo que encuentras en este sitio es el ranking del circuito profesional internacional (FIP) — otra cosa. Un jugador portugués aparece ahí por su posición mundial, que no es la misma que su posición en el ranking nacional.",
+  },
+  "amateur-tournaments": {
+    question: "¿Dónde encuentro torneos amateur en Portugal?",
+    status: "machine",
+    answerMd:
+      "No están en este sitio, y vale la pena explicar por qué.\n\nEl calendario que ves aquí es el del circuito profesional internacional, incluidas las pruebas que se celebran en Portugal. Los torneos de club van por otro lado:\n\n- **[PadelTeams](https://padelteams.pt)** — la plataforma que muchos clubes portugueses usan para gestionar y publicar sus competiciones.\n- **[Torneos de la FPP](https://fppadel.pt/sobre-a-federacao/torneios/)** — las pruebas federadas.\n- **Las redes sociales de los clubes**, donde muchos torneos se anuncian y en ningún otro sitio.\n\nNo copiamos esos calendarios aquí porque quien los aloja no lo autoriza. Te mandamos a ellos, que nos parece lo justo — y te ahorra buscar a ciegas.",
+  },
 };

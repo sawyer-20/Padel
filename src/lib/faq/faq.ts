@@ -79,6 +79,24 @@ export const faq: FaqMeta[] = [
     relatedRuleSlug: "the-ball",
     relatedTermSlug: null,
   },
+  // As duas perguntas que este site não consegue responder com dados próprios.
+  // Em vez de as ignorar, dizem honestamente onde a resposta vive — que é o que
+  // serve quem procura, e a única coisa legítima que podemos fazer com dados de
+  // terceiros que não nos autorizam a reproduzi-los.
+  {
+    slug: "national-ranking",
+    category: "portugal",
+    order: 11,
+    relatedRuleSlug: null,
+    relatedTermSlug: null,
+  },
+  {
+    slug: "amateur-tournaments",
+    category: "portugal",
+    order: 12,
+    relatedRuleSlug: null,
+    relatedTermSlug: null,
+  },
 ];
 
 export function getFaqMeta(slug: string): FaqMeta | null {

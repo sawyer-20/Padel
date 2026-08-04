@@ -55,7 +55,9 @@ export function FaqList({
           )}
 
           <div
-            className="mt-2 text-sm leading-relaxed [&_li]:my-0.5 [&_p]:my-2 [&_strong]:font-semibold [&_ul]:my-2 [&_ul]:list-disc [&_ul]:pl-5"
+            // As respostas podem conter ligações para fontes externas; sem estilo
+            // ficavam indistinguíveis do texto à volta.
+            className="mt-2 text-sm leading-relaxed [&_a]:text-accent [&_a]:underline [&_a]:underline-offset-2 [&_li]:my-0.5 [&_p]:my-2 [&_strong]:font-semibold [&_ul]:my-2 [&_ul]:list-disc [&_ul]:pl-5"
             dangerouslySetInnerHTML={{ __html: item.answerHtml }}
           />
 

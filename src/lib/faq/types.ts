@@ -1,6 +1,6 @@
 import type { RuleStatus } from "@/lib/rules/types";
 
-export type FaqCategory = "basics" | "rules" | "equipment";
+export type FaqCategory = "basics" | "rules" | "equipment" | "portugal";
 
 export type FaqMeta = {
   slug: string;
