@@ -46,7 +46,14 @@ export default async function LocaleLayout({
         {t("skipToContent")}
       </a>
 
-      <SiteHeader locale={locale} brand={t("appName")} items={navItems} navLabel={t("nav.label")} />
+      <SiteHeader
+        locale={locale}
+        brand={t("appName")}
+        items={navItems}
+        navLabel={t("nav.label")}
+        searchLabel={t("search.label")}
+        searchPlaceholder={t("search.placeholder")}
+      />
 
       <main id="content" className="mx-auto w-full max-w-6xl flex-1 px-4 py-8 pb-16 sm:px-6">
         {children}

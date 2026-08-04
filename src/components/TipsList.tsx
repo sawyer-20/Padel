@@ -36,7 +36,7 @@ export function TipsList({
       searchPlaceholder={searchPlaceholder}
       emptyLabel={emptyLabel}
       renderItem={(item) => (
-        <div className="rounded-lg border border-line bg-surface p-4">
+        <div id={item.slug} className="scroll-mt-28 rounded-lg border border-line bg-surface p-4">
           <h3 className="font-medium">{item.title}</h3>
 
           {item.needsReview && (

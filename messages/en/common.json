@@ -53,5 +53,23 @@
     "glossary": "Glossary",
     "dataSource": "Rankings, tournaments and results provided by the Padel API. News headlines always link to the original source — we never reproduce third-party text. Editorial content still awaiting review is flagged on the page itself.",
     "faq": "FAQ"
+  },
+  "search": {
+    "label": "Search the site",
+    "placeholder": "Search rules, terms, tips…",
+    "submit": "Search",
+    "title": "Search",
+    "metaDescription": "Search across every rule, match situation, glossary term, tip and frequently asked question.",
+    "noQuery": "Type something to search the rules, the glossary, the tips and the FAQ.",
+    "noResults": "Nothing found for “{query}”.",
+    "tryFaq": "See the FAQ",
+    "resultCount": "{count, plural, one {# result} other {# results}} for “{query}”",
+    "types": {
+      "rule": "Rule",
+      "situation": "Match situation",
+      "term": "Glossary",
+      "tip": "Tip",
+      "faq": "FAQ"
+    }
   }
 }

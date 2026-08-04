@@ -33,8 +33,10 @@ export function SituationsList({
       getSearchText={(item) => item.question}
       searchPlaceholder={searchPlaceholder}
       emptyLabel={emptyLabel}
+      // id + scroll-mt: a pesquisa global liga diretamente a cada situação, e sem
+      // a margem o cabeçalho fixo tapava-a ao saltar para lá.
       renderItem={(item) => (
-        <div className="rounded-lg border border-line bg-surface p-4">
+        <div id={item.slug} className="scroll-mt-28 rounded-lg border border-line bg-surface p-4">
           {/* h2: esta lista não tem grupos, por isso os itens vêm logo abaixo do h1. */}
           <h2 className="font-medium">{item.question}</h2>
 

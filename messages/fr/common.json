@@ -53,5 +53,23 @@
     "glossary": "Glossaire",
     "dataSource": "Classements, tournois et résultats fournis par la Padel API. Les actualités renvoient toujours à la source d'origine — nous ne reproduisons aucun texte de tiers. Le contenu éditorial en attente de relecture est signalé sur la page elle-même.",
     "faq": "Questions fréquentes"
+  },
+  "search": {
+    "label": "Rechercher sur le site",
+    "placeholder": "Rechercher règles, termes, conseils…",
+    "submit": "Rechercher",
+    "title": "Recherche",
+    "metaDescription": "Recherche dans toutes les règles, situations de jeu, termes du glossaire, conseils et questions fréquentes.",
+    "noQuery": "Écris quelque chose pour chercher dans les règles, le glossaire, les conseils et les questions fréquentes.",
+    "noResults": "Rien trouvé pour « {query} ».",
+    "tryFaq": "Voir les questions fréquentes",
+    "resultCount": "{count, plural, one {# résultat} other {# résultats}} pour « {query} »",
+    "types": {
+      "rule": "Règle",
+      "situation": "Situation de jeu",
+      "term": "Glossaire",
+      "tip": "Conseil",
+      "faq": "Question fréquente"
+    }
   }
 }
