@@ -15,6 +15,10 @@
 # testing
 /coverage
 
+# dev tooling local (log do servidor de dev, config do editor/agente)
+.dev-out.log
+/.claude/
+
 # misc
 .DS_Store
 *.pem
