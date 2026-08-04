@@ -23,5 +23,7 @@ export interface PadelDataSource {
    */
   getPlayersByCountry(params: {
     country: string;
+    /** Quantas páginas de 50 ler. O Início só precisa da primeira. */
+    maxPages?: number;
   }): Promise<{ players: PlayerProfile[]; total: number }>;
 }

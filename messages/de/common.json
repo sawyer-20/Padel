@@ -41,7 +41,10 @@
     "women": "Damen",
     "seeAll": "alle ansehen",
     "sectionUnavailable": "Dieser Abschnitt konnte gerade nicht geladen werden.",
-    "noTournament": "Keine bevorstehenden Turniere."
+    "noTournament": "Keine bevorstehenden Turniere.",
+    "countrySection": "Padel in {country}",
+    "countryNextTournament": "Nächstes Turnier im Land",
+    "countryPlayers": "{total} auf der Tour"
   },
   "footer": {
     "tagline": "Ranglisten, Turniere und die Padel-Regeln — in fünf Sprachen, ohne auf die Übersetzung zu warten.",

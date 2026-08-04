@@ -111,13 +111,13 @@ export const padelApiSource: PadelDataSource = {
     return parsePlayer(json);
   },
 
-  async getPlayersByCountry({ country }) {
+  async getPlayersByCountry({ country, maxPages = PLAYERS_BY_COUNTRY_PAGES }) {
     // O total vem da primeira página e é o número real de jogadores do país;
     // `players` é só o que conseguimos ler. Portugal cabe todo em 121; Espanha
     // tem 659 e a página diz honestamente quantos está a mostrar.
     let total = 0;
 
-    const players = await fetchPagesInSeries(PLAYERS_BY_COUNTRY_PAGES, async (page) => {
+    const players = await fetchPagesInSeries(maxPages, async (page) => {
       const result = parsePlayersResponse(
         await padelApiFetch(
           `/players?nationality=${encodeURIComponent(country)}&sort_by=ranking&order_by=asc` +

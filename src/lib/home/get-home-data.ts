@@ -1,12 +1,23 @@
 import { padelApiSource } from "@/lib/data-sources/padel-api-source";
 import { fetchNews } from "@/lib/news/fetch-news";
 import type { NewsItem } from "@/lib/news/schemas";
-import type { RankingEntry, TournamentSummary } from "@/lib/padel-api/schemas";
+import type { PlayerProfile, RankingEntry, TournamentSummary } from "@/lib/padel-api/schemas";
 import { pickNextTournament } from "./pick-next-tournament";
+import { pickHomeCountryPlayers } from "./pick-home-country-players";
 
 const TOP_RANKING_COUNT = 5;
 const NEWS_COUNT = 3;
 const TOURNAMENT_WINDOW_DAYS_BACK = 30;
+const HOME_COUNTRY_PLAYER_COUNT = 6;
+
+/**
+ * O país que o Início destaca.
+ *
+ * Fixo em Portugal, e não deduzido do idioma: este é um portal de padel
+ * português que fala cinco línguas, não cinco portais. Quem lê em alemão vê
+ * "Padel em Portugal", que é o que o sítio é.
+ */
+export const HOME_COUNTRY = "PT";
 
 export type HomeData = {
   nextTournament: TournamentSummary | null;
@@ -16,6 +27,13 @@ export type HomeData = {
   rankingsFailed: boolean;
   news: NewsItem[];
   newsFailed: boolean;
+  /** Bloco do país da casa: o que se passa em Portugal e quem lá joga. */
+  country: {
+    nextTournament: TournamentSummary | null;
+    players: PlayerProfile[];
+    totalPlayers: number;
+    failed: boolean;
+  };
 };
 
 function formatDateParam(date: Date): string {
@@ -51,7 +69,36 @@ export async function getHomeData(): Promise<HomeData> {
   const topMen = menResult.status === "fulfilled" ? menResult.value.slice(0, TOP_RANKING_COUNT) : [];
   const topWomen = womenResult.status === "fulfilled" ? womenResult.value.slice(0, TOP_RANKING_COUNT) : [];
 
+  // Depois do lote e não dentro dele: a Padel API devolve 429 quando lhe caem
+  // vários pedidos em cima ao mesmo tempo, e o bloco do país é o menos
+  // importante da página — não vale a pena arriscar derrubar os outros três.
+  // Só a primeira página: aqui bastam meia dúzia de nomes.
+  let countryPlayers: PlayerProfile[] = [];
+  let totalCountryPlayers = 0;
+  let countryFailed = false;
+
+  try {
+    const result = await padelApiSource.getPlayersByCountry({ country: HOME_COUNTRY, maxPages: 1 });
+    countryPlayers = pickHomeCountryPlayers(result.players, HOME_COUNTRY_PLAYER_COUNT);
+    totalCountryPlayers = result.total;
+  } catch (error) {
+    console.error("Início: falha nos jogadores do país:", error);
+    countryFailed = true;
+  }
+
+  const countryTournaments =
+    tournamentsResult.status === "fulfilled"
+      ? tournamentsResult.value.filter((tournament) => tournament.country === HOME_COUNTRY)
+      : [];
+
   return {
+    country: {
+      // Filtrado da lista que já foi buscada — sem pedido extra à API.
+      nextTournament: pickNextTournament(countryTournaments, today),
+      players: countryPlayers,
+      totalPlayers: totalCountryPlayers,
+      failed: countryFailed && tournamentsResult.status === "rejected",
+    },
     nextTournament:
       tournamentsResult.status === "fulfilled"
         ? pickNextTournament(tournamentsResult.value, today)

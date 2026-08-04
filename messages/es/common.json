@@ -41,7 +41,10 @@
     "women": "Femenino",
     "seeAll": "ver todo",
     "sectionUnavailable": "No se pudo cargar esta sección ahora.",
-    "noTournament": "No hay torneos próximos para mostrar."
+    "noTournament": "No hay torneos próximos para mostrar.",
+    "countrySection": "Pádel en {country}",
+    "countryNextTournament": "Próximo torneo en el país",
+    "countryPlayers": "{total} en el circuito"
   },
   "footer": {
     "tagline": "Rankings, torneos y las reglas del pádel — en cinco idiomas, sin esperar a la traducción.",

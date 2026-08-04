@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { getLocale, getTranslations } from "next-intl/server";
 import type { Locale } from "@/i18n/routing";
 import { Link } from "@/i18n/navigation";
-import { getHomeData } from "@/lib/home/get-home-data";
+import { getHomeData, HOME_COUNTRY } from "@/lib/home/get-home-data";
+import { formatCountry } from "@/lib/format/labels";
 import type { RankingEntry } from "@/lib/padel-api/schemas";
 import { staticPageMetadata, type LocaleParams } from "@/lib/seo/page-metadata";
 import { PageHeader } from "@/components/PageHeader";
@@ -76,6 +77,7 @@ export default async function HomePage() {
   const tSeo = await getTranslations("seo");
 
   const data = await getHomeData();
+  const homeCountryName = formatCountry(locale, HOME_COUNTRY) ?? HOME_COUNTRY;
   const dateFormatter = new Intl.DateTimeFormat(locale, { day: "numeric", month: "short" });
   const newsDateFormatter = new Intl.DateTimeFormat(locale, { dateStyle: "medium" });
 
@@ -127,6 +129,66 @@ export default async function HomePage() {
           </Panel>
         )}
       </section>
+
+      {/* O que se passa em Portugal, antes do ranking mundial: é o que distingue
+          este sítio de qualquer portal de padel internacional. */}
+      {!data.country.failed && (data.country.nextTournament || data.country.players.length > 0) && (
+        <section>
+          <SectionHeading
+            title={t("countrySection", { country: homeCountryName })}
+            action={<SeeAll href="/players" label={t("seeAll")} />}
+          />
+
+          <div className="grid gap-4 sm:grid-cols-2">
+            {data.country.nextTournament && (
+              <Panel className="p-5">
+                <p className="text-xs font-semibold uppercase tracking-wider text-ink-faint">
+                  {t("countryNextTournament")}
+                </p>
+                <Link
+                  href={`/tournaments/${data.country.nextTournament.id}`}
+                  className="mt-1.5 block font-semibold tracking-tight text-ink no-underline hover:text-accent"
+                >
+                  {data.country.nextTournament.name}
+                </Link>
+                <p className="mt-1 text-sm text-ink-muted">
+                  {data.country.nextTournament.location}
+                  {" · "}
+                  <time dateTime={data.country.nextTournament.startDate}>
+                    {dateFormatter.format(new Date(data.country.nextTournament.startDate))}
+                  </time>
+                </p>
+              </Panel>
+            )}
+
+            {data.country.players.length > 0 && (
+              <Panel className="overflow-hidden">
+                <p className="border-b border-line px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-ink-faint">
+                  {t("countryPlayers", { total: data.country.totalPlayers })}
+                </p>
+                <ul className="divide-y divide-line">
+                  {data.country.players.map((player) => (
+                    <li key={player.id}>
+                      <Link
+                        href={`/players/${player.id}`}
+                        className="flex items-center gap-3 px-4 py-2 text-sm no-underline"
+                      >
+                        <span className="w-8 shrink-0 text-right tabular-nums text-ink-faint">
+                          {player.ranking.masked ? tRankings("maskedValue") : player.ranking.value}
+                        </span>
+                        <span className="min-w-0 flex-1 truncate text-ink">{player.name}</span>
+                        <span className="shrink-0 text-xs text-ink-faint">
+                          {tRankings(player.category === "women" ? "women" : "men")}
+                        </span>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </Panel>
+            )}
+          </div>
+        </section>
+      )}
 
       <section>
         <SectionHeading
