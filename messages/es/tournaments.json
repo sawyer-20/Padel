@@ -21,5 +21,7 @@
     "prize": "Premio",
     "winners": "Campeones",
     "noMatches": "No hay partidos para mostrar en esta categoría."
-  }
+  },
+  "countryFilterLabel": "Filtrar por país",
+  "allCountries": "Todos ({count})"
 }

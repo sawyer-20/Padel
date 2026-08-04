@@ -7,6 +7,7 @@ import { PageHeader } from "@/components/PageHeader";
 import { Badge, type BadgeTone } from "@/components/ui";
 import { formatDateRange } from "@/lib/format/dates";
 import { formatCountry, formatTournamentLevel } from "@/lib/format/labels";
+import { HOME_COUNTRY } from "@/lib/home/get-home-data";
 import { staticPageMetadata, type LocaleParams } from "@/lib/seo/page-metadata";
 
 // Nunca gerado estaticamente com dados reais no build (regra §1.1 do PROJECT.md) — o
@@ -72,9 +73,37 @@ function groupByStatus(
   ]);
 }
 
-export default async function TournamentsPage() {
+/**
+ * Países presentes na lista, ordenados por número de torneios, com Portugal
+ * sempre à frente.
+ *
+ * Derivado dos dados e não de uma lista fixa: um país sem torneios este mês não
+ * deve aparecer como filtro que devolve zero.
+ */
+function countriesInList(tournaments: TournamentSummary[]): { code: string; count: number }[] {
+  const counts = new Map<string, number>();
+  for (const tournament of tournaments) {
+    if (!tournament.country) continue;
+    counts.set(tournament.country, (counts.get(tournament.country) ?? 0) + 1);
+  }
+
+  return [...counts.entries()]
+    .map(([code, count]) => ({ code, count }))
+    .sort((a, b) => {
+      if (a.code === HOME_COUNTRY) return -1;
+      if (b.code === HOME_COUNTRY) return 1;
+      return b.count - a.count || a.code.localeCompare(b.code);
+    });
+}
+
+export default async function TournamentsPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ country?: string }>;
+}) {
   const locale = await getLocale();
   const t = await getTranslations("tournaments");
+  const { country: selectedCountry } = await searchParams;
   const now = new Date();
   const fromDate = formatDateParam(new Date(now.getTime() - WINDOW_DAYS_BACK * 24 * 60 * 60 * 1000));
   const today = formatDateParam(now);
@@ -89,11 +118,48 @@ export default async function TournamentsPage() {
     errored = true;
   }
 
-  const groups = tournaments ? groupByStatus(tournaments, today) : [];
+  const all = tournaments ?? [];
+  const countries = countriesInList(all);
+  const isKnownCountry = countries.some((c) => c.code === selectedCountry);
+  const visible = isKnownCountry ? all.filter((tour) => tour.country === selectedCountry) : all;
+  const groups = groupByStatus(visible, today);
 
   return (
     <div>
       <PageHeader title={t("title")} />
+
+      {countries.length > 1 && (
+        <nav aria-label={t("countryFilterLabel")} className="mb-6 flex flex-wrap gap-1.5">
+          <Link
+            href="/tournaments"
+            scroll={false}
+            aria-current={isKnownCountry ? undefined : "page"}
+            className={`rounded-md border px-2.5 py-1 text-sm no-underline ${
+              isKnownCountry
+                ? "border-line text-ink-muted hover:border-line-strong hover:text-ink"
+                : "border-accent bg-accent font-medium text-accent-ink"
+            }`}
+          >
+            {t("allCountries", { count: all.length })}
+          </Link>
+          {countries.map(({ code, count }) => (
+            <Link
+              key={code}
+              href={`/tournaments?country=${code}`}
+              scroll={false}
+              aria-current={selectedCountry === code ? "page" : undefined}
+              className={`rounded-md border px-2.5 py-1 text-sm no-underline ${
+                selectedCountry === code
+                  ? "border-accent bg-accent font-medium text-accent-ink"
+                  : "border-line text-ink-muted hover:border-line-strong hover:text-ink"
+              }`}
+            >
+              {formatCountry(locale, code) ?? code}{" "}
+              <span className="tabular-nums opacity-70">{count}</span>
+            </Link>
+          ))}
+        </nav>
+      )}
 
       {errored && <p role="alert">{t("error")}</p>}
 

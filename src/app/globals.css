@@ -41,7 +41,10 @@
     --line-strong: #c8d1cd;
     --ink: #111716;
     --ink-muted: #56615d;
-    --ink-faint: #79837f;
+    /* 4.60:1 no pior fundo (raised). O valor anterior, #79837f, ficava em 3.47
+       e falhava o mínimo de 4.5 da WCAG AA — e este token veste datas, contagens
+       e rótulos, ou seja, quase todo o texto pequeno do sítio. */
+    --ink-faint: #656f6b;
     --accent: #0e6e5e;
     --accent-ink: #ffffff;
     --accent-soft: #dcefea;

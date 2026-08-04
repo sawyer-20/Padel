@@ -21,5 +21,7 @@
     "prize": "Prize",
     "winners": "Champions",
     "noMatches": "No matches to show for this category."
-  }
+  },
+  "countryFilterLabel": "Filter by country",
+  "allCountries": "All ({count})"
 }

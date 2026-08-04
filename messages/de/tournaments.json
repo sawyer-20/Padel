@@ -21,5 +21,7 @@
     "prize": "Preisgeld",
     "winners": "Sieger",
     "noMatches": "Keine Spiele für diese Kategorie."
-  }
+  },
+  "countryFilterLabel": "Nach Land filtern",
+  "allCountries": "Alle ({count})"
 }

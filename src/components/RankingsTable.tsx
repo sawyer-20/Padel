@@ -18,6 +18,8 @@ export type RankingRow = {
   points: string;
   /** Posição numérica quando conhecida — só para destacar o pódio. */
   positionNumber: number | null;
+  /** Pontos ganhos ou perdidos desde a atualização anterior. */
+  pointsDiff: number | null;
 };
 
 export type RankingsTableLabels = {
@@ -142,7 +144,21 @@ export function RankingsTable({ rows, labels }: { rows: RankingRow[]; labels: Ra
                       </Link>
                     </td>
                     <td className="px-4 py-2.5 text-ink-muted">{row.country ?? "—"}</td>
-                    <td className="px-4 py-2.5 text-right font-medium tabular-nums">{row.points}</td>
+                    <td className="px-4 py-2.5 text-right tabular-nums">
+                      <span className="font-medium">{row.points}</span>
+                      {row.pointsDiff !== null && row.pointsDiff !== 0 && (
+                        // Sinal e cor, não só cor: quem não distingue vermelho de
+                        // verde continua a ler o "+" ou o "−".
+                        <span
+                          className={`ml-2 text-xs ${
+                            row.pointsDiff > 0 ? "text-accent" : "text-live"
+                          }`}
+                        >
+                          {row.pointsDiff > 0 ? "+" : "−"}
+                          {Math.abs(row.pointsDiff)}
+                        </span>
+                      )}
+                    </td>
                   </tr>
                 );
               })}

@@ -11,6 +11,12 @@ const RankingItemSchema = z.object({
   nationality: z.string().nullable().optional(),
   ranking: MaskedValueSchema,
   points: MaskedValueSchema,
+  // Variação de pontos desde a atualização anterior. A API também devolve
+  // `ranking_diff`, que não lemos: não consegui confirmar se um +1 significa
+  // "subiu uma posição" ou "desceu uma", e uma seta virada ao contrário é pior
+  // do que seta nenhuma. `points_diff` não tem essa ambiguidade — negativo é
+  // perder pontos.
+  points_diff: MaskedValueSchema.nullable().optional(),
   date: z.string().optional(),
 });
 
@@ -22,6 +28,7 @@ export type RankingEntry = {
   nationality: string | null;
   ranking: MaskedNumber;
   points: MaskedNumber;
+  pointsDiff: MaskedNumber;
   category: string;
 };
 
@@ -33,6 +40,8 @@ export function parseRankingsResponse(json: unknown): RankingEntry[] {
     nationality: item.nationality ?? null,
     ranking: normalizeMaskedValue(item.ranking),
     points: normalizeMaskedValue(item.points),
+    pointsDiff:
+      item.points_diff == null ? { value: null, masked: false } : normalizeMaskedValue(item.points_diff),
     category: item.category,
   }));
 }

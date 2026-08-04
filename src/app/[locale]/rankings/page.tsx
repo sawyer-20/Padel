@@ -54,6 +54,7 @@ export default async function RankingsPage({
     position: entry.ranking.masked ? t("maskedValue") : String(entry.ranking.value),
     points: entry.points.masked ? t("maskedValue") : String(entry.points.value),
     positionNumber: entry.ranking.masked ? null : entry.ranking.value,
+    pointsDiff: entry.pointsDiff.masked ? null : entry.pointsDiff.value,
   }));
 
   return (

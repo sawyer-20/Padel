@@ -19,6 +19,7 @@ describe("parseRankingsResponse", () => {
         nationality: "AR",
         ranking: 1,
         points: 21266,
+        points_diff: -712,
         date: "2026-07-27",
       },
     ]);
@@ -32,9 +33,19 @@ describe("parseRankingsResponse", () => {
         nationality: "AR",
         ranking: { value: 1, masked: false },
         points: { value: 21266, masked: false },
+        pointsDiff: { value: -712, masked: false },
         category: "men",
       },
     ]);
+  });
+
+  it("aceita uma resposta sem points_diff sem rebentar", () => {
+    // A API nem sempre devolve o campo; a tabela mostra o valor sem variação.
+    const result = parseRankingsResponse(
+      buildResponse([{ id: 1, name: "Sem variação", category: "men", ranking: 1, points: 100 }]),
+    );
+
+    expect(result[0]?.pointsDiff).toEqual({ value: null, masked: false });
   });
 
   it("marca valores 'hidden_free_plan' como mascarados em vez de os esconder ou inventar um valor", () => {
