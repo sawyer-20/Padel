@@ -11,6 +11,20 @@ export type NewsSource = {
 
 export const newsSources: NewsSource[] = [
   {
+    // A primeira fonte em português, e a única institucional: é a federação a
+    // falar por si. Publica pouco — 4 artigos em 2026, 12 em 2025 — e por isso
+    // não enche a página, mas quando publica é o comunicado oficial.
+    //
+    // Acesso legítimo, ao contrário da plataforma de rankings da própria FPP
+    // (tour.tiesports.com): este robots.txt só protege /wp-admin/, não invoca
+    // reserva de direitos e não bloqueia agentes automáticos.
+    id: "fpp",
+    name: "Federação Portuguesa de Padel",
+    feedUrl: "https://fppadel.pt/feed/",
+    homepage: "https://fppadel.pt/",
+    language: "pt",
+  },
+  {
     id: "fip",
     name: "International Padel Federation",
     feedUrl: "https://www.padelfip.com/news/feed/",
@@ -47,6 +61,6 @@ export const newsSources: NewsSource[] = [
   },
 ];
 
-// Idiomas efetivamente cobertos pelas fontes acima. Não há (ainda) fonte em pt nem de —
-// ver nota no plano da Fase 3: é uma lacuna de conteúdo, não técnica.
+// Idiomas efetivamente cobertos pelas fontes acima. Falta alemão: não se
+// encontrou nenhum feed em de que responda a pedidos automáticos.
 export const availableNewsLanguages = [...new Set(newsSources.map((s) => s.language))].sort();
