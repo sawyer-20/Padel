@@ -20,20 +20,29 @@ export function tokenize(query: string): string[] {
     .filter((token) => token.length > 1);
 }
 
-const TITLE_WORD_SCORE = 12;
-const TITLE_PARTIAL_SCORE = 6;
-const BODY_WORD_SCORE = 3;
-const BODY_PARTIAL_SCORE = 1;
+const TITLE_SCORE = 12;
+const BODY_SCORE = 3;
 
+/**
+ * Só corresponde a partir do **início** de uma palavra.
+ *
+ * Procurar por qualquer pedaço de texto parece mais generoso e é muito pior:
+ * "rede" encontrava "parede" e devolvia 43 dos 57 documentos, e "lob"
+ * encontrava "globo" por acidente. Uma pesquisa que devolve três quartos do
+ * site não responde a nada.
+ *
+ * O prefixo continua a funcionar — "bande" encontra "bandeja" — que é o que
+ * uma pessoa espera enquanto escreve.
+ *
+ * \b é uma fronteira ASCII, mas o texto chega aqui já sem diacríticos (mesmo o
+ * "ç" fica "c"), por isso é fiável.
+ */
 function scoreToken(token: string, title: string, body: string): number {
-  // \b não funciona com acentos já normalizados fora do ASCII, mas como o texto
-  // chega aqui sem diacríticos, a fronteira de palavra é fiável.
-  const wordBoundary = new RegExp(`\\b${token.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}`, "u");
+  const escaped = token.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const atWordStart = new RegExp(`\\b${escaped}`, "u");
 
-  if (wordBoundary.test(title)) return TITLE_WORD_SCORE;
-  if (title.includes(token)) return TITLE_PARTIAL_SCORE;
-  if (wordBoundary.test(body)) return BODY_WORD_SCORE;
-  if (body.includes(token)) return BODY_PARTIAL_SCORE;
+  if (atWordStart.test(title)) return TITLE_SCORE;
+  if (atWordStart.test(body)) return BODY_SCORE;
   return 0;
 }
 

@@ -70,6 +70,21 @@ describe("search", () => {
     expect(search(docs, "bola parede")).toHaveLength(1);
   });
 
+  it("não corresponde a meio de uma palavra", () => {
+    // "parede" contém "rede", e "globo" contém "lob". Antes disto, procurar
+    // "rede" devolvia 43 dos 57 documentos do site.
+    expect(search(docs, "rede")).toHaveLength(0);
+    expect(search(docs, "arede")).toHaveLength(0);
+  });
+
+  it("corresponde a partir do início de uma palavra", () => {
+    // É o que uma pessoa espera enquanto ainda está a escrever.
+    const results = search(docs, "vibo");
+
+    expect(results).toHaveLength(1);
+    expect(results[0]?.doc.id).toBe("term:vibora");
+  });
+
   it("devolve vazio para uma pesquisa vazia", () => {
     expect(search(docs, "")).toEqual([]);
     expect(search(docs, "  ")).toEqual([]);
