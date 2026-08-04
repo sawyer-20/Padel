@@ -20,6 +20,8 @@ export type RankingRow = {
   positionNumber: number | null;
   /** Pontos ganhos ou perdidos desde a atualização anterior. */
   pointsDiff: number | null;
+  /** Posições subidas (>0) ou descidas (<0) desde a atualização anterior. */
+  positionsGained: number | null;
 };
 
 export type RankingsTableLabels = {
@@ -33,6 +35,17 @@ export type RankingsTableLabels = {
   noResults: string;
   /** Contém {shown} e {total}. */
   count: string;
+  /**
+   * Singular e plural em separado, cada um com {n}.
+   *
+   * O componente não pode usar `useTranslations` (ver a nota acima), por isso
+   * não tem acesso ao ICU do next-intl para resolver o plural. Os cinco idiomas
+   * suportados distinguem apenas "um" de "vários", e é isso que se passa aqui.
+   */
+  movedUpOne: string;
+  movedUpOther: string;
+  movedDownOne: string;
+  movedDownOther: string;
 };
 
 /**
@@ -46,6 +59,12 @@ export type RankingsTableLabels = {
  */
 function interpolate(template: string, values: Record<string, string>): string {
   return template.replace(/\{(\w+)\}/g, (match, key: string) => values[key] ?? match);
+}
+
+function pickMovementLabel(labels: RankingsTableLabels, positionsGained: number): string {
+  const single = Math.abs(positionsGained) === 1;
+  if (positionsGained > 0) return single ? labels.movedUpOne : labels.movedUpOther;
+  return single ? labels.movedDownOne : labels.movedDownOther;
 }
 
 export function RankingsTable({ rows, labels }: { rows: RankingRow[]; labels: RankingsTableLabels }) {
@@ -132,6 +151,23 @@ export function RankingsTable({ rows, labels }: { rows: RankingRow[]; labels: Ra
                       }`}
                     >
                       {row.position}
+                      {row.positionsGained !== null && row.positionsGained !== 0 && (
+                        // A seta é decorativa; o texto que a acompanha, lido só
+                        // por leitores de ecrã, diz quantas posições e para onde.
+                        <span
+                          className={`ml-1 text-xs ${
+                            row.positionsGained > 0 ? "text-accent" : "text-live"
+                          }`}
+                        >
+                          <span aria-hidden="true">{row.positionsGained > 0 ? "▲" : "▼"}</span>
+                          <span className="sr-only">
+                            {interpolate(
+                              pickMovementLabel(labels, row.positionsGained),
+                              { n: String(Math.abs(row.positionsGained)) },
+                            )}
+                          </span>
+                        </span>
+                      )}
                     </td>
                     <td className="px-4 py-2.5">
                       <Link

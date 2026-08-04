@@ -16,7 +16,11 @@
   "player": {
     "recentMatches": "Recent results",
     "noMatches": "No recent results to show.",
-    "error": "Couldn't load the player profile right now. Please try again later."
+    "error": "Couldn't load the player profile right now. Please try again later.",
+    "partners": "Partnerships on tour",
+    "partnerCurrent": "Current",
+    "partnerSince": "since {date}",
+    "partnerPoints": "{points} pts"
   },
   "search": {
     "label": "Search for a player",
@@ -30,5 +34,11 @@
     "intro": "Who represents the country on the professional tour, best ranking first. Split by men's and women's draw, because they are separate rankings.",
     "selectLabel": "Choose a country",
     "showing": "{shown} of {total}"
+  },
+  "movement": {
+    "upOne": "up {n} place",
+    "upOther": "up {n} places",
+    "downOne": "down {n} place",
+    "downOther": "down {n} places"
   }
 }

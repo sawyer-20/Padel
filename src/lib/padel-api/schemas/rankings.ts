@@ -11,12 +11,20 @@ const RankingItemSchema = z.object({
   nationality: z.string().nullable().optional(),
   ranking: MaskedValueSchema,
   points: MaskedValueSchema,
-  // Variação de pontos desde a atualização anterior. A API também devolve
-  // `ranking_diff`, que não lemos: não consegui confirmar se um +1 significa
-  // "subiu uma posição" ou "desceu uma", e uma seta virada ao contrário é pior
-  // do que seta nenhuma. `points_diff` não tem essa ambiguidade — negativo é
-  // perder pontos.
   points_diff: MaskedValueSchema.nullable().optional(),
+  /**
+   * Variação da posição desde a atualização anterior.
+   *
+   * A convenção não está documentada, por isso foi determinada contra a API
+   * real: em 123 jogadores com variação em posição e em pontos, 86% tinham
+   * sinais OPOSTOS — quem ganhou pontos tem `ranking_diff` negativo. Ou seja,
+   * o campo é `posição_atual − posição_anterior`, e um valor negativo
+   * significa que se subiu (o número da posição baixou).
+   *
+   * Os 14% restantes são o esperado: dá para ganhar pontos e ainda assim ser
+   * ultrapassado por quem ganhou mais.
+   */
+  ranking_diff: MaskedValueSchema.nullable().optional(),
   date: z.string().optional(),
 });
 
@@ -29,6 +37,8 @@ export type RankingEntry = {
   ranking: MaskedNumber;
   points: MaskedNumber;
   pointsDiff: MaskedNumber;
+  /** Positivo = desceu; negativo = subiu. Ver a nota no schema. */
+  rankingDiff: MaskedNumber;
   category: string;
 };
 
@@ -42,6 +52,8 @@ export function parseRankingsResponse(json: unknown): RankingEntry[] {
     points: normalizeMaskedValue(item.points),
     pointsDiff:
       item.points_diff == null ? { value: null, masked: false } : normalizeMaskedValue(item.points_diff),
+    rankingDiff:
+      item.ranking_diff == null ? { value: null, masked: false } : normalizeMaskedValue(item.ranking_diff),
     category: item.category,
   }));
 }

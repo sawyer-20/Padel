@@ -16,7 +16,11 @@
   "player": {
     "recentMatches": "Letzte Ergebnisse",
     "noMatches": "Keine aktuellen Ergebnisse.",
-    "error": "Das Spielerprofil konnte gerade nicht geladen werden. Bitte später erneut versuchen."
+    "error": "Das Spielerprofil konnte gerade nicht geladen werden. Bitte später erneut versuchen.",
+    "partners": "Paarungen auf der Tour",
+    "partnerCurrent": "Aktuell",
+    "partnerSince": "seit {date}",
+    "partnerPoints": "{points} Pkt."
   },
   "search": {
     "label": "Spieler suchen",
@@ -30,5 +34,11 @@
     "intro": "Wer das Land auf der Profitour vertritt, beste Platzierung zuerst. Nach Herren- und Damenfeld getrennt, denn es sind unterschiedliche Ranglisten.",
     "selectLabel": "Land wählen",
     "showing": "{shown} von {total}"
+  },
+  "movement": {
+    "upOne": "{n} Platz gestiegen",
+    "upOther": "{n} Plätze gestiegen",
+    "downOne": "{n} Platz gefallen",
+    "downOther": "{n} Plätze gefallen"
   }
 }

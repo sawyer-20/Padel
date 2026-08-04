@@ -20,6 +20,7 @@ describe("parseRankingsResponse", () => {
         ranking: 1,
         points: 21266,
         points_diff: -712,
+        ranking_diff: -2,
         date: "2026-07-27",
       },
     ]);
@@ -34,6 +35,9 @@ describe("parseRankingsResponse", () => {
         ranking: { value: 1, masked: false },
         points: { value: 21266, masked: false },
         pointsDiff: { value: -712, masked: false },
+        // Negativo = subiu duas posições. Convenção determinada contra a API
+        // real; ver a nota em schemas/rankings.ts.
+        rankingDiff: { value: -2, masked: false },
         category: "men",
       },
     ]);
@@ -46,6 +50,7 @@ describe("parseRankingsResponse", () => {
     );
 
     expect(result[0]?.pointsDiff).toEqual({ value: null, masked: false });
+    expect(result[0]?.rankingDiff).toEqual({ value: null, masked: false });
   });
 
   it("marca valores 'hidden_free_plan' como mascarados em vez de os esconder ou inventar um valor", () => {

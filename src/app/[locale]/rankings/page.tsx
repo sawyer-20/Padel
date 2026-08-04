@@ -55,6 +55,13 @@ export default async function RankingsPage({
     points: entry.points.masked ? t("maskedValue") : String(entry.points.value),
     positionNumber: entry.ranking.masked ? null : entry.ranking.value,
     pointsDiff: entry.pointsDiff.masked ? null : entry.pointsDiff.value,
+    // O sinal é invertido de propósito: a API dá a variação do NÚMERO da
+    // posição (ir de 19.º para 15.º é −4), e o que se mostra é quantas
+    // posições se subiu. Ver a nota em schemas/rankings.ts.
+    positionsGained:
+      entry.rankingDiff.masked || entry.rankingDiff.value === null
+        ? null
+        : -entry.rankingDiff.value,
   }));
 
   return (
@@ -119,6 +126,10 @@ export default async function RankingsPage({
             searchPlaceholder: t("search.placeholder"),
             noResults: t.raw("search.noResults"),
             count: t.raw("search.count"),
+            movedUpOne: t.raw("movement.upOne"),
+            movedUpOther: t.raw("movement.upOther"),
+            movedDownOne: t.raw("movement.downOne"),
+            movedDownOther: t.raw("movement.downOther"),
           }}
         />
       )}

@@ -8,6 +8,10 @@ import type { Locale } from "@/i18n/routing";
 import { buildPageMetadata } from "@/lib/seo/metadata";
 import { formatCountry } from "@/lib/format/labels";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { Badge } from "@/components/ui";
+import { Link } from "@/i18n/navigation";
+import { formatDate, formatDateRange } from "@/lib/format/dates";
+import type { PlayerPair } from "@/lib/padel-api/schemas";
 
 // Nunca gerado estaticamente com dados reais no build (regra §1.1 do PROJECT.md).
 export const dynamic = "force-dynamic";
@@ -67,6 +71,7 @@ export default async function PlayerProfilePage({ params }: { params: Promise<{ 
 
   let player: PlayerProfile | null = null;
   let matches: MatchSummary[] = [];
+  let pairs: PlayerPair[] = [];
   let tournamentsById = new Map<string, MatchTournamentInfo>();
   let errored = false;
 
@@ -83,6 +88,15 @@ export default async function PlayerProfilePage({ params }: { params: Promise<{ 
 
   if (errored || !player) {
     return <p role="alert">{t("player.error")}</p>;
+  }
+
+  // Depois do lote principal e em separado: as duplas são um extra e a API
+  // devolve 429 quando lhe caem vários pedidos ao mesmo tempo. Se falharem, a
+  // ficha continua a mostrar tudo o resto.
+  try {
+    pairs = await padelApiSource.getPlayerPairs(id);
+  } catch (error) {
+    console.error("Falha ao carregar as duplas do jogador:", error);
   }
 
   return (
@@ -136,6 +150,57 @@ export default async function PlayerProfilePage({ params }: { params: Promise<{ 
           </dl>
         </div>
       </div>
+
+      {pairs.length > 0 && (
+        <section className="mb-8">
+          <h2 className="mb-3 text-sm font-semibold uppercase tracking-wider text-ink-faint">
+            {t("player.partners")}
+          </h2>
+
+          <ul className="overflow-hidden rounded-lg border border-line bg-surface">
+            {pairs.map((pair) => {
+              const current = pair.status === "current";
+              const period =
+                pair.firstMatchAt && pair.lastMatchAt
+                  ? current
+                    ? t("player.partnerSince", { date: formatDate(locale, pair.firstMatchAt) })
+                    : formatDateRange(locale, pair.firstMatchAt, pair.lastMatchAt)
+                  : null;
+
+              return (
+                <li
+                  key={pair.id}
+                  className="flex flex-wrap items-center gap-x-3 gap-y-1 border-b border-line px-4 py-3 text-sm last:border-b-0"
+                >
+                  {pair.partner ? (
+                    <Link
+                      href={`/players/${pair.partner.id}`}
+                      className="font-medium text-ink no-underline hover:text-accent"
+                    >
+                      {pair.partner.name}
+                    </Link>
+                  ) : (
+                    <span className="font-medium text-ink">{pair.name}</span>
+                  )}
+
+                  {current && <Badge tone="accent">{t("player.partnerCurrent")}</Badge>}
+
+                  {period && <span className="text-ink-muted">{period}</span>}
+
+                  {/* Só o par atual traz pontos; nos antigos a API devolve null.
+                      Mostrar uma coluna vazia em 7 de 8 linhas seria pior do que
+                      não mostrar nada. */}
+                  {!pair.points.masked && pair.points.value !== null && (
+                    <span className="ml-auto tabular-nums text-ink-muted">
+                      {t("player.partnerPoints", { points: pair.points.value })}
+                    </span>
+                  )}
+                </li>
+              );
+            })}
+          </ul>
+        </section>
+      )}
 
       <section>
         <h2 className="mb-3 text-sm font-semibold uppercase tracking-wider text-ink-faint">

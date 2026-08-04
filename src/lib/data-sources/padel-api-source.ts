@@ -1,8 +1,10 @@
 import { padelApiFetch } from "@/lib/padel-api/client";
 import {
   parseMatchesResponse,
+  parsePairsResponse,
   parsePlayer,
   parsePlayersResponse,
+  sortPairs,
   parseRankingsResponse,
   parseTournamentDetail,
   parseTournamentsResponse,
@@ -136,6 +138,13 @@ export const padelApiSource: PadelDataSource = {
     });
 
     return { players, total };
+  },
+
+  async getPlayerPairs(id) {
+    const json = await padelApiFetch(`/players/${id}/pairs`, {
+      next: { revalidate: RANKINGS_REVALIDATE_SECONDS, tags: [`padel:player-pairs:${id}`] },
+    });
+    return sortPairs(parsePairsResponse(json, id));
   },
 
   async getPlayerMatches(id) {

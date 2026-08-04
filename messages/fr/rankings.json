@@ -16,7 +16,11 @@
   "player": {
     "recentMatches": "Derniers résultats",
     "noMatches": "Aucun résultat récent à afficher.",
-    "error": "Impossible de charger la fiche du joueur pour le moment. Réessayez plus tard."
+    "error": "Impossible de charger la fiche du joueur pour le moment. Réessayez plus tard.",
+    "partners": "Paires sur le circuit",
+    "partnerCurrent": "Actuelle",
+    "partnerSince": "depuis {date}",
+    "partnerPoints": "{points} pts"
   },
   "search": {
     "label": "Rechercher un joueur",
@@ -30,5 +34,11 @@
     "intro": "Qui représente le pays sur le circuit professionnel, du meilleur classement au moins bon. Séparé par tableau masculin et féminin, car ce sont des classements distincts.",
     "selectLabel": "Choisir un pays",
     "showing": "{shown} sur {total}"
+  },
+  "movement": {
+    "upOne": "gagne {n} place",
+    "upOther": "gagne {n} places",
+    "downOne": "perd {n} place",
+    "downOther": "perd {n} places"
   }
 }

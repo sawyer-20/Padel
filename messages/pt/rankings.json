@@ -16,7 +16,11 @@
   "player": {
     "recentMatches": "Últimos resultados",
     "noMatches": "Sem resultados recentes para mostrar.",
-    "error": "Não foi possível carregar a ficha do jogador agora. Tenta novamente mais tarde."
+    "error": "Não foi possível carregar a ficha do jogador agora. Tenta novamente mais tarde.",
+    "partners": "Duplas no circuito",
+    "partnerCurrent": "Atual",
+    "partnerSince": "desde {date}",
+    "partnerPoints": "{points} pts"
   },
   "search": {
     "label": "Procurar jogador",
@@ -30,5 +34,11 @@
     "intro": "Quem representa o país no circuito profissional, do melhor ranking para o pior. Separado por quadro masculino e feminino, porque são rankings diferentes.",
     "selectLabel": "Escolher país",
     "showing": "{shown} de {total}"
+  },
+  "movement": {
+    "upOne": "subiu {n} posição",
+    "upOther": "subiu {n} posições",
+    "downOne": "desceu {n} posição",
+    "downOther": "desceu {n} posições"
   }
 }

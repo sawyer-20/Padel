@@ -1,5 +1,6 @@
 import type {
   MatchSummary,
+  PlayerPair,
   PlayerProfile,
   RankingEntry,
   TournamentDetail,
@@ -17,6 +18,8 @@ export interface PadelDataSource {
   getTournamentMatches(id: string): Promise<MatchSummary[]>;
   getPlayer(id: string): Promise<PlayerProfile>;
   getPlayerMatches(id: string): Promise<MatchSummary[]>;
+  /** Duplas que o jogador formou, atual primeiro. */
+  getPlayerPairs(id: string): Promise<PlayerPair[]>;
   /**
    * Jogadores de uma nacionalidade, do melhor ranking para o pior.
    * `total` é quantos existem; `players` é quantos foram lidos.
