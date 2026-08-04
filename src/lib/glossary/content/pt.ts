@@ -23,12 +23,13 @@ export const pt: Record<string, GlossaryContent> = {
       "A chiquita é um golpe suave e baixo, jogado propositadamente aos pés do adversário quando ele está perto da rede. Obriga-o a devolver a bola de baixo para cima (voleio defensivo), o que te dá tempo para te aproximares da rede em vantagem.",
   },
   globo: {
-    // Os dois nomes no título: em Portugal ouvem-se ambos, e quem procurar por
-    // qualquer um deles tem de chegar aqui.
-    term: "Globo (lob)",
+    // "Lob" é o que se diz em Portugal — corrigido por quem joga cá. "Globo" é o
+    // termo espanhol, e fica mencionado no corpo porque aparece em transmissões
+    // e em campo: quem o ouvir tem de o encontrar aqui.
+    term: "Lob",
     status: "machine",
     definitionMd:
-      "O globo (lob) é um golpe alto e profundo, jogado por cima dos adversários que estão junto à rede, para os obrigar a recuar ou para tu (ou o teu par) ganharem tempo de chegar à rede. É provavelmente o golpe tático mais usado no padel — mal executado, dá uma bandeja fácil ao adversário; bem executado, muda a dinâmica do ponto.",
+      "O lob é um golpe alto e profundo, jogado por cima dos adversários que estão junto à rede, para os obrigar a recuar ou para tu (ou o teu par) ganharem tempo de chegar à rede. É provavelmente o golpe tático mais usado no padel — mal executado, dá uma bandeja fácil ao adversário; bem executado, muda a dinâmica do ponto.\n\nEm espanhol chama-se **globo**, e é assim que aparece em muitas transmissões do circuito.",
   },
   remate: {
     term: "Remate",
