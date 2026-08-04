@@ -54,5 +54,9 @@
   "faq": {
     "title": "Padel FAQ",
     "description": "How many people play padel, how scoring works, whether the ball can hit the wall, and what kit you need to start. Straight answers."
+  },
+  "players": {
+    "title": "Players from {country} on the professional tour",
+    "description": "Every player from {country} in the professional padel ranking, best ranked first, with points and an individual profile."
   }
 }

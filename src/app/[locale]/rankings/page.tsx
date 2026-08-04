@@ -61,28 +61,39 @@ export default async function RankingsPage({
       <PageHeader
         title={t("title")}
         actions={
-          <nav
-            className="flex rounded-md border border-line p-0.5"
-            aria-label={t("categoryToggleLabel")}
-          >
-            {(["men", "women"] as const).map((option) => (
-              // Link (e não <a>) para que trocar de categoria seja uma navegação
-              // suave: sem recarregar a página nem perder a posição no scroll.
-              <Link
-                key={option}
-                href={`/rankings?category=${option}`}
-                scroll={false}
-                aria-current={category === option ? "page" : undefined}
-                className={`rounded px-3 py-1.5 text-sm no-underline ${
-                  category === option
-                    ? "bg-accent font-medium text-accent-ink"
-                    : "text-ink-muted hover:text-ink"
-                }`}
-              >
-                {t(option)}
-              </Link>
-            ))}
-          </nav>
+          <div className="flex flex-wrap items-center gap-2">
+            {/* O ranking mundial é global; quem chega aqui de Portugal quer
+                normalmente saber quem são os portugueses, e isso não se vê
+                numa lista de 100 ordenada por posição. */}
+            <Link
+              href="/players"
+              className="rounded-md border border-line bg-surface px-3 py-1.5 text-sm font-medium text-ink no-underline hover:border-line-strong"
+            >
+              {t("byCountry.breadcrumb")}
+            </Link>
+            <nav
+              className="flex rounded-md border border-line p-0.5"
+              aria-label={t("categoryToggleLabel")}
+            >
+              {(["men", "women"] as const).map((option) => (
+                // Link (e não <a>) para que trocar de categoria seja uma navegação
+                // suave: sem recarregar a página nem perder a posição no scroll.
+                <Link
+                  key={option}
+                  href={`/rankings?category=${option}`}
+                  scroll={false}
+                  aria-current={category === option ? "page" : undefined}
+                  className={`rounded px-3 py-1.5 text-sm no-underline ${
+                    category === option
+                      ? "bg-accent font-medium text-accent-ink"
+                      : "text-ink-muted hover:text-ink"
+                  }`}
+                >
+                  {t(option)}
+                </Link>
+              ))}
+            </nav>
+          </div>
         }
       />
 

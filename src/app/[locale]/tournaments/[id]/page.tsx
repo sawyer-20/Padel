@@ -171,7 +171,7 @@ export default async function TournamentDetailPage({
             </h2>
             <ul className="flex flex-col gap-2">
               {roundMatches.map((match) => (
-                <MatchListItem key={match.id} match={match} />
+                <MatchListItem key={match.id} match={match} locale={locale} />
               ))}
             </ul>
           </section>

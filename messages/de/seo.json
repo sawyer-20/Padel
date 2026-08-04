@@ -54,5 +54,9 @@
   "faq": {
     "title": "Häufige Fragen zu Padel",
     "description": "Wie viele Personen Padel spielen, wie gezählt wird, ob der Ball die Wand berühren darf und welche Ausrüstung du zum Start brauchst."
+  },
+  "players": {
+    "title": "Spielerinnen und Spieler aus {country} auf der Profitour",
+    "description": "Alle Aktiven aus {country} in der Padel-Profirangliste, bestplatziert zuerst, mit Punkten und eigenem Profil."
   }
 }

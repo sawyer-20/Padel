@@ -52,7 +52,8 @@
     "tips": "Tipps",
     "glossary": "Glossar",
     "dataSource": "Ranglisten, Turniere und Ergebnisse von der Padel API. Nachrichten verlinken immer auf die Originalquelle — wir geben keine fremden Texte wieder. Redaktionelle Inhalte, die noch auf Prüfung warten, sind auf der Seite selbst gekennzeichnet.",
-    "faq": "Häufige Fragen"
+    "faq": "Häufige Fragen",
+    "players": "Spieler nach Land"
   },
   "search": {
     "label": "Website durchsuchen",

@@ -34,6 +34,7 @@ describe("parseMatchesResponse", () => {
             { id: 149, name: "Diego Garcia Garcia" },
           ],
         },
+        connections: { tournament: "/api/tournaments/740" },
       },
     ]);
 
@@ -54,8 +55,32 @@ describe("parseMatchesResponse", () => {
         winner: "team_1",
         team1: ["Ramiro Pereyra", "Juan Zamora Perez"],
         team2: ["Octavio Alvarez", "Diego Garcia Garcia"],
+        tournamentId: "740",
       },
     ]);
+  });
+
+  it("devolve tournamentId a null quando a resposta não traz connections.tournament", () => {
+    const response = buildResponse([
+      {
+        id: 12001,
+        category: "men",
+        round: 1,
+        round_name: "Final",
+        status: "finished",
+        played_at: "2026-07-26",
+        score: null,
+        winner: null,
+        players: {
+          team_1: [{ id: 1, name: "A" }],
+          team_2: [{ id: 2, name: "B" }],
+        },
+      },
+    ]);
+
+    const result = parseMatchesResponse(response);
+
+    expect(result[0]?.tournamentId).toBeNull();
   });
 
   it("aceita um jogo ainda por realizar, sem score nem vencedor", () => {

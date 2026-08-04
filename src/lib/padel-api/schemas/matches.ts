@@ -26,7 +26,19 @@ const MatchSchema = z.object({
     team_1: z.array(MatchPlayerSchema),
     team_2: z.array(MatchPlayerSchema),
   }),
+  connections: z
+    .object({
+      tournament: z.string().nullable().optional(),
+    })
+    .optional(),
 });
+
+// `connections.tournament` vem como "/api/tournaments/740" — não há campo de
+// id nem nome de torneio solto na resposta de /players/{id}/matches.
+function extractTournamentId(tournamentPath: string | null | undefined): string | null {
+  const match = tournamentPath?.match(/(\d+)\D*$/);
+  return match?.[1] ?? null;
+}
 
 export const MatchesResponseSchema = paginatedResponseSchema(MatchSchema);
 
@@ -41,6 +53,7 @@ export type MatchSummary = {
   winner: "team_1" | "team_2" | null;
   team1: string[];
   team2: string[];
+  tournamentId: string | null;
 };
 
 export function parseMatchesResponse(json: unknown): MatchSummary[] {
@@ -56,5 +69,6 @@ export function parseMatchesResponse(json: unknown): MatchSummary[] {
     winner: item.winner ?? null,
     team1: item.players.team_1.map((p) => p.name),
     team2: item.players.team_2.map((p) => p.name),
+    tournamentId: extractTournamentId(item.connections?.tournament),
   }));
 }

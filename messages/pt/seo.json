@@ -54,5 +54,9 @@
   "faq": {
     "title": "Perguntas frequentes sobre padel",
     "description": "Quantas pessoas jogam padel, como se conta o resultado, se a bola pode bater na parede e que material precisas para começar. Respostas diretas."
+  },
+  "players": {
+    "title": "Jogadores de {country} no circuito profissional",
+    "description": "Todos os jogadores de {country} no ranking profissional de padel, do melhor classificado ao último, com pontos e ficha individual."
   }
 }

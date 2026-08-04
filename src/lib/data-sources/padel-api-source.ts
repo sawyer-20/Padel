@@ -2,6 +2,7 @@ import { padelApiFetch } from "@/lib/padel-api/client";
 import {
   parseMatchesResponse,
   parsePlayer,
+  parsePlayersResponse,
   parseRankingsResponse,
   parseTournamentDetail,
   parseTournamentsResponse,
@@ -28,38 +29,49 @@ const CATEGORY_PARAM: Record<RankingsCategory, string> = {
 // custo de dois pedidos de 6 em 6 horas.
 const RANKINGS_PAGE_SIZE = 50;
 const RANKINGS_PAGES = 2;
+const PLAYERS_BY_COUNTRY_PAGES = 3;
+
+/**
+ * Páginas em série, nunca em paralelo.
+ *
+ * Três pedidos simultâneos ao mesmo endpoint devolvem 429 — verificado contra a
+ * API real com `nationality=ES`, que trazia 100 dos 150 esperados. Como cada
+ * página fica em cache 6 horas, o custo de as pedir em série paga-se uma vez a
+ * cada 6 horas e não a cada visita.
+ *
+ * A primeira página é obrigatória: sem ela não há nada para mostrar e a página
+ * tem de apresentar o erro em vez de uma tabela vazia, que pareceria um ranking
+ * sem ninguém. As seguintes são um extra — se uma falhar, para-se ali e mostra-se
+ * o que chegou, porque quem devolveu 429 vai voltar a devolver.
+ */
+async function fetchPagesInSeries<T>(
+  pageCount: number,
+  fetchPage: (page: number) => Promise<T[]>,
+): Promise<T[]> {
+  const items = [...(await fetchPage(1))];
+
+  for (let page = 2; page <= pageCount; page += 1) {
+    try {
+      items.push(...(await fetchPage(page)));
+    } catch (error) {
+      console.error(`Falha ao carregar a página ${page}; a mostrar o que chegou.`, error);
+      break;
+    }
+  }
+
+  return items;
+}
 
 export const padelApiSource: PadelDataSource = {
   async getRankings({ category }) {
-    const requests = Array.from({ length: RANKINGS_PAGES }, (_, index) =>
-      padelApiFetch(
-        `/rankings?category=${CATEGORY_PARAM[category]}&per_page=${RANKINGS_PAGE_SIZE}&page=${index + 1}`,
-        { next: { revalidate: RANKINGS_REVALIDATE_SECONDS, tags: ["padel:rankings"] } },
-      ).then(parseRankingsResponse),
+    return fetchPagesInSeries(RANKINGS_PAGES, async (page) =>
+      parseRankingsResponse(
+        await padelApiFetch(
+          `/rankings?category=${CATEGORY_PARAM[category]}&per_page=${RANKINGS_PAGE_SIZE}&page=${page}`,
+          { next: { revalidate: RANKINGS_REVALIDATE_SECONDS, tags: ["padel:rankings"] } },
+        ),
+      ),
     );
-
-    const results = await Promise.allSettled(requests);
-    const [first, ...rest] = results;
-
-    // Sem a primeira página não há ranking nenhum para mostrar — a página tem de
-    // apresentar o erro em vez de uma tabela vazia.
-    if (!first || first.status === "rejected") {
-      throw first?.reason ?? new Error("Nenhuma página de rankings foi pedida.");
-    }
-
-    const entries = [...first.value];
-
-    // As páginas seguintes são um extra: se falharem, mostra-se o que há em vez de
-    // deitar fora um top 50 que chegou bem.
-    for (const [index, result] of rest.entries()) {
-      if (result.status === "fulfilled") {
-        entries.push(...result.value);
-      } else {
-        console.error(`Falha ao carregar a página ${index + 2} dos rankings:`, result.reason);
-      }
-    }
-
-    return entries;
   },
 
   async getTournaments({ fromDate }) {
@@ -97,6 +109,33 @@ export const padelApiSource: PadelDataSource = {
       next: { revalidate: RANKINGS_REVALIDATE_SECONDS, tags: [`padel:player:${id}`] },
     });
     return parsePlayer(json);
+  },
+
+  async getPlayersByCountry({ country }) {
+    // O total vem da primeira página e é o número real de jogadores do país;
+    // `players` é só o que conseguimos ler. Portugal cabe todo em 121; Espanha
+    // tem 659 e a página diz honestamente quantos está a mostrar.
+    let total = 0;
+
+    const players = await fetchPagesInSeries(PLAYERS_BY_COUNTRY_PAGES, async (page) => {
+      const result = parsePlayersResponse(
+        await padelApiFetch(
+          `/players?nationality=${encodeURIComponent(country)}&sort_by=ranking&order_by=asc` +
+            `&per_page=${RANKINGS_PAGE_SIZE}&page=${page}`,
+          {
+            next: {
+              revalidate: RANKINGS_REVALIDATE_SECONDS,
+              tags: [`padel:players-country:${country}`],
+            },
+          },
+        ),
+      );
+
+      if (page === 1) total = result.total;
+      return result.players;
+    });
+
+    return { players, total };
   },
 
   async getPlayerMatches(id) {

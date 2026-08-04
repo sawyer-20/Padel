@@ -14,6 +14,7 @@ import { alternateLanguageUrls, absoluteUrl } from "@/lib/seo/metadata";
 const STATIC_PATHS = [
   "/",
   "/rankings",
+  "/players",
   "/tournaments",
   "/faq",
   "/rules",

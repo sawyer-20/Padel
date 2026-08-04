@@ -23,5 +23,12 @@
     "placeholder": "Name or country",
     "noResults": "No player matches “{query}”.",
     "count": "{shown} of {total} players"
+  },
+  "byCountry": {
+    "breadcrumb": "Players by country",
+    "title": "Players from {country}",
+    "intro": "Who represents the country on the professional tour, best ranking first. Split by men's and women's draw, because they are separate rankings.",
+    "selectLabel": "Choose a country",
+    "showing": "{shown} of {total}"
   }
 }

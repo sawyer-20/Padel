@@ -15,6 +15,7 @@ export async function SiteFooter({ locale }: { locale: Locale }) {
 
   const explore = [
     { href: "/rankings", label: t("nav.rankings") },
+    { href: "/players", label: t("footer.players") },
     { href: "/tournaments", label: t("nav.tournaments") },
     { href: "/news", label: t("nav.news") },
   ];

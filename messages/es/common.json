@@ -52,7 +52,8 @@
     "tips": "Consejos",
     "glossary": "Glosario",
     "dataSource": "Rankings, torneos y resultados proporcionados por la Padel API. Las noticias enlazan siempre a la fuente original — no reproducimos texto de terceros. El contenido editorial pendiente de revisión está señalado en la propia página.",
-    "faq": "Preguntas frecuentes"
+    "faq": "Preguntas frecuentes",
+    "players": "Jugadores por país"
   },
   "search": {
     "label": "Buscar en el sitio",

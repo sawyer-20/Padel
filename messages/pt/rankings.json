@@ -23,5 +23,12 @@
     "placeholder": "Nome ou país",
     "noResults": "Nenhum atleta corresponde a «{query}».",
     "count": "{shown} de {total} atletas"
+  },
+  "byCountry": {
+    "breadcrumb": "Jogadores por país",
+    "title": "Jogadores de {country}",
+    "intro": "Quem representa o país no circuito profissional, do melhor ranking para o pior. Separado por quadro masculino e feminino, porque são rankings diferentes.",
+    "selectLabel": "Escolher país",
+    "showing": "{shown} de {total}"
   }
 }

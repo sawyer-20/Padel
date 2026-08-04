@@ -3,7 +3,7 @@ import Image from "next/image";
 import { getLocale, getTranslations } from "next-intl/server";
 import { padelApiSource } from "@/lib/data-sources/padel-api-source";
 import type { MatchSummary, PlayerProfile } from "@/lib/padel-api/schemas";
-import { MatchListItem } from "@/components/MatchListItem";
+import { MatchListItem, type MatchTournamentInfo } from "@/components/MatchListItem";
 import type { Locale } from "@/i18n/routing";
 import { buildPageMetadata } from "@/lib/seo/metadata";
 import { formatCountry } from "@/lib/format/labels";
@@ -11,6 +11,21 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 
 // Nunca gerado estaticamente com dados reais no build (regra §1.1 do PROJECT.md).
 export const dynamic = "force-dynamic";
+
+// A resposta de /players/{id}/matches só traz o id do torneio (via connections.tournament),
+// não o nome — é preciso um pedido por torneio distinto para o mostrar. allSettled: um
+// torneio que falhe a carregar não deve tirar a data/resultado dos restantes.
+async function getTournamentsById(ids: string[]): Promise<Map<string, MatchTournamentInfo>> {
+  const results = await Promise.allSettled(ids.map((tournamentId) => padelApiSource.getTournament(tournamentId)));
+  const map = new Map<string, MatchTournamentInfo>();
+  results.forEach((result, index) => {
+    const tournamentId = ids[index];
+    if (tournamentId !== undefined && result.status === "fulfilled") {
+      map.set(tournamentId, { id: tournamentId, name: result.value.name });
+    }
+  });
+  return map;
+}
 
 export async function generateMetadata({
   params,
@@ -52,10 +67,15 @@ export default async function PlayerProfilePage({ params }: { params: Promise<{ 
 
   let player: PlayerProfile | null = null;
   let matches: MatchSummary[] = [];
+  let tournamentsById = new Map<string, MatchTournamentInfo>();
   let errored = false;
 
   try {
     [player, matches] = await Promise.all([padelApiSource.getPlayer(id), padelApiSource.getPlayerMatches(id)]);
+    const uniqueTournamentIds = [
+      ...new Set(matches.map((match) => match.tournamentId).filter((tid): tid is string => tid !== null)),
+    ];
+    tournamentsById = await getTournamentsById(uniqueTournamentIds);
   } catch (error) {
     console.error("Falha ao carregar ficha de jogador:", error);
     errored = true;
@@ -126,7 +146,12 @@ export default async function PlayerProfilePage({ params }: { params: Promise<{ 
         ) : (
           <ul className="flex flex-col gap-2">
             {matches.map((match) => (
-              <MatchListItem key={match.id} match={match} />
+              <MatchListItem
+                key={match.id}
+                match={match}
+                locale={locale}
+                tournament={match.tournamentId ? (tournamentsById.get(match.tournamentId) ?? null) : null}
+              />
             ))}
           </ul>
         )}

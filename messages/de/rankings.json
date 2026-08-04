@@ -23,5 +23,12 @@
     "placeholder": "Name oder Land",
     "noResults": "Niemand passt zu „{query}“.",
     "count": "{shown} von {total}"
+  },
+  "byCountry": {
+    "breadcrumb": "Spieler nach Land",
+    "title": "Spielerinnen und Spieler aus {country}",
+    "intro": "Wer das Land auf der Profitour vertritt, beste Platzierung zuerst. Nach Herren- und Damenfeld getrennt, denn es sind unterschiedliche Ranglisten.",
+    "selectLabel": "Land wählen",
+    "showing": "{shown} von {total}"
   }
 }

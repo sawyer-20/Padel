@@ -16,6 +16,16 @@ function isValid(date: Date): boolean {
 }
 
 /**
+ * Uma única data no formato do idioma do utilizador. Nunca lança: uma data
+ * estranha mostra o ISO em bruto em vez de derrubar a página.
+ */
+export function formatDate(locale: string, iso: string): string {
+  const date = parseIsoDate(iso);
+  if (!isValid(date)) return iso;
+  return new Intl.DateTimeFormat(locale, { day: "numeric", month: "short", year: "numeric" }).format(date);
+}
+
+/**
  * Intervalo de datas no formato do idioma do utilizador, com as partes comuns
  * colapsadas: "2–5 de ago. de 2026" em vez de repetir mês e ano dos dois lados.
  *

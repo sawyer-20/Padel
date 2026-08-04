@@ -17,4 +17,11 @@ export interface PadelDataSource {
   getTournamentMatches(id: string): Promise<MatchSummary[]>;
   getPlayer(id: string): Promise<PlayerProfile>;
   getPlayerMatches(id: string): Promise<MatchSummary[]>;
+  /**
+   * Jogadores de uma nacionalidade, do melhor ranking para o pior.
+   * `total` é quantos existem; `players` é quantos foram lidos.
+   */
+  getPlayersByCountry(params: {
+    country: string;
+  }): Promise<{ players: PlayerProfile[]; total: number }>;
 }

@@ -1,0 +1,23 @@
+   ▲ Next.js 15.5.22
+   - Local:        http://localhost:3333
+   - Network:      http://10.199.5.53:3333
+   - Environments: .env.local
+
+ ✓ Starting...
+ ✓ Ready in 4.3s
+ ✓ Compiled /middleware in 390ms (134 modules)
+ ○ Compiling /[locale]/players/[id] ...
+ ✓ Compiled /[locale]/players/[id] in 3.2s (909 modules)
+ GET /pt/players/65 200 in 6133ms
+ ○ Compiling /[locale] ...
+ ✓ Compiled /[locale] in 921ms (962 modules)
+ GET /pt/players/65 200 in 327ms
+ GET /favicon.ico 404 in 2416ms
+ ○ Compiling /[locale]/tournaments/[id] ...
+ ✓ Compiled /[locale]/tournaments/[id] in 1014ms (950 modules)
+ GET /pt/tournaments/740 200 in 2575ms
+ GET /favicon.ico 404 in 320ms
+ GET /pt/tournaments/740 200 in 439ms
+ GET /favicon.ico 404 in 227ms
+ GET /pt/tournaments/740 200 in 1263ms
+ GET /favicon.ico 404 in 285ms

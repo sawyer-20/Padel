@@ -54,5 +54,9 @@
   "faq": {
     "title": "Questions fréquentes sur le padel",
     "description": "Combien de personnes jouent au padel, comment on compte les points, si la balle peut toucher le mur et quel matériel il faut pour débuter."
+  },
+  "players": {
+    "title": "Joueurs de {country} sur le circuit professionnel",
+    "description": "Tous les joueurs de {country} au classement professionnel de padel, du mieux classé au dernier, avec points et fiche individuelle."
   }
 }
