@@ -63,6 +63,19 @@ export async function generateMetadata({
   });
 }
 
+/**
+ * Traduz um valor da API a partir de um dicionário, deixando-o tal como veio se
+ * não estiver lá.
+ *
+ * A API pode acrescentar valores novos a qualquer momento; mostrar o valor cru é
+ * feio, mas apagá-lo em silêncio é pior — deixava a ficha com menos informação
+ * sem ninguém dar por isso.
+ */
+function translateOrKeep(value: string | null, dictionary: Record<string, string>): string | null {
+  if (!value) return null;
+  return dictionary[value] ?? value;
+}
+
 export default async function PlayerProfilePage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   const locale = await getLocale();
@@ -110,45 +123,78 @@ export default async function PlayerProfilePage({ params }: { params: Promise<{ 
         ]}
       />
 
-      <div className="mb-8 flex flex-wrap items-center gap-5 rounded-lg border border-line bg-surface p-5">
-        {player.photoUrl ? (
-          <Image
-            src={player.photoUrl}
-            alt=""
-            width={88}
-            height={88}
-            priority
-            className="h-22 w-22 rounded-full object-cover"
-          />
-        ) : (
-          <div className="h-22 w-22 rounded-full bg-raised" aria-hidden="true" />
-        )}
-        <div className="min-w-0">
-          <h1 className="text-2xl font-semibold tracking-tight">{player.name}</h1>
-          <p className="mt-0.5 text-sm text-ink-muted">
-            {[formatCountry(locale, player.nationality), player.hand, player.side]
-              .filter(Boolean)
-              .join(" · ") || "—"}
-          </p>
-          <dl className="mt-3 flex gap-6 text-sm">
-            <div>
-              <dt className="text-xs uppercase tracking-wider text-ink-faint">
-                {t("columns.position")}
-              </dt>
-              <dd className="text-lg font-semibold tabular-nums">
-                {player.ranking.masked ? t("maskedValue") : player.ranking.value}
-              </dd>
-            </div>
-            <div>
-              <dt className="text-xs uppercase tracking-wider text-ink-faint">
-                {t("columns.points")}
-              </dt>
-              <dd className="text-lg font-semibold tabular-nums">
-                {player.points.masked ? t("maskedValue") : player.points.value}
-              </dd>
-            </div>
-          </dl>
+      <div className="court-panel mb-8 rounded-xl border border-line p-5 sm:p-6">
+        <div className="flex flex-wrap items-center gap-5">
+          {player.photoUrl ? (
+            <Image
+              src={player.photoUrl}
+              alt=""
+              width={96}
+              height={96}
+              priority
+              className="h-24 w-24 rounded-full object-cover ring-2 ring-accent/30"
+            />
+          ) : (
+            <div className="h-24 w-24 rounded-full bg-raised" aria-hidden="true" />
+          )}
+
+          <div className="min-w-0">
+            <h1 className="text-3xl font-bold uppercase leading-none tracking-tight text-balance sm:text-4xl">
+              {player.name}
+            </h1>
+            {/* Linha de identidade: tudo o que descreve a pessoa, sem números de
+                classificação — esses têm o seu lugar a seguir. */}
+            <p className="mt-2 text-sm text-ink-muted">
+              {[
+                formatCountry(locale, player.nationality),
+                // A API devolve "backhand"/"right"; sem tradução chegava assim
+                // ao ecrã, em inglês, no meio de uma frase portuguesa.
+                translateOrKeep(player.side, t.raw("player.side")),
+                translateOrKeep(player.hand, t.raw("player.hand")),
+                player.age !== null ? t("player.age", { age: player.age }) : null,
+                player.birthplace,
+              ]
+                .filter(Boolean)
+                .join(" · ") || "—"}
+            </p>
+          </div>
         </div>
+
+        {/* Painel de resultados: os números grandes, alinhados e monoespaçados,
+            com o rótulo por baixo. É a forma que se lê de relance. */}
+        <dl className="mt-6 flex flex-wrap gap-x-10 gap-y-4 border-t border-line pt-5">
+          {[
+            {
+              label: t("columns.position"),
+              value: player.ranking.masked ? t("maskedValue") : player.ranking.value,
+              lead: true,
+            },
+            {
+              label: t("columns.points"),
+              value: player.points.masked ? t("maskedValue") : player.points.value,
+            },
+            {
+              label: t("player.elo"),
+              value: player.elo.masked ? t("maskedValue") : player.elo.value,
+            },
+          ]
+            .filter((stat) => stat.value !== null)
+            .map((stat) => (
+              <div key={stat.label}>
+                <dd
+                  className={`font-display text-3xl font-bold leading-none tabular-nums sm:text-4xl ${
+                    stat.lead ? "text-accent" : "text-ink"
+                  }`}
+                >
+                  {stat.lead && typeof stat.value === "number" ? "#" : ""}
+                  {stat.value}
+                </dd>
+                <dt className="mt-1.5 text-xs uppercase tracking-wider text-ink-faint">
+                  {stat.label}
+                </dt>
+              </div>
+            ))}
+        </dl>
       </div>
 
       {pairs.length > 0 && (

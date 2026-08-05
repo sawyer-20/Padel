@@ -20,7 +20,17 @@
     "partners": "Parejas en el circuito",
     "partnerCurrent": "Actual",
     "partnerSince": "desde {date}",
-    "partnerPoints": "{points} pts"
+    "partnerPoints": "{points} pts",
+    "elo": "Elo",
+    "age": "{age} años",
+    "side": {
+      "backhand": "Revés",
+      "forehand": "Drive"
+    },
+    "hand": {
+      "right": "Diestro",
+      "left": "Zurdo"
+    }
   },
   "search": {
     "label": "Buscar jugador",

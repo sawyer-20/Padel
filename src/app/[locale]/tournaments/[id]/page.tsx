@@ -6,6 +6,8 @@ import { MatchListItem } from "@/components/MatchListItem";
 import type { Locale } from "@/i18n/routing";
 import { buildPageMetadata } from "@/lib/seo/metadata";
 import { formatDateRange } from "@/lib/format/dates";
+import { formatCountry, formatTournamentLevel } from "@/lib/format/labels";
+import { Badge } from "@/components/ui";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { JsonLd } from "@/components/JsonLd";
 import { sportsEventSchema } from "@/lib/seo/schema";
@@ -95,6 +97,12 @@ export default async function TournamentDetailPage({
     return <p role="alert">{t("error")}</p>;
   }
 
+  const today = new Date().toISOString().slice(0, 10);
+  const isOngoing =
+    tournament.status !== "finished" &&
+    tournament.startDate <= today &&
+    today <= tournament.endDate;
+
   const categoryMatches = matches.filter((match) => match.category === category);
   const rounds = groupByRound(categoryMatches);
   const winners = tournament.winners[category];
@@ -122,22 +130,38 @@ export default async function TournamentDetailPage({
         })}
       />
 
-      <div className="mb-6 rounded-lg border border-line bg-surface p-5">
-        <h1 className="text-2xl font-semibold tracking-tight text-balance">{tournament.name}</h1>
-        <p className="mt-1 text-sm text-ink-muted">
-          {[tournament.location, tournament.country].filter(Boolean).join(", ") || "—"} ·{" "}
-          {formatDateRange(locale, tournament.startDate, tournament.endDate)}
+      <div className="court-panel mb-6 rounded-xl border border-line p-5 sm:p-6">
+        <div className="mb-3 flex flex-wrap items-center gap-2">
+          <Badge tone="neutral">{formatTournamentLevel(tournament.level)}</Badge>
+          {isOngoing && <Badge tone="live">{t("status.ongoing")}</Badge>}
+        </div>
+
+        <h1 className="text-3xl font-bold uppercase leading-none tracking-tight text-balance sm:text-4xl">
+          {tournament.name}
+        </h1>
+
+        <p className="mt-3 text-ink-muted">
+          {[tournament.location, formatCountry(locale, tournament.country)]
+            .filter(Boolean)
+            .join(", ") || "—"}{" "}
+          · {formatDateRange(locale, tournament.startDate, tournament.endDate)}
         </p>
+
         {tournament.prizeAmount !== null && (
           <p className="mt-1 text-sm text-ink-muted">
             {t("detail.prize")}: {tournament.prizeAmount} {tournament.prizeCurrency}
           </p>
         )}
+
+        {/* Os vencedores são o desfecho da prova: merecem o tamanho de um
+            resultado, não o de uma nota de rodapé. */}
         {tournament.status === "finished" && winners.length > 0 && (
-          <p className="mt-3 text-sm">
-            <span className="text-ink-faint">{t("detail.winners")}:</span>{" "}
-            <span className="font-semibold">{winners.join(" / ")}</span>
-          </p>
+          <div className="mt-5 border-t border-line pt-4">
+            <p className="text-xs uppercase tracking-wider text-ink-faint">{t("detail.winners")}</p>
+            <p className="mt-1 font-display text-2xl font-bold uppercase tracking-tight text-accent">
+              {winners.join(" / ")}
+            </p>
+          </div>
         )}
       </div>
 

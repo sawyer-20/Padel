@@ -20,7 +20,17 @@
     "partners": "Partnerships on tour",
     "partnerCurrent": "Current",
     "partnerSince": "since {date}",
-    "partnerPoints": "{points} pts"
+    "partnerPoints": "{points} pts",
+    "elo": "Elo",
+    "age": "{age} years old",
+    "side": {
+      "backhand": "Backhand side",
+      "forehand": "Forehand side"
+    },
+    "hand": {
+      "right": "Right-handed",
+      "left": "Left-handed"
+    }
   },
   "search": {
     "label": "Search for a player",

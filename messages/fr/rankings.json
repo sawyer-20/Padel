@@ -20,7 +20,17 @@
     "partners": "Paires sur le circuit",
     "partnerCurrent": "Actuelle",
     "partnerSince": "depuis {date}",
-    "partnerPoints": "{points} pts"
+    "partnerPoints": "{points} pts",
+    "elo": "Elo",
+    "age": "{age} ans",
+    "side": {
+      "backhand": "Revers",
+      "forehand": "Coup droit"
+    },
+    "hand": {
+      "right": "Droitier",
+      "left": "Gaucher"
+    }
   },
   "search": {
     "label": "Rechercher un joueur",

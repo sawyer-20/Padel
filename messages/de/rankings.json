@@ -20,7 +20,17 @@
     "partners": "Paarungen auf der Tour",
     "partnerCurrent": "Aktuell",
     "partnerSince": "seit {date}",
-    "partnerPoints": "{points} Pkt."
+    "partnerPoints": "{points} Pkt.",
+    "elo": "Elo",
+    "age": "{age} Jahre",
+    "side": {
+      "backhand": "Rückhandseite",
+      "forehand": "Vorhandseite"
+    },
+    "hand": {
+      "right": "Rechtshänder",
+      "left": "Linkshänder"
+    }
   },
   "search": {
     "label": "Spieler suchen",

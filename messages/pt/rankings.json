@@ -20,7 +20,17 @@
     "partners": "Duplas no circuito",
     "partnerCurrent": "Atual",
     "partnerSince": "desde {date}",
-    "partnerPoints": "{points} pts"
+    "partnerPoints": "{points} pts",
+    "elo": "Elo",
+    "age": "{age} anos",
+    "side": {
+      "backhand": "Revés",
+      "forehand": "Drive"
+    },
+    "hand": {
+      "right": "Destro",
+      "left": "Esquerdino"
+    }
   },
   "search": {
     "label": "Procurar jogador",
