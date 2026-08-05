@@ -47,7 +47,9 @@
     "countryPlayers": "{total} on the tour",
     "statPlayers": "players from {country}",
     "statTournaments": "tournaments on the calendar",
-    "statHere": "in {country}"
+    "statHere": "in {country}",
+    "ctaTournaments": "Tournaments in {country}",
+    "ctaPlayers": "Players on tour"
   },
   "footer": {
     "tagline": "Rankings, tournaments and the rules of padel — in five languages, without waiting for the translation.",

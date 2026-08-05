@@ -16,5 +16,7 @@
     "searchPlaceholder": "Search situations...",
     "empty": "No situations match your search.",
     "relatedRule": "view the full rule"
-  }
+  },
+  "courtDiagramLabel": "Plan of a padel court seen from above",
+  "courtDiagramCaption": "Top-down view, to scale. The net dashed, across the middle; the two service lines 6.95 m from it; and the centre line dividing the service boxes."
 }

@@ -8,6 +8,7 @@ import { FIP_OFFICIAL_PDF_URL } from "@/lib/rules/rules";
 import { buildPageMetadata } from "@/lib/seo/metadata";
 import { excerptFromMarkdown } from "@/lib/seo/excerpt";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { PadelCourt } from "@/components/PadelCourt";
 import { JsonLd } from "@/components/JsonLd";
 import { articleSchema } from "@/lib/seo/schema";
 
@@ -83,6 +84,18 @@ export default async function RuleDetailPage({ params }: { params: Promise<{ slu
         >
           {t("pendingReviewNotice")}
         </p>
+      )}
+
+      {/* Aqui o desenho não é decoração: a regra descreve um retângulo com
+          linhas em sítios precisos, e ver a planta poupa três leituras do
+          texto. É a única regra que ganha alguma coisa com uma imagem. */}
+      {slug === "court-dimensions" && (
+        <figure className="mt-6 rounded-xl border border-line bg-surface p-5">
+          <PadelCourt className="w-full text-accent" showNetLabel={t("courtDiagramLabel")} />
+          <figcaption className="mt-3 text-xs text-ink-faint">
+            {t("courtDiagramCaption")}
+          </figcaption>
+        </figure>
       )}
 
       <div

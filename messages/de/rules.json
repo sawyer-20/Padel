@@ -16,5 +16,7 @@
     "searchPlaceholder": "Situationen durchsuchen...",
     "empty": "Keine Situation passt zur Suche.",
     "relatedRule": "vollständige Regel ansehen"
-  }
+  },
+  "courtDiagramLabel": "Grundriss eines Padelcourts von oben",
+  "courtDiagramCaption": "Draufsicht, maßstabsgetreu. Das Netz gestrichelt in der Mitte; die beiden Aufschlaglinien 6,95 m davon entfernt; und die Mittellinie, die die Aufschlagfelder teilt."
 }

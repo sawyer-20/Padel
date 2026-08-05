@@ -16,5 +16,7 @@
     "searchPlaceholder": "Rechercher une situation...",
     "empty": "Aucune situation ne correspond à la recherche.",
     "relatedRule": "voir la règle complète"
-  }
+  },
+  "courtDiagramLabel": "Plan d'un terrain de padel vu de dessus",
+  "courtDiagramCaption": "Vue de dessus, à l'échelle. Le filet en pointillé, au milieu ; les deux lignes de service à 6,95 m de celui-ci ; et la ligne centrale séparant les carrés de service."
 }

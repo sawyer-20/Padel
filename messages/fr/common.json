@@ -47,7 +47,9 @@
     "countryPlayers": "{total} sur le circuit",
     "statPlayers": "joueurs du {country}",
     "statTournaments": "tournois au calendrier",
-    "statHere": "au {country}"
+    "statHere": "au {country}",
+    "ctaTournaments": "Tournois au {country}",
+    "ctaPlayers": "Joueurs du circuit"
   },
   "footer": {
     "tagline": "Classements, tournois et règles du padel — en cinq langues, sans attendre la traduction.",

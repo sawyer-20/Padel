@@ -47,7 +47,9 @@
     "countryPlayers": "{total} auf der Tour",
     "statPlayers": "Aktive aus {country}",
     "statTournaments": "Turniere im Kalender",
-    "statHere": "in {country}"
+    "statHere": "in {country}",
+    "ctaTournaments": "Turniere in {country}",
+    "ctaPlayers": "Aktive der Tour"
   },
   "footer": {
     "tagline": "Ranglisten, Turniere und die Padel-Regeln — in fünf Sprachen, ohne auf die Übersetzung zu warten.",

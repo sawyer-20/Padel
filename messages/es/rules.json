@@ -16,5 +16,7 @@
     "searchPlaceholder": "Buscar situaciones...",
     "empty": "Ninguna situación coincide con la búsqueda.",
     "relatedRule": "ver la regla completa"
-  }
+  },
+  "courtDiagramLabel": "Plano de una pista de pádel vista desde arriba",
+  "courtDiagramCaption": "Vista cenital, a escala. La red discontinua, en el centro; las dos líneas de saque a 6,95 m de ella; y la línea central dividiendo las áreas de saque."
 }

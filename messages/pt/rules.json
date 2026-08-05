@@ -16,5 +16,7 @@
     "searchPlaceholder": "Pesquisar situações...",
     "empty": "Nenhuma situação corresponde à pesquisa.",
     "relatedRule": "ver a regra completa"
-  }
+  },
+  "courtDiagramLabel": "Planta de um campo de padel visto de cima",
+  "courtDiagramCaption": "Vista de cima, à escala. A rede a tracejado, ao meio; as duas linhas de serviço a 6,95 m dela; e a linha central a dividir as áreas de serviço."
 }

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { getLocale, getTranslations } from "next-intl/server";
 import type { Locale } from "@/i18n/routing";
 import { Link } from "@/i18n/navigation";
@@ -8,6 +9,7 @@ import type { RankingEntry } from "@/lib/padel-api/schemas";
 import { staticPageMetadata, type LocaleParams } from "@/lib/seo/page-metadata";
 import { Badge, Panel, SectionHeading, SectionNotice } from "@/components/ui";
 import { JsonLd } from "@/components/JsonLd";
+import { PadelCourt } from "@/components/PadelCourt";
 import { websiteSchema } from "@/lib/seo/schema";
 
 // Dados vivos — nunca pré-gerados no build (mesmo padrão de Rankings/Torneios/Notícias).
@@ -91,13 +93,17 @@ export default async function HomePage() {
 
       {/* Hero: o que este sítio é, e o tamanho do que cobre. Os três números são
           reais e vêm dos dados que a página já carregou — nenhum é decorativo. */}
-      <section className="court-panel rounded-xl border border-line p-6 sm:p-8">
-        <h1 className="max-w-2xl text-4xl font-bold uppercase leading-[0.95] tracking-tight text-balance sm:text-5xl">
+      <section className="court-panel relative rounded-xl border border-line p-6 sm:p-8">
+        {/* O campo, em traço, a sair pela direita. Decorativo e discreto: dá
+            contexto desportivo sem competir com o texto por cima. */}
+        <PadelCourt className="pointer-events-none absolute -right-16 top-1/2 hidden w-[26rem] -translate-y-1/2 text-accent opacity-[0.14] sm:block" />
+
+        <h1 className="relative max-w-2xl text-4xl font-bold uppercase leading-[0.95] tracking-tight text-balance sm:text-5xl">
           {tCommon("appName")}
         </h1>
-        <p className="mt-3 max-w-xl text-ink-muted">{t("intro")}</p>
+        <p className="relative mt-3 max-w-xl text-ink-muted">{t("intro")}</p>
 
-        <dl className="mt-6 flex flex-wrap gap-x-8 gap-y-4">
+        <dl className="relative mt-6 flex flex-wrap gap-x-8 gap-y-4">
           {[
             { value: data.country.totalPlayers, label: t("statPlayers", { country: homeCountryName }) },
             { value: data.tournamentCount, label: t("statTournaments") },
@@ -118,6 +124,23 @@ export default async function HomePage() {
               </div>
             ))}
         </dl>
+
+        {/* Dois caminhos, e ambos para o que distingue este sítio de um portal
+            internacional: os torneios cá e os atletas daqui. */}
+        <div className="relative mt-7 flex flex-wrap gap-3">
+          <Link
+            href={`/tournaments?country=${HOME_COUNTRY}`}
+            className="rounded-lg bg-accent px-5 py-2.5 font-medium text-accent-ink no-underline"
+          >
+            {t("ctaTournaments", { country: homeCountryName })}
+          </Link>
+          <Link
+            href="/players"
+            className="rounded-lg border border-line-strong px-5 py-2.5 font-medium text-ink no-underline hover:border-accent hover:text-accent"
+          >
+            {t("ctaPlayers")}
+          </Link>
+        </div>
       </section>
 
       <section>
@@ -204,6 +227,20 @@ export default async function HomePage() {
                         <span className="w-8 shrink-0 text-right tabular-nums text-ink-faint">
                           {player.ranking.masked ? tRankings("maskedValue") : player.ranking.value}
                         </span>
+                        {/* Fotos que a API já dava e não estavam a ser usadas
+                            fora da ficha individual. São rostos reais — valem
+                            mais do que qualquer imagem de banco. */}
+                        {player.photoUrl ? (
+                          <Image
+                            src={player.photoUrl}
+                            alt=""
+                            width={28}
+                            height={28}
+                            className="h-7 w-7 shrink-0 rounded-full object-cover"
+                          />
+                        ) : (
+                          <span className="h-7 w-7 shrink-0 rounded-full bg-raised" aria-hidden="true" />
+                        )}
                         <span className="min-w-0 flex-1 truncate text-ink">{player.name}</span>
                         <span className="shrink-0 text-xs text-ink-faint">
                           {tRankings(player.category === "women" ? "women" : "men")}
