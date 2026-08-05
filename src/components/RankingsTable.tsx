@@ -61,6 +61,19 @@ function interpolate(template: string, values: Record<string, string>): string {
   return template.replace(/\{(\w+)\}/g, (match, key: string) => values[key] ?? match);
 }
 
+/**
+ * Classes do disco do pódio, ou null para as restantes posições.
+ *
+ * Os rankings de padel têm empates — Tapia e Coello estão os dois em 1.º —, por
+ * isso o pódio sai da posição e nunca da ordem da linha.
+ */
+function podiumTone(position: number | null): string | null {
+  if (position === 1) return "border border-gold bg-gold-soft text-gold";
+  if (position === 2) return "border border-silver bg-silver-soft text-silver";
+  if (position === 3) return "border border-bronze bg-bronze-soft text-bronze";
+  return null;
+}
+
 function pickMovementLabel(labels: RankingsTableLabels, positionsGained: number): string {
   const single = Math.abs(positionsGained) === 1;
   if (positionsGained > 0) return single ? labels.movedUpOne : labels.movedUpOther;
@@ -145,12 +158,17 @@ export function RankingsTable({ rows, labels }: { rows: RankingRow[]; labels: Ra
                 const podium = row.positionNumber !== null && row.positionNumber <= 3;
                 return (
                   <tr key={row.playerId} className="hover:bg-raised">
-                    <td
-                      className={`px-4 py-2.5 tabular-nums ${
-                        podium ? "font-semibold text-accent" : "text-ink-muted"
-                      }`}
-                    >
-                      {row.position}
+                    <td className="px-4 py-2.5 tabular-nums">
+                      {/* Ouro, prata e bronze num disco. É a convenção mais
+                          universal do desporto e lê-se sem legenda nenhuma —
+                          muito mais depressa do que um número a negrito. */}
+                      <span
+                        className={`inline-flex h-8 w-8 items-center justify-center rounded-full text-sm font-bold ${
+                          podiumTone(row.positionNumber) ?? "text-ink-muted"
+                        }`}
+                      >
+                        {row.position}
+                      </span>
                       {row.positionsGained !== null && row.positionsGained !== 0 && (
                         // A seta é decorativa; o texto que a acompanha, lido só
                         // por leitores de ecrã, diz quantas posições e para onde.

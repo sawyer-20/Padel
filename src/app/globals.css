@@ -26,6 +26,12 @@
   --color-live-soft: var(--live-soft);
   --color-down: var(--down);
   --color-down-soft: var(--down-soft);
+  --color-gold: var(--gold);
+  --color-gold-soft: var(--gold-soft);
+  --color-silver: var(--silver);
+  --color-silver-soft: var(--silver-soft);
+  --color-bronze: var(--bronze);
+  --color-bronze-soft: var(--bronze-soft);
 
   --font-sans: var(--font-body);
   --font-display: var(--font-display-face);
@@ -65,6 +71,17 @@
     --live-soft: #f2f9c9;
     --down: #a83824;
     --down-soft: #fae2dd;
+    /* Pódio. Ouro, prata e bronze leem-se sem legenda em qualquer desporto —
+       é das poucas convenções visuais universais que existem. O tom claro é o
+       preenchimento e o escuro é a tinta e o aro; medidos, todos os pares dão
+       pelo menos 5,9:1. O aro existe porque o preenchimento sozinho quase
+       desaparecia sobre a linha em foco (1,02:1) — o contorno não desaparece. */
+    --gold: #6b4700;
+    --gold-soft: #f6de9a;
+    --silver: #3d4a5c;
+    --silver-soft: #d3dbe8;
+    --bronze: #6f3a14;
+    --bronze-soft: #f0c8a6;
   }
 
   .dark {
@@ -86,6 +103,12 @@
     --live-soft: #2b3209;
     --down: #ff8a75;
     --down-soft: #3a1a16;
+    --gold: #f6d264;
+    --gold-soft: #4a3b09;
+    --silver: #ccd5e2;
+    --silver-soft: #31404f;
+    --bronze: #eaad78;
+    --bronze-soft: #4d3020;
   }
 
   body {
