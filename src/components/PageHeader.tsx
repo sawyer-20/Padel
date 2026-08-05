@@ -19,7 +19,12 @@ export function PageHeader({
   return (
     <div className="mb-6 flex flex-wrap items-start justify-between gap-x-6 gap-y-3">
       <div className="min-w-0">
-        <h1 className="text-2xl font-semibold tracking-tight text-balance sm:text-3xl">{title}</h1>
+        {/* Uma face condensada ocupa menos largura e por isso lê-se mais pequena
+            à mesma medida — daí subir um degrau na escala em vez de manter o
+            tamanho anterior. */}
+        <h1 className="text-3xl font-bold uppercase tracking-tight text-balance sm:text-4xl">
+          {title}
+        </h1>
         {lead && <p className="mt-2 max-w-prose text-ink-muted">{lead}</p>}
       </div>
       {actions}

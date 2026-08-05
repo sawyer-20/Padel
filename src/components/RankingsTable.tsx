@@ -156,7 +156,7 @@ export function RankingsTable({ rows, labels }: { rows: RankingRow[]; labels: Ra
                         // por leitores de ecrã, diz quantas posições e para onde.
                         <span
                           className={`ml-1 text-xs ${
-                            row.positionsGained > 0 ? "text-accent" : "text-live"
+                            row.positionsGained > 0 ? "text-accent" : "text-down"
                           }`}
                         >
                           <span aria-hidden="true">{row.positionsGained > 0 ? "▲" : "▼"}</span>
@@ -187,7 +187,7 @@ export function RankingsTable({ rows, labels }: { rows: RankingRow[]; labels: Ra
                         // verde continua a ler o "+" ou o "−".
                         <span
                           className={`ml-2 text-xs ${
-                            row.pointsDiff > 0 ? "text-accent" : "text-live"
+                            row.pointsDiff > 0 ? "text-accent" : "text-down"
                           }`}
                         >
                           {row.pointsDiff > 0 ? "+" : "−"}

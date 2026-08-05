@@ -22,58 +22,85 @@
   --color-accent-ink: var(--accent-ink);
   --color-accent-soft: var(--accent-soft);
   --color-live: var(--live);
+  --color-live-ink: var(--live-ink);
   --color-live-soft: var(--live-soft);
+  --color-down: var(--down);
+  --color-down-soft: var(--down-soft);
 
-  --font-sans:
-    system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  --font-sans: var(--font-body);
+  --font-display: var(--font-display-face);
 }
 
 @layer base {
-  /* Paleta ancorada no verde profundo do relvado de padel. Os neutros levam uma
-     ponta de verde para que o acento pareça nativo da página e não colado por cima. */
+  /**
+   * "O campo à noite."
+   *
+   * Um campo de padel é uma caixa de vidro sobre relvado, quase sempre azul ou
+   * verde, iluminada por projetores. A paleta sai daí: azul de pista como chão,
+   * verde de relvado como acento, e o amarelo ótico da bola guardado para uma
+   * única coisa — o que está a acontecer agora.
+   *
+   * `--live` (bola) e `--down` (perda) são tokens separados de propósito. Antes
+   * partilhavam o mesmo valor e o mesmo laranja significava "a decorrer" num
+   * sítio e "perdeu pontos" noutro, que são ideias opostas.
+   */
   :root {
     color-scheme: light;
 
-    --ground: #f5f7f6;
+    --ground: #f1f4f9;
     --surface: #ffffff;
-    --raised: #eef2f0;
-    --line: #e0e6e3;
-    --line-strong: #c8d1cd;
-    --ink: #111716;
-    --ink-muted: #56615d;
-    /* 4.60:1 no pior fundo (raised). O valor anterior, #79837f, ficava em 3.47
-       e falhava o mínimo de 4.5 da WCAG AA — e este token veste datas, contagens
-       e rótulos, ou seja, quase todo o texto pequeno do sítio. */
-    --ink-faint: #656f6b;
-    --accent: #0e6e5e;
+    --raised: #e7edf6;
+    --line: #dbe3ef;
+    --line-strong: #b7c4d8;
+    --ink: #0b1220;
+    --ink-muted: #47546e;
+    --ink-faint: #5d6a86;
+    --accent: #07705c;
     --accent-ink: #ffffff;
-    --accent-soft: #dcefea;
-    --live: #a8460f;
-    --live-soft: #fbe8dd;
+    --accent-soft: #d5efe7;
+    /* Amarelo da bola. Em claro entra como fundo de emblema com tinta escura por
+       cima — amarelo sobre branco não tem contraste para texto. */
+    --live: #d8ee3c;
+    --live-ink: #232c00;
+    --live-soft: #f2f9c9;
+    --down: #a83824;
+    --down-soft: #fae2dd;
   }
 
   .dark {
     color-scheme: dark;
 
-    --ground: #0b100e;
-    --surface: #141a18;
-    --raised: #1c2321;
-    --line: #262e2b;
-    --line-strong: #3a443f;
-    --ink: #e9eeeb;
-    --ink-muted: #a3aeaa;
-    --ink-faint: #838e89;
-    --accent: #3fcbae;
-    --accent-ink: #06120f;
-    --accent-soft: #12302a;
-    --live: #f0a077;
-    --live-soft: #2c1a10;
+    --ground: #0b1220;
+    --surface: #121c2e;
+    --raised: #1a2740;
+    --line: #223150;
+    --line-strong: #35476a;
+    --ink: #eaf0f8;
+    --ink-muted: #a5b4cc;
+    --ink-faint: #8496b3;
+    --accent: #2fd3a5;
+    --accent-ink: #04231b;
+    --accent-soft: #0e3a30;
+    --live: #dff23f;
+    --live-ink: #1a2400;
+    --live-soft: #2b3209;
+    --down: #ff8a75;
+    --down-soft: #3a1a16;
   }
 
   body {
     background-color: var(--ground);
     color: var(--ink);
     -webkit-font-smoothing: antialiased;
+  }
+
+  /* Títulos e números com a compressão de um painel de resultados: apertados,
+     pesados, em caixa alta quando são rótulos. */
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display), var(--font-body);
+    letter-spacing: -0.01em;
   }
 
   /* Um único anel de foco em toda a aplicação. Sem isto, o contorno por defeito do
@@ -98,5 +125,28 @@
       transition-duration: 0.01ms !important;
       scroll-behavior: auto !important;
     }
+  }
+}
+
+@layer components {
+  /**
+   * O vidro do campo: uma moldura de destaque para o bloco principal da entrada.
+   * Subtil de propósito — a ideia é sugerir a caixa iluminada, não desenhar uma.
+   */
+  .court-panel {
+    position: relative;
+    overflow: hidden;
+    background:
+      radial-gradient(120% 140% at 15% 0%, var(--accent-soft) 0%, transparent 55%),
+      var(--surface);
+  }
+
+  .court-panel::after {
+    content: "";
+    position: absolute;
+    inset-block: 0;
+    inset-inline-start: 0;
+    inline-size: 3px;
+    background: linear-gradient(to bottom, var(--accent), transparent);
   }
 }

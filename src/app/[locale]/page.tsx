@@ -6,7 +6,6 @@ import { getHomeData, HOME_COUNTRY } from "@/lib/home/get-home-data";
 import { formatCountry } from "@/lib/format/labels";
 import type { RankingEntry } from "@/lib/padel-api/schemas";
 import { staticPageMetadata, type LocaleParams } from "@/lib/seo/page-metadata";
-import { PageHeader } from "@/components/PageHeader";
 import { Badge, Panel, SectionHeading, SectionNotice } from "@/components/ui";
 import { JsonLd } from "@/components/JsonLd";
 import { websiteSchema } from "@/lib/seo/schema";
@@ -90,7 +89,36 @@ export default async function HomePage() {
     <div className="flex flex-col gap-10">
       <JsonLd data={websiteSchema(locale, tSeo("home.description"))} />
 
-      <PageHeader title={tCommon("appName")} lead={t("intro")} />
+      {/* Hero: o que este sítio é, e o tamanho do que cobre. Os três números são
+          reais e vêm dos dados que a página já carregou — nenhum é decorativo. */}
+      <section className="court-panel rounded-xl border border-line p-6 sm:p-8">
+        <h1 className="max-w-2xl text-4xl font-bold uppercase leading-[0.95] tracking-tight text-balance sm:text-5xl">
+          {tCommon("appName")}
+        </h1>
+        <p className="mt-3 max-w-xl text-ink-muted">{t("intro")}</p>
+
+        <dl className="mt-6 flex flex-wrap gap-x-8 gap-y-4">
+          {[
+            { value: data.country.totalPlayers, label: t("statPlayers", { country: homeCountryName }) },
+            { value: data.tournamentCount, label: t("statTournaments") },
+            { value: data.country.tournamentCount, label: t("statHere", { country: homeCountryName }) },
+          ]
+            .filter((stat) => stat.value > 0)
+            .map((stat) => (
+              <div key={stat.label}>
+                <dt className="sr-only">{stat.label}</dt>
+                <dd>
+                  <span className="block font-display text-3xl font-bold tabular-nums leading-none text-accent">
+                    {stat.value}
+                  </span>
+                  <span className="mt-1 block text-xs uppercase tracking-wider text-ink-faint">
+                    {stat.label}
+                  </span>
+                </dd>
+              </div>
+            ))}
+        </dl>
+      </section>
 
       <section>
         <SectionHeading

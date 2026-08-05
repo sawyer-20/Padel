@@ -23,7 +23,9 @@ export function SectionHeading({ title, action }: { title: string; action?: Reac
 
 const BADGE_TONES = {
   accent: "bg-accent-soft text-accent",
-  live: "bg-live-soft text-live",
+  // Amarelo da bola, cheio. É o único sítio do site que usa esta cor, e é isso
+  // que faz "a decorrer" saltar à vista sem precisar de animação nenhuma.
+  live: "bg-live text-live-ink",
   neutral: "bg-raised text-ink-muted",
 } as const;
 

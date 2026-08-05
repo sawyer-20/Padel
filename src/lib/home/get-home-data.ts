@@ -32,8 +32,12 @@ export type HomeData = {
     nextTournament: TournamentSummary | null;
     players: PlayerProfile[];
     totalPlayers: number;
+    /** Torneios do país dentro da janela do calendário. */
+    tournamentCount: number;
     failed: boolean;
   };
+  /** Torneios na janela do calendário, para o cabeçalho dizer o tamanho da cobertura. */
+  tournamentCount: number;
 };
 
 function formatDateParam(date: Date): string {
@@ -92,11 +96,14 @@ export async function getHomeData(): Promise<HomeData> {
       : [];
 
   return {
+    tournamentCount:
+      tournamentsResult.status === "fulfilled" ? tournamentsResult.value.length : 0,
     country: {
       // Filtrado da lista que já foi buscada — sem pedido extra à API.
       nextTournament: pickNextTournament(countryTournaments, today),
       players: countryPlayers,
       totalPlayers: totalCountryPlayers,
+      tournamentCount: countryTournaments.length,
       failed: countryFailed && tournamentsResult.status === "rejected",
     },
     nextTournament:

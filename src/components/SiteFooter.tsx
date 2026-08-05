@@ -32,7 +32,7 @@ export async function SiteFooter({ locale }: { locale: Locale }) {
     <footer className="border-t border-line bg-surface">
       <div className="mx-auto grid max-w-6xl gap-8 px-4 py-10 sm:grid-cols-2 sm:px-6 lg:grid-cols-4">
         <div className="sm:col-span-2 lg:col-span-1">
-          <p className="text-base font-semibold tracking-tight">{t("appName")}</p>
+          <p className="font-display text-xl font-bold uppercase tracking-wide">{t("appName")}</p>
           <p className="mt-2 max-w-xs text-sm text-ink-muted">{t("footer.tagline")}</p>
         </div>
 

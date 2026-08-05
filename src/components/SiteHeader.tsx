@@ -45,7 +45,7 @@ export function SiteHeader({
       <div className="mx-auto flex max-w-6xl items-center gap-3 px-4 py-3 sm:gap-4 sm:px-6">
         <Link
           href={`/${locale}`}
-          className="shrink-0 text-base font-semibold tracking-tight text-ink no-underline"
+          className="shrink-0 font-display text-xl font-bold uppercase tracking-wide text-ink no-underline"
         >
           {brand}
         </Link>

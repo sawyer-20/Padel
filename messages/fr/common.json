@@ -44,7 +44,10 @@
     "noTournament": "Aucun tournoi à venir à afficher.",
     "countrySection": "Padel au {country}",
     "countryNextTournament": "Prochain tournoi dans le pays",
-    "countryPlayers": "{total} sur le circuit"
+    "countryPlayers": "{total} sur le circuit",
+    "statPlayers": "joueurs du {country}",
+    "statTournaments": "tournois au calendrier",
+    "statHere": "au {country}"
   },
   "footer": {
     "tagline": "Classements, tournois et règles du padel — en cinq langues, sans attendre la traduction.",
