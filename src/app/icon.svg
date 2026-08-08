@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- Um campo de padel visto de cima, em retrato para encher um ícone quadrado.
+       Três traços apenas: o perímetro, a rede e a linha central. Tudo o resto
+       (linhas de serviço, postes) desaparece aos 16 px e só suja o desenho. -->
+  <rect width="32" height="32" rx="7" fill="#07705c" />
+  <g fill="none" stroke="#ffffff" stroke-linecap="square">
+    <rect x="9" y="4" width="14" height="24" stroke-width="2.2" />
+    <line x1="9" y1="16" x2="23" y2="16" stroke-width="2.2" />
+    <line x1="16" y1="4" x2="16" y2="10" stroke-width="1.4" />
+    <line x1="16" y1="22" x2="16" y2="28" stroke-width="1.4" />
+  </g>
+</svg>

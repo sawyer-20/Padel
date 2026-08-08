@@ -87,6 +87,20 @@ export function buildPageMetadata({
       url: localizedPath(locale, path),
       locale: OG_LOCALES[locale],
       alternateLocale: locales.filter((l) => l !== locale).map((l) => OG_LOCALES[l]),
+      // Tem de ser declarada aqui, apesar de existir um ficheiro
+      // `[locale]/opengraph-image.tsx`: o Next injeta a imagem por convenção no
+      // segmento onde o ficheiro está, mas um `openGraph` definido numa página
+      // filha SUBSTITUI o do pai por inteiro em vez de o completar — e todas as
+      // nossas páginas definem um. Sem esta linha, o cartão de partilha ficava
+      // vazio em todo o sítio menos na raiz de cada idioma.
+      images: [
+        {
+          url: `${siteUrl}/${locale}/opengraph-image`,
+          width: 1200,
+          height: 630,
+          alt: siteName,
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
