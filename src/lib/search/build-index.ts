@@ -15,9 +15,10 @@ import type { SearchDoc } from "./types";
  * não há nada que possa ficar dessincronizado: uma regra nova entra na pesquisa
  * no momento em que entra no site.
  *
- * Fica de fora tudo o que vem da Padel API. Jogadores e torneios mudam a toda a
- * hora e uma pesquisa que dependesse deles falharia sempre que a API falhasse —
- * as duas coisas têm de continuar independentes.
+ * Fica de fora tudo o que vem da Padel API — isso é o `buildLiveSearchIndex`,
+ * que a página de pesquisa junta a este. A separação é deliberada: este índice
+ * é síncrono e não falha nunca, por isso "bandeja" continua a devolver a
+ * definição mesmo com a API em baixo.
  */
 export function buildSearchIndex(locale: Locale): SearchDoc[] {
   const docs: SearchDoc[] = [];

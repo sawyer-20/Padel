@@ -5,10 +5,14 @@ import { Link } from "@/i18n/navigation";
 import { PageHeader } from "@/components/PageHeader";
 import { Badge } from "@/components/ui";
 import { buildSearchIndex } from "@/lib/search/build-index";
+import { buildLiveSearchIndex } from "@/lib/search/build-live-index";
 import { search } from "@/lib/search/search";
 import type { SearchDocType } from "@/lib/search/types";
 import { buildPageMetadata } from "@/lib/seo/metadata";
 import type { LocaleParams } from "@/lib/seo/page-metadata";
+
+// Passou a incluir jogadores e torneios, que mudam a toda a hora.
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata({ params }: LocaleParams): Promise<Metadata> {
   const { locale } = await params;
@@ -35,7 +39,10 @@ export default async function SearchPage({
   const { q } = await searchParams;
   const query = (q ?? "").trim();
 
-  const results = query ? search(buildSearchIndex(locale), query) : [];
+  // O índice vivo só se constrói se houver mesmo uma pesquisa: sem isto, abrir
+  // a página de pesquisa vazia custava quatro chamadas à API por nada.
+  const index = query ? [...buildSearchIndex(locale), ...(await buildLiveSearchIndex(locale))] : [];
+  const results = query ? search(index, query) : [];
 
   const typeLabels: Record<SearchDocType, string> = {
     rule: t("search.types.rule"),
@@ -43,6 +50,8 @@ export default async function SearchPage({
     term: t("search.types.term"),
     tip: t("search.types.tip"),
     faq: t("search.types.faq"),
+    player: t("search.types.player"),
+    tournament: t("search.types.tournament"),
   };
 
   return (

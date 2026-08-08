@@ -1,4 +1,12 @@
-export type SearchDocType = "rule" | "situation" | "term" | "tip" | "faq";
+export type SearchDocType =
+  | "rule"
+  | "situation"
+  | "term"
+  | "tip"
+  | "faq"
+  // Vêm da Padel API, não dos módulos de conteúdo. Ver build-live-index.ts.
+  | "player"
+  | "tournament";
 
 export type SearchDoc = {
   id: string;
