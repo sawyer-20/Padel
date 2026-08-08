@@ -82,5 +82,13 @@
       "player": "Jugador",
       "tournament": "Torneo"
     }
+  },
+  "notFound": {
+    "title": "Esta página no existe",
+    "description": "La dirección puede estar mal, o la página puede haber cambiado de sitio. No se ha perdido nada — sencillamente no está aquí.",
+    "backHome": "Volver al inicio",
+    "searchLabel": "Buscar en el sitio",
+    "searchPlaceholder": "Buscar…",
+    "searchSubmit": "Buscar"
   }
 }

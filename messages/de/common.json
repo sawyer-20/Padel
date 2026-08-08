@@ -82,5 +82,13 @@
       "player": "Aktiver",
       "tournament": "Turnier"
     }
+  },
+  "notFound": {
+    "title": "Diese Seite gibt es nicht",
+    "description": "Die Adresse ist womöglich falsch, oder die Seite wurde verschoben. Nichts ist verloren — es ist nur nicht hier.",
+    "backHome": "Zurück zur Startseite",
+    "searchLabel": "Website durchsuchen",
+    "searchPlaceholder": "Suchen…",
+    "searchSubmit": "Suchen"
   }
 }

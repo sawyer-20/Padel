@@ -82,5 +82,13 @@
       "player": "Player",
       "tournament": "Tournament"
     }
+  },
+  "notFound": {
+    "title": "This page does not exist",
+    "description": "The address may be wrong, or the page may have moved. Nothing is lost — it just isn't here.",
+    "backHome": "Back to home",
+    "searchLabel": "Search the site",
+    "searchPlaceholder": "Search…",
+    "searchSubmit": "Search"
   }
 }
