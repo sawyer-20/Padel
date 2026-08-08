@@ -77,9 +77,15 @@ export function SiteHeader({
       </div>
 
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        {/* Rola na horizontal em ecrãs estreitos em vez de partir para duas linhas —
-            sete secções nunca cabem lado a lado num telemóvel. */}
-        <nav aria-label={navLabel} className="-mb-px flex gap-1 overflow-x-auto">
+        {/* Parte para duas linhas no telemóvel; uma só linha a partir de `sm`.
+            Antes rolava na horizontal, e medido a 375 px isso escondia quatro
+            das oito secções sem qualquer pista de que a barra rolasse — metade
+            do sítio era invisível no telemóvel. Duas linhas custam ~40 px de
+            altura e não escondem nada. */}
+        <nav
+          aria-label={navLabel}
+          className="-mb-px flex flex-wrap gap-x-1 sm:flex-nowrap sm:overflow-x-auto"
+        >
           {items.map((item) => {
             const active = isActive(section, item.href);
             return (
