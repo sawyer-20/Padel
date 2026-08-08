@@ -28,6 +28,7 @@ export default async function LocaleLayout({
   const navItems: NavItem[] = [
     { href: "/", label: t("nav.home") },
     { href: "/rankings", label: t("nav.rankings") },
+    { href: "/players", label: t("nav.players") },
     { href: "/tournaments", label: t("nav.tournaments") },
     { href: "/rules", label: t("nav.rules") },
     { href: "/training", label: t("nav.training") },

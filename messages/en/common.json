@@ -5,6 +5,7 @@
     "label": "Main navigation",
     "home": "Home",
     "rankings": "Rankings",
+    "players": "Players",
     "tournaments": "Tournaments",
     "rules": "Rules",
     "training": "Training",
@@ -45,9 +46,8 @@
     "countrySection": "Padel in {country}",
     "countryNextTournament": "Next tournament in the country",
     "countryPlayers": "{total} on the tour",
-    "statPlayers": "players from {country}",
+    "statPlayers": "players from {country} on tour",
     "statTournaments": "tournaments on the calendar",
-    "statHere": "in {country}",
     "ctaTournaments": "Tournaments in {country}",
     "ctaPlayers": "Players on tour"
   },
@@ -65,7 +65,7 @@
   },
   "search": {
     "label": "Search the site",
-    "placeholder": "Search rules, terms, tips…",
+    "placeholder": "Search player, tournament, rule or term…",
     "submit": "Search",
     "title": "Search",
     "metaDescription": "Search across every rule, match situation, glossary term, tip and frequently asked question.",
@@ -78,7 +78,9 @@
       "situation": "Match situation",
       "term": "Glossary",
       "tip": "Tip",
-      "faq": "FAQ"
+      "faq": "FAQ",
+      "player": "Player",
+      "tournament": "Tournament"
     }
   }
 }

@@ -5,6 +5,7 @@
     "label": "Navigation principale",
     "home": "Accueil",
     "rankings": "Classements",
+    "players": "Joueurs",
     "tournaments": "Tournois",
     "rules": "Règles",
     "training": "Entraînement",
@@ -45,9 +46,8 @@
     "countrySection": "Padel au {country}",
     "countryNextTournament": "Prochain tournoi dans le pays",
     "countryPlayers": "{total} sur le circuit",
-    "statPlayers": "joueurs du {country}",
+    "statPlayers": "joueurs du {country} sur le circuit",
     "statTournaments": "tournois au calendrier",
-    "statHere": "au {country}",
     "ctaTournaments": "Tournois au {country}",
     "ctaPlayers": "Joueurs du circuit"
   },
@@ -65,7 +65,7 @@
   },
   "search": {
     "label": "Rechercher sur le site",
-    "placeholder": "Rechercher règles, termes, conseils…",
+    "placeholder": "Rechercher joueur, tournoi, règle ou terme…",
     "submit": "Rechercher",
     "title": "Recherche",
     "metaDescription": "Recherche dans toutes les règles, situations de jeu, termes du glossaire, conseils et questions fréquentes.",
@@ -78,7 +78,9 @@
       "situation": "Situation de jeu",
       "term": "Glossaire",
       "tip": "Conseil",
-      "faq": "Question fréquente"
+      "faq": "Question fréquente",
+      "player": "Joueur",
+      "tournament": "Tournoi"
     }
   }
 }

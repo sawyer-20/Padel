@@ -103,11 +103,16 @@ export default async function HomePage() {
         </h1>
         <p className="relative mt-3 max-w-xl text-ink-muted">{t("intro")}</p>
 
+        {/* Só dois números, e de propósito. Havia aqui um terceiro — "torneios
+            em {país}" — que anunciava um limite da nossa fonte de dados como se
+            fosse informação sobre o padel português: quatro torneios num ano
+            lê-se como "quase não há padel em Portugal", quando o que diz é
+            "a API só conhece quatro". Os torneios cá continuam a aparecer mais
+            abaixo, em contexto, que é onde não enganam ninguém. */}
         <dl className="relative mt-6 flex flex-wrap gap-x-8 gap-y-4">
           {[
             { value: data.country.totalPlayers, label: t("statPlayers", { country: homeCountryName }) },
             { value: data.tournamentCount, label: t("statTournaments") },
-            { value: data.country.tournamentCount, label: t("statHere", { country: homeCountryName }) },
           ]
             .filter((stat) => stat.value > 0)
             .map((stat) => (

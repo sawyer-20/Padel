@@ -5,6 +5,7 @@
     "label": "Navegación principal",
     "home": "Inicio",
     "rankings": "Rankings",
+    "players": "Jugadores",
     "tournaments": "Torneos",
     "rules": "Reglas",
     "training": "Entrenamiento",
@@ -45,9 +46,8 @@
     "countrySection": "Pádel en {country}",
     "countryNextTournament": "Próximo torneo en el país",
     "countryPlayers": "{total} en el circuito",
-    "statPlayers": "atletas de {country}",
+    "statPlayers": "atletas de {country} en el circuito",
     "statTournaments": "torneos en el calendario",
-    "statHere": "en {country}",
     "ctaTournaments": "Torneos en {country}",
     "ctaPlayers": "Jugadores del circuito"
   },
@@ -65,7 +65,7 @@
   },
   "search": {
     "label": "Buscar en el sitio",
-    "placeholder": "Buscar reglas, términos, consejos…",
+    "placeholder": "Buscar jugador, torneo, regla o término…",
     "submit": "Buscar",
     "title": "Búsqueda",
     "metaDescription": "Busca en todas las reglas, situaciones de juego, términos del glosario, consejos y preguntas frecuentes.",
@@ -78,7 +78,9 @@
       "situation": "Situación de juego",
       "term": "Glosario",
       "tip": "Consejo",
-      "faq": "Pregunta frecuente"
+      "faq": "Pregunta frecuente",
+      "player": "Jugador",
+      "tournament": "Torneo"
     }
   }
 }
