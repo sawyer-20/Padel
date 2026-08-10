@@ -26,7 +26,7 @@ export const es: Record<string, TipContent> = {
     title: "Deja que la pared trabaje por ti",
     status: "machine",
     bodyMd:
-      "Quien empieza tiende a lanzarse a por la bola antes de que llegue a la pared, por reflejo del tenis. Pero la pared es tu aliada: muchas bolas que parecen imposibles vuelven perfectamente jugables. Acompaña la bola, espera el bote y devuélvela con calma.",
+      "Quien empieza tiende a lanzarse a por la bola antes de que llegue a la pared, por reflejo del tenis. Pero la pared es tu aliada: muchas bolas que parecen imposibles vuelven perfectamente jugables. Acompaña la bola, espera el bote y devuélvela con calma.\n\nUna salvedad que vale el punto: esto solo se aplica después de que la bola bote en el suelo de tu lado. Si viene directa a la pared sin tocar antes el suelo, no esperes — el punto es del rival en cuanto la bola da en el cristal.",
   },
   "play-at-their-feet": {
     title: "Juega a los pies de quien está en la red",

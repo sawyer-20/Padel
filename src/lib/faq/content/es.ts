@@ -14,7 +14,7 @@ export const es: Record<string, FaqContent> = {
     question: "¿En qué se diferencia el pádel del tenis?",
     status: "machine",
     answerMd:
-      "La puntuación es idéntica. Casi todo lo demás cambia:\n\n- **Las paredes forman parte del juego.** La bola puede rebotar en el cristal y seguir viva — en tenis sería punto perdido.\n- **La pista es cerrada y más pequeña**, y siempre se juega por parejas.\n- **El saque es por debajo**, botando la bola en el suelo antes de golpearla. No hay saques directos a 200 km/h.\n- **La pala es rígida y sin cuerdas**, perforada y más corta que una raqueta.\n\nEl resultado práctico: los puntos duran más y se ganan con posición y paciencia, no con potencia.",
+      "La puntuación es casi la misma — cambia el 40-40, donde el pádel profesional juega un punto de oro en vez de ventajas. Casi todo lo demás es distinto:\n\n- **Las paredes forman parte del juego.** La bola puede rebotar en el cristal y seguir viva — en tenis sería punto perdido.\n- **La pista es cerrada y más pequeña**, y siempre se juega por parejas.\n- **El saque es por debajo**, botando la bola en el suelo antes de golpearla. No hay saques directos a 200 km/h.\n- **La pala es rígida y sin cuerdas**, perforada y más corta que una raqueta.\n\nEl resultado práctico: los puntos duran más y se ganan con posición y paciencia, no con potencia.",
   },
   "need-tennis-experience": {
     question: "¿Necesito saber jugar al tenis para empezar en pádel?",
@@ -32,7 +32,7 @@ export const es: Record<string, FaqContent> = {
     question: "¿Cómo se cuenta el resultado en pádel?",
     status: "machine",
     answerMd:
-      "Exactamente igual que en tenis. Los puntos van 15, 30, 40 y juego, con dos puntos de diferencia a partir del 40-40. Los juegos forman sets: gana el set quien llegue a seis juegos con dos de ventaja, y al 6-6 se juega un tie-break. Los partidos son normalmente al mejor de tres sets.\n\nLa regla completa, con el artículo oficial de la FIP, está en la sección de Reglas.",
+      "Como en tenis, con una diferencia importante. Los puntos van 15, 30, 40 y juego. Los juegos forman sets: gana el set quien llegue a seis juegos con dos de ventaja, y al 6-6 se juega un tie-break. Los partidos son normalmente al mejor de tres sets.\n\nLo que cambia es el 40-40. El tenis juega ventajas hasta que alguien saca dos puntos; el pádel profesional juega hoy casi siempre el **punto de oro** — un único punto decisivo, y quien lo gana gana el juego. Si estás viendo un torneo del circuito y el juego se acaba de golpe en un 40-40, es esto lo que ha pasado.\n\nLa regla completa, con el artículo oficial de la FIP, está en la sección de Reglas.",
   },
   "walls-in-play": {
     question: "¿Puedo jugar la bola después de que toque la pared?",
@@ -50,7 +50,7 @@ export const es: Record<string, FaqContent> = {
     question: "¿Qué material necesito para la primera clase?",
     status: "machine",
     answerMd:
-      "Menos de lo que se piensa:\n\n- **Pala** — la mayoría de los clubes prestan o alquilan las primeras veces. No compres antes de saber si te gusta.\n- **Bolas** — normalmente incluidas en la clase.\n- **Zapatillas** — las de tenis o de pádel sirven; lo que importa es una suela con agarre lateral. Las de running son la elección equivocada, porque su suela está hecha para ir hacia delante y el pádel está hecho de frenadas laterales.\n- **Ropa deportiva cómoda** y agua.\n\nEl orden correcto de compra es zapatillas primero, pala después.",
+      "Menos de lo que se piensa:\n\n- **Pala** — la mayoría de los clubes prestan o alquilan las primeras veces. No compres antes de saber si te gusta. Comprueba solo que lleve **cordón de seguridad** para la muñeca: es el único elemento que el reglamento hace obligatorio, y jugar sin él te cuesta el punto.\n- **Bolas** — normalmente incluidas en la clase.\n- **Zapatillas** — las de tenis o de pádel sirven; lo que importa es una suela con agarre lateral. Las de running son la elección equivocada, porque su suela está hecha para ir hacia delante y el pádel está hecho de frenadas laterales.\n- **Ropa deportiva cómoda** y agua.\n\nEl orden correcto de compra es zapatillas primero, pala después.",
   },
   "choosing-first-racket": {
     question: "¿Cómo elijo mi primera pala?",

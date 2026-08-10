@@ -7,19 +7,19 @@ export const en: Record<string, SituationContent> = {
     question: "The ball hit the wall on my side after bouncing on the ground — can I still return it?",
     status: "machine",
     answerMd:
-      "Yes. In padel, once the ball has bounced on your side, it stays in play even if it then hits a wall or the metal fencing around the court — the walls are part of the playing area, just like the floor. You only lose the point if the ball bounces a **second time** before you return it.",
+      "Yes. In padel, once the ball has bounced on your side, it stays in play even if it then hits a wall or the metal fencing around the court — the walls are part of the playing area, just like the floor. What ends the rally is the ball bouncing a **second time** on the ground before you return it.",
   },
   "net-touch-on-serve": {
     question: "The serve touched the net and still landed in the correct box — is that a fault?",
     status: "machine",
     answerMd:
-      "No. If the ball touches the net or the posts during the serve and still lands inside the correct service box, it doesn't count as a fault — the serve is simply replayed, with no penalty for the server.",
+      "No — as long as the ball doesn't touch the metal fencing before its second bounce. If it clips the net or the posts, lands inside the correct box and stays there, the serve is simply replayed, with no penalty for the server. But if, after landing in the box, it goes on to hit the metal fencing before bouncing a second time, that's a fault, not a replay.",
   },
   "ball-out-over-end-wall": {
     question: "After correctly bouncing on my side, the ball went out over the back wall — is the point already decided?",
     status: "machine",
     answerMd:
-      "Not necessarily. If the court has a safety zone and allows out-of-court play, the opponent can still chase the ball outside and return it. The point is only decided if the ball goes out where out-of-court play isn't authorized, or if, once outside, it bounces a second time or touches something unrelated to the game.",
+      "Yes, it's decided: you've lost the point. Going out **over the back wall** is precisely the case where the regulation doesn't authorize out-of-court play, even on a court with a safety zone — there's nothing to chase.\n\nIt's different if the ball leaves **through the side or through the door**: there, on a court with a safety zone, **you** are the one who can run out and play it from outside, because the ball bounced on your side and the return is yours. That play ends if the ball bounces a second time or touches anything unrelated to the court.",
   },
   "return-from-outside-court": {
     question: "A player left the court to return the ball and succeeded — is the point valid?",
@@ -37,7 +37,7 @@ export const en: Record<string, SituationContent> = {
     question: "The serve landed outside the correct box — is that a fault?",
     status: "machine",
     answerMd:
-      "Yes. The serve must bounce inside the opponent's service box, on the correct side (the lines count as good). If it lands outside, it's a fault — and as with any serve, there's a second attempt before the point is lost.",
+      "Yes. The serve must bounce inside the opponent's service box, on the correct side (the lines count as good). If it lands outside, it's a fault. On a first serve you get a second attempt; if it was already the second serve, you lose the point.",
   },
   "double-hit": {
     question: "I accidentally hit the ball twice in a row — what happens?",

@@ -14,7 +14,7 @@ export const en: Record<string, FaqContent> = {
     question: "How is padel different from tennis?",
     status: "machine",
     answerMd:
-      "The scoring is identical. Almost everything else changes:\n\n- **The walls are part of the game.** The ball can rebound off the glass and stay alive — in tennis that would be a lost point.\n- **The court is enclosed and smaller**, and you always play doubles.\n- **The serve is underarm**, bouncing the ball on the ground before you hit it. There are no 200 km/h aces.\n- **The racket is solid and stringless**, perforated and shorter than a tennis racket.\n\nThe practical result: points last longer and are won with positioning and patience, not power.",
+      "The scoring is almost identical — 40-40 is where they part company, since professional padel decides it with a golden point instead of advantages. Almost everything else is different:\n\n- **The walls are part of the game.** The ball can rebound off the glass and stay alive — in tennis that would be a lost point.\n- **The court is enclosed and smaller**, and you always play doubles.\n- **The serve is underarm**, bouncing the ball on the ground before you hit it. There are no 200 km/h aces.\n- **The racket is solid and stringless**, perforated and shorter than a tennis racket.\n\nThe practical result: points last longer and are won with positioning and patience, not power.",
   },
   "need-tennis-experience": {
     question: "Do I need to play tennis before starting padel?",
@@ -32,7 +32,7 @@ export const en: Record<string, FaqContent> = {
     question: "How does scoring work in padel?",
     status: "machine",
     answerMd:
-      "Exactly as in tennis. Points go 15, 30, 40 and game, needing a two-point margin from 40-40. Games make up sets: you win a set by reaching six games with a two-game lead, and at 6-6 you play a tie-break. Matches are normally best of three sets.\n\nThe full rule, with the official FIP article, is in the Rules section.",
+      "Like tennis, with one important difference. Points go 15, 30, 40 and game. Games make up sets: you win a set by reaching six games with a two-game lead, and at 6-6 you play a tie-break. Matches are normally best of three sets.\n\nWhat changes is 40-40. Tennis plays advantages until someone is two points clear; professional padel now almost always plays the **golden point** — a single deciding point, and whoever wins it wins the game. If you're watching a tour event and a game ends abruptly at 40-40, that's what happened.\n\nThe full rule, with the official FIP article, is in the Rules section.",
   },
   "walls-in-play": {
     question: "Can I play the ball after it hits the wall?",
@@ -50,7 +50,7 @@ export const en: Record<string, FaqContent> = {
     question: "What kit do I need for my first lesson?",
     status: "machine",
     answerMd:
-      "Less than you'd think:\n\n- **A racket** — most clubs lend or rent one for the first few sessions. Don't buy before you know you like the sport.\n- **Balls** — usually included in the lesson.\n- **Shoes** — tennis or padel shoes both work; what matters is a sole with lateral grip. Running shoes are the wrong choice, because their sole is built to go forwards and padel is built out of sideways braking.\n- **Comfortable sportswear** and water.\n\nThe right buying order is shoes first, racket later.",
+      "Less than you'd think:\n\n- **A racket** — most clubs lend or rent one for the first few sessions. Don't buy before you know you like the sport. Just check it comes with a **safety cord** for your wrist: it's the only piece of kit the regulation makes mandatory, and playing without one costs you the point.\n- **Balls** — usually included in the lesson.\n- **Shoes** — tennis or padel shoes both work; what matters is a sole with lateral grip. Running shoes are the wrong choice, because their sole is built to go forwards and padel is built out of sideways braking.\n- **Comfortable sportswear** and water.\n\nThe right buying order is shoes first, racket later.",
   },
   "choosing-first-racket": {
     question: "How do I choose my first racket?",

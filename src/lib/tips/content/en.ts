@@ -26,7 +26,7 @@ export const en: Record<string, TipContent> = {
     title: "Let the wall do the work",
     status: "machine",
     bodyMd:
-      "Beginners tend to lunge at the ball before it reaches the wall, out of tennis reflex. But the wall is your ally: plenty of balls that look impossible come back off it perfectly playable. Track the ball, wait for the rebound, and return it calmly.",
+      "Beginners tend to lunge at the ball before it reaches the wall, out of tennis reflex. But the wall is your ally: plenty of balls that look impossible come back off it perfectly playable. Track the ball, wait for the rebound, and return it calmly.\n\nOne caveat that is worth the point: this only applies once the ball has bounced on the ground on your side. If it comes straight at the wall without touching the ground first, don't wait — the point goes to your opponents the moment it hits the glass.",
   },
   "play-at-their-feet": {
     title: "Play at the feet of whoever is at the net",

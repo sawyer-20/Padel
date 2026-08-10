@@ -26,7 +26,7 @@ export const fr: Record<string, TipContent> = {
     title: "Laisse le mur travailler pour toi",
     status: "machine",
     bodyMd:
-      "Les débutants se jettent sur la balle avant qu'elle n'atteigne le mur, par réflexe tennistique. Mais le mur est ton allié : beaucoup de balles qui semblent impossibles reviennent parfaitement jouables. Accompagne la balle, attends le rebond et renvoie calmement.",
+      "Les débutants se jettent sur la balle avant qu'elle n'atteigne le mur, par réflexe tennistique. Mais le mur est ton allié : beaucoup de balles qui semblent impossibles reviennent parfaitement jouables. Accompagne la balle, attends le rebond et renvoie calmement.\n\nUne réserve qui vaut le point : cela ne vaut qu'**après** que la balle a rebondi au sol de ton côté. Si elle arrive directement sur le mur sans avoir touché le sol, n'attends pas — le point est pour l'adversaire dès que la balle frappe la vitre.",
   },
   "play-at-their-feet": {
     title: "Joue dans les pieds de celui qui est au filet",

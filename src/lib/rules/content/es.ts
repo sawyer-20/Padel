@@ -8,14 +8,20 @@ export const es: Record<string, RuleContent> = {
     status: "machine",
     bodyMd: `El pádel cuenta los puntos igual que el tenis: el primer punto vale 15, el segundo 30, el tercero 40, y el cuarto gana el juego — siempre que la diferencia sea de al menos dos puntos.
 
-Si ambas parejas llegan a 40-40, se llama **iguales** (deuce). A partir de ahí hay dos formas de decidir el juego, y cada torneo elige una en su reglamento:
+Si ambas parejas llegan a 40-40, se llama **iguales** (deuce). A partir de ahí el reglamento contempla tres formas de decidir el juego, y cada torneo elige una:
 
 - **Ventaja clásica**: quien gana el siguiente punto se pone por delante; si gana otra vez, cierra el juego, si pierde se vuelve a iguales.
+- **Punto estrella**: se juega con ventajas hasta llegar a iguales por tercera vez; ahí, el punto siguiente decide el juego.
 - **Punto de oro (golden point)**: en vez de ventajas sucesivas, se juega un único punto decisivo. Quien lo gana, gana el juego. Es el formato más usado hoy en día en el pádel profesional, porque hace que la duración de los juegos sea más previsible.
+
+En el punto decisivo — sea de oro o estrella — hay dos reglas que dan mucho que hablar en la pista:
+
+- Es la **pareja que resta** la que elige por qué lado recibe, pero los dos jugadores **no pueden cambiarse de posición** entre sí para hacerlo.
+- En competiciones mixtas, quien resta el punto decisivo tiene que ser **del mismo sexo que quien saca**.
 
 Una pareja gana un **set** al llegar a 6 juegos, con al menos 2 de diferencia. Si el marcador llega a 6-6, se juega un **tie-break** (desempate por puntos, no por juegos) hasta 7 puntos, con 2 de ventaja.
 
-Un **partido** se gana venciendo 2 de los 3 sets.`,
+Lo más habitual es que un **partido** se gane venciendo 2 de los 3 sets, pero el reglamento admite alternativas que cada prueba puede adoptar: sets cortos a 4 juegos, un tie-break normal en lugar del tercer set, o un **super tie-break a 10 puntos** sustituyendo al tercer set — este último es hoy corriente en competición amateur.`,
   },
   "the-serve": {
     title: "El saque: cómo empieza cada punto",
@@ -24,28 +30,37 @@ Un **partido** se gana venciendo 2 de los 3 sets.`,
 
 Reglas principales:
 
-- Quien saca debe tener al menos un pie detrás de la línea de saque, sin pisarla ni sobrepasar la línea central imaginaria.
-- La bola debe botar en el suelo y golpearse por debajo de la altura de la cintura, con al menos un pie en contacto con el suelo en el momento del impacto.
+- Quien saca debe tener al menos un pie detrás de la línea de saque, en el espacio comprendido entre la prolongación imaginaria de la línea central y la pared lateral — y debe mantenerse ahí hasta que el saque esté ejecutado.
+- La bola tiene que botar en el suelo antes de golpearla, y ese bote debe producirse dentro del cuadro desde el que se está sacando. La bola no puede sobrepasar la línea de saque ni la línea central antes del impacto.
+- El impacto debe producirse **a la altura de la cintura o por debajo de ella**, con al menos un pie en contacto con el suelo en ese momento.
 - La bola debe cruzar la red en diagonal y caer dentro del cuadro de saque del rival, en el lado opuesto.
 - Cada pareja tiene derecho a dos intentos por punto (primer y segundo saque) — si ambos fallan, se pierde el punto.
-- El lado desde el que se saca alterna en cada punto: primero se saca hacia la izquierda del rival, luego hacia la derecha, y así sucesivamente.`,
+- El primer saque de cada juego se hace desde el lado derecho de la pista de quien saca, y el lado alterna en cada punto.`,
   },
   "let-and-net-serve": {
     title: '"Let" y saque de red: cuándo se repite un saque',
     status: "machine",
     bodyMd: `No todo saque que sale mal es una falta — en ciertas situaciones el punto simplemente se repite, sin penalización para quien saca.
 
-- **Saque de red**: si la bola toca la red o los postes y, aun así, cae dentro del cuadro de saque correcto, no se considera falta — se repite.
-- **"Let" (repetición)**: si el rival no estaba listo para recibir, o algo ajeno al juego interrumpe el punto (por ejemplo, una bola de otra pista que entra en juego), el punto se repite desde cero.
+**Saque de red.** Si la bola toca la red o los postes y, aun así, cae dentro del cuadro de saque correcto, se repite — **pero solo si no toca la malla metálica antes del segundo bote**. Si la toca, es falta, y no repetición. Es una distinción que se decide en la pista cada semana y que mucha gente desconoce.
+
+También se repite el saque si la bola, después de tocar la red o los postes, golpea a quien resta o a algo que lleve encima.
+
+**"Let" de punto.** El punto se repite desde cero si el rival no estaba listo para recibir, si entra en la pista algo que no forma parte del juego (una bola de otra pista, por ejemplo), o si cualquier imprevisto ajeno a los jugadores interrumpe el punto.
+
+Dos condiciones prácticas que suelen pillar a la gente desprevenida: el "let" hay que pedirlo **de inmediato** — quien sigue jugando pierde el derecho a reclamarlo — y la decisión es del árbitro, que puede rechazar la petición y dar el punto por perdido si la considera indebida.
 
 Si la repetición ocurre en el primer saque, quien saca mantiene el derecho a los dos intentos. Si ocurre en el segundo saque, solo se repite ese segundo intento.`,
   },
   "out-of-court-play": {
     title: "Jugar fuera de la pista: la regla que hace único al pádel",
     status: "machine",
-    bodyMd: `Una de las características más distintivas del pádel es que, en pistas preparadas para ello, los jugadores pueden salir del recinto cerrado para ir a por la bola.
+    bodyMd: `Una de las características más distintivas del pádel es que, en pistas preparadas para ello, los jugadores pueden salir del recinto cerrado para ir a por la bola. Pero la jugada no está permitida en todas las direcciones, y es ahí donde casi todo el mundo se equivoca.
 
-Después de que la bola bote en tu lado, tú (o tu pareja) podéis salir por la apertura lateral de la pista y devolverla desde fuera, siempre que la bola siga en juego y la pista tenga una "zona de seguridad" alrededor (un espacio mínimo libre de obstáculos) que permita hacerlo con seguridad.
+Después de que la bola bote correctamente en el suelo de tu lado, lo que pasa a continuación depende de **por dónde** sale:
+
+- **Por encima de la pared del fondo**: el punto está perdido. No hay nada que ir a buscar, aunque la pista tenga zona de seguridad.
+- **Por el lateral o por la puerta**: ahí sí, tú (o tu pareja) podéis salir del recinto y devolverla desde fuera — siempre que la pista tenga una "zona de seguridad" alrededor (un espacio mínimo libre de obstáculos) que permita hacerlo con seguridad. La jugada termina en cuanto la bola bota una segunda vez o toca cualquier cosa ajena a la pista.
 
 No está permitido en todas las pistas — depende de que haya suficiente espacio y aperturas alrededor. Cuando sí lo está, da lugar a algunos de los puntos más espectaculares del pádel: ver a un jugador salir corriendo de la pista, devolver la bola por encima de la red y volver a entrar en juego.`,
   },
@@ -64,7 +79,7 @@ Estas medidas garantizan que el bote de la bola en las paredes sea previsible �
   "the-ball": {
     title: "La bola",
     status: "machine",
-    bodyMd: `La bola de pádel se parece a la de tenis pero es ligeramente más pequeña, más ligera y con menos presión interna — adaptada a un juego que se desarrolla en una pista cerrada, con muchos botes en las paredes.
+    bodyMd: `La bola de pádel se parece a la de tenis pero tiene especificaciones propias — adaptada a un juego que se desarrolla en una pista cerrada, con muchos botes en las paredes.
 
 - Diámetro entre 6,35 y 6,77 cm.
 - Peso entre 56,0 y 59,4 gramos.
@@ -78,9 +93,9 @@ Estas medidas garantizan que el bote de la bola en las paredes sea previsible �
 
 - Longitud total (cabeza más mango) de hasta 45,5 cm.
 - Anchura máxima de 26 cm y grosor máximo de 38 mm.
-- La superficie de golpeo está perforada por agujeros circulares, normalmente de entre 9 y 13 mm de diámetro en la zona central.
+- La superficie de golpeo está perforada por agujeros cilíndricos, en número libre. En la **zona central** cada agujero debe medir entre 9 y 13 mm. En una franja de hasta 4 cm contando desde el borde, los agujeros pueden ser mayores o tener otra forma, hasta un máximo de 20 mm.
 - Es obligatorio el uso de un cordón de seguridad sujeto al mango y alrededor de la muñeca — sirve para evitar que la pala salga despedida durante el juego.
-- No puede llevar ningún dispositivo electrónico visible o sonoro que comunique información al jugador durante el juego.`,
+- No puede llevar ningún dispositivo visible o sonoro que comunique información al jugador durante el juego.`,
   },
   times: {
     title: "Tiempos y pausas durante el partido",
@@ -94,7 +109,11 @@ Estas medidas garantizan que el bote de la bola en las paredes sea previsible �
 
 Si una pareja no está lista para jugar 10 minutos después de la hora oficial de inicio, puede perder el partido por "walkover" (W.O.), salvo casos de fuerza mayor.
 
-En caso de lesión tratable, cada jugador tiene derecho a una pausa médica de 3 minutos, que puede repetirse en los dos cambios de lado siguientes, siempre dentro del tiempo reglamentario.`,
+**Asistencia médica.** En caso de lesión tratable, cada jugador tiene derecho a una pausa médica de 3 minutos. El límite es lo que se suele pasar por alto: la asistencia solo puede darse **una vez a cada jugador y por cada condición tratable**, y no es transferible a la pareja.
+
+Hay además dos situaciones distintas de la lesión corriente: si ocurre un accidente que no viene del juego — un desmayo, una reacción alérgica, un mareo, una crisis respiratoria — el árbitro puede conceder hasta 15 minutos; y ante una circunstancia inhabitual, como una caída involuntaria o una bola que golpea a un jugador, pueden darse hasta 5 minutos para recuperarse.
+
+*Nota sobre el tie-break*: el reglamento tiene dos disposiciones que no encajan entre sí — una dice que durante el tie-break el juego es continuo y no hay pausa en el cambio de lado, otra concede 20 segundos para ese cambio. En la práctica se siguen los 20 segundos.`,
   },
   "player-positions": {
     title: "Posición de los jugadores en la pista",
@@ -121,7 +140,7 @@ Una vez decidido, ambas parejas informan al árbitro de quién saca y quién rec
 
 En el tie-break, el cambio de lado ocurre cada 6 puntos.
 
-Si las parejas se olvidan de cambiar, se corrige en cuanto se detecta el error, siguiendo después el orden correcto — los puntos ya ganados hasta ese momento siguen siendo válidos.`,
+Si las parejas se olvidan de cambiar, se corrige en cuanto se detecta el error, siguiendo después el orden correcto — los puntos ya ganados hasta ese momento siguen siendo válidos. Hay una consecuencia práctica que conviene retener: si el error no se advierte hasta después de un primer saque fallado, quien saca se queda solo con el segundo saque.`,
   },
   "serve-fault": {
     title: "Cuándo el saque es falta",
@@ -133,8 +152,9 @@ Si las parejas se olvidan de cambiar, se corrige en cuanto se detecta el error, 
 - La bola cae fuera del cuadro de saque del rival (las líneas cuentan como buenas).
 - La bola toca a quien saca, a su compañero, o a algo que lleven puesto o consigo.
 - La bola bota en el cuadro de saque correcto pero después toca la malla metálica antes del segundo bote.
+- La bola bota en el cuadro de saque correcto y sale directamente por la puerta, en una pista sin zona de seguridad y por tanto sin juego exterior autorizado.
 
-Como en cualquier saque, siempre hay derecho a un segundo intento antes de perder el punto.`,
+Una falta en el primer saque da derecho a un segundo. Dos faltas seguidas pierden el punto — y hay casos en los que quien saca dispone de un solo saque desde el principio, como cuando se corrige tarde un error de cambio de lado.`,
   },
   "return-of-serve": {
     title: "Cómo se recibe el saque",
@@ -159,7 +179,9 @@ Si la bola toca a uno de los jugadores que recibe (o a su pala) antes de botar, 
     status: "machine",
     bodyMd: `La bola está en juego desde el momento en que se ejecuta un saque válido hasta que se decide el punto (por "let" o por un resultado claro).
 
-Un detalle importante: una vez que la bola ha botado en tu lado de la pista, sigue en juego aunque después toque una pared, la malla metálica, la red o los postes — todos estos elementos forman parte del área de juego, igual que el suelo. Solo se pierde el punto si la bola bota una segunda vez antes de devolverla.`,
+Un detalle importante: una vez que la bola ha botado en tu lado de la pista, sigue en juego aunque después toque una pared, la malla metálica, la red o los postes — todos estos elementos forman parte del área de juego, igual que el suelo.
+
+El segundo bote en el suelo es lo que termina la jugada. Pero no es la única forma de perder el punto mientras la bola está en juego: consulta "Formas más comunes de perder un punto" para las demás.`,
   },
   "point-lost": {
     title: "Formas más comunes de perder un punto",
@@ -170,7 +192,8 @@ Un detalle importante: una vez que la bola ha botado en tu lado de la pista, sig
 - Tú, tu pala, o algo que lleves puesto toca la red, los postes, el cable de tensión o la pista del rival mientras la bola está en juego.
 - Después de golpear la bola, esta toca la malla metálica o el suelo de tu propio lado, en vez de ir hacia la pista rival.
 - Golpeas la bola dos veces seguidas (doble golpe).
-- La bola te toca a ti, a tu compañero, o a algo que llevéis puesto, después de haber intentado devolverla.
+- Los dos jugadores de la misma pareja golpean la bola, a la vez o uno detrás del otro — solo uno puede jugarla. **Ojo**: no cuenta como doble golpe el caso en que ambos van a por ella, uno golpea la bola y el otro golpea la pala del compañero.
+- La bola en juego te toca a ti, a tu compañero, o a algo que llevéis puesto — hayas intentado devolverla o no, y aunque ya fuera a salir de la pista.
 - Sacas y fallas dos veces seguidas.
 - Se te cae la pala o se rompe el cordón de seguridad durante el punto.
 
@@ -179,14 +202,15 @@ Esta lista no es exhaustiva — para el texto completo, consulta el reglamento o
   "correct-return": {
     title: "Qué cuenta como devolución válida",
     status: "machine",
-    bodyMd: `Una devolución es válida en situaciones que a veces sorprenden a quien empieza a jugar al pádel, como:
+    bodyMd: `Una devolución es válida en situaciones que a veces sorprenden a quien empieza a jugar al pádel.
 
-- La bola golpea primero en la pared de tu propio lado y solo después va hacia la pista rival.
+En estos casos la bola se queda dentro del recinto y la jugada continúa — el rival debe devolverla antes del segundo bote:
+
+- La bola bota en el suelo de tu lado, golpea tu propia pared, y es *ahí* donde la golpeas tú — mandándola a la pista rival. Fíjate en el orden: **primero el suelo, después la pared**. No puedes lanzar la bola contra tu pared para hacerla pasar la red; eso es squash, no pádel.
 - La bola toca la red o los postes y aun así cae correctamente en la pista rival.
-- Después de botar correctamente en la pista rival, la bola sale de la pista, golpea el techo, las luces u otro elemento ajeno al juego — el punto sigue en curso.
 - La bola bota exactamente en la esquina donde la pared se une al suelo.
 
-En todos estos casos, el punto continúa y el rival debe devolver la bola antes del segundo bote.`,
+Hay además un caso distinto, y que suele contarse mal: cuando la bola bota correctamente en la pista rival y solo después sale del recinto, golpeando el techo, las luces u otro elemento ajeno al juego. **Tu devolución fue válida** — pero eso no significa que la jugada continúe. Lo que pasa a continuación depende de si la pista permite o no el juego fuera del recinto, y de por dónde salió la bola; mira "Jugar fuera de la pista" y "Formas más comunes de perder un punto".`,
   },
   "point-won": {
     title: "Formas menos obvias de ganar un punto",
@@ -203,10 +227,12 @@ En todos estos casos, el punto continúa y el rival debe devolver la bola antes 
 
 Cuando hay un cambio programado, suele ocurrir:
 
-- Después de un número impar de juegos acordado de antemano.
+- Después de un número impar de juegos acordado de antemano. Para esta cuenta, el calentamiento vale por **dos juegos** y el tie-break por **uno**.
 - Al principio de cada set.
 - Nunca justo al principio de un tie-break — en ese caso, el cambio se retrasa hasta el principio del segundo juego del set siguiente.
 
-Si una bola se pierde o se daña a mitad de un partido, se sustituye de inmediato — el juego nunca continúa con menos bolas de las acordadas.`,
+Si una bola se pierde o se daña a mitad de un partido, se sustituye cuanto antes, y el criterio depende de lo reciente que sea el cambio: en los **dos primeros juegos** después de un cambio se repone con una bola nueva; a partir de ahí, con una bola usada de desgaste parecido, para no dar ventaja a nadie.
+
+El juego no puede continuar con **una sola bola** disponible. Con dos, en un partido de tres, se sigue jugando con normalidad.`,
   },
 };

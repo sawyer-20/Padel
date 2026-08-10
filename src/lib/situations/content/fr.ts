@@ -7,19 +7,19 @@ export const fr: Record<string, SituationContent> = {
     question: "La balle a touché le mur de mon côté après avoir rebondi au sol — puis-je encore la renvoyer ?",
     status: "machine",
     answerMd:
-      "Oui. Au padel, une fois que la balle a rebondi de ton côté, elle reste en jeu même si elle touche ensuite un mur ou le grillage métallique qui entoure le court — les murs font partie de la zone de jeu, tout comme le sol. Tu ne perds le point que si la balle rebondit une **deuxième fois** avant que tu ne la renvoies.",
+      "Oui. Au padel, une fois que la balle a rebondi au sol de ton côté, elle reste en jeu même si elle touche ensuite un mur ou le grillage métallique qui entoure le court — les murs font partie de la zone de jeu, tout comme le sol. Ce qui met fin à l'échange, c'est un **deuxième** rebond au sol avant que tu ne la renvoies.",
   },
   "net-touch-on-serve": {
     question: "Le service a touché le filet et est quand même tombé dans le bon carré — est-ce une faute ?",
     status: "machine",
     answerMd:
-      "Non. Si la balle touche le filet ou les poteaux pendant le service et atterrit malgré tout dans le bon carré de service, ce n'est pas une faute — le service est simplement rejoué, sans pénalité pour le serveur.",
+      "Non, à condition que la balle ne touche pas le grillage métallique avant le deuxième rebond. Si elle touche le filet ou les poteaux, retombe dans le bon carré et en reste là, le service est simplement rejoué, sans pénalité pour le serveur. Mais si, après être tombée dans le carré, elle va toucher le grillage métallique avant de rebondir une seconde fois, c'est une faute — et non un service à rejouer.",
   },
   "ball-out-over-end-wall": {
     question: "Après avoir correctement rebondi de mon côté, la balle est sortie par-dessus le mur du fond — le point est-il déjà décidé ?",
     status: "machine",
     answerMd:
-      "Pas forcément. Si le court dispose d'une zone de sécurité et autorise le jeu hors du court, l'adversaire peut encore aller chercher la balle dehors et la renvoyer. Le point n'est décidé que si la balle sort d'un côté où le jeu hors du court n'est pas autorisé, ou si, une fois dehors, elle rebondit une deuxième fois ou touche quelque chose d'étranger au jeu.",
+      "Oui, il est décidé : tu as perdu le point. La sortie **par-dessus le mur du fond** est justement le cas où le règlement n'autorise pas le jeu extérieur, même si le court dispose d'une zone de sécurité — il n'y a rien à aller chercher.\n\nC'est différent si la balle sort **par le côté ou par l'ouverture** : là, sur un court avec zone de sécurité, c'est **toi** qui peux sortir en courant et la renvoyer depuis l'extérieur, parce que la balle a rebondi de ton côté et que le renvoi t'appartient. Cet échange s'arrête si la balle rebondit une deuxième fois ou touche quelque chose d'étranger au court.",
   },
   "return-from-outside-court": {
     question: "Un joueur est sorti du court pour renvoyer la balle et y est parvenu — le point est-il valable ?",
@@ -37,7 +37,7 @@ export const fr: Record<string, SituationContent> = {
     question: "Le service est tombé en dehors du bon carré — est-ce une faute ?",
     status: "machine",
     answerMd:
-      "Oui. Le service doit rebondir dans le carré de service adverse, du bon côté (les lignes comptent comme bonnes). S'il tombe en dehors, c'est une faute — et comme pour tout service, une seconde tentative est possible avant de perdre le point.",
+      "Oui. Le service doit rebondir dans le carré de service adverse, du bon côté (les lignes comptent comme bonnes). S'il tombe en dehors, c'est une faute. Si c'était le premier service, tu as droit à un second ; si c'était déjà le second, tu perds le point.",
   },
   "double-hit": {
     question: "J'ai touché la balle deux fois de suite sans le vouloir — que se passe-t-il ?",

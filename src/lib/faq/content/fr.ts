@@ -14,7 +14,7 @@ export const fr: Record<string, FaqContent> = {
     question: "En quoi le padel est-il différent du tennis ?",
     status: "machine",
     answerMd:
-      "Le décompte des points est identique. Presque tout le reste change :\n\n- **Les murs font partie du jeu.** La balle peut rebondir sur la vitre et rester vivante — au tennis, ce serait un point perdu.\n- **Le terrain est fermé et plus petit**, et on joue toujours en double.\n- **Le service se fait par en dessous**, en faisant rebondir la balle au sol avant de la frapper. Pas d'aces à 200 km/h.\n- **La raquette est rigide et sans cordage**, perforée et plus courte qu'une raquette de tennis.\n\nRésultat concret : les points durent plus longtemps et se gagnent par le placement et la patience, pas par la puissance.",
+      "Le décompte des points est presque identique — c'est le 40-40 qui change, où le padel professionnel joue un point en or au lieu des avantages. Presque tout le reste est différent :\n\n- **Les murs font partie du jeu.** La balle peut rebondir sur la vitre et rester vivante — au tennis, ce serait un point perdu.\n- **Le terrain est fermé et plus petit**, et on joue toujours en double.\n- **Le service se fait par en dessous**, en faisant rebondir la balle au sol avant de la frapper. Pas d'aces à 200 km/h.\n- **La raquette est rigide et sans cordage**, perforée et plus courte qu'une raquette de tennis.\n\nRésultat concret : les points durent plus longtemps et se gagnent par le placement et la patience, pas par la puissance.",
   },
   "need-tennis-experience": {
     question: "Faut-il savoir jouer au tennis pour débuter le padel ?",
@@ -32,7 +32,7 @@ export const fr: Record<string, FaqContent> = {
     question: "Comment compte-t-on les points au padel ?",
     status: "machine",
     answerMd:
-      "Exactement comme au tennis. Les points vont 15, 30, 40 et jeu, avec deux points d'écart à partir de 40-40. Les jeux forment des sets : on gagne le set en atteignant six jeux avec deux d'avance, et à 6-6 on joue un tie-break. Les matchs se disputent normalement au meilleur des trois sets.\n\nLa règle complète, avec l'article officiel de la FIP, se trouve dans la section Règles.",
+      "Comme au tennis, avec une différence importante. Chaque point vaut 15, 30, 40 puis jeu. Les jeux forment des sets : on gagne le set en atteignant six jeux avec deux d'avance, et à 6-6 on joue un tie-break. Les matchs se disputent normalement au meilleur des trois sets.\n\nCe qui change, c'est le 40-40. Le tennis joue des avantages jusqu'à ce que quelqu'un prenne deux points d'écart ; le padel professionnel joue aujourd'hui presque toujours le **point en or** — un seul point décisif, et celui qui le gagne gagne le jeu. Si tu regardes un tournoi du circuit et qu'un jeu se termine d'un coup à 40-40, c'est ce qui vient de se passer.\n\nLa règle complète, avec l'article officiel de la FIP, se trouve dans la section Règles.",
   },
   "walls-in-play": {
     question: "Puis-je jouer la balle après qu'elle a touché le mur ?",
@@ -50,7 +50,7 @@ export const fr: Record<string, FaqContent> = {
     question: "De quel matériel ai-je besoin pour mon premier cours ?",
     status: "machine",
     answerMd:
-      "Moins qu'on ne le croit :\n\n- **Une raquette** — la plupart des clubs en prêtent ou en louent les premières fois. N'achète pas avant de savoir si le sport te plaît.\n- **Des balles** — généralement incluses dans le cours.\n- **Des chaussures** — celles de tennis ou de padel conviennent ; ce qui compte, c'est une semelle avec de l'accroche latérale. Les chaussures de running sont le mauvais choix, car leur semelle est faite pour aller devant, alors que le padel est fait de freinages latéraux.\n- **Une tenue de sport confortable** et de l'eau.\n\nLe bon ordre d'achat : les chaussures d'abord, la raquette ensuite.",
+      "Moins qu'on ne le croit :\n\n- **Une raquette** — la plupart des clubs en prêtent ou en louent les premières fois. N'achète pas avant de savoir si le sport te plaît. Vérifie simplement qu'elle est munie d'un **cordon de sécurité** pour le poignet : c'est le seul élément que le règlement rend obligatoire, et jouer sans lui coûte le point.\n- **Des balles** — généralement incluses dans le cours.\n- **Des chaussures** — celles de tennis ou de padel conviennent ; ce qui compte, c'est une semelle avec de l'accroche latérale. Les chaussures de running sont le mauvais choix, car leur semelle est faite pour aller devant, alors que le padel est fait de freinages latéraux.\n- **Une tenue de sport confortable** et de l'eau.\n\nLe bon ordre d'achat : les chaussures d'abord, la raquette ensuite.",
   },
   "choosing-first-racket": {
     question: "Comment choisir ma première raquette ?",

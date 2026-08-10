@@ -8,19 +8,19 @@ export const de: Record<string, FaqContent> = {
     question: "Wie viele Personen braucht man für Padel?",
     status: "machine",
     answerMd:
-      "Vier: Padel wird im Doppel gespielt, zwei auf jeder Seite des Netzes. Es gibt schmalere Einzel-Courts, aber der Wettkampfsport und das offizielle Regelwerk sind auf das Doppel ausgelegt.\n\nDeshalb läuft im Padel fast alles auf Abstimmung hinaus: wo dein Partner steht, wer die Mitte deckt, wer ans Netz geht. Auf einem kleinen, geschlossenen Court lassen zwei unabgestimmte Spieler Lücken, die der Gegner schnell findet.",
+      "Vier: Padel wird im Doppel gespielt, zwei auf jeder Seite des Netzes. Es gibt schmalere Einzel-Plätze, aber der Wettkampfsport und das offizielle Regelwerk sind auf das Doppel ausgelegt.\n\nDeshalb läuft im Padel fast alles auf Abstimmung hinaus: wo dein Partner steht, wer die Mitte deckt, wer ans Netz geht. Auf einem kleinen, geschlossenen Platz lassen zwei unabgestimmte Spieler Lücken, die der Gegner schnell findet.",
   },
   "padel-vs-tennis": {
     question: "Worin unterscheidet sich Padel vom Tennis?",
     status: "machine",
     answerMd:
-      "Die Zählweise ist identisch. Fast alles andere ändert sich:\n\n- **Die Wände gehören zum Spiel.** Der Ball darf vom Glas abprallen und bleibt im Spiel — im Tennis wäre der Punkt verloren.\n- **Der Court ist geschlossen und kleiner**, und gespielt wird immer im Doppel.\n- **Der Aufschlag erfolgt von unten**, wobei der Ball vor dem Schlag auf dem Boden aufspringt. Es gibt keine Asse mit 200 km/h.\n- **Der Schläger ist starr und ohne Saiten**, perforiert und kürzer als ein Tennisschläger.\n\nDie praktische Folge: Ballwechsel dauern länger und werden mit Stellungsspiel und Geduld gewonnen, nicht mit Kraft.",
+      "Die Zählweise ist fast dieselbe — was sich ändert, ist das 40-40: Dort spielt das Profi-Padel einen Golden Point statt der Vorteile. Fast alles andere ist anders:\n\n- **Die Wände gehören zum Spiel.** Der Ball darf vom Glas abprallen und bleibt im Spiel — im Tennis wäre der Punkt verloren.\n- **Der Platz ist geschlossen und kleiner**, und gespielt wird immer im Doppel.\n- **Der Aufschlag erfolgt von unten**, wobei der Ball vor dem Schlag auf dem Boden aufspringt. Es gibt keine Asse mit 200 km/h.\n- **Der Schläger ist starr und ohne Saiten**, perforiert und kürzer als ein Tennisschläger.\n\nDie praktische Folge: Ballwechsel dauern länger und werden mit Stellungsspiel und Geduld gewonnen, nicht mit Kraft.",
   },
   "need-tennis-experience": {
     question: "Muss ich Tennis können, um mit Padel anzufangen?",
     status: "machine",
     answerMd:
-      "Nein. Padel ist eine der am leichtesten zugänglichen Rückschlagsportarten: Der Court ist klein, der Schläger kurz, und die Wände geben dir eine zweite Chance bei Bällen, die anderswo längst verloren wären.\n\nTennis-Erfahrung hilft beim Lesen des Balls, bringt aber zwei störende Gewohnheiten mit: **viel zu lange Armbewegungen** — dafür ist im Padel kein Platz — und **zurückweichen, wenn der Ball hoch kommt**, statt ihn am Netz zu erwarten und mit einer Bandeja zu beantworten. Wer nie Tennis gespielt hat, muss sich keine davon abgewöhnen.",
+      "Nein. Padel ist eine der am leichtesten zugänglichen Rückschlagsportarten: Der Platz ist klein, der Schläger kurz, und die Wände geben dir eine zweite Chance bei Bällen, die anderswo längst verloren wären.\n\nTennis-Erfahrung hilft beim Lesen des Balls, bringt aber zwei störende Gewohnheiten mit: **viel zu lange Armbewegungen** — dafür fehlt im Padel der Raum — und **zurückweichen, wenn der Ball hoch kommt**, statt ihn am Netz zu erwarten und mit einer Bandeja zu beantworten. Wer nie Tennis gespielt hat, muss sich keine davon abgewöhnen.",
   },
   "which-side": {
     question: "Soll ich auf der rechten oder der linken Seite spielen?",
@@ -32,25 +32,25 @@ export const de: Record<string, FaqContent> = {
     question: "Wie wird im Padel gezählt?",
     status: "machine",
     answerMd:
-      "Genau wie im Tennis. Die Punkte gehen 15, 30, 40 und Spiel, ab 40-40 mit zwei Punkten Abstand. Spiele bilden Sätze: Den Satz gewinnt, wer sechs Spiele mit zwei Vorsprung erreicht, bei 6-6 folgt ein Tie-Break. Matches gehen normalerweise über zwei Gewinnsätze.\n\nDie vollständige Regel, mit dem offiziellen FIP-Artikel, steht im Bereich Regeln.",
+      "Wie im Tennis, mit einem wichtigen Unterschied. Die Punkte gehen 15, 30, 40 und Spiel. Spiele bilden Sätze: Den Satz gewinnt, wer sechs Spiele mit zwei Vorsprung erreicht, bei 6-6 folgt ein Tiebreak. Matches gehen normalerweise über zwei Gewinnsätze.\n\nAnders ist das 40-40. Im Tennis werden Vorteile gespielt, bis jemand zwei Punkte Abstand hat; das Profi-Padel spielt heute fast immer den **Golden Point** — einen einzigen entscheidenden Punkt, und wer ihn gewinnt, gewinnt das Spiel. Wenn du ein Turnier der Tour siehst und ein Spiel bei 40-40 plötzlich vorbei ist, war genau das der Grund.\n\nDie vollständige Regel, mit dem offiziellen FIP-Artikel, steht im Bereich Regeln.",
   },
   "walls-in-play": {
     question: "Darf ich den Ball spielen, nachdem er die Wand berührt hat?",
     status: "machine",
     answerMd:
-      "Ja — sofern der Ball zuerst auf deinem Boden aufgesprungen ist. Die Reihenfolge zählt und lässt sich nicht umkehren: **Boden, dann Wand**. Trifft der Ball deine Wand direkt, ohne den Boden zu berühren, geht der Punkt an die Gegner.\n\nNach diesem ersten Aufsprung darf der Ball das Glas, das Gitter oder beides berühren und bleibt im Spiel, bis er ein zweites Mal auf dem Boden aufkommt. Auf diesen Abpraller zu warten, statt vor ihm wegzulaufen, ist der sichtbarste Unterschied zwischen jemandem, der gestern angefangen hat, und jemandem, der seit ein paar Monaten spielt.",
+      "Ja — sofern der Ball zuerst auf deinem Boden aufgesprungen ist. Die Reihenfolge zählt und lässt sich nicht umkehren: **Boden, dann Wand**. Trifft der Ball deine Wand direkt, ohne den Boden zu berühren, geht der Punkt an die Gegner.\n\nNach diesem ersten Aufspringen darf der Ball das Glas, den Maschendraht oder beides berühren und bleibt im Spiel, bis er ein zweites Mal aufspringt. Auf diesen Wandabpraller zu warten, statt vor ihm wegzulaufen, ist der sichtbarste Unterschied zwischen jemandem, der gestern angefangen hat, und jemandem, der seit ein paar Monaten spielt.",
   },
   "ball-out-of-court": {
-    question: "Darf der Ball den Court verlassen und der Punkt weitergehen?",
+    question: "Darf der Ball den Platz verlassen und der Punkt weitergehen?",
     status: "machine",
     answerMd:
-      "Ja. Verlässt der Ball nach dem Aufsprung auf deiner Seite die Umzäunung, darfst du durch die seitliche Öffnung hinausgehen, ihn von außen spielen und zurückschlagen — solange er nicht ein zweites Mal auf dem Boden aufgekommen ist.\n\nDas ist einer der spektakulärsten Momente im Padel und hängt vom Court ab: Es geht nur dort, wo seitliche Öffnungen vorhanden sind. Auf vollständig geschlossenen Courts ist ein Ball, der hinausgeht, ein gewonnener Punkt für den, der ihn geschlagen hat.",
+      "Ja. Verlässt der Ball nach dem Aufspringen auf deiner Seite den Platz, darfst du durch die seitliche Öffnung hinausgehen, ihn von außen spielen und zurückschlagen — solange er nicht ein zweites Mal aufgesprungen ist.\n\nDas ist einer der spektakulärsten Momente im Padel und hängt vom Platz ab: Es geht nur dort, wo seitliche Öffnungen vorhanden sind. Auf vollständig geschlossenen Plätzen ist ein Ball, der hinausgeht, ein gewonnener Punkt für den, der ihn geschlagen hat.",
   },
   "first-equipment": {
     question: "Welche Ausrüstung brauche ich für die erste Stunde?",
     status: "machine",
     answerMd:
-      "Weniger, als man denkt:\n\n- **Ein Schläger** — die meisten Clubs verleihen oder vermieten für die ersten Male einen. Kaufe nicht, bevor du weißt, ob dir der Sport liegt.\n- **Bälle** — normalerweise in der Stunde enthalten.\n- **Schuhe** — Tennis- oder Padelschuhe funktionieren beide; entscheidend ist eine Sohle mit seitlichem Grip. Laufschuhe sind die falsche Wahl, weil ihre Sohle fürs Geradeauslaufen gebaut ist und Padel aus seitlichen Bremsbewegungen besteht.\n- **Bequeme Sportkleidung** und Wasser.\n\nDie richtige Kaufreihenfolge: erst Schuhe, dann Schläger.",
+      "Weniger, als man denkt:\n\n- **Ein Schläger** — die meisten Clubs verleihen oder vermieten für die ersten Male einen. Kaufe nicht, bevor du weißt, ob dir der Sport liegt. Prüfe nur, ob eine **Sicherheitsschlaufe** fürs Handgelenk dran ist: Sie ist das einzige Ausrüstungsteil, das das Regelwerk vorschreibt, und wer ohne sie spielt, verliert den Punkt.\n- **Bälle** — normalerweise in der Stunde enthalten.\n- **Schuhe** — Tennis- oder Padelschuhe funktionieren beide; entscheidend ist eine Sohle mit seitlichem Grip. Laufschuhe sind die falsche Wahl, weil ihre Sohle fürs Geradeauslaufen gebaut ist und Padel aus seitlichen Bremsbewegungen besteht.\n- **Bequeme Sportkleidung** und Wasser.\n\nDie richtige Kaufreihenfolge: erst Schuhe, dann Schläger.",
   },
   "choosing-first-racket": {
     question: "Wie wähle ich meinen ersten Schläger?",
@@ -62,13 +62,13 @@ export const de: Record<string, FaqContent> = {
     question: "Sind Padelbälle dasselbe wie Tennisbälle?",
     status: "machine",
     answerMd:
-      "Sie sehen gleich aus, sind es aber nicht. Der Padelball hat einen geringeren Innendruck, was ihm einen niedrigeren Absprung und ein kontrollierteres Spiel gibt — auf einem kleinen Court, auf dem er zusätzlich von den Wänden abprallt, ist das entscheidend.\n\nMit Tennisbällen auf einem Padelcourt wird das Spiel zu schnell und unberechenbar. Toleranzen für Gewicht, Durchmesser und Absprung sind im offiziellen Regelwerk festgelegt.",
+      "Sie sehen gleich aus, sind es aber nicht. Der Padelball hat einen geringeren Innendruck, was ihm einen niedrigeren Absprung und ein kontrollierteres Spiel gibt — auf einem kleinen Platz, auf dem er zusätzlich von den Wänden abprallt, ist das entscheidend.\n\nMit Tennisbällen auf einem Padelplatz wird das Spiel zu schnell und unberechenbar. Toleranzen für Gewicht, Durchmesser und Absprung sind im offiziellen Regelwerk festgelegt.",
   },
   "national-ranking": {
     question: "Wo sehe ich die portugiesische nationale Rangliste?",
     status: "machine",
     answerMd:
-      "Die nationale Rangliste gehört dem portugiesischen Padelverband und liegt auf der Plattform, über die der Verband seine Wettbewerbe organisiert. Man erreicht sie über die [Ranglisten-Seite der FPP](https://fppadel.pt/rankings/).\n\n**Wir geben sie hier nicht wieder**, und zwar aus einem konkreten Grund: Diese Plattform behält sich die Rechte an ihren Daten ausdrücklich vor, nach Artikel 4 der EU-Richtlinie zum Text- und Data-Mining. Das ist eine schriftliche Absage, und wir respektieren sie.\n\nWas du auf dieser Seite findest, ist die Rangliste der internationalen Profitour (FIP) — etwas anderes. Eine portugiesische Spielerin steht dort mit ihrer Weltposition, und die ist nicht dieselbe wie ihr Platz in der nationalen Rangliste.",
+      "Die nationale Rangliste gehört dem portugiesischen Padelverband und liegt auf der Plattform, über die der Verband seine Wettbewerbe organisiert. Man erreicht sie über die [Ranglisten-Seite der FPP](https://fppadel.pt/rankings/).\n\n**Wir geben sie hier nicht wieder**, und zwar aus einem konkreten Grund: Diese Plattform behält sich die Rechte an ihren Daten ausdrücklich vor, nach Artikel 4 der EU-Richtlinie zum Text- und Data-Mining. Das ist eine schriftliche Absage, und wir respektieren sie.\n\nWas du auf dieser Seite findest, ist die Rangliste der internationalen Profitour (FIP) — etwas anderes. Eine portugiesische Spielerin steht dort mit ihrer Weltposition, und die ist nicht dieselbe wie ihre Position in der nationalen Rangliste.",
   },
   "amateur-tournaments": {
     question: "Wo finde ich Amateurturniere in Portugal?",

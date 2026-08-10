@@ -26,7 +26,7 @@ export const pt: Record<string, TipContent> = {
     title: "Deixa a parede trabalhar por ti",
     status: "machine",
     bodyMd:
-      "Quem começa tende a atirar-se à bola antes de ela bater na parede, por reflexo do ténis. Mas a parede é tua aliada: muitas bolas que parecem impossíveis voltam ao campo com um ressalto perfeitamente jogável. Acompanha a bola, espera o ressalto e devolve com calma.",
+      "Quem começa tende a atirar-se à bola antes de ela bater na parede, por reflexo do ténis. Mas a parede é tua aliada: muitas bolas que parecem impossíveis voltam ao campo com um ressalto perfeitamente jogável. Acompanha a bola, espera o ressalto e devolve com calma.\n\nUma ressalva que vale o ponto: isto só se aplica depois de a bola saltar no chão do teu lado. Se ela vier direta à parede sem tocar primeiro no chão, não esperes — o ponto é do adversário assim que a bola bate no vidro.",
   },
   "play-at-their-feet": {
     title: "Joga aos pés de quem está na rede",

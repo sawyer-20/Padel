@@ -14,7 +14,7 @@ export const pt: Record<string, FaqContent> = {
     question: "Em que é que o padel é diferente do ténis?",
     status: "machine",
     answerMd:
-      "As regras de pontuação são as mesmas. Quase tudo o resto muda:\n\n- **As paredes fazem parte do jogo.** A bola pode ressaltar no vidro e continuar viva — no ténis seria ponto perdido.\n- **O campo é fechado e mais pequeno**, e joga-se sempre a pares.\n- **O serviço é por baixo**, com um ressalto no chão antes de bater na bola. Não há aces a 200 km/h.\n- **A pá é rígida e sem cordas**, perfurada e mais curta do que uma raquete.\n\nO resultado prático: os pontos duram mais e ganham-se com posição e paciência, não com potência.",
+      "A contagem dos pontos é quase a mesma — muda o 40-40, onde o padel profissional joga um ponto de ouro em vez de vantagens. Quase tudo o resto é diferente:\n\n- **As paredes fazem parte do jogo.** A bola pode ressaltar no vidro e continuar viva — no ténis seria ponto perdido.\n- **O campo é fechado e mais pequeno**, e joga-se sempre a pares.\n- **O serviço é por baixo**, com um ressalto no chão antes de bater na bola. Não há aces a 200 km/h.\n- **A pá é rígida e sem cordas**, perfurada e mais curta do que uma raquete.\n\nO resultado prático: os pontos duram mais e ganham-se com posição e paciência, não com potência.",
   },
   "need-tennis-experience": {
     question: "Preciso de saber jogar ténis para começar padel?",
@@ -32,7 +32,7 @@ export const pt: Record<string, FaqContent> = {
     question: "Como se conta o resultado no padel?",
     status: "machine",
     answerMd:
-      "Exatamente como no ténis. Cada ponto vale 15, 30, 40 e jogo, com dois pontos de diferença a partir do 40-40. Os jogos formam sets: ganha o set quem chegar a seis jogos com dois de vantagem, e aos 6-6 joga-se um tie-break. As partidas são normalmente à melhor de três sets.\n\nA regra completa, com o artigo oficial da FIP, está na secção de Regras.",
+      "Como no ténis, com uma diferença importante. Cada ponto vale 15, 30, 40 e jogo. Os jogos formam sets: ganha o set quem chegar a seis jogos com dois de vantagem, e aos 6-6 joga-se um tie-break. As partidas são normalmente à melhor de três sets.\n\nO que muda é o 40-40. O ténis joga vantagens até alguém abrir dois pontos; o padel profissional joga hoje quase sempre o **ponto de ouro** — um único ponto decisivo, e quem o ganha ganha o jogo. Se estiveres a ver um torneio do circuito e o jogo terminar de repente num 40-40, foi isto que aconteceu.\n\nA regra completa, com o artigo oficial da FIP, está na secção de Regras.",
   },
   "walls-in-play": {
     question: "Posso jogar a bola depois de ela bater na parede?",
@@ -50,7 +50,7 @@ export const pt: Record<string, FaqContent> = {
     question: "Que material preciso para a primeira aula?",
     status: "machine",
     answerMd:
-      "Menos do que se pensa:\n\n- **Pá** — a maioria dos clubes empresta ou aluga nas primeiras vezes. Não compres antes de perceber se gostas.\n- **Bolas** — normalmente incluídas na aula.\n- **Sapatilhas** — as de ténis ou de padel servem; o que interessa é a sola com aderência lateral. Sapatilhas de corrida são a escolha errada, porque a sola é feita para ir em frente e o padel é feito de travagens de lado.\n- **Roupa desportiva confortável** e água.\n\nA ordem certa das compras é sapatilhas primeiro, pá depois.",
+      "Menos do que se pensa:\n\n- **Pá** — a maioria dos clubes empresta ou aluga nas primeiras vezes. Não compres antes de perceber se gostas. Confirma só que traz **cordão de pulso**: é o único item que o regulamento torna obrigatório, e jogar sem ele custa o ponto.\n- **Bolas** — normalmente incluídas na aula.\n- **Sapatilhas** — as de ténis ou de padel servem; o que interessa é a sola com aderência lateral. Sapatilhas de corrida são a escolha errada, porque a sola é feita para ir em frente e o padel é feito de travagens de lado.\n- **Roupa desportiva confortável** e água.\n\nA ordem certa das compras é sapatilhas primeiro, pá depois.",
   },
   "choosing-first-racket": {
     question: "Como escolho a minha primeira pá?",

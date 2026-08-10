@@ -8,14 +8,20 @@ export const fr: Record<string, RuleContent> = {
     status: "machine",
     bodyMd: `Le padel compte les points comme au tennis : le premier point vaut 15, le deuxième 30, le troisième 40, et le quatrième remporte le jeu — à condition d'avoir au moins deux points d'avance.
 
-Si les deux équipes atteignent 40-40, on parle d'**égalité** (deuce). À partir de là, deux formats existent pour décider du jeu, chaque tournoi choisissant le sien :
+Si les deux équipes atteignent 40-40, on parle d'**égalité** (deuce). À partir de là, le règlement prévoit trois façons de décider du jeu, et chaque tournoi choisit la sienne :
 
 - **Avantage classique** : l'équipe qui remporte le point suivant prend l'avantage ; si elle gagne encore, elle remporte le jeu, sinon on revient à l'égalité.
+- **Point étoile** : on joue avec avantages jusqu'à revenir à l'égalité pour la troisième fois ; le point suivant décide alors du jeu.
 - **Point en or (golden point)** : au lieu d'avantages successifs, un seul point décisif est joué. L'équipe qui le remporte gagne le jeu. C'est le format le plus utilisé aujourd'hui en padel professionnel, car il rend la durée des jeux plus prévisible.
+
+Sur le point décisif — en or comme étoile — deux règles font beaucoup discuter sur le court :
+
+- C'est l'**équipe qui relance** qui choisit de quel côté elle va recevoir, mais les deux joueurs **ne peuvent pas échanger leurs positions** pour le faire.
+- En épreuve mixte, celui qui relance le point décisif doit être **du même sexe que le serveur**.
 
 Une équipe remporte un **set** en atteignant 6 jeux, avec au moins 2 d'avance. En cas d'égalité à 6-6, un **tie-break** est joué (un décompte de points, pas de jeux) jusqu'à 7 points, avec 2 points d'avance.
 
-Un **match** se gagne en remportant 2 sets sur 3.`,
+Le format le plus courant pour un **match** est de remporter 2 sets sur 3, mais le règlement admet des variantes qu'une épreuve peut adopter : des sets courts en 4 jeux, un tie-break ordinaire à la place du troisième set, ou un **super tie-break en 10 points** en guise de troisième set — ce dernier est aujourd'hui courant en compétition amateur.`,
   },
   "the-serve": {
     title: "Le service : comment débute chaque point",
@@ -24,28 +30,37 @@ Un **match** se gagne en remportant 2 sets sur 3.`,
 
 Règles principales :
 
-- Le serveur doit garder au moins un pied derrière la ligne de service, sans la toucher ni franchir la ligne centrale imaginaire.
-- La balle doit rebondir au sol puis être frappée en dessous de la taille, avec au moins un pied en contact avec le sol au moment de l'impact.
+- Le serveur doit garder au moins un pied derrière la ligne de service, dans l'espace compris entre le prolongement imaginaire de la ligne centrale et le mur latéral — et il doit y rester jusqu'à ce que le service soit frappé.
+- La balle doit rebondir au sol avant d'être frappée, et ce rebond doit avoir lieu à l'intérieur du carré depuis lequel il sert. La balle ne peut franchir ni la ligne de service ni la ligne centrale avant l'impact.
+- L'impact doit se faire **à hauteur de taille ou en dessous**, avec au moins un pied en contact avec le sol à cet instant.
 - La balle doit traverser le filet en diagonale et atterrir dans le carré de service adverse, du côté opposé.
 - Chaque équipe dispose de deux tentatives par point (premier et second service) — si les deux échouent, le point est perdu.
-- Le côté du service alterne à chaque point : d'abord vers la gauche de l'adversaire, puis vers sa droite, et ainsi de suite.`,
+- Le premier service de chaque jeu se joue depuis le côté droit du court du serveur, et le côté alterne à chaque point.`,
   },
   "let-and-net-serve": {
     title: "« Let » et service filet : quand un service est rejoué",
     status: "machine",
     bodyMd: `Un service qui se passe mal n'est pas forcément une faute — dans certaines situations, le point est simplement rejoué, sans pénalité pour le serveur.
 
-- **Service filet** : si la balle touche le filet ou les poteaux et atterrit malgré tout dans le bon carré de service, ce n'est pas une faute — le service est rejoué.
-- **« Let » (rejoué)** : si le relanceur n'était pas prêt, ou qu'un élément extérieur au jeu interrompt le point (par exemple une balle venue d'un autre court), le point est intégralement rejoué.
+**Service filet.** Si la balle touche le filet ou les poteaux et atterrit malgré tout dans le bon carré de service, le service est rejoué — **mais seulement si elle ne touche pas le grillage métallique avant le deuxième rebond**. Si elle le touche, c'est une faute, et non un service à rejouer. C'est une distinction qui se tranche sur le court toutes les semaines et que beaucoup de joueurs ignorent.
+
+Le service est également rejoué si la balle, après avoir touché le filet ou les poteaux, atteint le relanceur ou un élément qu'il porte sur lui.
+
+**« Let » de point.** Le point est intégralement rejoué si le relanceur n'était pas prêt, si un élément étranger au jeu entre sur le court (une balle venue d'un autre court, par exemple), ou si un imprévu indépendant des joueurs interrompt le jeu.
+
+Deux conditions pratiques prennent souvent les joueurs au dépourvu : le « let » doit être demandé **immédiatement** — celui qui continue à jouer perd le droit de le réclamer — et la décision appartient à l'arbitre, qui peut refuser la demande et donner le point pour perdu s'il la juge abusive.
 
 Si le point est rejoué sur le premier service, le serveur conserve ses deux tentatives. Si c'est sur le second service, seule cette seconde tentative est rejouée.`,
   },
   "out-of-court-play": {
     title: "Jouer hors du court : la règle qui rend le padel unique",
     status: "machine",
-    bodyMd: `L'une des particularités les plus marquantes du padel est que, sur les courts prévus à cet effet, les joueurs peuvent sortir de l'enceinte fermée pour aller chercher la balle.
+    bodyMd: `L'une des particularités les plus marquantes du padel est que, sur les courts prévus à cet effet, les joueurs peuvent sortir de l'enceinte fermée pour aller chercher la balle. Mais le jeu extérieur n'est pas permis dans toutes les directions, et c'est là que presque tout le monde se trompe.
 
-Une fois que la balle a rebondi de ton côté, toi (ou ton partenaire) pouvez sortir par l'ouverture latérale du court et la renvoyer depuis l'extérieur, à condition que la balle soit toujours en jeu et que le court dispose d'une « zone de sécurité » autour de lui (un espace minimal sans obstacle) permettant de le faire en toute sécurité.
+Une fois que la balle a correctement rebondi au sol de ton côté, la suite dépend de **par où** elle sort :
+
+- **Par-dessus le mur du fond** : le point est perdu. Il n'y a rien à aller chercher, même si le court dispose d'une zone de sécurité.
+- **Par le côté ou par l'ouverture** : là, oui, toi (ou ton partenaire) pouvez sortir de l'enceinte et la renvoyer depuis l'extérieur — à condition que le court dispose d'une « zone de sécurité » autour de lui (un espace minimal sans obstacle) permettant de le faire en toute sécurité. L'échange s'arrête dès que la balle rebondit une deuxième fois ou touche quoi que ce soit d'étranger au court.
 
 Ce n'est pas autorisé sur tous les courts — cela dépend de l'espace et des ouvertures disponibles autour. Quand c'est le cas, cela donne certains des points les plus spectaculaires du padel : un joueur qui sprinte hors du court, renvoie la balle par-dessus le filet, puis revient en jeu.`,
   },
@@ -64,7 +79,7 @@ Ces dimensions garantissent un rebond prévisible de la balle sur les murs — c
   "the-ball": {
     title: "La balle",
     status: "machine",
-    bodyMd: `La balle de padel ressemble à une balle de tennis, mais elle est légèrement plus petite, plus légère et moins gonflée — adaptée à un jeu qui se déroule dans un court fermé, avec de nombreux rebonds contre les murs.
+    bodyMd: `La balle de padel ressemble à une balle de tennis, mais elle est légèrement plus petite et moins gonflée — adaptée à un jeu qui se déroule dans un court fermé, avec de nombreux rebonds contre les murs.
 
 - Diamètre compris entre 6,35 et 6,77 cm.
 - Poids compris entre 56,0 et 59,4 grammes.
@@ -78,9 +93,9 @@ Ces dimensions garantissent un rebond prévisible de la balle sur les murs — c
 
 - Longueur totale (tête et manche) jusqu'à 45,5 cm.
 - Largeur maximale de 26 cm et épaisseur maximale de 38 mm.
-- La surface de frappe est perforée de trous circulaires, généralement entre 9 et 13 mm de diamètre dans la zone centrale.
+- La surface de frappe est perforée de trous cylindriques, en nombre libre. Dans la **zone centrale**, chaque trou doit mesurer entre 9 et 13 mm. Sur une bande allant jusqu'à 4 cm depuis le bord, les trous peuvent être plus grands ou d'une autre forme, jusqu'à 20 mm au maximum.
 - Un cordon de sécurité fixé au manche et porté autour du poignet est obligatoire — il empêche la raquette d'être projetée pendant le jeu.
-- Elle ne peut comporter aucun dispositif électronique visible ou sonore communiquant des informations au joueur pendant le jeu.`,
+- Elle ne peut comporter aucun dispositif visible ou sonore communiquant des informations au joueur pendant le jeu.`,
   },
   times: {
     title: "Temps et pauses pendant le match",
@@ -94,7 +109,11 @@ Ces dimensions garantissent un rebond prévisible de la balle sur les murs — c
 
 Si une équipe n'est pas prête à jouer 10 minutes après l'heure officielle de début, elle peut perdre le match par forfait (« walkover »), sauf cas de force majeure.
 
-En cas de blessure soignable, chaque joueur a droit à une pause médicale de 3 minutes, qui peut être répétée aux deux changements de côté suivants, toujours dans le temps réglementaire.`,
+**Assistance médicale.** En cas de blessure soignable, chaque joueur a droit à une pause médicale de 3 minutes. La limite est ce qui échappe le plus souvent : l'assistance ne peut être accordée qu'**une seule fois par joueur et par affection soignable**, et elle n'est pas transférable au partenaire.
+
+Deux situations se distinguent de la blessure ordinaire : en cas d'accident étranger au jeu — un malaise, une réaction allergique, un vertige, une crise respiratoire — l'arbitre peut accorder jusqu'à 15 minutes ; et dans une circonstance inhabituelle, comme une chute involontaire ou une balle qui frappe un joueur, jusqu'à 5 minutes peuvent être données pour récupérer.
+
+*Note sur le tie-break* : le règlement contient deux dispositions qui ne s'accordent pas — l'une dit que pendant le tie-break le jeu est continu et qu'il n'y a pas de pause au changement de côté, l'autre accorde 20 secondes pour ce changement. En pratique, ce sont les 20 secondes qui s'appliquent.`,
   },
   "player-positions": {
     title: "Position des joueurs sur le court",
@@ -121,7 +140,7 @@ Une fois la décision prise, les deux équipes indiquent à l'arbitre qui sert e
 
 Pendant le tie-break, le changement de côté a lieu tous les 6 points.
 
-Si les équipes oublient de changer de côté, l'erreur est corrigée dès qu'elle est remarquée, en reprenant ensuite le bon ordre — les points déjà gagnés restent valables.`,
+Si les équipes oublient de changer de côté, l'erreur est corrigée dès qu'elle est remarquée, en reprenant ensuite le bon ordre — les points déjà gagnés restent valables. Une conséquence pratique est à retenir : si l'erreur n'est remarquée qu'après une première faute de service, le serveur ne dispose plus que de son second service.`,
   },
   "serve-fault": {
     title: "Quand un service est une faute",
@@ -133,8 +152,9 @@ Si les équipes oublient de changer de côté, l'erreur est corrigée dès qu'el
 - La balle tombe en dehors du carré de service adverse (les lignes comptent comme bonnes).
 - La balle touche le serveur, son partenaire, ou un élément qu'ils portent ou transportent.
 - La balle atterrit dans le bon carré de service mais touche ensuite le grillage métallique avant le deuxième rebond.
+- La balle atterrit dans le bon carré de service et sort directement par l'ouverture, sur un court sans zone de sécurité et donc sans jeu extérieur autorisé.
 
-Comme pour tout service, une seconde tentative est toujours possible avant de perdre le point.`,
+Une faute sur le premier service donne droit à un second. Deux fautes de suite font perdre le point — et il existe des cas où le serveur ne dispose que d'un seul service au départ, par exemple quand une erreur de changement de côté est corrigée tardivement.`,
   },
   "return-of-serve": {
     title: "Comment le service est réceptionné",
@@ -159,7 +179,9 @@ Si la balle touche l'un des relanceurs (ou sa raquette) avant de rebondir, le po
     status: "machine",
     bodyMd: `La balle est en jeu à partir du moment où un service valable est frappé, jusqu'à ce que le point soit décidé (par un « let » ou un résultat clair).
 
-Un détail important : une fois que la balle a rebondi de ton côté du court, elle reste en jeu même si elle touche ensuite un mur, le grillage métallique, le filet ou les poteaux — tous ces éléments font partie de la zone de jeu, au même titre que le sol. Tu ne perds le point que si la balle rebondit une deuxième fois avant que tu ne la renvoies.`,
+Un détail important : une fois que la balle a rebondi de ton côté du court, elle reste en jeu même si elle touche ensuite un mur, le grillage métallique, le filet ou les poteaux — tous ces éléments font partie de la zone de jeu, au même titre que le sol.
+
+C'est le deuxième rebond au sol qui met fin à l'échange. Mais ce n'est pas la seule façon de perdre le point pendant que la balle est en jeu : voir « Les façons les plus courantes de perdre un point » pour les autres.`,
   },
   "point-lost": {
     title: "Les façons les plus courantes de perdre un point",
@@ -170,7 +192,8 @@ Un détail important : une fois que la balle a rebondi de ton côté du court, e
 - Toi, ta raquette, ou un élément que tu portes touche le filet, les poteaux, le câble de tension ou le court adverse pendant que la balle est en jeu.
 - Après avoir frappé la balle, elle touche le grillage métallique ou le sol de ton propre côté, au lieu d'aller vers le court adverse.
 - Tu frappes la balle deux fois de suite (double frappe).
-- La balle te touche, toi, ton partenaire, ou un élément que vous portez, après avoir tenté de la renvoyer.
+- Les deux joueurs d'une même équipe frappent la balle, en même temps ou l'un après l'autre — un seul a le droit de la jouer. **Attention** : il n'y a pas double frappe quand les deux tentent de frapper, que l'un touche la balle et que l'autre touche la raquette de son partenaire.
+- La balle en jeu te touche, toi, ton partenaire, ou un élément que vous portez — que tu aies tenté de la renvoyer ou non, et même si elle allait de toute façon sortir du court.
 - Tu commets deux fautes de service consécutives.
 - Tu laisses tomber ta raquette, ou ton cordon de sécurité se rompt, pendant le point.
 
@@ -179,14 +202,15 @@ Cette liste n'est pas exhaustive — consulte le règlement officiel pour le tex
   "correct-return": {
     title: "Ce qui compte comme un retour valable",
     status: "machine",
-    bodyMd: `Un retour est valable dans des situations qui surprennent parfois les débutants au padel, comme :
+    bodyMd: `Un retour est valable dans des situations qui surprennent parfois les débutants au padel.
 
-- La balle touche d'abord le mur de ton propre côté, puis part vers le court adverse.
+Dans les cas suivants, la balle reste dans l'enceinte et l'échange continue — l'adversaire doit la renvoyer avant son deuxième rebond :
+
+- La balle rebondit au sol de ton côté, revient de ton propre mur, et c'est *là* que tu la frappes — pour l'envoyer dans le court adverse. Attention à l'ordre : **le sol d'abord, le mur ensuite**. Tu ne peux pas envoyer la balle contre ton mur pour lui faire passer le filet ; ça, c'est du squash, pas du padel.
 - La balle touche le filet ou les poteaux et atterrit quand même correctement dans le court adverse.
-- Après avoir correctement rebondi dans le court adverse, la balle sort, touche le plafond, les lumières ou un autre élément étranger au jeu — le point reste en cours.
 - La balle atterrit exactement dans l'angle où le mur rejoint le sol.
 
-Dans tous ces cas, le jeu continue et l'adversaire doit renvoyer la balle avant son deuxième rebond.`,
+Il existe un cas différent, et souvent mal jugé : la balle rebondit correctement dans le court adverse, puis sort de l'enceinte et touche le plafond, les lumières ou un autre élément étranger au jeu. **Ton retour était valable** — mais cela ne veut pas dire que l'échange continue. La suite dépend de savoir si le court autorise le jeu hors de l'enceinte, et par où la balle est sortie ; voir « Jouer hors du court » et « Les façons les plus courantes de perdre un point ».`,
   },
   "point-won": {
     title: "Des façons moins évidentes de gagner un point",
@@ -203,10 +227,12 @@ Dans tous ces cas, le jeu continue et l'adversaire doit renvoyer la balle avant 
 
 Quand un changement est prévu, il a généralement lieu :
 
-- Après un nombre impair de jeux convenu à l'avance.
+- Après un nombre impair de jeux convenu à l'avance. Pour ce décompte, l'échauffement compte pour **deux jeux** et le tie-break pour **un**.
 - Au début de chaque set.
 - Jamais juste au début d'un tie-break — dans ce cas, le changement est reporté au début du deuxième jeu du set suivant.
 
-Si une balle est perdue ou endommagée en cours de match, elle est remplacée immédiatement — le jeu ne continue jamais avec moins de balles que prévu.`,
+Si une balle est perdue ou endommagée en cours de match, elle est remplacée dès que possible, et le critère dépend de l'ancienneté du dernier changement : pendant les **deux premiers jeux** qui suivent un changement, on remet une balle neuve ; ensuite, une balle usagée d'usure comparable, pour ne favoriser personne.
+
+Le jeu ne peut pas se poursuivre avec **une seule balle** disponible. Avec deux, dans un match qui en prévoit trois, on continue normalement.`,
   },
 };

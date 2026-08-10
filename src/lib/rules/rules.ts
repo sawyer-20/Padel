@@ -7,7 +7,16 @@ export const FIP_OFFICIAL_PDF_URL = "https://www.padelfip.com/wp-content/uploads
 export const rules: RuleMeta[] = [
   { slug: "scoring", category: "scoring", fipArticleRef: "Rule 1", fipVersion: FIP_VERSION, order: 1 },
   { slug: "the-serve", category: "play", fipArticleRef: "Rule 6", fipVersion: FIP_VERSION, order: 2 },
-  { slug: "let-and-net-serve", category: "play", fipArticleRef: "Rule 9", fipVersion: FIP_VERSION, order: 3 },
+  // Rule 9 cobre o serviço; o "let" de ponto (bola de outro campo, interrupção
+  // imprevista) vem da Rule 10, que é onde estão as duas condições práticas:
+  // pedir de imediato, e o árbitro poder recusar.
+  {
+    slug: "let-and-net-serve",
+    category: "play",
+    fipArticleRef: "Rule 9 & Rule 10",
+    fipVersion: FIP_VERSION,
+    order: 3,
+  },
   {
     slug: "out-of-court-play",
     category: "play",
@@ -18,7 +27,10 @@ export const rules: RuleMeta[] = [
   {
     slug: "court-dimensions",
     category: "equipment",
-    fipArticleRef: "The Court — Dimensions",
+    // A altura da rede vem de "Net" e o fecho do campo de "Enclosures/Ends";
+    // só as medidas do retângulo estão em "Dimensions". Quem abrisse o
+    // regulamento na secção citada não encontrava metade do que dizemos.
+    fipArticleRef: "The Court — Dimensions, Net, Enclosures & Ends",
     fipVersion: FIP_VERSION,
     order: 5,
   },

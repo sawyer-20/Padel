@@ -8,7 +8,7 @@ export const de: Record<string, TipContent> = {
     title: "Geh ans Netz, wann immer du kannst",
     status: "machine",
     bodyMd:
-      "Im Padel gewinnt das Paar am Netz die meisten Punkte. Von hinten kannst du nur verteidigen; vorne kannst du angreifen und Winkel zumachen. Sobald dir ein Ball Zeit verschafft — ein guter Lob, ein flacher Ball, der den Gegner zum Aufsetzen zwingt — rück vor und nimm das Netz.",
+      "Im Padel gewinnt das Paar am Netz die meisten Punkte. Von hinten kannst du nur verteidigen; vorne kannst du angreifen und Winkel zumachen. Sobald dir ein Ball Zeit verschafft — ein guter Lob, ein flacher Ball, der den Gegner zwingt, von unten nach oben zurückzuspielen — rück vor und nimm das Netz.",
   },
   "dont-back-up-on-lobs": {
     title: "Lauf beim Lob nicht rückwärts",
@@ -26,7 +26,7 @@ export const de: Record<string, TipContent> = {
     title: "Lass die Wand für dich arbeiten",
     status: "machine",
     bodyMd:
-      "Anfänger stürzen sich aus Tennisreflex auf den Ball, bevor er die Wand erreicht. Dabei ist die Wand dein Verbündeter: Viele scheinbar unmögliche Bälle kommen perfekt spielbar zurück. Begleite den Ball, warte den Absprung ab und spiel ihn in Ruhe zurück.",
+      "Anfänger stürzen sich aus Tennisreflex auf den Ball, bevor er die Wand erreicht. Dabei ist die Wand dein Verbündeter: Viele scheinbar unmögliche Bälle kommen perfekt spielbar zurück. Begleite den Ball, warte den Wandabpraller ab und spiel ihn in Ruhe zurück. Das ist die **Salida de pared**.\n\nEine Einschränkung, die den Punkt wert ist: Das gilt erst, nachdem der Ball auf dem Boden deiner Seite aufgesprungen ist. Kommt er direkt an die Wand, ohne vorher den Boden zu berühren, warte nicht — der Punkt gehört dem Gegner, sobald der Ball das Glas trifft.",
   },
   "play-at-their-feet": {
     title: "Spiel auf die Füße dessen, der am Netz steht",
@@ -41,7 +41,7 @@ export const de: Record<string, TipContent> = {
       "Viele spielen den Lob nur in Bedrängnis. Dabei ist ein tiefer, gut platzierter Lob einer der besten Schläge im Padel: Er zwingt das gegnerische Paar zurück und lässt dich das Netz übernehmen. Ein guter Lob ist mehr wert als ein riskanter Schmetterball.",
   },
   "cross-by-default": {
-    title: "Cross als Standard; longline ist eine Entscheidung",
+    title: "Cross als Standard; Longline ist eine Entscheidung",
     status: "machine",
     bodyMd:
       "Der Cross-Ball läuft über die Diagonale, den längsten Bereich des Platzes — mehr Fehlerspielraum und mehr Zeit, dich neu zu positionieren. Longline ist riskanter und lässt deine eigene Seite offen. Spiel ihn als bewusste Entscheidung, nicht als Standard.",

@@ -62,7 +62,10 @@ export const faq: FaqMeta[] = [
     slug: "first-equipment",
     category: "equipment",
     order: 8,
-    relatedRuleSlug: null,
+    // O cordão de segurança é o único item de material que o regulamento torna
+    // obrigatório, e cuja falha custa o ponto. A lista do material tem de
+    // apontar para a regra que o exige.
+    relatedRuleSlug: "the-racket",
     relatedTermSlug: null,
   },
   {

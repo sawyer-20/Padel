@@ -8,14 +8,20 @@ export const en: Record<string, RuleContent> = {
     status: "machine",
     bodyMd: `Padel counts points the same way tennis does: the first point is worth 15, the second 30, the third 40, and the fourth wins the game — as long as the lead is at least two points.
 
-If both teams reach 40-40, it's called **deuce**. From there, tournaments use one of two ways to decide the game:
+If both teams reach 40-40, it's called **deuce**. From there the regulation allows three ways of deciding the game, and each tournament picks one:
 
 - **Classic advantage**: whoever wins the next point takes the advantage; winning again closes the game, losing sends it back to deuce.
+- **Star point**: advantages are played until the score comes back to deuce for the third time; the next point then decides the game.
 - **Golden point**: instead of successive advantages, a single deciding point is played. Whoever wins it wins the game. This is the most common format in professional padel today, because it keeps game length predictable.
+
+On the deciding point — golden or star — two rules cause a lot of arguing on court:
+
+- It is the **receiving pair** who choose which side to receive on, but the two of them **can't switch positions** with each other to do it.
+- In mixed events, the player receiving the deciding point must be **the same sex as the server**.
 
 A team wins a **set** by reaching 6 games, with a lead of at least 2. If the score reaches 6-6, a **tie-break** is played (a points shootout, not games) up to 7 points, with a 2-point margin.
 
-A **match** is won by taking 2 of 3 sets.`,
+The usual **match** format is winning 2 of 3 sets, but the regulation allows alternatives an event can adopt: short sets of 4 games, an ordinary tie-break in place of a third set, or a **10-point super tie-break** instead of a third set — the last of these is now routine in amateur competition.`,
   },
   "the-serve": {
     title: "The serve: how every point starts",
@@ -24,28 +30,37 @@ A **match** is won by taking 2 of 3 sets.`,
 
 Main rules:
 
-- The server must keep at least one foot behind the service line, without stepping on it or crossing the imaginary center line.
-- The ball must be bounced on the ground and struck below waist height, with at least one foot touching the ground at contact.
+- The server must keep at least one foot behind the service line, in the space between the imaginary prolongation of the center line and the side wall — and must stay there until the serve has been struck.
+- The ball must be bounced on the ground before it is hit, and that bounce has to happen inside the box the serve is being played from. The ball may not cross the service line or the center line before contact.
+- Contact must happen **at or below waist height**, with at least one foot touching the ground at that moment.
 - The ball must cross the net diagonally and land inside the opponent's service box, on the opposite side.
 - Each team gets two attempts per point (first and second serve) — if both fail, the point is lost.
-- The serving side alternates every point: first to the opponent's left, then to their right, and so on.`,
+- The first serve of every game is played from the right-hand side of the server's court, and the side alternates on every point after that.`,
   },
   "let-and-net-serve": {
     title: '"Let" and net serve: when a serve gets replayed',
     status: "machine",
     bodyMd: `Not every awkward serve is a fault — in some situations the point simply gets replayed, with no penalty for the server.
 
-- **Net serve**: if the ball touches the net or the posts and still lands inside the correct service box, it doesn't count as a fault — it's replayed.
-- **"Let" (replay)**: if the receiver wasn't ready, or something unrelated to the game interrupts the point (for example, a ball from another court rolling in), the point is replayed from scratch.
+**Net serve.** If the ball touches the net or the posts and still lands inside the correct service box, the serve is replayed — **but only if it doesn't then touch the metal fencing before the second bounce**. If it does, that's a fault, not a replay. It's a distinction that gets settled on court every week and that plenty of players have never heard of.
+
+The serve is also replayed if the ball, after clipping the net or the posts, hits the receiver or anything they're carrying.
+
+**"Let" on a point.** The point is replayed from scratch when the receiver wasn't ready, when something that isn't part of the game comes onto the court (a ball from the next court, for example), or when any unexpected event outside the players' control interrupts the match.
+
+Two practical conditions catch people out: a "let" has to be claimed **immediately** — carry on playing and you've given up the right to it — and the call belongs to the umpire, who can turn the claim down and award the point against you if it wasn't warranted.
 
 If the replay happens on the first serve, the server keeps both attempts. If it happens on the second serve, only that second attempt is repeated.`,
   },
   "out-of-court-play": {
     title: "Playing outside the court: the rule that makes padel unique",
     status: "machine",
-    bodyMd: `One of padel's most distinctive features is that, on courts built for it, players are allowed to leave the enclosed court to chase the ball.
+    bodyMd: `One of padel's most distinctive features is that, on courts built for it, players are allowed to leave the enclosed court to chase the ball. But the shot isn't on in every direction, and that's where almost everyone gets it wrong.
 
-After the ball bounces on your side, you (or your partner) may run out through the court's side opening and return it from outside, as long as the ball is still in play and the court has a "safety zone" around it (a minimum obstacle-free space) that allows this to be done safely.
+Once the ball has bounced correctly on your side, what happens next depends on **where** it leaves the court:
+
+- **Over the back wall**: the point is lost. There's nothing to chase, even on a court with a safety zone.
+- **Through the side or through the door**: here you (or your partner) can go out of the enclosure and play it from outside — as long as the court has a "safety zone" around it (a minimum obstacle-free space) that allows this to be done safely. The play ends the moment the ball bounces a second time or touches anything unrelated to the court.
 
 It isn't allowed on every court — it depends on there being enough space and openings around it. When it is, it produces some of padel's most spectacular points: a player sprinting off court, returning the ball over the net, and running back in.`,
   },
@@ -64,7 +79,7 @@ These dimensions keep the ball's bounce off the walls predictable — that predi
   "the-ball": {
     title: "The ball",
     status: "machine",
-    bodyMd: `A padel ball looks like a tennis ball but is slightly smaller, lighter, and has lower internal pressure — suited to a game played inside an enclosed court with lots of wall bounces.
+    bodyMd: `A padel ball looks like a tennis ball, but it has specifications of its own — suited to a game played inside an enclosed court with lots of wall bounces.
 
 - Diameter between 6.35 and 6.77 cm.
 - Weight between 56.0 and 59.4 grams.
@@ -78,9 +93,9 @@ These dimensions keep the ball's bounce off the walls predictable — that predi
 
 - Total length (head plus handle) up to 45.5 cm.
 - Maximum width of 26 cm and maximum thickness of 38 mm.
-- The hitting surface is perforated with circular holes, typically 9 to 13 mm in diameter in the center area.
+- The hitting surface is perforated with cylindrical holes, any number of them. In the **center area** each hole must measure between 9 and 13 mm. Within a band of up to 4 cm from the edge, holes may be larger or a different shape, up to a maximum of 20 mm.
 - A safety cord attached to the handle and worn around the wrist is mandatory — it stops the racket from flying off during play.
-- It may not carry any visible or audible electronic device that communicates information to the player during play.`,
+- It may not carry any visible or audible device that communicates information to the player during play.`,
   },
   times: {
     title: "Timing and breaks during a match",
@@ -94,7 +109,11 @@ These dimensions keep the ball's bounce off the walls predictable — that predi
 
 If a team isn't ready to play 10 minutes after the official start time, they can lose the match by "walkover" (W.O.), barring force majeure.
 
-For a treatable injury, each player gets one 3-minute medical break, which can be repeated on the following two changes of side, always within the regular time.`,
+**Medical attention.** For a treatable injury, each player gets one 3-minute medical break. The limit is the part that usually gets missed: attention can only be given **once per player and once per treatable condition**, and it can't be passed on to their partner.
+
+Two further situations are handled separately from an ordinary injury: if something happens that isn't caused by the game — fainting, an allergic reaction, dizziness, breathing difficulty — the umpire can allow up to 15 minutes; and for an unusual circumstance, such as an accidental fall or a ball striking a player, up to 5 minutes to recover.
+
+*A note on the tie-break*: the regulation carries two provisions that don't sit together — one says play is continuous during a tie-break with no rest at the change of ends, the other grants 20 seconds for that change. In practice, the 20 seconds are what gets used.`,
   },
   "player-positions": {
     title: "Where players position themselves",
@@ -121,7 +140,7 @@ Once decided, both teams tell the umpire who will serve and receive first.`,
 
 During a tie-break, sides change every 6 points.
 
-If a team forgets to change sides, it's corrected as soon as the mistake is noticed, following the correct order from then on — points already won still count.`,
+If a team forgets to change sides, it's corrected as soon as the mistake is noticed, following the correct order from then on — points already won still count. There's one practical consequence worth remembering: if the mistake only comes to light after a first serve has been faulted, the server is left with the second serve only.`,
   },
   "serve-fault": {
     title: "When a serve is a fault",
@@ -133,8 +152,9 @@ If a team forgets to change sides, it's corrected as soon as the mistake is noti
 - The ball landing outside the opponent's service box (the lines count as good).
 - The ball touching the server, their partner, or anything they're wearing or carrying.
 - The ball landing in the correct service box but then touching the metal fencing before the second bounce.
+- The ball landing in the correct service box and then going straight out through the door, on a court with no safety zone and therefore no out-of-court play authorized.
 
-As with any serve, there's always a second attempt before the point is lost.`,
+A fault on the first serve earns you a second. Two faults in a row lose the point — and there are cases where the server starts with only one serve, such as when a change-of-ends mistake is corrected late.`,
   },
   "return-of-serve": {
     title: "How the serve is received",
@@ -159,7 +179,9 @@ If the ball touches one of the receiving players (or their racket) before it bou
     status: "machine",
     bodyMd: `The ball is in play from the moment a valid serve is struck until the point is decided (either by a "let" or a clear outcome).
 
-One important detail: once the ball has bounced on your side of the court, it stays in play even if it then touches a wall, the metal fencing, the net, or the posts — all of these are part of the playing area, just like the floor. You only lose the point if the ball bounces a second time before you return it.`,
+One important detail: once the ball has bounced on your side of the court, it stays in play even if it then touches a wall, the metal fencing, the net, or the posts — all of these are part of the playing area, just like the floor.
+
+The second bounce on the ground is what ends the rally. But it isn't the only way to lose the point while the ball is in play — see "The most common ways to lose a point" for the rest.`,
   },
   "point-lost": {
     title: "The most common ways to lose a point",
@@ -170,7 +192,8 @@ One important detail: once the ball has bounced on your side of the court, it st
 - You, your racket, or something you're wearing touches the net, the posts, the tension cable, or the opponent's court while the ball is in play.
 - After you hit the ball, it touches the metal fencing or the ground on your own side, instead of going to the opponent's court.
 - You hit the ball twice in a row (a double hit).
-- The ball touches you, your partner, or something you're wearing after you've tried to return it.
+- Both players on the same team hit the ball, whether at the same time or one after the other — only one of you may play it. **Note**: it doesn't count as a double hit when both of you go for it and one hits the ball while the other hits their partner's racket.
+- The ball, while in play, touches you, your partner, or something you're wearing — whether or not you tried to return it, and even if it was already on its way out of the court.
 - You serve two consecutive faults.
 - You drop your racket, or your safety cord breaks, during the point.
 
@@ -179,14 +202,15 @@ This list isn't exhaustive — see the official regulation for the complete text
   "correct-return": {
     title: "What counts as a valid return",
     status: "machine",
-    bodyMd: `A return is valid in situations that sometimes surprise padel beginners, such as:
+    bodyMd: `A return is valid in situations that sometimes surprise padel beginners.
 
-- The ball hits the wall on your own side first and only then heads to the opponent's court.
+In these cases the ball stays inside the enclosure and the rally goes on — the opponent has to return it before its second bounce:
+
+- The ball bounces on the floor on your side, comes off your own wall, and *that* is where you hit it — sending it over to the opponent's court. Mind the order: **floor first, wall second**. You can't drive the ball into your own wall to make it clear the net; that's squash, not padel.
 - The ball touches the net or the posts and still lands correctly in the opponent's court.
-- After correctly bouncing in the opponent's court, the ball goes out, hits the ceiling, the lights, or another element unrelated to the game — the point is still live.
 - The ball lands exactly in the corner where the wall meets the floor.
 
-In all of these cases, play continues and the opponent must return the ball before its second bounce.`,
+One more case works differently, and it's the one that usually gets told wrong: the ball bounces correctly in the opponent's court and only then leaves the enclosure, hitting the ceiling, the lights, or another element unrelated to the game. **Your return was valid** — but that doesn't mean the rally continues. What happens next depends on whether the court allows out-of-court play and on where the ball left; see "Playing outside the court" and "The most common ways to lose a point".`,
   },
   "point-won": {
     title: "Less obvious ways to win a point",
@@ -203,10 +227,12 @@ In all of these cases, play continues and the opponent must return the ball befo
 
 When a change is scheduled, it typically happens:
 
-- After a pre-agreed odd number of games.
+- After a pre-agreed odd number of games. For that count, the warm-up counts as **two games** and a tie-break as **one**.
 - At the start of a set.
 - Never right at the start of a tie-break — in that case, the change is pushed to the start of the second game of the following set.
 
-If a ball is lost or damaged mid-match, it's replaced immediately — play never continues with fewer balls than agreed.`,
+If a ball is lost or damaged mid-match, it's replaced as soon as possible, and which ball goes in depends on how recently the last change happened: during the **first two games** after a change it's replaced with a new ball; after that, with a used ball of similar wear, so nobody gains an advantage.
+
+Play cannot continue with **only one ball** available to the players. With two, in a three-ball match, play carries on as normal.`,
   },
 };
