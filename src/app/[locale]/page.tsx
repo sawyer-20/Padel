@@ -271,7 +271,7 @@ export default async function HomePage() {
             action={<SeeAll href="/players" label={t("seeAll")} />}
           />
 
-          <div className="grid gap-4 sm:grid-cols-2">
+          <div className="flex flex-col gap-4">
             {data.country.nextTournament && (
               <Panel className="p-5">
                 <p className="text-xs font-semibold uppercase tracking-wider text-ink-faint">
@@ -293,44 +293,58 @@ export default async function HomePage() {
               </Panel>
             )}
 
+            {/*
+              Retratos, não uma lista de nomes.
+
+              As fotografias vêm da API a 1024x1024 e estavam a ser mostradas a
+              28 px — 0,07% dos pixéis que já tínhamos. Num sítio sobre um
+              desporto que se vê, o material visual estava cá dentro e por usar.
+
+              Quadradas de origem, por isso `aspect-square` não corta nem
+              deforma ninguém. A posição fica sobre a fotografia, em mono, que é
+              a face que este sítio usa para dados.
+            */}
             {data.country.players.length > 0 && (
-              <Panel className="overflow-hidden">
-                <p className="border-b border-line px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-ink-faint">
+              <div>
+                <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-ink-faint">
                   {t("countryPlayers", { total: data.country.totalPlayers })}
                 </p>
-                <ul className="divide-y divide-line">
+                <ul className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
                   {data.country.players.map((player) => (
                     <li key={player.id}>
                       <Link
                         href={`/players/${player.id}`}
-                        className="flex items-center gap-3 px-4 py-2 text-sm no-underline"
+                        className="group block overflow-hidden rounded-lg border border-line bg-surface no-underline transition-colors hover:border-accent"
                       >
-                        <span className="w-8 shrink-0 text-right tabular-nums text-ink-faint">
-                          {player.ranking.masked ? tRankings("maskedValue") : player.ranking.value}
-                        </span>
-                        {/* Fotos que a API já dava e não estavam a ser usadas
-                            fora da ficha individual. São rostos reais — valem
-                            mais do que qualquer imagem de banco. */}
-                        {player.photoUrl ? (
-                          <Image
-                            src={player.photoUrl}
-                            alt=""
-                            width={28}
-                            height={28}
-                            className="h-7 w-7 shrink-0 rounded-full object-cover"
-                          />
-                        ) : (
-                          <span className="h-7 w-7 shrink-0 rounded-full bg-raised" aria-hidden="true" />
-                        )}
-                        <span className="min-w-0 flex-1 truncate text-ink">{player.name}</span>
-                        <span className="shrink-0 text-xs text-ink-faint">
-                          {tRankings(player.category === "women" ? "women" : "men")}
-                        </span>
+                        <div className="relative aspect-square bg-raised">
+                          {player.photoUrl && (
+                            <Image
+                              src={player.photoUrl}
+                              alt=""
+                              fill
+                              sizes="(min-width: 1024px) 16vw, (min-width: 640px) 30vw, 45vw"
+                              className="object-cover"
+                            />
+                          )}
+                          <span className="absolute left-2 top-2 rounded bg-ground/85 px-1.5 py-0.5 font-mono text-[0.65rem] text-accent">
+                            {player.ranking.masked
+                              ? tRankings("maskedValue")
+                              : `#${player.ranking.value}`}
+                          </span>
+                        </div>
+                        <div className="p-2.5">
+                          <span className="block truncate font-display text-sm font-bold uppercase leading-tight tracking-tight text-ink transition-colors group-hover:text-accent">
+                            {player.name}
+                          </span>
+                          <span className="mt-0.5 block text-xs text-ink-faint">
+                            {tRankings(player.category === "women" ? "women" : "men")}
+                          </span>
+                        </div>
                       </Link>
                     </li>
                   ))}
                 </ul>
-              </Panel>
+              </div>
             )}
           </div>
         </section>
