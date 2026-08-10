@@ -7,9 +7,14 @@ import { pickHomeCountryPlayers } from "./pick-home-country-players";
 
 const TOP_RANKING_COUNT = 5;
 const NEWS_COUNT = 3;
-/** Quantos de cada categoria entram na montra de retratos. Três e três dão seis
- *  cartões, que é uma linha inteira em ecrã largo e três linhas no telemóvel. */
-const WORLD_TOP_COUNT = 3;
+/**
+ * Quantos de cada categoria entram na montra de retratos.
+ *
+ * Quatro, porque o padel joga-se a pares: quatro atletas são duas duplas, e a
+ * grelha passa a ler-se como pares em vez de uma fila de nomes cortada a meio.
+ * Dá também uma linha inteira por categoria em ecrã largo.
+ */
+const WORLD_TOP_COUNT = 4;
 const TOURNAMENT_WINDOW_DAYS_BACK = 30;
 const HOME_COUNTRY_PLAYER_COUNT = 6;
 

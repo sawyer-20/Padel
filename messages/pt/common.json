@@ -46,8 +46,6 @@
     "countrySection": "Padel em {country}",
     "countryNextTournament": "Próximo torneio no país",
     "countryPlayers": "{total} no circuito",
-    "statPlayers": "{count} atletas de {country} no circuito",
-    "statTournaments": "{count} torneios no calendário",
     "ctaTournaments": "Torneios em {country}",
     "ctaPlayers": "Jogadores do circuito",
     "boardBestRanked": "Melhor classificado",

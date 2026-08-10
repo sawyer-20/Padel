@@ -123,23 +123,7 @@ export default async function HomePage() {
       <section className="court-panel rounded-xl border border-line">
         <div className="grid gap-8 p-6 sm:p-8 lg:grid-cols-[1.15fr_1fr] lg:gap-0">
           <div className="lg:pr-10">
-            {/* Os totais, rebaixados a legenda. Em mono porque são dados, e o
-                mono é a face que este sítio usa para dados — a mesma do artigo
-                da FIP no índice das Regras. */}
-            <p className="font-mono text-[0.7rem] uppercase tracking-[0.18em] text-ink-faint">
-              {[
-                data.country.totalPlayers > 0
-                  ? t("statPlayers", { country: homeCountryName, count: data.country.totalPlayers })
-                  : null,
-                data.tournamentCount > 0
-                  ? t("statTournaments", { count: data.tournamentCount })
-                  : null,
-              ]
-                .filter(Boolean)
-                .join(" · ")}
-            </p>
-
-            <h1 className="mt-4 font-display text-6xl font-bold uppercase leading-[0.85] tracking-tight text-balance sm:text-7xl">
+            <h1 className="font-display text-6xl font-bold uppercase leading-[0.85] tracking-tight text-balance sm:text-7xl">
               {tCommon("appName")}
             </h1>
             <p className="mt-4 max-w-md text-lg leading-snug text-ink-muted text-balance">
@@ -282,7 +266,9 @@ export default async function HomePage() {
             action={<SeeAll href="/rankings" label={t("seeAll")} />}
           />
 
-          <ul className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
+          {/* Quatro por linha: cada linha é uma categoria, e cada metade da
+              linha uma dupla. */}
+          <ul className="grid grid-cols-2 gap-3 sm:grid-cols-4">
             {data.worldTop.map((player) => (
               <li key={player.id}>
                 <Link
@@ -295,7 +281,7 @@ export default async function HomePage() {
                         src={player.photoUrl}
                         alt=""
                         fill
-                        sizes="(min-width: 1024px) 16vw, (min-width: 640px) 30vw, 45vw"
+                        sizes="(min-width: 640px) 24vw, 45vw"
                         className="object-cover"
                       />
                     )}
