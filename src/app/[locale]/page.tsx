@@ -5,11 +5,10 @@ import type { Locale } from "@/i18n/routing";
 import { Link } from "@/i18n/navigation";
 import { getHomeData, HOME_COUNTRY } from "@/lib/home/get-home-data";
 import { formatCountry } from "@/lib/format/labels";
-import type { RankingEntry } from "@/lib/padel-api/schemas";
+import type { PlayerProfile, RankingEntry } from "@/lib/padel-api/schemas";
 import { staticPageMetadata, type LocaleParams } from "@/lib/seo/page-metadata";
 import { Badge, Panel, SectionHeading, SectionNotice } from "@/components/ui";
 import { JsonLd } from "@/components/JsonLd";
-import { PadelCourt } from "@/components/PadelCourt";
 import { websiteSchema } from "@/lib/seo/schema";
 
 // Dados vivos — nunca pré-gerados no build (mesmo padrão de Rankings/Torneios/Notícias).
@@ -84,6 +83,16 @@ export default async function HomePage() {
 
   const today = new Date().toISOString().slice(0, 10);
   const tournament = data.nextTournament;
+
+  // O melhor classificado do país, para o quadro do hero. Calculado aqui e não
+  // assumido da ordem da lista: `pickHomeCountryPlayers` escolhe seis nomes por
+  // outros critérios, e o primeiro deles não é necessariamente o mais bem
+  // classificado.
+  const bestRanked = data.country.players.reduce<PlayerProfile | null>((best, player) => {
+    if (player.ranking.masked || player.ranking.value === null) return best;
+    if (best === null || best.ranking.value === null) return player;
+    return player.ranking.value < best.ranking.value ? player : best;
+  }, null);
   const isOngoing =
     tournament !== null && tournament.startDate <= today && today <= tournament.endDate;
 
@@ -91,60 +100,127 @@ export default async function HomePage() {
     <div className="flex flex-col gap-10">
       <JsonLd data={websiteSchema(locale, tSeo("home.description"))} />
 
-      {/* Hero: o que este sítio é, e o tamanho do que cobre. Os três números são
-          reais e vêm dos dados que a página já carregou — nenhum é decorativo. */}
-      <section className="court-panel relative rounded-xl border border-line p-6 sm:p-8">
-        {/* O campo, em traço, a sair pela direita. Decorativo e discreto: dá
-            contexto desportivo sem competir com o texto por cima. */}
-        <PadelCourt className="pointer-events-none absolute -right-16 top-1/2 hidden w-[26rem] -translate-y-1/2 text-accent opacity-[0.14] sm:block" />
+      {/*
+        Hero: a caixa de vidro.
 
-        <h1 className="relative max-w-2xl text-4xl font-bold uppercase leading-[0.95] tracking-tight text-balance sm:text-5xl">
-          {tCommon("appName")}
-        </h1>
-        <p className="relative mt-3 max-w-xl text-ink-muted">{t("intro")}</p>
+        O padel é o único desporto de raquete jogado dentro de uma caixa em que
+        as paredes estão em jogo, e a rede parte essa caixa em duas metades. É
+        essa a estrutura do bloco: duas metades e uma rede a tracejado entre
+        elas, com o mesmo traço da rede no diagrama do campo. A linha não é
+        ornamento — é a única divisão que existe num campo de padel.
 
-        {/* Só dois números, e de propósito. Havia aqui um terceiro — "torneios
-            em {país}" — que anunciava um limite da nossa fonte de dados como se
-            fosse informação sobre o padel português: quatro torneios num ano
-            lê-se como "quase não há padel em Portugal", quando o que diz é
-            "a API só conhece quatro". Os torneios cá continuam a aparecer mais
-            abaixo, em contexto, que é onde não enganam ninguém. */}
-        <dl className="relative mt-6 flex flex-wrap gap-x-8 gap-y-4">
-          {[
-            { value: data.country.totalPlayers, label: t("statPlayers", { country: homeCountryName }) },
-            { value: data.tournamentCount, label: t("statTournaments") },
-          ]
-            .filter((stat) => stat.value > 0)
-            .map((stat) => (
-              <div key={stat.label}>
-                <dt className="sr-only">{stat.label}</dt>
-                <dd>
-                  <span className="block font-display text-3xl font-bold tabular-nums leading-none text-accent">
-                    {stat.value}
-                  </span>
-                  <span className="mt-1 block text-xs uppercase tracking-wider text-ink-faint">
-                    {stat.label}
-                  </span>
-                </dd>
-              </div>
-            ))}
-        </dl>
+        O que estava aqui antes eram dois números grandes em acento com rótulos
+        pequenos por baixo. Informação certa, hierarquia errada: dois totais
+        abstratos ocupavam o lugar de honra e a prova concreta — o que se está
+        mesmo a passar em Portugal — não aparecia. Os totais continuam, agora
+        numa linha de dados discreta; o destaque passa para o torneio e o
+        atleta reais.
 
-        {/* Dois caminhos, e ambos para o que distingue este sítio de um portal
-            internacional: os torneios cá e os atletas daqui. */}
-        <div className="relative mt-7 flex flex-wrap gap-3">
-          <Link
-            href={`/tournaments?country=${HOME_COUNTRY}`}
-            className="rounded-lg bg-accent px-5 py-2.5 font-medium text-accent-ink no-underline"
-          >
-            {t("ctaTournaments", { country: homeCountryName })}
-          </Link>
-          <Link
-            href="/players"
-            className="rounded-lg border border-line-strong px-5 py-2.5 font-medium text-ink no-underline hover:border-accent hover:text-accent"
-          >
-            {t("ctaPlayers")}
-          </Link>
+        Saiu também o campo fantasma que estava por trás do texto. Com a rede a
+        fazer o trabalho de forma mais exata, o desenho inteiro era um acessório
+        a mais.
+      */}
+      <section className="court-panel rounded-xl border border-line">
+        <div className="grid gap-8 p-6 sm:p-8 lg:grid-cols-[1.15fr_1fr] lg:gap-0">
+          <div className="lg:pr-10">
+            {/* Os totais, rebaixados a legenda. Em mono porque são dados, e o
+                mono é a face que este sítio usa para dados — a mesma do artigo
+                da FIP no índice das Regras. */}
+            <p className="font-mono text-[0.7rem] uppercase tracking-[0.18em] text-ink-faint">
+              {[
+                data.country.totalPlayers > 0
+                  ? t("statPlayers", { country: homeCountryName, count: data.country.totalPlayers })
+                  : null,
+                data.tournamentCount > 0
+                  ? t("statTournaments", { count: data.tournamentCount })
+                  : null,
+              ]
+                .filter(Boolean)
+                .join(" · ")}
+            </p>
+
+            <h1 className="mt-4 font-display text-6xl font-bold uppercase leading-[0.85] tracking-tight text-balance sm:text-7xl">
+              {tCommon("appName")}
+            </h1>
+            <p className="mt-4 max-w-md text-lg leading-snug text-ink-muted text-balance">
+              {t("intro")}
+            </p>
+
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Link
+                href={`/tournaments?country=${HOME_COUNTRY}`}
+                className="rounded-lg bg-accent px-5 py-2.5 font-medium text-accent-ink no-underline"
+              >
+                {t("ctaTournaments", { country: homeCountryName })}
+              </Link>
+              <Link
+                href="/players"
+                className="rounded-lg border border-line-strong px-5 py-2.5 font-medium text-ink no-underline hover:border-accent hover:text-accent"
+              >
+                {t("ctaPlayers")}
+              </Link>
+            </div>
+          </div>
+
+          {/* A metade de lá da rede. Só existe se houver dados verdadeiros para
+              lá pôr: com a API em baixo o hero fica-se pela metade esquerda, que
+              se aguenta sozinha, em vez de mostrar uma moldura vazia. */}
+          {(data.country.nextTournament || bestRanked) && (
+            <div className="relative lg:pl-10">
+              <span
+                aria-hidden="true"
+                className="absolute inset-x-0 -top-4 h-px border-t-2 border-dashed border-accent/35 lg:inset-x-auto lg:left-0 lg:top-0 lg:h-full lg:w-px lg:border-l-2 lg:border-t-0"
+              />
+
+              <h2 className="font-mono text-[0.7rem] uppercase tracking-[0.18em] text-accent">
+                {t("countrySection", { country: homeCountryName })}
+              </h2>
+
+              <dl className="mt-4 flex flex-col gap-4">
+                {data.country.nextTournament && (
+                  <div>
+                    <dt className="text-xs uppercase tracking-wider text-ink-faint">
+                      {t("countryNextTournament")}
+                    </dt>
+                    <dd className="mt-1">
+                      <Link
+                        href={`/tournaments/${data.country.nextTournament.id}`}
+                        className="font-display text-2xl font-bold uppercase leading-none tracking-tight text-ink no-underline hover:text-accent"
+                      >
+                        {data.country.nextTournament.name}
+                      </Link>
+                      <p className="mt-1.5 font-mono text-xs text-ink-muted">
+                        {data.country.nextTournament.location}
+                        {" · "}
+                        <time dateTime={data.country.nextTournament.startDate}>
+                          {dateFormatter.format(new Date(data.country.nextTournament.startDate))}
+                        </time>
+                      </p>
+                    </dd>
+                  </div>
+                )}
+
+                {bestRanked && (
+                  <div>
+                    <dt className="text-xs uppercase tracking-wider text-ink-faint">
+                      {t("boardBestRanked")}
+                    </dt>
+                    <dd className="mt-1 flex items-baseline gap-3">
+                      <span className="font-mono text-sm text-accent">
+                        #{bestRanked.ranking.value}
+                      </span>
+                      <Link
+                        href={`/players/${bestRanked.id}`}
+                        className="font-display text-2xl font-bold uppercase leading-none tracking-tight text-ink no-underline hover:text-accent"
+                      >
+                        {bestRanked.name}
+                      </Link>
+                    </dd>
+                  </div>
+                )}
+              </dl>
+            </div>
+          )}
         </div>
       </section>
 

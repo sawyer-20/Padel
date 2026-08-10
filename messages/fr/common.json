@@ -46,10 +46,11 @@
     "countrySection": "Padel au {country}",
     "countryNextTournament": "Prochain tournoi dans le pays",
     "countryPlayers": "{total} sur le circuit",
-    "statPlayers": "joueurs du {country} sur le circuit",
-    "statTournaments": "tournois au calendrier",
+    "statPlayers": "{count} joueurs du {country} sur le circuit",
+    "statTournaments": "{count} tournois au calendrier",
     "ctaTournaments": "Tournois au {country}",
-    "ctaPlayers": "Joueurs du circuit"
+    "ctaPlayers": "Joueurs du circuit",
+    "boardBestRanked": "Meilleur classement"
   },
   "footer": {
     "tagline": "Classements, tournois et règles du padel — en cinq langues, sans attendre la traduction.",

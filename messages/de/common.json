@@ -46,10 +46,11 @@
     "countrySection": "Padel in {country}",
     "countryNextTournament": "Nächstes Turnier im Land",
     "countryPlayers": "{total} auf der Tour",
-    "statPlayers": "Aktive aus {country} auf der Tour",
-    "statTournaments": "Turniere im Kalender",
+    "statPlayers": "{count} Aktive aus {country} auf der Tour",
+    "statTournaments": "{count} Turniere im Kalender",
     "ctaTournaments": "Turniere in {country}",
-    "ctaPlayers": "Aktive der Tour"
+    "ctaPlayers": "Aktive der Tour",
+    "boardBestRanked": "Bestplatziert"
   },
   "footer": {
     "tagline": "Ranglisten, Turniere und die Padel-Regeln — in fünf Sprachen, ohne auf die Übersetzung zu warten.",

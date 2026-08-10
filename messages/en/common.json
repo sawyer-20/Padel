@@ -46,10 +46,11 @@
     "countrySection": "Padel in {country}",
     "countryNextTournament": "Next tournament in the country",
     "countryPlayers": "{total} on the tour",
-    "statPlayers": "players from {country} on tour",
-    "statTournaments": "tournaments on the calendar",
+    "statPlayers": "{count} players from {country} on tour",
+    "statTournaments": "{count} tournaments on the calendar",
     "ctaTournaments": "Tournaments in {country}",
-    "ctaPlayers": "Players on tour"
+    "ctaPlayers": "Players on tour",
+    "boardBestRanked": "Best ranked"
   },
   "footer": {
     "tagline": "Rankings, tournaments and the rules of padel — in five languages, without waiting for the translation.",
