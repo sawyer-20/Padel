@@ -17,7 +17,9 @@
   },
   "playerDetail": {
     "title": "{name}",
-    "description": "{name}: Ranglistenposition, Punkte und letzte Spiele auf der Padel-Profitour."
+    "description": "{name}: Ranglistenposition, Punkte und letzte Spiele auf der Padel-Profitour.",
+    "fallbackTitle": "Spielerprofil",
+    "fallbackDescription": "Spielerprofil von der Padel-Profitour: Ranglistenposition, Punkte und letzte Spiele."
   },
   "rules": {
     "title": "Die Padel-Regeln erklärt",

@@ -17,7 +17,9 @@
   },
   "playerDetail": {
     "title": "{name}",
-    "description": "Fiche de {name} : position au classement, points et derniers matchs sur le circuit professionnel de padel."
+    "description": "Fiche de {name} : position au classement, points et derniers matchs sur le circuit professionnel de padel.",
+    "fallbackTitle": "Fiche de joueur",
+    "fallbackDescription": "Fiche de joueur du circuit professionnel de padel : position au classement, points et derniers matchs."
   },
   "rules": {
     "title": "Les règles du padel expliquées",

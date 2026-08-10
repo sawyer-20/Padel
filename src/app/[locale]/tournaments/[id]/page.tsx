@@ -78,6 +78,9 @@ export default async function TournamentDetailPage({
   const locale = await getLocale();
   const t = await getTranslations("tournaments");
   const tCommon = await getTranslations("common");
+  // O rótulo de adversário em falta vive no namespace de rankings, junto ao
+  // resto do vocabulário de jogos, e é partilhado com a ficha de jogador.
+  const tRankings = await getTranslations("rankings");
 
   let tournament: TournamentDetail | null = null;
   let matches: MatchSummary[] = [];
@@ -195,7 +198,12 @@ export default async function TournamentDetailPage({
             </h2>
             <ul className="flex flex-col gap-2">
               {roundMatches.map((match) => (
-                <MatchListItem key={match.id} match={match} locale={locale} />
+                <MatchListItem
+                  key={match.id}
+                  match={match}
+                  locale={locale}
+                  unknownOpponentLabel={tRankings("player.unknownOpponent")}
+                />
               ))}
             </ul>
           </section>

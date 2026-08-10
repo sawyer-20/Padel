@@ -47,11 +47,14 @@ export async function generateMetadata({
   }
 
   if (!name) {
+    // Caía no título dos Rankings, e o separador do browser passava a dizer
+    // "Rankings de padel" numa ficha de jogador — um título que descreve outra
+    // página. Um rótulo neutro é menos informativo mas não engana.
     return buildPageMetadata({
       locale: locale as Locale,
       path: `/players/${id}`,
-      title: t("rankings.title"),
-      description: t("rankings.description"),
+      title: t("playerDetail.fallbackTitle"),
+      description: t("playerDetail.fallbackDescription"),
     });
   }
 
@@ -100,7 +103,31 @@ export default async function PlayerProfilePage({ params }: { params: Promise<{ 
   }
 
   if (errored || !player) {
-    return <p role="alert">{t("player.error")}</p>;
+    // Antes isto era um <p> solto: sem título, sem migalhas, sem saída. Uma
+    // falha temporária da API lia-se como um sítio partido, e quem chegasse por
+    // link ficava sem forma de ir a lado nenhum. O erro continua a ser erro —
+    // nunca se inventa um jogador — mas passa a acontecer dentro de uma página.
+    return (
+      <div className="mx-auto max-w-3xl">
+        <Breadcrumbs
+          locale={locale as Locale}
+          items={[
+            { label: tCommon("nav.home"), path: "/" },
+            { label: tCommon("nav.rankings"), path: "/rankings" },
+            { label: t("player.errorTitle") },
+          ]}
+        />
+        <h1 className="mt-4 text-2xl font-bold tracking-tight">{t("player.errorTitle")}</h1>
+        <p role="alert" className="mt-3 text-ink-muted">
+          {t("player.error")}
+        </p>
+        <p className="mt-6">
+          <Link href="/rankings" className="text-accent no-underline hover:underline">
+            {t("player.backToRankings")}
+          </Link>
+        </p>
+      </div>
+    );
   }
 
   // Depois do lote principal e em separado: as duplas são um extra e a API
@@ -262,6 +289,7 @@ export default async function PlayerProfilePage({ params }: { params: Promise<{ 
                 match={match}
                 locale={locale}
                 tournament={match.tournamentId ? (tournamentsById.get(match.tournamentId) ?? null) : null}
+                unknownOpponentLabel={t("player.unknownOpponent")}
               />
             ))}
           </ul>

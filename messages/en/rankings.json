@@ -30,7 +30,10 @@
     "hand": {
       "right": "Right-handed",
       "left": "Left-handed"
-    }
+    },
+    "unknownOpponent": "Opponent not recorded",
+    "errorTitle": "Profile unavailable",
+    "backToRankings": "See the rankings"
   },
   "search": {
     "label": "Search for a player",

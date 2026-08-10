@@ -30,7 +30,10 @@
     "hand": {
       "right": "Rechtshänder",
       "left": "Linkshänder"
-    }
+    },
+    "unknownOpponent": "Gegner nicht erfasst",
+    "errorTitle": "Profil nicht verfügbar",
+    "backToRankings": "Zu den Ranglisten"
   },
   "search": {
     "label": "Spieler suchen",

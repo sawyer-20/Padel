@@ -30,7 +30,10 @@
     "hand": {
       "right": "Diestro",
       "left": "Zurdo"
-    }
+    },
+    "unknownOpponent": "Rival no registrado",
+    "errorTitle": "Ficha no disponible",
+    "backToRankings": "Ver los rankings"
   },
   "search": {
     "label": "Buscar jugador",

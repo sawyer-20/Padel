@@ -17,7 +17,9 @@
   },
   "playerDetail": {
     "title": "{name}",
-    "description": "{name}: ranking position, points and recent matches on the professional padel tour."
+    "description": "{name}: ranking position, points and recent matches on the professional padel tour.",
+    "fallbackTitle": "Player profile",
+    "fallbackDescription": "Player profile from the professional padel tour: ranking position, points and recent matches."
   },
   "rules": {
     "title": "The rules of padel explained",

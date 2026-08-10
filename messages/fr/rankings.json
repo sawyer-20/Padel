@@ -30,7 +30,10 @@
     "hand": {
       "right": "Droitier",
       "left": "Gaucher"
-    }
+    },
+    "unknownOpponent": "Adversaire non enregistré",
+    "errorTitle": "Fiche indisponible",
+    "backToRankings": "Voir les classements"
   },
   "search": {
     "label": "Rechercher un joueur",

@@ -30,7 +30,10 @@
     "hand": {
       "right": "Destro",
       "left": "Esquerdino"
-    }
+    },
+    "unknownOpponent": "Adversário não registado",
+    "errorTitle": "Ficha indisponível",
+    "backToRankings": "Ver os rankings"
   },
   "search": {
     "label": "Procurar jogador",
