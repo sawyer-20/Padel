@@ -50,7 +50,8 @@
     "statTournaments": "{count} torneios no calendário",
     "ctaTournaments": "Torneios em {country}",
     "ctaPlayers": "Jogadores do circuito",
-    "boardBestRanked": "Melhor classificado"
+    "boardBestRanked": "Melhor classificado",
+    "worldTop": "Os primeiros do mundo"
   },
   "footer": {
     "tagline": "Rankings, torneios e as regras do padel — em cinco idiomas, sem esperar pela tradução.",

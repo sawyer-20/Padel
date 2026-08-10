@@ -50,7 +50,8 @@
     "statTournaments": "{count} Turniere im Kalender",
     "ctaTournaments": "Turniere in {country}",
     "ctaPlayers": "Aktive der Tour",
-    "boardBestRanked": "Bestplatziert"
+    "boardBestRanked": "Bestplatziert",
+    "worldTop": "Die Weltbesten"
   },
   "footer": {
     "tagline": "Ranglisten, Turniere und die Padel-Regeln — in fünf Sprachen, ohne auf die Übersetzung zu warten.",

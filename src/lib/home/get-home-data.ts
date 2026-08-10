@@ -7,6 +7,9 @@ import { pickHomeCountryPlayers } from "./pick-home-country-players";
 
 const TOP_RANKING_COUNT = 5;
 const NEWS_COUNT = 3;
+/** Quantos de cada categoria entram na montra de retratos. Três e três dão seis
+ *  cartões, que é uma linha inteira em ecrã largo e três linhas no telemóvel. */
+const WORLD_TOP_COUNT = 3;
 const TOURNAMENT_WINDOW_DAYS_BACK = 30;
 const HOME_COUNTRY_PLAYER_COUNT = 6;
 
@@ -38,7 +41,34 @@ export type HomeData = {
   };
   /** Torneios na janela do calendário, para o cabeçalho dizer o tamanho da cobertura. */
   tournamentCount: number;
+  /**
+   * Os primeiros do ranking mundial, com ficha completa.
+   *
+   * O ranking só devolve nome, posição e pontos — a fotografia vive na ficha de
+   * cada jogador. Daí o pedido extra por atleta: é o preço de mostrar rostos em
+   * vez de uma lista de nomes.
+   */
+  worldTop: PlayerProfile[];
 };
+
+/**
+ * Fichas completas a partir de uma lista de ids, em série.
+ *
+ * Em série e não em paralelo porque a Padel API responde 429 a pedidos
+ * simultâneos. Quem falhar fica de fora em vez de derrubar o conjunto: seis
+ * retratos menos um continua a ser uma montra; um erro não é.
+ */
+async function fetchProfilesInSeries(ids: string[]): Promise<PlayerProfile[]> {
+  const profiles: PlayerProfile[] = [];
+  for (const id of ids) {
+    try {
+      profiles.push(await padelApiSource.getPlayer(id));
+    } catch (error) {
+      console.error(`Início: falha ao carregar a ficha do jogador ${id}:`, error);
+    }
+  }
+  return profiles;
+}
 
 function formatDateParam(date: Date): string {
   return date.toISOString().slice(0, 10);
@@ -90,12 +120,21 @@ export async function getHomeData(): Promise<HomeData> {
     countryFailed = true;
   }
 
+  // Depois do bloco do país e também em série, pela mesma razão: são seis
+  // pedidos e a API não gosta de os receber ao mesmo tempo. Vêm da cache do
+  // Next na esmagadora maioria das visitas.
+  const worldTop = await fetchProfilesInSeries([
+    ...topMen.slice(0, WORLD_TOP_COUNT).map((entry) => entry.playerId),
+    ...topWomen.slice(0, WORLD_TOP_COUNT).map((entry) => entry.playerId),
+  ]);
+
   const countryTournaments =
     tournamentsResult.status === "fulfilled"
       ? tournamentsResult.value.filter((tournament) => tournament.country === HOME_COUNTRY)
       : [];
 
   return {
+    worldTop,
     tournamentCount:
       tournamentsResult.status === "fulfilled" ? tournamentsResult.value.length : 0,
     country: {
