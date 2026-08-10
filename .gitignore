@@ -17,7 +17,11 @@
 
 # dev tooling local (log do servidor de dev, config do editor/agente)
 .dev-out.log
-/.claude/
+/.claude/*
+# ...menos os agentes de revisão: são processo do projeto, não configuração
+# desta máquina. Quem clonar o repositório tem de poder voltar a correr a
+# mesma revisão e obter os mesmos critérios.
+!/.claude/agents/
 
 # misc
 .DS_Store
