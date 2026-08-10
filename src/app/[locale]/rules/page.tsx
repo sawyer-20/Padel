@@ -18,11 +18,19 @@ export default async function RulesPage() {
   const t = await getTranslations("rules");
   const tCommon = await getTranslations("common");
 
-  const items: { slug: string; title: string; category: string }[] = [];
+  const items: { slug: string; title: string; category: string; fipArticleRef: string }[] = [];
   for (const rule of rules) {
     const content = getRuleContent(rule.slug, locale);
     if (content) {
-      items.push({ slug: rule.slug, title: content.title, category: rule.category });
+      items.push({
+        slug: rule.slug,
+        title: content.title,
+        category: rule.category,
+        // O artigo da FIP deixa de estar só na ficha: numa lista de 19 títulos
+        // parecidos, é o que diz ao leitor que isto tem origem verificável, e é
+        // a primeira coisa que alguém do meio procura.
+        fipArticleRef: rule.fipArticleRef,
+      });
     }
   }
 

@@ -57,9 +57,13 @@ export function SearchableList<T extends { slug: string }>({
           {/* h2 e não h3: o título da página é o h1, por isso um h3 aqui saltava
               um nível — e deixava os títulos dos itens sem um nível livre por
               baixo para se encaixarem. */}
+          {/* O rótulo com um traço a atravessar o resto da largura: separa as
+              secções sem lhes acrescentar peso, e dá à lista o aspeto de um
+              índice em vez de rótulos a flutuar sobre cartões. */}
           {getGroupKey && groupLabels && (
-            <h2 className="mb-2 text-sm font-semibold uppercase tracking-wider text-ink-faint">
-              {groupLabels[groupKey] ?? groupKey}
+            <h2 className="mb-3 flex items-center gap-3 text-xs font-semibold uppercase tracking-wider text-ink-faint">
+              <span className="shrink-0">{groupLabels[groupKey] ?? groupKey}</span>
+              <span aria-hidden="true" className="h-px flex-1 bg-line" />
             </h2>
           )}
           <ul className="flex flex-col gap-2">
