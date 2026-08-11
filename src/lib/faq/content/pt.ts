@@ -44,25 +44,25 @@ export const pt: Record<string, FaqContent> = {
     question: "A bola pode sair do campo e o ponto continuar?",
     status: "machine",
     answerMd:
-      "Pode. Se a bola sair do recinto depois de ressaltar no teu campo, tens o direito de sair pela abertura lateral, jogá-la de fora e devolvê-la para dentro — desde que ela não tenha saltado uma segunda vez no chão.\n\nÉ um dos momentos mais espetaculares do padel e depende do campo: só é possível onde existem aberturas laterais. Em campos totalmente fechados, a bola que sai é ponto ganho para quem a mandou.",
+      "Pode, mas depende de **por onde** ela sai — e é aqui que quase toda a gente se engana.\n\nSe sair **pela lateral ou pela porta** depois de ressaltar no teu campo, tens o direito de sair do recinto, jogá-la de fora e devolvê-la para dentro, desde que não tenha saltado uma segunda vez no chão nem tocado em nada alheio ao campo.\n\nSe sair **por cima da parede de fundo**, o ponto está perdido. O regulamento não autoriza jogo exterior nesse caso, mesmo que o campo tenha zona de segurança.\n\nE nada disto é possível em campos totalmente fechados: aí, a bola que sai é ponto ganho para quem a mandou.",
   },
   "first-equipment": {
     question: "Que material preciso para a primeira aula?",
     status: "machine",
     answerMd:
-      "Menos do que se pensa:\n\n- **Pá** — a maioria dos clubes empresta ou aluga nas primeiras vezes. Não compres antes de perceber se gostas. Confirma só que traz **cordão de pulso**: é o único item que o regulamento torna obrigatório, e jogar sem ele custa o ponto.\n- **Bolas** — normalmente incluídas na aula.\n- **Sapatilhas** — as de ténis ou de padel servem; o que interessa é a sola com aderência lateral. Sapatilhas de corrida são a escolha errada, porque a sola é feita para ir em frente e o padel é feito de travagens de lado.\n- **Roupa desportiva confortável** e água.\n\nA ordem certa das compras é sapatilhas primeiro, pá depois.",
+      "Menos do que se pensa:\n\n- **Pá** — a maioria dos clubes empresta ou aluga nas primeiras vezes. Não compres antes de perceber se gostas. Confirma só que traz **cordão de pulso**: o regulamento exige-o, e se ele se partir a meio de um ponto — ou se a pá te fugir da mão — perdes esse ponto.\n- **Bolas** — normalmente incluídas na aula.\n- **Sapatilhas** — as de ténis ou de padel servem; o que interessa é a sola com aderência lateral. Sapatilhas de corrida são a escolha errada, porque a sola é feita para ir em frente e o padel é feito de travagens de lado.\n- **Roupa desportiva confortável** e água.\n\nA ordem certa das compras é sapatilhas primeiro, pá depois.",
   },
   "choosing-first-racket": {
     question: "Como escolho a minha primeira pá?",
     status: "machine",
     answerMd:
-      "Para começar, procura uma pá **redonda**. A forma determina onde fica o ponto ideal de impacto:\n\n- **Redonda** — ponto ideal ao centro e maior, perdoa impactos descentrados. É a forma indicada para quem começa.\n- **Lágrima** — equilíbrio entre controlo e potência.\n- **Diamante** — ponto ideal alto e pequeno, dá mais potência mas castiga qualquer imprecisão. Não é uma pá para as primeiras semanas.\n\nProcura também uma pá mais leve e com núcleo macio: cansa menos o braço e é mais confortável no impacto. As dimensões máximas estão fixadas no regulamento oficial, por isso nenhuma pá à venda te dá vantagem ilegal — a diferença está toda na forma, no peso e no material.",
+      "Para começar, procura uma pá **redonda**. A forma determina onde fica o ponto ideal de impacto:\n\n- **Redonda** — ponto ideal ao centro e maior, perdoa impactos descentrados. É a forma indicada para quem começa.\n- **Lágrima** — equilíbrio entre controlo e potência.\n- **Diamante** — ponto ideal alto e pequeno, dá mais potência mas castiga qualquer imprecisão. Não é uma pá para as primeiras semanas.\n\nProcura também uma pá mais leve e com núcleo macio: cansa menos o braço e é mais confortável no impacto. As dimensões e os materiais estão fixados no regulamento oficial, mas isso não quer dizer que tudo o que está à venda esteja conforme: em competição federada só se pode usar material homologado. Para aulas e jogos entre amigos não te preocupes com isso — quando começares a inscrever-te em provas, confirma antes de comprar.",
   },
   "padel-balls": {
     question: "As bolas de padel são iguais às de ténis?",
     status: "machine",
     answerMd:
-      "Parecem iguais, mas não são. A bola de padel tem menos pressão interna, o que lhe dá um ressalto mais baixo e um jogo mais controlado — essencial num campo pequeno onde a bola ainda ressalta nas paredes.\n\nJogar com bolas de ténis num campo de padel torna o jogo demasiado rápido e imprevisível. As tolerâncias de peso, diâmetro e ressalto estão definidas no regulamento oficial.",
+      "Parecem iguais e não são a mesma coisa. O regulamento da FIP define os valores da bola de padel: diâmetro entre 6,35 e 6,77 cm, peso entre 56,0 e 59,4 gramas, e um ressalto entre 135 e 145 cm quando largada de 2,54 metros sobre superfície dura.\n\nNa prática, quem joga nota a diferença sobretudo no ressalto e na duração: uma bola de padel perde pressão depressa, e uma bola morta muda o jogo mais do que se imagina. Em altitude acima dos 1000 metros o regulamento admite bolas com ressalto mais baixo, porque o ar mais rarefeito as faz saltar mais.",
   },
   "national-ranking": {
     question: "Onde vejo o ranking nacional português?",

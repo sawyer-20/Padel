@@ -53,7 +53,7 @@ Duas condições práticas que costumam apanhar as pessoas desprevenidas: o "let
 Se a repetição acontecer no primeiro serviço, quem serve mantém direito às duas tentativas. Se acontecer no segundo serviço, só se repete essa segunda tentativa.`,
   },
   "out-of-court-play": {
-    title: "Jogar fora do campo: a regra que torna o padel única",
+    title: "Jogar fora do campo: a regra que torna o padel único",
     status: "machine",
     bodyMd: `Uma das características mais distintivas do padel é que, em campos preparados para isso, os jogadores podem sair do recinto fechado para ir buscar a bola. Mas a jogada não é permitida em todas as direções, e é aí que quase toda a gente se engana.
 
