@@ -14,8 +14,23 @@ export function Panel({ children, className = "" }: { children: ReactNode; class
 
 export function SectionHeading({ title, action }: { title: string; action?: ReactNode }) {
   return (
-    <div className="mb-3 flex items-baseline justify-between gap-4">
-      <h2 className="text-sm font-semibold uppercase tracking-wider text-ink-faint">{title}</h2>
+    <div className="mb-4 flex items-baseline justify-between gap-4">
+      {/*
+        Título de secção a sério, e não mais um rótulo cinzento.
+
+        Isto era `text-sm ... text-ink-faint`: exatamente o mesmo tratamento que
+        "Idioma" no rodapé e que o cabeçalho da coluna "Pos." de uma tabela. Com
+        79% do texto do sítio a 12 ou 14 px, e um único estilo de título abaixo
+        do H1 usado em toda a parte, não havia degrau entre os rótulos e o H1 —
+        e é a ausência desse degrau que faz uma página parecer lisa.
+
+        Barlow Condensed em caixa alta a 24 px, na cor da tinta e não na do
+        rótulo: fica um nível claramente abaixo do H1 e claramente acima das
+        legendas, que é o lugar que faltava na escala.
+      */}
+      <h2 className="font-display text-2xl font-bold uppercase leading-none tracking-tight text-ink">
+        {title}
+      </h2>
       {action}
     </div>
   );
