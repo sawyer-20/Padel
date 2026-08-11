@@ -56,23 +56,66 @@ export type HomeData = {
   worldTop: PlayerProfile[];
 };
 
+/** Espera entre pedidos, e antes de repetir um que falhou. */
+const REQUEST_SPACING_MS = 120;
+const RETRY_DELAY_MS = 500;
+
+function wait(ms: number): Promise<void> {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
 /**
- * Fichas completas a partir de uma lista de ids, em série.
+ * Fichas completas a partir de uma lista de ids, em série e com uma repetição.
  *
- * Em série e não em paralelo porque a Padel API responde 429 a pedidos
- * simultâneos. Quem falhar fica de fora em vez de derrubar o conjunto: seis
- * retratos menos um continua a ser uma montra; um erro não é.
+ * Em série porque a Padel API responde 429 a pedidos simultâneos. **Com
+ * repetição** porque a primeira versão não a tinha e o resultado apareceu em
+ * produção: dos oito pedidos, três falharam, e como cada falha era engolida em
+ * silêncio a montra ficou com quatro homens e uma mulher. Uma degradação que
+ * deixa passar um resultado enviesado é pior do que um erro — o erro vê-se.
+ *
+ * O espaçamento entre pedidos existe pela mesma razão: oito chamadas seguidas,
+ * somadas às dos rankings e dos torneios, esbarravam no limite por minuto.
+ * Custa cerca de um segundo, e só na primeira visita de cada seis horas.
  */
 async function fetchProfilesInSeries(ids: string[]): Promise<PlayerProfile[]> {
   const profiles: PlayerProfile[] = [];
-  for (const id of ids) {
+
+  for (const [index, id] of ids.entries()) {
+    if (index > 0) await wait(REQUEST_SPACING_MS);
+
+    try {
+      profiles.push(await padelApiSource.getPlayer(id));
+      continue;
+    } catch (error) {
+      console.error(`Início: falha ao carregar a ficha do jogador ${id}, a repetir:`, error);
+    }
+
+    await wait(RETRY_DELAY_MS);
     try {
       profiles.push(await padelApiSource.getPlayer(id));
     } catch (error) {
-      console.error(`Início: falha ao carregar a ficha do jogador ${id}:`, error);
+      console.error(`Início: ficha do jogador ${id} indisponível após repetição:`, error);
     }
   }
+
   return profiles;
+}
+
+/**
+ * Corta a montra ao mesmo número de atletas por categoria.
+ *
+ * Se uma das categorias não vier completa, as duas encolhem para o tamanho da
+ * mais pequena. Preferimos uma montra mais curta e equilibrada a uma cheia e
+ * torta: quatro homens ao lado de uma mulher não se lê como uma falha de rede,
+ * lê-se como uma escolha editorial — e não é.
+ */
+export function balanceByCategory(profiles: PlayerProfile[]): PlayerProfile[] {
+  const men = profiles.filter((player) => player.category === "men");
+  const women = profiles.filter((player) => player.category === "women");
+  const perCategory = Math.min(men.length, women.length);
+
+  if (perCategory === 0) return [];
+  return [...men.slice(0, perCategory), ...women.slice(0, perCategory)];
 }
 
 function formatDateParam(date: Date): string {
@@ -128,10 +171,12 @@ export async function getHomeData(): Promise<HomeData> {
   // Depois do bloco do país e também em série, pela mesma razão: são seis
   // pedidos e a API não gosta de os receber ao mesmo tempo. Vêm da cache do
   // Next na esmagadora maioria das visitas.
-  const worldTop = await fetchProfilesInSeries([
-    ...topMen.slice(0, WORLD_TOP_COUNT).map((entry) => entry.playerId),
-    ...topWomen.slice(0, WORLD_TOP_COUNT).map((entry) => entry.playerId),
-  ]);
+  const worldTop = balanceByCategory(
+    await fetchProfilesInSeries([
+      ...topMen.slice(0, WORLD_TOP_COUNT).map((entry) => entry.playerId),
+      ...topWomen.slice(0, WORLD_TOP_COUNT).map((entry) => entry.playerId),
+    ]),
+  );
 
   const countryTournaments =
     tournamentsResult.status === "fulfilled"
