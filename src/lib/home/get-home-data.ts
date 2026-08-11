@@ -109,6 +109,30 @@ async function fetchProfilesInSeries(ids: string[]): Promise<PlayerProfile[]> {
  * torta: quatro homens ao lado de uma mulher não se lê como uma falha de rede,
  * lê-se como uma escolha editorial — e não é.
  */
+/**
+ * Alterna os ids das duas categorias: um deles, uma delas, um deles...
+ *
+ * A ordem dos pedidos decide a forma da degradação, e isto apareceu em
+ * produção. Pedindo primeiro os quatro homens e só depois as quatro mulheres,
+ * um limite de débito atingido a meio derruba **sempre** as jogadoras — e como
+ * a montra encolhe ao tamanho da categoria mais pequena, zero mulheres fazia
+ * desaparecer a secção inteira.
+ *
+ * Alternados, uma falha a meio deixa três deles e duas delas, que ainda dá uma
+ * dupla de cada. Uma montra mais curta é um contratempo; uma montra que
+ * desaparece é uma avaria.
+ */
+export function interleave(men: RankingEntry[], women: RankingEntry[]): string[] {
+  const ids: string[] = [];
+  for (let index = 0; index < WORLD_TOP_COUNT; index += 1) {
+    const man = men[index];
+    const woman = women[index];
+    if (man) ids.push(man.playerId);
+    if (woman) ids.push(woman.playerId);
+  }
+  return ids;
+}
+
 export function balanceByCategory(profiles: PlayerProfile[]): PlayerProfile[] {
   const men = profiles.filter((player) => player.category === "men");
   const women = profiles.filter((player) => player.category === "women");
@@ -171,12 +195,7 @@ export async function getHomeData(): Promise<HomeData> {
   // Depois do bloco do país e também em série, pela mesma razão: são seis
   // pedidos e a API não gosta de os receber ao mesmo tempo. Vêm da cache do
   // Next na esmagadora maioria das visitas.
-  const worldTop = balanceByCategory(
-    await fetchProfilesInSeries([
-      ...topMen.slice(0, WORLD_TOP_COUNT).map((entry) => entry.playerId),
-      ...topWomen.slice(0, WORLD_TOP_COUNT).map((entry) => entry.playerId),
-    ]),
-  );
+  const worldTop = balanceByCategory(await fetchProfilesInSeries(interleave(topMen, topWomen)));
 
   const countryTournaments =
     tournamentsResult.status === "fulfilled"
