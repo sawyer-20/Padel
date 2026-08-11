@@ -14,7 +14,7 @@ export const pt: Record<string, GlossaryContent> = {
     term: "Víbora",
     status: "machine",
     definitionMd:
-      'A víbora é uma variante mais agressiva da bandeja: em vez de um gesto controlado, dás à bola um efeito lateral (cortado), com mais velocidade e uma trajetória mais rasteira e difícil de devolver. O nome evoca o golpe rápido e lateral do animal — o mesmo em português e em espanhol, que é de onde a palavra chegou ao padel.',
+      'A víbora é uma variante mais agressiva da bandeja: em vez de um gesto controlado, dás à bola um efeito lateral (cortado), com mais velocidade e uma trajetória mais rasteira e difícil de devolver. A diferença que interessa está no ponto de impacto: a bandeja bate-se à frente do corpo e com o braço mais estendido, a víbora um pouco mais atrás e com o pulso a fechar, o que lhe dá o efeito e a velocidade. É por isso que é mais arriscada — a margem de erro é menor.',
   },
   chiquita: {
     term: "Chiquita",
