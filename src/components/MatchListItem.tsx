@@ -1,6 +1,35 @@
-import type { MatchSummary } from "@/lib/padel-api/schemas";
+import type { MatchPlayer, MatchSummary } from "@/lib/padel-api/schemas";
 import { Link } from "@/i18n/navigation";
 import { formatDate } from "@/lib/format/dates";
+
+/**
+ * A dupla, com cada atleta ligado à sua ficha.
+ *
+ * É daqui que sai a travessia do sítio: de um jogo salta-se para o adversário,
+ * da ficha dele para os jogos dele, e por aí fora. Os identificadores já vinham
+ * na resposta da API — só não estavam a chegar ao ecrã.
+ *
+ * Quem estiver a ver a própria ficha não fica com uma ligação para a página
+ * onde já está.
+ */
+function TeamNames({ players, currentPlayerId }: { players: MatchPlayer[]; currentPlayerId?: string }) {
+  return (
+    <>
+      {players.map((player, index) => (
+        <span key={player.id}>
+          {index > 0 && " / "}
+          {player.id === currentPlayerId ? (
+            player.name
+          ) : (
+            <Link href={`/players/${player.id}`} className="text-inherit hover:text-accent">
+              {player.name}
+            </Link>
+          )}
+        </span>
+      ))}
+    </>
+  );
+}
 
 /** Torneio da partida, já resolvido pelo servidor (nome não vem na resposta de matches). */
 export type MatchTournamentInfo = { id: string; name: string };
@@ -10,12 +39,15 @@ export function MatchListItem({
   locale,
   tournament,
   unknownOpponentLabel,
+  currentPlayerId,
 }: {
   match: MatchSummary;
   locale: string;
   tournament?: MatchTournamentInfo | null;
   /** Mostrado quando a API não devolve a segunda equipa (bye, W.O., jogo por disputar). */
   unknownOpponentLabel: string;
+  /** Ficha que está aberta, para não se ligar à página onde já se está. */
+  currentPlayerId?: string;
 }) {
   // A API devolve jogos sem segunda equipa nem resultado. Antes isso produzia
   // uma <div> vazia entre o nome da dupla e a data — uma linha em branco que se
@@ -33,9 +65,13 @@ export function MatchListItem({
 
   return (
     <li className="rounded-lg border border-line bg-surface p-3 text-sm">
-      <div className={match.winner === "team_1" ? "font-semibold" : ""}>{match.team1.join(" / ")}</div>
+      <div className={match.winner === "team_1" ? "font-semibold" : ""}>
+        <TeamNames players={match.team1} currentPlayerId={currentPlayerId} />
+      </div>
       {hasOpponent ? (
-        <div className={match.winner === "team_2" ? "font-semibold" : ""}>{match.team2.join(" / ")}</div>
+        <div className={match.winner === "team_2" ? "font-semibold" : ""}>
+          <TeamNames players={match.team2} currentPlayerId={currentPlayerId} />
+        </div>
       ) : (
         <div className="italic text-ink-faint">{unknownOpponentLabel}</div>
       )}

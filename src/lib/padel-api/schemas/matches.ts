@@ -42,6 +42,9 @@ function extractTournamentId(tournamentPath: string | null | undefined): string 
 
 export const MatchesResponseSchema = paginatedResponseSchema(MatchSchema);
 
+/** Atleta dentro de um jogo. O `id` é o que torna o nome clicável. */
+export type MatchPlayer = { id: string; name: string };
+
 export type MatchSummary = {
   id: string;
   category: string;
@@ -51,8 +54,8 @@ export type MatchSummary = {
   playedAt: string | null;
   score: { team1: string; team2: string }[];
   winner: "team_1" | "team_2" | null;
-  team1: string[];
-  team2: string[];
+  team1: MatchPlayer[];
+  team2: MatchPlayer[];
   tournamentId: string | null;
 };
 
@@ -67,8 +70,12 @@ export function parseMatchesResponse(json: unknown): MatchSummary[] {
     playedAt: item.played_at ?? null,
     score: (item.score ?? []).map((set) => ({ team1: set.team_1, team2: set.team_2 })),
     winner: item.winner ?? null,
-    team1: item.players.team_1.map((p) => p.name),
-    team2: item.players.team_2.map((p) => p.name),
+    // O id vinha no schema e era deitado fora aqui, ficando só o nome. Numa
+    // ficha de jogador com dez jogos são até quarenta atletas em texto morto,
+    // com o identificador de cada um a um `map` de distância. Guardá-lo é o que
+    // permite atravessar o sítio de adversário em adversário.
+    team1: item.players.team_1.map((p) => ({ id: String(p.id), name: p.name })),
+    team2: item.players.team_2.map((p) => ({ id: String(p.id), name: p.name })),
     tournamentId: extractTournamentId(item.connections?.tournament),
   }));
 }

@@ -290,6 +290,7 @@ export default async function PlayerProfilePage({ params }: { params: Promise<{ 
                 locale={locale}
                 tournament={match.tournamentId ? (tournamentsById.get(match.tournamentId) ?? null) : null}
                 unknownOpponentLabel={t("player.unknownOpponent")}
+                currentPlayerId={id}
               />
             ))}
           </ul>

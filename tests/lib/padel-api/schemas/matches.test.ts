@@ -53,8 +53,15 @@ describe("parseMatchesResponse", () => {
           { team1: "7", team2: "5" },
         ],
         winner: "team_1",
-        team1: ["Ramiro Pereyra", "Juan Zamora Perez"],
-        team2: ["Octavio Alvarez", "Diego Garcia Garcia"],
+        // O id vem a par do nome: é o que torna cada adversário clicável.
+        team1: [
+          { id: "1449", name: "Ramiro Pereyra" },
+          { id: "181", name: "Juan Zamora Perez" },
+        ],
+        team2: [
+          { id: "767", name: "Octavio Alvarez" },
+          { id: "149", name: "Diego Garcia Garcia" },
+        ],
         tournamentId: "740",
       },
     ]);

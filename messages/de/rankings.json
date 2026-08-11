@@ -46,7 +46,8 @@
     "title": "Spielerinnen und Spieler aus {country}",
     "intro": "Wer das Land auf der Profitour vertritt, beste Platzierung zuerst. Nach Herren- und Damenfeld getrennt, denn es sind unterschiedliche Ranglisten.",
     "selectLabel": "Land wählen",
-    "showing": "{shown} von {total}"
+    "showing": "{shown} von {total}",
+    "featured": "Im Fokus"
   },
   "movement": {
     "upOne": "{n} Platz gestiegen",

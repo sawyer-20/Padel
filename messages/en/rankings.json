@@ -46,7 +46,8 @@
     "title": "Players from {country}",
     "intro": "Who represents the country on the professional tour, best ranking first. Split by men's and women's draw, because they are separate rankings.",
     "selectLabel": "Choose a country",
-    "showing": "{shown} of {total}"
+    "showing": "{shown} of {total}",
+    "featured": "Featured"
   },
   "movement": {
     "upOne": "up {n} place",

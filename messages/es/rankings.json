@@ -46,7 +46,8 @@
     "title": "Jugadores de {country}",
     "intro": "Quiénes representan al país en el circuito profesional, del mejor ranking al peor. Separado por cuadro masculino y femenino, porque son rankings distintos.",
     "selectLabel": "Elegir país",
-    "showing": "{shown} de {total}"
+    "showing": "{shown} de {total}",
+    "featured": "Destacados"
   },
   "movement": {
     "upOne": "subió {n} puesto",
