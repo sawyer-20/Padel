@@ -51,4 +51,11 @@ export const pt: Record<string, SituationContent> = {
     answerMd:
       'O ponto repete-se do zero ("let"), sem penalização para nenhuma das equipas. O mesmo acontece se algo alheio ao jogo interromper o ponto de forma inesperada.',
   },
+  "smash-out-of-court": {
+    question:
+      'Rematei, a bola saltou no campo deles e saiu para fora — o chamado "saiu por 3". O ponto é meu?',
+    status: "machine",
+    answerMd:
+      'Quase sempre sim, mas não pela razão que se costuma dar. O que decide não é a força do remate: é **por onde a bola saiu** e se o campo tem zona de segurança.\n\n- **Saiu por cima da parede de fundo** — ponto teu, sempre. O regulamento não autoriza jogo exterior por aí, mesmo em campos com zona de segurança à volta.\n- **Saiu pela lateral ou pela porta, e o campo tem zona de segurança** — o ponto continua. O adversário pode sair a correr, jogá-la de fora e devolvê-la, desde que ela não salte uma segunda vez nem toque em nada alheio ao campo. É a jogada mais espetacular do padel.\n- **Saiu pela lateral ou pela porta, e o campo não tem zona de segurança** — ponto teu. E como a esmagadora maioria dos campos de clube não tem esse espaço livre à volta, é este o caso em que a maior parte das discussões acaba.\n\nGuarda a distinção que interessa: o teu remate foi uma devolução válida em qualquer dos casos. O que muda é se o adversário tem ou não como lhe responder.',
+  },
 };

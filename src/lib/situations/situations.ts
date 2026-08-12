@@ -31,6 +31,16 @@ export const situations: Situation[] = [
   { slug: "serve-lands-outside-box", relatedRuleSlug: "the-serve", fipArticleRef: "Rule 7", fipVersion: FIP_VERSION, order: 6 },
   { slug: "double-hit", relatedRuleSlug: "point-lost", fipArticleRef: "Rule 13", fipVersion: FIP_VERSION, order: 7 },
   { slug: "ball-splits", relatedRuleSlug: null, fipArticleRef: "Rule 10", fipVersion: FIP_VERSION, order: 8 },
+  // A discussão mais frequente do padel amador — "saiu por 3" — e a única cuja
+  // resposta já estava escrita e era inencontrável: vive dentro de
+  // `out-of-court-play`, mas ninguém procura por esse nome.
+  {
+    slug: "smash-out-of-court",
+    relatedRuleSlug: "out-of-court-play",
+    fipArticleRef: "Rule 13, 15",
+    fipVersion: FIP_VERSION,
+    order: 9,
+  },
 ];
 
 export function getSituationMeta(slug: string): Situation | null {

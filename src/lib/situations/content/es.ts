@@ -51,4 +51,11 @@ export const es: Record<string, SituationContent> = {
     answerMd:
       'El punto se repite desde cero ("let"), sin penalización para ninguna pareja. Lo mismo ocurre si algo ajeno al juego interrumpe el punto de forma inesperada.',
   },
+  "smash-out-of-court": {
+    question:
+      'Rematé, la bola botó en su pista y salió fuera — lo que se llama "salió por 3". ¿El punto es mío?',
+    status: "machine",
+    answerMd:
+      'Casi siempre sí, pero no por la razón que se suele dar. Lo que decide no es la fuerza del remate: es **por dónde salió la bola** y si la pista tiene zona de seguridad.\n\n- **Salió por encima del fondo** — punto tuyo, siempre. El reglamento no autoriza el juego exterior por ahí, ni siquiera en pistas con espacio libre alrededor.\n- **Salió por el lateral o por la puerta, y la pista tiene zona de seguridad** — el punto sigue vivo. El rival puede salir corriendo, jugarla desde fuera y devolverla, mientras no bote una segunda vez ni toque nada ajeno a la pista. Es la jugada más espectacular del pádel.\n- **Salió por el lateral o por la puerta, y la pista no tiene zona de seguridad** — punto tuyo. Y como la gran mayoría de pistas de club no tiene ese espacio libre, aquí es donde acaban casi todas estas discusiones.\n\nQuédate con la distinción que importa: tu remate fue una devolución válida en cualquiera de los casos. Lo que cambia es si el rival tiene forma de responderte.',
+  },
 };

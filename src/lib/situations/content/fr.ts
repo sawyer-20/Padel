@@ -51,4 +51,11 @@ export const fr: Record<string, SituationContent> = {
     answerMd:
       "Le point est rejoué intégralement (« let »), sans pénalité pour aucune des deux équipes. C'est aussi le cas si un élément extérieur au jeu interrompt le point de façon inattendue.",
   },
+  "smash-out-of-court": {
+    question:
+      "J'ai smashé, la balle a rebondi dans leur court et elle est sortie de l'enceinte — le point est-il pour moi ?",
+    status: "machine",
+    answerMd:
+      "Presque toujours oui, mais pas pour la raison qu'on avance d'habitude. Ce qui tranche, ce n'est pas la puissance du smash : c'est **par où la balle est sortie** et si le court dispose d'une zone de sécurité.\n\n- **Sortie par-dessus le mur du fond** — le point est à toi, à chaque fois. Le règlement n'autorise pas le jeu extérieur de ce côté, même sur un court entouré d'espace libre.\n- **Sortie par le côté ou par l'ouverture, sur un court avec zone de sécurité** — l'échange continue. L'adversaire peut sortir en courant, la jouer de l'extérieur et la remettre, tant qu'elle n'a pas rebondi une deuxième fois ni touché quoi que ce soit d'étranger au court. C'est le coup le plus spectaculaire du padel.\n- **Sortie par le côté ou par l'ouverture, sur un court sans zone de sécurité** — le point est à toi. Et comme l'immense majorité des courts de club n'a pas cet espace libre, c'est là que finissent presque toutes ces discussions.\n\nRetiens la distinction qui compte : ton smash était un renvoi valable dans tous les cas. Ce qui change, c'est de savoir si l'adversaire a un moyen d'y répondre.",
+  },
 };

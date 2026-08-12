@@ -51,4 +51,11 @@ export const en: Record<string, SituationContent> = {
     answerMd:
       'The point is replayed from scratch ("let"), with no penalty for either team. The same applies if something unrelated to the game unexpectedly interrupts the point.',
   },
+  "smash-out-of-court": {
+    question:
+      "I smashed, the ball bounced in their court and flew out of the enclosure — is the point mine?",
+    status: "machine",
+    answerMd:
+      "Almost always yes, but not for the reason people usually give. What settles it isn't how hard you hit it: it's **where the ball left** and whether the court has a safety zone.\n\n- **Out over the back wall** — your point, every time. The rules don't authorise out-of-court play that way, even on courts with clear space all around.\n- **Out through the side or the door, on a court with a safety zone** — the rally is still alive. Your opponent may run out, play it from outside and put it back in, as long as it hasn't bounced a second time or touched anything unrelated to the court. It's the most spectacular shot in padel.\n- **Out through the side or the door, on a court without a safety zone** — your point. And since the overwhelming majority of club courts have no clear space around them, this is where most of these arguments actually land.\n\nKeep the distinction that matters: your smash was a valid return either way. What changes is whether your opponent has any way to answer it.",
+  },
 };

@@ -51,4 +51,11 @@ export const de: Record<string, SituationContent> = {
     answerMd:
       'Der Punkt wird komplett neu gespielt ("Let"), ohne Nachteil für eines der beiden Teams. Dasselbe gilt, wenn etwas Spielfremdes den Punkt unerwartet unterbricht.',
   },
+  "smash-out-of-court": {
+    question:
+      "Ich habe geschmettert, der Ball ist in ihrem Feld aufgesprungen und aus dem Platz geflogen — gehört der Punkt mir?",
+    status: "machine",
+    answerMd:
+      "Fast immer ja, aber nicht aus dem Grund, den man üblicherweise hört. Entscheidend ist nicht die Wucht des Schmetterballs, sondern **wo der Ball hinausgeflogen ist** und ob der Platz eine Sicherheitszone hat.\n\n- **Über die hintere Wand hinaus** — dein Punkt, ausnahmslos. Dort erlaubt das Regelwerk kein Spiel außerhalb des Platzes, selbst wenn ringsum Platz frei ist.\n- **Seitlich oder durch die Tür hinaus, auf einem Platz mit Sicherheitszone** — der Ballwechsel läuft weiter. Der Gegner darf hinauslaufen, den Ball von außen spielen und zurückbringen, solange er nicht ein zweites Mal aufspringt und nichts Platzfremdes berührt. Es ist der spektakulärste Schlag im Padel.\n- **Seitlich oder durch die Tür hinaus, auf einem Platz ohne Sicherheitszone** — dein Punkt. Und da die allermeisten Vereinsplätze diesen freien Raum nicht haben, endet hier der Großteil dieser Diskussionen.\n\nMerk dir die Unterscheidung, auf die es ankommt: dein Schmetterball war in beiden Fällen ein gültiger Rückschlag. Was sich ändert, ist nur, ob der Gegner überhaupt eine Möglichkeit hat zu antworten.",
+  },
 };
